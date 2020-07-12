@@ -1,8 +1,10 @@
-# MyTube    
-    
-### Description    
+# MyTube     
 
 #### 유튜브 동영상 플레이어 페이지 클론 코딩프로젝트 MyTube입니다.
+
+## 기술 스택
+* ### React.js    
+해당 프로젝트의 타겟은 MVC 중 V인 뷰와 UI의 제작이므로 이 타겟에 가장 적합한 SPA 프레임워크인 React.js를 선택했습니다.
     
 ## 구현 기능    
     
@@ -46,5 +48,7 @@
 * [ ] 댓글 고정 기능
 * [ ] 댓글 정렬 기능 - 인기 순 / 최근 순
 * [ ] 댓글 답글 기능<br/>
+
+
 
 폰트 Roboto, Arial, Sans Serif, Noto, YT Sans, Roboto Mono.
