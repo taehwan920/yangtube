@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './header_comp/Header';
+import VirtualKeyboard from './VirtualKeyboard';
 
 export default class extends React.Component {
     render() {
@@ -11,6 +12,7 @@ export default class extends React.Component {
                 <section></section>
                 <section></section>
                 <nav></nav>
+                <VirtualKeyboard></VirtualKeyboard>
             </div>
         )
     }

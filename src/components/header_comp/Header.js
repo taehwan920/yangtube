@@ -1,17 +1,22 @@
 import React from 'react';
-import { ChangeTitle, Logo } from '../Mixin';
+import { ChangeTitle, Logo, MenuButton } from '../Mixin';
+import HeaderSearch from './HeaderSearch';
 
 export default class extends React.Component {
     render() {
         ChangeTitle('Main Page!');
         return (
             <header className="header">
-                <div></div>
+                <MenuButton></MenuButton>
                 <Logo></Logo>
-                <section>
-                    <input type="text" />
-                    <button></button>
-                </section>
+                <HeaderSearch></HeaderSearch>
+                <div><i class="fas fa-search"></i></div>
+                <nav>
+                    <div><i class="fas fa-video"></i></div>
+                    <div><i class="fas fa-th"></i></div>
+                    <div><i class="fas fa-bell"></i></div>
+                </nav>
+                <div>Y</div>
             </header>
         )
     }
