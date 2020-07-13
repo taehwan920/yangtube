@@ -9,7 +9,7 @@ import styled from 'styled-components';
 const HeaderWrapper = styled.header`
     background-color: beige;
     width: 100%;
-    height: 60px;
+    height: 56px;
     position: fixed;
     display: flex;
     flex-direction: row;
@@ -18,9 +18,13 @@ const HeaderWrapper = styled.header`
 `;
 
 const MenuBtnWrapper = styled.div`
-    width: 110px;
+    background-color: skyblue;
+    width: 150px;
     height: 100%;
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    items-align: center;
 `;
 
 export default class extends React.Component {

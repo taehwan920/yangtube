@@ -1,16 +1,30 @@
 import React from 'react';
+import styled from 'styled-components';
 
 export const ChangeTitle = (str) => {
     document.title = `${str} | YangTube`;
 }
 
+const LogoWrapper = styled.div`
+    width: 105px;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    items-align: center;
+    font-size: 18px;
+`;
+
+const LogoImg = styled.img`
+    height: 24px;
+`;
+
 export class Logo extends React.Component {
     render() {
         return (
-            <div className="logo">
-                <img width="30px" alt="YangTube 홈" src="./images/youtube_logo2.png" />
-                <span className="logo__name">YangTube</span>
-            </div>
+            <LogoWrapper>
+                <LogoImg alt="YangTube 홈" src="./images/youtubefont2.png"></LogoImg>
+            </LogoWrapper>
         )
     }
 }
@@ -18,7 +32,7 @@ export class Logo extends React.Component {
 export class MenuButton extends React.Component {
     render() {
         return (
-            <div><i class="fas fa-bars"></i></div>
+            <i class="fas fa-bars"></i>
         )
     }
 }
