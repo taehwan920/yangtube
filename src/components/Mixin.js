@@ -33,3 +33,14 @@ export class NotCreated extends React.Component {
         )
     }
 }
+
+export class ToggleSwitchInVideo extends React.Component {
+    render() {
+        return (
+            <div>
+                <div></div>
+                <div></div>
+            </div>
+        )
+    }
+}
