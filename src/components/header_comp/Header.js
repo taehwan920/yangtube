@@ -1,6 +1,9 @@
 import React from 'react';
 import { ChangeTitle, Logo, MenuButton } from '../Mixin';
+import HeaderApps from './HeaderApps'
+import HeaderAddVideo from './HeaderAddVideo';
 import HeaderSearch from './HeaderSearch';
+import HeaderUserInfo from './HeaderUserInfo';
 
 export default class extends React.Component {
     render() {
@@ -12,11 +15,19 @@ export default class extends React.Component {
                 <HeaderSearch></HeaderSearch>
                 <div><i class="fas fa-search"></i></div>
                 <nav>
-                    <div><i class="fas fa-video"></i></div>
-                    <div><i class="fas fa-th"></i></div>
-                    <div><i class="fas fa-bell"></i></div>
+                    <div>
+                        <i class="fas fa-video"></i>
+                        <HeaderAddVideo></HeaderAddVideo>
+                    </div>
+                    <div>
+                        <i class="fas fa-th"></i>
+                        <HeaderApps></HeaderApps>
+                    </div>
                 </nav>
-                <div>Y</div>
+                <section>
+                    <div>G</div>
+                    <HeaderUserInfo></HeaderUserInfo>
+                </section>
             </header>
         )
     }

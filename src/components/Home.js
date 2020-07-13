@@ -5,7 +5,7 @@ import VirtualKeyboard from './VirtualKeyboard';
 export default class extends React.Component {
     render() {
         return (
-            <div className="home">
+            <div>
                 <Header></Header>
                 <aside></aside>
                 <main></main>
