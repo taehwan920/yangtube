@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './headerComponents/Header';
 import VirtualKeyboard from './VirtualKeyboard';
 import Guide from './guideComponents/Guide';
+import MainFrame from './mainFrameComponents/MainFrame';
 
 export default class extends React.Component {
     render() {
@@ -9,10 +10,7 @@ export default class extends React.Component {
             <div>
                 <Header></Header>
                 <Guide></Guide>
-                <main></main>
-                <section></section>
-                <section></section>
-                <nav></nav>
+                <MainFrame></MainFrame>
                 <VirtualKeyboard></VirtualKeyboard>
             </div>
         )
