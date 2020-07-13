@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChangeTitle, Logo, MenuButton } from '../Mixin';
+import { ChangeTitle, Logo } from '../Mixin';
 import HeaderApps from './HeaderApps'
 import HeaderAddVideo from './HeaderAddVideo';
 import HeaderSearch from './HeaderSearch';
@@ -7,9 +7,9 @@ import HeaderUserInfo from './HeaderUserInfo';
 import styled from 'styled-components';
 
 const HeaderWrapper = styled.header`
-    background-color: beige;
     width: 100%;
     height: 56px;
+    padding-left: 12px;
     position: fixed;
     display: flex;
     flex-direction: row;
@@ -17,25 +17,12 @@ const HeaderWrapper = styled.header`
     align-items: center; 
 `;
 
-const MenuBtnWrapper = styled.div`
-    background-color: skyblue;
-    width: 150px;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    items-align: center;
-`;
-
 export default class extends React.Component {
     render() {
         ChangeTitle('Main Page!');
         return (
             <HeaderWrapper>
-                <MenuBtnWrapper>
-                    <MenuButton></MenuButton>
-                    <Logo></Logo>
-                </MenuBtnWrapper>
+                <Logo></Logo>
                 <HeaderSearch></HeaderSearch>
                 <div><i class="fas fa-search"></i></div>
                 <nav>

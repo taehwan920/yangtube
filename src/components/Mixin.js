@@ -6,33 +6,26 @@ export const ChangeTitle = (str) => {
 }
 
 const LogoWrapper = styled.div`
-    width: 105px;
-    height: 30px;
+    width: 7%;
+    height: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    items-align: center;
+    justify-content: space-between;
+    align-items: center;
     font-size: 18px;
 `;
 
 const LogoImg = styled.img`
-    height: 24px;
+    height: 19px;
 `;
 
 export class Logo extends React.Component {
     render() {
         return (
             <LogoWrapper>
+                <i class="fas fa-bars"></i>
                 <LogoImg alt="YangTube 홈" src="./images/youtubefont2.png"></LogoImg>
             </LogoWrapper>
-        )
-    }
-}
-
-export class MenuButton extends React.Component {
-    render() {
-        return (
-            <i class="fas fa-bars"></i>
         )
     }
 }
