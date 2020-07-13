@@ -6,7 +6,7 @@ import VirtualKeyboard from './VirtualKeyboard';
 import styled from 'styled-components';
 
 const HomeDiv = styled.div`
-    display: relative;
+    position: relative;
     width: 100%;
     height: 100%;
     background-color: pink;
@@ -16,12 +16,10 @@ export default class extends React.Component {
     render() {
         return (
             <HomeDiv>
-                <div>
-                    <Header></Header>
-                    <Guide></Guide>
-                    <MainFrame></MainFrame>
-                    <VirtualKeyboard></VirtualKeyboard>
-                </div>
+                <Header></Header>
+                <Guide></Guide>
+                <MainFrame></MainFrame>
+                <VirtualKeyboard></VirtualKeyboard>
             </HomeDiv>
         )
     }

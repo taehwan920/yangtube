@@ -7,12 +7,20 @@ import HeaderUserInfo from './HeaderUserInfo';
 import styled from 'styled-components';
 
 const HeaderWrapper = styled.header`
+    background-color: beige;
     width: 100%;
-    height: 15%;
+    height: 60px;
+    position: fixed;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center; 
-    background-color: blue;
+`;
+
+const MenuBtnWrapper = styled.div`
+    width: 110px;
+    height: 100%;
+    display: flex;
 `;
 
 export default class extends React.Component {
@@ -20,28 +28,26 @@ export default class extends React.Component {
         ChangeTitle('Main Page!');
         return (
             <HeaderWrapper>
-                <header className="header">
+                <MenuBtnWrapper>
+                    <MenuButton></MenuButton>
+                    <Logo></Logo>
+                </MenuBtnWrapper>
+                <HeaderSearch></HeaderSearch>
+                <div><i class="fas fa-search"></i></div>
+                <nav>
                     <div>
-                        <MenuButton></MenuButton>
-                        <Logo></Logo>
+                        <i class="fas fa-video"></i>
+                        <HeaderAddVideo></HeaderAddVideo>
                     </div>
-                    <HeaderSearch></HeaderSearch>
-                    <div><i class="fas fa-search"></i></div>
-                    <nav>
-                        <div>
-                            <i class="fas fa-video"></i>
-                            <HeaderAddVideo></HeaderAddVideo>
-                        </div>
-                        <div>
-                            <i class="fas fa-th"></i>
-                            <HeaderApps></HeaderApps>
-                        </div>
-                    </nav>
-                    <section>
-                        <div>G</div>
-                        <HeaderUserInfo></HeaderUserInfo>
-                    </section>
-                </header>
+                    <div>
+                        <i class="fas fa-th"></i>
+                        <HeaderApps></HeaderApps>
+                    </div>
+                </nav>
+                <section>
+                    <div>G</div>
+                    <HeaderUserInfo></HeaderUserInfo>
+                </section>
             </HeaderWrapper>
         )
     }
