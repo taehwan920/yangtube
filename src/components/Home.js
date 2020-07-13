@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from './headerComponents/Header';
-import VirtualKeyboard from './VirtualKeyboard';
 import Guide from './guideComponents/Guide';
+import Header from './headerComponents/Header';
 import MainFrame from './mainFrameComponents/MainFrame';
+import VirtualKeyboard from './VirtualKeyboard';
 
 export default class extends React.Component {
     render() {

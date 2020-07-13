@@ -10,8 +10,10 @@ export default class extends React.Component {
         ChangeTitle('Main Page!');
         return (
             <header className="header">
-                <MenuButton></MenuButton>
-                <Logo></Logo>
+                <div>
+                    <MenuButton></MenuButton>
+                    <Logo></Logo>
+                </div>
                 <HeaderSearch></HeaderSearch>
                 <div><i class="fas fa-search"></i></div>
                 <nav>
