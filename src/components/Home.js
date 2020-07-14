@@ -9,7 +9,6 @@ const HomeDiv = styled.div`
     position: relative;
     width: 100%;
     height: 100%;
-    padding-left: 12px;
     background-color: #F9F9F9;
 `;
 

@@ -1,9 +1,15 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const UserInfoPopUpWrapper = styled.div`
+    display: none;
+`;
+
 
 export default class extends React.Component {
     render() {
         return (
-            <div>
+            <UserInfoPopUpWrapper>
                 <header>
                     <div>G</div>
                     <span>Guest</span>
@@ -51,7 +57,7 @@ export default class extends React.Component {
                         <span><i class="fas fa-chevron-right"></i></span>
                     </article>
                 </section>
-            </div>
+            </UserInfoPopUpWrapper>
         )
     }
 

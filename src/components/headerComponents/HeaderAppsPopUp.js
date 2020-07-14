@@ -1,9 +1,14 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const AppsPopUpWrapper = styled.div`
+    display: none;
+`;
 
 export default class extends React.Component {
     render() {
         return (
-            <div>
+            <AppsPopUpWrapper>
                 <section>
                     <div>
                         <span><i class="fas fa-tv"></i></span>
@@ -30,7 +35,7 @@ export default class extends React.Component {
                         <span>YouTube for Artists</span>
                     </div>
                 </section>
-            </div>
+            </AppsPopUpWrapper>
         )
     }
 }

@@ -12,7 +12,7 @@ const LogoWrapper = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    font-size: 18px;
+    font-size: 20px;
 `;
 
 const LogoImg = styled.img`
@@ -24,7 +24,7 @@ export class Logo extends React.Component {
         return (
             <LogoWrapper>
                 <i class="fas fa-bars"></i>
-                <LogoImg alt="YangTube 홈" src="./images/youtubefont2.png"></LogoImg>
+                <LogoImg alt="YangTube 홈" src="./images/youtubefont3.png"></LogoImg>
             </LogoWrapper>
         )
     }
