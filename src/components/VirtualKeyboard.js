@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Hangul from 'hangul-js';
+import Hangul, { isConsonantAll } from 'hangul-js';
 
 const keyRows = {
     'KR_small': [
@@ -128,6 +128,7 @@ const ShiftKey = styled(Key)`
     width: 80px;
     font-size: 18px;
     line-height: 30px;
+
 `;
 
 const CtrlAltKey = styled(Key)`
@@ -168,16 +169,13 @@ export default class extends React.Component {
         const strPushed = (e) => {
             const searchInput = document.querySelector('#searchInput');
             const newlyInput = e.target.innerHTML;
-            console.log(searchInput.value)
             const alreadyInputStr = searchInput.value || '';
-            console.log(alreadyInputStr);
             let newResult;
             langIsKR
                 ? newResult = assembleKR(alreadyInputStr, newlyInput)
                 : newResult = alreadyInputStr + newlyInput
-
             searchInput.value = newResult
-            if (shift) {
+            if (shift && !capsLock) {
                 this.setState({ shift: false })
             }
         }
@@ -192,6 +190,8 @@ export default class extends React.Component {
                 ? keySet = keyRows.EN_Cap
                 : keySet = keyRows.EN_small
         }
+
+        console.log(this.state)
         return (
             <KbdWrapper>
                 <KbdRowsWrapper>
@@ -222,7 +222,7 @@ export default class extends React.Component {
                     <KbdRow>
                         {keySet[2].map(key => {
                             if (key === 'capslock') {
-                                return <CapsLockKey onClick={() => this.setState({ capsLock: !capsLock })}><i class="fab fa-adn"></i></CapsLockKey>
+                                return <CapsLockKey onClick={() => this.setState({ langIsKR: !langIsKR, shift: true, capsLock: !capsLock })}><i class="fab fa-adn"></i></CapsLockKey>
                             } else if (key === 'empty2') {
                                 return <Empty2></Empty2>
                             } else {
@@ -233,7 +233,7 @@ export default class extends React.Component {
                     <KbdRow>
                         {keySet[3].map(key => {
                             if (key === 'shift') {
-                                return <ShiftKey onClick={() => this.setState({ shift: !shift })}><i class="far fa-caret-square-up"></i></ShiftKey>
+                                return <ShiftKey now={shift} onClick={() => this.setState({ shift: !shift })}><i class="far fa-caret-square-up"></i></ShiftKey>
                             } else {
                                 return <Key onClick={strPushed}>{key}</Key>
                             }
