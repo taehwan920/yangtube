@@ -89,12 +89,19 @@ const UserInfoIcon = styled.div`
 `;
 
 export default class extends React.Component {
+    state = {
+        VKbd: true
+    }
     render() {
+        const { VKbd } = this.state
         ChangeTitle('Main Page!');
         return (
             <HeaderWrapper>
                 <Logo></Logo>
-                <HeaderSearch></HeaderSearch>
+                <HeaderSearch
+                    onClick={() => {
+                        this.setState({ VKbd: !VKbd })
+                    }}></HeaderSearch>
                 <HeaderBtnSectionWrapper>
                     <HeaderBtnSection>
                         <MiniSearchBtn>
@@ -118,7 +125,12 @@ export default class extends React.Component {
                 <HeaderAddVideo></HeaderAddVideo>
                 <HeaderApps></HeaderApps>
                 <HeaderUserInfo></HeaderUserInfo>
-                <VirtualKeyboard></VirtualKeyboard>
+                {VKbd
+                    ? <VirtualKeyboard
+                        onClick={() => {
+                            this.setState({ VKbd: !VKbd })
+                        }}></VirtualKeyboard>
+                    : null}
             </HeaderWrapper>
         )
     }

@@ -32,6 +32,11 @@ const KbdIcon = styled.span`
     left: 94%;
     font-size: 18px;
     opacity: 0.6;
+
+    &:hover {
+        opacity: 0.9;
+        cursor: pointer;
+    }
 `;
 
 const SearchBtn = styled.button`
@@ -49,7 +54,7 @@ export default class extends React.Component {
             <SearchWrapper>
                 <SearchBoxAndIcon>
                     <SearchInput placeholder="  검색" type="text" />
-                    <KbdIcon>
+                    <KbdIcon onClick={this.props.onClick}>
                         <i class="fas fa-keyboard"></i>
                     </KbdIcon>
                 </SearchBoxAndIcon>

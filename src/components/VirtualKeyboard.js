@@ -61,15 +61,19 @@ const KbdHeaderBtn = styled.div`
     width: 50px;
     margin: 5px;
     font-size: 14px;
-    color: rgba(0, 0, 0, 0.6);
     line-height: 1;
 `;
 
 const KbdXBtn = styled(KbdHeaderBtn)`
     text-align: right;
     color: rgba(0, 0, 0, 0.25);
-    font-size: 17px;
-    line-height: 0.2;
+    font-size: 18px;
+    line-height: 0.3;
+
+    &:hover {
+        color: rgba(0, 0, 0, 0.6);
+        cursor: pointer;
+    }
 `;
 
 const Key = styled.button`
@@ -148,8 +152,8 @@ export default class extends React.Component {
             <KbdWrapper>
                 <KbdRowsWrapper>
                     <KbdRow>
-                        <KbdHeaderBtn className="lang-mode">{langIsKR ? '한국어' : 'ENG'}</KbdHeaderBtn>
-                        <KbdXBtn className=""><i class="fas fa-times"></i></KbdXBtn>
+                        <KbdHeaderBtn >{langIsKR ? '한국어' : 'ENG'}</KbdHeaderBtn>
+                        <KbdXBtn onClick={this.props.onClick}><i class="fas fa-times"></i></KbdXBtn>
                     </KbdRow>
                     <KbdRow>
                         {keySet[0].map(key => {
@@ -171,7 +175,6 @@ export default class extends React.Component {
                             }
                         })}
                     </KbdRow>
-
                     <KbdRow>
                         {keySet[2].map(key => {
                             if (key === 'capslock') {

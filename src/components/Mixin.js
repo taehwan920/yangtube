@@ -16,7 +16,9 @@ const LogoWrapper = styled.div`
 `;
 
 const LogoImg = styled.img`
-    height: 19px;
+    height: 21px;
+    margin-left: 30px;
+    margin-bottom: 2px;
 `;
 
 export class Logo extends React.Component {
