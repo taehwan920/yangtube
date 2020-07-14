@@ -45,7 +45,6 @@ const SearchBtn = styled.button`
     font-size: 14px;
     color: rgba(0, 0, 0, 0.4);
     border: 0.5px solid rgba(0, 0, 0, 0.15);
-    border-left: 0.5px solid rgba(0, 0, 0, 0.15);
 `;
 
 export default class extends React.Component {
@@ -53,7 +52,7 @@ export default class extends React.Component {
         return (
             <SearchWrapper>
                 <SearchBoxAndIcon>
-                    <SearchInput placeholder="  검색" type="text" />
+                    <SearchInput id="searchInput" placeholder="  검색" type="text" />
                     <KbdIcon onClick={this.props.onClick}>
                         <i class="fas fa-keyboard"></i>
                     </KbdIcon>
