@@ -7,6 +7,7 @@ const MainFrameStyle = styled.div`
     background-color: pink;
     top: 56px;
     position: relative;
+    z-index: 1;
 `;
 
 export default class extends React.Component {

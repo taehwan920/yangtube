@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
+
 const SearchWrapper = styled.section`
     width: 35%;
     height: 30px;
     display: flex;
     flex-direction: row;
-    
 `;
 
 const SearchBoxAndIcon = styled.div`
@@ -35,7 +35,7 @@ const KbdIcon = styled.span`
 `;
 
 const SearchBtn = styled.button`
-    width: 12%;
+    width: 10%;
     height: 100%;
     font-size: 14px;
     color: rgba(0, 0, 0, 0.4);
@@ -56,6 +56,7 @@ export default class extends React.Component {
                 <SearchBtn>
                     <i class="fas fa-search"></i>
                 </SearchBtn>
+
             </SearchWrapper>
         )
     }

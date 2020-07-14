@@ -1,13 +1,14 @@
 import React from 'react';
+import styled from 'styled-components';
 import { ChangeTitle, Logo } from '../Mixin';
 import HeaderApps from './HeaderAppsPopUp'
 import HeaderAddVideo from './HeaderAddVideoPopUp';
 import HeaderSearch from './HeaderSearch';
 import HeaderUserInfo from './HeaderUserInfoPopUp';
-import styled from 'styled-components';
+import VirtualKeyboard from '../VirtualKeyboard';
 
 const HeaderWrapper = styled.header`
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.8);
     width: 100%;
     height: 56px;
     padding-left: 24px;
@@ -16,6 +17,7 @@ const HeaderWrapper = styled.header`
     flex-direction: row;
     justify-content: space-between;
     align-items: center; 
+    z-index: 300;
 `;
 
 const HeaderBtnSectionWrapper = styled.div`
@@ -37,8 +39,8 @@ const HeaderBtn = styled.button`
     width: 40px;
     height: 40px;
     position: absolute;
-    font-size: 20px;
-    line-height: 1.5;
+    font-size: 19px;
+    line-height: 1.35;
     color: rgba(0, 0, 0, 0.63);
     border: none;
     background: none;
@@ -53,12 +55,12 @@ const MiniSearchBtn = styled(HeaderBtn)`
 `;
 
 const AddVideoBtn = styled(HeaderBtn)`
-    right: 162.5px;
+    right: 182.5px;
     display: relative;
 `;
 
 const AddVideoBtnPlusIcon = styled(HeaderBtn)`
-    bottom: 1px;
+    bottom: 0.75px;
     right: 3.5px;
     font-size: 10px;
     color: white;
@@ -66,11 +68,11 @@ const AddVideoBtnPlusIcon = styled(HeaderBtn)`
 `;
 
 const AppsBtn = styled(HeaderBtn)`
-    right: 112.5px;
+    right: 132.5px;
 `;
 
 const AlarmBtn = styled(HeaderBtn)`
-    right: 62.5px;
+    right: 82.5px;
 `;
 
 const UserInfoIcon = styled.div`
@@ -78,7 +80,7 @@ const UserInfoIcon = styled.div`
     width: 30px;
     height: 30px;
     position: absolute;
-    right: 10px;
+    right: 30px;
     border-radius: 50%;
     text-align: center;
     line-height: 1.4;
@@ -116,6 +118,7 @@ export default class extends React.Component {
                 <HeaderAddVideo></HeaderAddVideo>
                 <HeaderApps></HeaderApps>
                 <HeaderUserInfo></HeaderUserInfo>
+                <VirtualKeyboard></VirtualKeyboard>
             </HeaderWrapper>
         )
     }
