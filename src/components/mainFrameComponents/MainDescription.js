@@ -1,13 +1,19 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const DescriptionWrapper = styled.section`
+    background-color: beige;
+    width: 100%;
+    height: 293px;
+`;
 
 export default class extends React.Component {
     render() {
         return (
-            <section>
-                제목 / 설명란 파트
-                <div></div>
-                <div></div>
-            </section>
+            <DescriptionWrapper>
+                <div>제목</div>
+                <div>설명</div>
+            </DescriptionWrapper>
         )
     }
 }

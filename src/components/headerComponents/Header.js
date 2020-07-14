@@ -90,7 +90,7 @@ const UserInfoIcon = styled.div`
 
 export default class extends React.Component {
     state = {
-        VKbd: true
+        VKbd: false
     }
     render() {
         const { VKbd } = this.state

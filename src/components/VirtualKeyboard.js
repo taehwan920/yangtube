@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Hangul, { isConsonantAll } from 'hangul-js';
+import Hangul from 'hangul-js';
 
 const keyRows = {
     'KR_small': [
@@ -43,6 +43,7 @@ const KbdWrapper = styled.div`
     position: absolute;
     right: 10px;
     top: 70px;
+    cursor: move;    
 `;
 
 const KbdRowsWrapper = styled.div`
@@ -148,7 +149,20 @@ export default class extends React.Component {
     }
     render() {
         const { langIsKR, shift, capsLock } = this.state;
-        const assembleKR = (already, newInput) => {
+        let keySet;
+        if (langIsKR) {
+            shift
+                ? keySet = keyRows.KR_Cap
+                : keySet = keyRows.KR_small
+        } else {
+            shift
+                ? keySet = keyRows.EN_Cap
+                : keySet = keyRows.EN_small
+        };
+
+        // 드래그 가능한 함수 만들 것
+
+        function assembleKR(already, newInput) {
             let result;
             if (already.length > 0) {
                 const lastChr = already.slice(-1)
@@ -166,7 +180,8 @@ export default class extends React.Component {
             }
             return result
         }
-        const strPushed = (e) => {
+
+        function strPushed(e) {
             const searchInput = document.querySelector('#searchInput');
             const newlyInput = e.target.innerHTML;
             const alreadyInputStr = searchInput.value || '';
@@ -180,20 +195,23 @@ export default class extends React.Component {
             }
         }
 
-        let keySet;
-        if (langIsKR) {
-            shift
-                ? keySet = keyRows.KR_Cap
-                : keySet = keyRows.KR_small
-        } else {
-            shift
-                ? keySet = keyRows.EN_Cap
-                : keySet = keyRows.EN_small
+        function deleteStr(e) {
+            const searchInput = document.querySelector('#searchInput');
+            const alreadyInputStr = searchInput.value || '';
+            let newResult;
+            if (alreadyInputStr.length < 1) { return; }
+            if (langIsKR) {
+                const lastStr = alreadyInputStr.slice(-1)
+                const deleteLastStr = Hangul.d(lastStr).slice(0, -1)
+                newResult = alreadyInputStr.slice(0, -1) + Hangul.a(deleteLastStr)
+            } else {
+                newResult = newResult.slice(0, -1);
+            }
+            searchInput.value = newResult;
         }
 
-        console.log(this.state)
         return (
-            <KbdWrapper>
+            <KbdWrapper draggable="true">
                 <KbdRowsWrapper>
                     <KbdRow>
                         <KbdHeaderBtn >{langIsKR ? '한국어' : 'ENG'}</KbdHeaderBtn>
@@ -202,7 +220,7 @@ export default class extends React.Component {
                     <KbdRow>
                         {keySet[0].map(key => {
                             if (key === 'backspace') {
-                                return <BackSpace><i class="fas fa-backspace"></i></BackSpace>
+                                return <BackSpace onClick={deleteStr}><i class="fas fa-backspace"></i></BackSpace>
                             } else {
                                 return <Key onClick={strPushed}>{key}</Key>
                             }
