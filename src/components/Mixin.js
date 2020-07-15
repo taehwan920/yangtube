@@ -47,7 +47,7 @@ const ClickEffect = styled.div`
     position: absolute;
     border-radius: 50%;
     transform: scale(1);
-    transition: all 0.1s ease-in-out;
+    transition: all 0.05s ease-in-out;
 
     &:active {
         transform: scale(1.5);

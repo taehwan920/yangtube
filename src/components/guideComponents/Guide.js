@@ -22,12 +22,8 @@ const GuideBlackSheet = styled.div`
     position: absolute;
     overflow: hidden;
     z-index: 349;
-    display: none;
-    transition: display 0.5s linear;
-
-    .guideSheetIsON {
-        display: flex;
-    }
+    display: ${props => props.guideIsON ? 'flex' : 'none'};
+    transition: display 1.5s linear;
 `;
 
 const GuideLogoWrapper = styled.header`
@@ -188,6 +184,9 @@ function makeArticle(item) {
 }
 
 export default class extends React.Component {
+    state = {
+        guideIsON: true
+    }
     render() {
         const blog = sectionItems.fifthSection[0]
         const github = sectionItems.fifthSection[1]
@@ -195,7 +194,8 @@ export default class extends React.Component {
         return (
             <GuideWrapper>
                 <GuideBlackSheet
-                    onClick={this.guideToggle}
+                    guideIsON={this.state.guideIsON}
+                    onClick={() => { this.setState({ guideIsON: !this.state.guideIsON }) }}
                 ></GuideBlackSheet>
                 <GuideLogoWrapper>
                     <Logo
