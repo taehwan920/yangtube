@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const ChangeTitle = (str) => {
     document.title = `${str} | YangTube`;
@@ -18,7 +19,12 @@ const LogoWrapper = styled.div`
 const LogoImg = styled.img`
     height: 21px;
     margin-left: 30px;
-    margin-bottom: 2px;
+    
+`;
+
+const LogoLink = styled(Link)`
+    height: 21px;
+    margin-bottom: 1px;
 `;
 
 export class Logo extends React.Component {
@@ -26,8 +32,18 @@ export class Logo extends React.Component {
         return (
             <LogoWrapper>
                 <i class="fas fa-bars"></i>
-                <LogoImg alt="YangTube 홈" src="./images/youtubefont3.png"></LogoImg>
+                <LogoLink to="/">
+                    <LogoImg alt="YangTube" src="./images/youtubefont3.png"></LogoImg>
+                </LogoLink>
             </LogoWrapper>
+        )
+    }
+}
+
+export class LogoOnlyImg extends React.Component {
+    render() {
+        return (
+            <LogoImg alt="YangTube" src="./images/youtubefont3.png"></LogoImg>
         )
     }
 }
