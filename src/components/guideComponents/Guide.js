@@ -5,7 +5,6 @@ import { Logo } from '../Mixin';
 
 
 const GuideWrapper = styled.aside`
-    background-color: rgba(150, 150, 200, 0.5);
     background-color: white;
     width: 240px;
     position: absolute;
@@ -13,17 +12,26 @@ const GuideWrapper = styled.aside`
     flex-direction: column;
     z-index: 351;
     color: rgba(0, 0, 0, 0.7);
+    transform: translateX(-250px);
 `;
 
 const GuideBlackSheet = styled.div`
     background-color: rgba(0, 0, 0, 0.5);
-    width: 100vw;
-    height: 100vh;
+    width: 200vw;
+    height: 200vh;
     position: absolute;
+    overflow: hidden;
     z-index: 349;
+    display: none;
+    transition: display 0.5s linear;
+
+    .guideSheetIsON {
+        display: flex;
+    }
 `;
 
 const GuideLogoWrapper = styled.header`
+    background-color: inherit;
     width:240px;
     height: 57px;
     padding-right: 36px;
@@ -33,6 +41,20 @@ const GuideLogoWrapper = styled.header`
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    z-index: 352;
+`;
+
+const SectionWrapper = styled(GuideWrapper)`
+    background-color: rgba(150, 150, 200, 0.5);
+    background-color: white;
+    width: 240px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    z-index: 351;
+    color: rgba(0, 0, 0, 0.7);
+
+    
 `;
 
 const GuideSection = styled.section`
@@ -172,36 +194,42 @@ export default class extends React.Component {
         const year = new Date().getFullYear();
         return (
             <GuideWrapper>
-                {/* <GuideBlackSheet></GuideBlackSheet> */}
+                <GuideBlackSheet
+                    onClick={this.guideToggle}
+                ></GuideBlackSheet>
                 <GuideLogoWrapper>
-                    <Logo></Logo>
+                    <Logo
+                        guideClicked={this.guideToggle}
+                    ></Logo>
                 </GuideLogoWrapper>
-                <GuideSection>
-                    {sectionItems.firstSection.map(item => makeArticle(item))}
-                </GuideSection>
-                <GuideSection>
-                    {sectionItems.secondSection.map(item => makeArticle(item))}
-                </GuideSection>
-                <GuideSection>
-                    <GuideSectionHeader>인기 YANGTUBE</GuideSectionHeader>
-                    {sectionItems.thirdSection.map(item => makeArticle(item))}
-                </GuideSection>
-                <GuideSection>
-                    {sectionItems.fourthSection.map(item => makeArticle(item))}
-                </GuideSection>
-                <GuideSection>
-                    <GuideSectionHeader>YANG TAEHWAN 더보기</GuideSectionHeader>
-                    {makeArticle(blog)}
-                    {makeArticle(github)}
-                </GuideSection>
-                <GuideSection>
-                    {sectionItems.sixthSection.map(item => makeArticle(item))}
-                </GuideSection>
-                <GuideFooter>
-                    <FooterSpan>© {year} YangTube</FooterSpan>
-                    <FooterSpan>Made by Taehwan Yang</FooterSpan>
-                    <FooterSpan>taehwan920@gmail.com</FooterSpan>
-                </GuideFooter>
+                <SectionWrapper>
+                    <GuideSection>
+                        {sectionItems.firstSection.map(item => makeArticle(item))}
+                    </GuideSection>
+                    <GuideSection>
+                        {sectionItems.secondSection.map(item => makeArticle(item))}
+                    </GuideSection>
+                    <GuideSection>
+                        <GuideSectionHeader>인기 YANGTUBE</GuideSectionHeader>
+                        {sectionItems.thirdSection.map(item => makeArticle(item))}
+                    </GuideSection>
+                    <GuideSection>
+                        {sectionItems.fourthSection.map(item => makeArticle(item))}
+                    </GuideSection>
+                    <GuideSection>
+                        <GuideSectionHeader>YANG TAEHWAN 더보기</GuideSectionHeader>
+                        {makeArticle(blog)}
+                        {makeArticle(github)}
+                    </GuideSection>
+                    <GuideSection>
+                        {sectionItems.sixthSection.map(item => makeArticle(item))}
+                    </GuideSection>
+                    <GuideFooter>
+                        <FooterSpan>© {year} YangTube</FooterSpan>
+                        <FooterSpan>Made by Taehwan Yang</FooterSpan>
+                        <FooterSpan>taehwan920@gmail.com</FooterSpan>
+                    </GuideFooter>
+                </SectionWrapper>
             </GuideWrapper>
         )
     }

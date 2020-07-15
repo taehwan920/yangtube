@@ -17,7 +17,7 @@ const HeaderWrapper = styled.header`
     flex-direction: row;
     justify-content: space-between;
     align-items: center; 
-    z-index: 300;
+    z-index: 20;
 `;
 
 const HeaderLogoPlace = styled.div`

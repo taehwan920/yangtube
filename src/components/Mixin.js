@@ -27,15 +27,46 @@ const LogoLink = styled(Link)`
     margin-bottom: 1px;
 `;
 
+const MenuBtn = styled.div`
+    background-color: rgba(0, 0, 0, 0.0);
+    width: 24px;
+    height: 24px;
+    position: relative;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s linear;
+
+`;
+
+const ClickEffect = styled.div`
+    background-color: rgba(0, 0, 0, 0.0);
+    width: 24px;
+    height: 24px;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(1);
+    transition: all 0.1s ease-in-out;
+
+    &:active {
+        transform: scale(1.5);
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+`;
+
 export class Logo extends React.Component {
     render() {
         return (
             <LogoWrapper>
-                <i class="fas fa-bars"></i>
+                <MenuBtn onClick={this.props.guideToggle}>
+                    <ClickEffect></ClickEffect>
+                    <i class="fas fa-bars"></i>
+                </MenuBtn >
                 <LogoLink to="/">
                     <LogoImg alt="YangTube" src="./images/youtubefont3.png"></LogoImg>
                 </LogoLink>
-            </LogoWrapper>
+            </LogoWrapper >
         )
     }
 }

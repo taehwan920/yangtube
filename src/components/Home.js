@@ -16,9 +16,7 @@ const HomeDiv = styled.div`
 `;
 
 export default class extends React.Component {
-
     render() {
-
         return (
             <HomeDiv>
                 <Header></Header>

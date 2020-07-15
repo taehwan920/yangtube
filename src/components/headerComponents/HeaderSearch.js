@@ -31,6 +31,7 @@ const KbdIcon = styled.span`
     top: 5%;
     left: 94%;
     font-size: 18px;
+    line-height: 29px;
     opacity: 0.6;
 
     &:hover {
