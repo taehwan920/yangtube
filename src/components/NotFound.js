@@ -4,21 +4,40 @@ import { Link } from 'react-router-dom';
 import { ChangeTitle, LogoOnlyImg } from './Mixin';
 
 const NotFoundFrame = styled.main`
-    background-color: #F1F1F1;
+    background-color: white;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;
+
+const NotFoundImg = styled.img`
+    margin-bottom: 40px;
+    margin-left: 20px;
+`;
+
+const NotFoundSpan = styled.span`
+    margin-bottom: 30px;
+`;
+
+const NotFoundLogo = styled(Link)`
+    margin-right: 30px; 
 `;
 
 export default class extends React.Component {
     render() {
         ChangeTitle('404 Not Found');
         return (
-            <main className="not-found">
-                <img alt="Not Found!" src="../images/not_found.png"></img>
-                이 페이지를 사용할 수 없습니다.
-                아래 버튼을 이용해 메인 페이지로 돌아가세요.
-                <Link to="/">
+            <NotFoundFrame>
+                <NotFoundImg alt="Not Found!" src="../images/not_found.png"></NotFoundImg>
+                <NotFoundSpan>이 페이지를 사용할 수 없습니다.</NotFoundSpan>
+                <NotFoundSpan>아래 버튼을 이용해 메인 페이지로 돌아가세요.</NotFoundSpan>
+                <NotFoundLogo to="/">
                     <LogoOnlyImg></LogoOnlyImg>
-                </Link>
-            </main>
+                </NotFoundLogo>
+            </NotFoundFrame>
         )
     }
 }
