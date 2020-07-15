@@ -6,12 +6,12 @@ export const ChangeTitle = (str) => {
 }
 
 const LogoWrapper = styled.div`
-    width: 7%;
-    height: 100%;
+    width: 155px;
+    height: 40px;
+    position: absolute;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     align-items: center;
+    text-align: center;
     font-size: 20px;
 `;
 

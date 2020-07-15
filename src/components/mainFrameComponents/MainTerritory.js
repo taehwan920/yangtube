@@ -7,10 +7,9 @@ import VideoFrame from './videoComponents/VideoFrame';
 
 const MainTerritory = styled.div`
     background-color: pink;
-    margin-left: 58px;
-    margin-right: 58px;
-    padding-top: 24px;
-    padding-right: 24px;
+    margin-left: 82px;
+    margin-top: 24px;
+    margin-right: 24px;
     top: 56px;
     position: relative;
     height: 100vh;

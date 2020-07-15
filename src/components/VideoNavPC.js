@@ -5,8 +5,8 @@ const VideoNavPCWrapper = styled.nav`
     background-color: skyblue;
     width: 402px;
     height: 100rem;
-    padding-top: 24px;
-    padding-right: 24px;
+    margin-top: 24px;
+    margin-right: 24px;
     top: 56px;
     position: relative;
     display:inline-block;

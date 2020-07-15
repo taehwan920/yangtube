@@ -20,6 +20,12 @@ const HeaderWrapper = styled.header`
     z-index: 300;
 `;
 
+const HeaderLogoPlace = styled.div`
+    width: 155px;
+    height: 40px;
+`;
+
+
 const HeaderBtnSectionWrapper = styled.div`
     width:225px;
     height: 40px;
@@ -97,6 +103,7 @@ export default class extends React.Component {
         ChangeTitle('Main Page!');
         return (
             <HeaderWrapper>
+                <HeaderLogoPlace></HeaderLogoPlace>
                 <Logo></Logo>
                 <HeaderSearch
                     onClick={() => {
