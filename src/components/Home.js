@@ -10,17 +10,32 @@ const HomeDiv = styled.div`
     position: relative;
     display: flex;
     width: 100%;
-    height: 100%;
+    height: ${props => (props.guideIsON ? '1100px' : '100%')};;
     background-color: #F9F9F9;
-    z-index: auto;
+    z-index: 1;
+    overflow: ${props => (props.guideIsON ? 'hidden' : 'none')};
 `;
 
 export default class extends React.Component {
+    state = {
+        guideIsON: false
+    };
+
+    toggleGuide = () => {
+        this.setState({ guideIsON: !this.state.guideIsON })
+    };
+
     render() {
+        const { guideIsON } = this.state;
         return (
-            <HomeDiv>
-                <Header></Header>
-                <Guide></Guide>
+            <HomeDiv guideIsON={guideIsON}>
+                <Header
+                    toggleGuide={this.toggleGuide}
+                ></Header>
+                <Guide
+                    guideIsON={guideIsON}
+                    toggleGuide={this.toggleGuide}
+                ></Guide>
                 <MainTerritory></MainTerritory>
                 <VideoNavPC></VideoNavPC>
             </HomeDiv>

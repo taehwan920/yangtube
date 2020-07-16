@@ -6,6 +6,11 @@ export const ChangeTitle = (str) => {
     document.title = `${str} | YangTube`;
 }
 
+export const toggleGuide = () => {
+    const guide = document.querySelector('.guide-wrapper');
+    guide.classList.toggle('move');
+}
+
 const LogoWrapper = styled.div`
     width: 155px;
     height: 40px;
@@ -59,14 +64,16 @@ export class Logo extends React.Component {
     render() {
         return (
             <LogoWrapper>
-                <MenuBtn onClick={this.props.guideToggle}>
+                <MenuBtn
+                    onClick={this.props.toggleGuide}
+                >
                     <ClickEffect></ClickEffect>
                     <i class="fas fa-bars"></i>
                 </MenuBtn >
                 <LogoLink to="/">
                     <LogoImg alt="YangTube" src="./images/youtubefont3.png"></LogoImg>
                 </LogoLink>
-            </LogoWrapper >
+            </LogoWrapper>
         )
     }
 }

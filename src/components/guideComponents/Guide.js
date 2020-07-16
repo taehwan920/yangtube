@@ -1,8 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Logo } from '../Mixin';
 
-
+const OverTheSheet = css`
+    z-index: 351;
+`;
 
 const GuideWrapper = styled.aside`
     background-color: white;
@@ -10,20 +12,22 @@ const GuideWrapper = styled.aside`
     position: absolute;
     display: flex;
     flex-direction: column;
-    z-index: 351;
     color: rgba(0, 0, 0, 0.7);
-    transform: translateX(-250px);
+    transition: transform 0.18s ease-out;
+    transform: ${props => (props.guideIsON ? 'translateX(0px);' : 'translateX(-240px)')};
+    ${OverTheSheet}
 `;
 
 const GuideBlackSheet = styled.div`
     background-color: rgba(0, 0, 0, 0.5);
     width: 200vw;
-    height: 200vh;
+    height: 1100px;
     position: absolute;
     overflow: hidden;
-    z-index: 349;
-    display: ${props => props.guideIsON ? 'flex' : 'none'};
-    transition: display 1.5s linear;
+    transition: all 0.2s ease-out;
+    opacity: ${props => (props.guideIsON ? '1' : '0')};
+    z-index: ${props => (props.guideIsON ? '350' : '-350')};
+    display: ${props => (props.guideIsON ? 'flex' : 'none')};
 `;
 
 const GuideLogoWrapper = styled.header`
@@ -37,26 +41,26 @@ const GuideLogoWrapper = styled.header`
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-    z-index: 352;
+    ${OverTheSheet}
 `;
 
-const SectionWrapper = styled(GuideWrapper)`
-    background-color: rgba(150, 150, 200, 0.5);
+const SectionWrapper = styled.div`
     background-color: white;
     width: 240px;
     position: relative;
+    left: 0px;
     display: flex;
     flex-direction: column;
-    z-index: 351;
+    position: relative;
     color: rgba(0, 0, 0, 0.7);
-
-    
+    ${OverTheSheet}
 `;
 
 const GuideSection = styled.section`
     width: 240px;
     padding: 12px 0px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    ${OverTheSheet}
 `;
 
 const GuideSectionHeader = styled.span`
@@ -66,6 +70,7 @@ const GuideSectionHeader = styled.span`
     font-size: 14px;
     line-height: 28px;
     color: inherit;
+    ${OverTheSheet}
 `;
 
 const GuideSectionArticle = styled.article`
@@ -74,6 +79,7 @@ const GuideSectionArticle = styled.article`
     padding: 0px 24px;
     display: flex;
     align-items: center;
+    ${OverTheSheet}
 
     &:hover {
         background-color: rgba(0, 0, 0, 0.1);
@@ -95,6 +101,7 @@ const ArticleIcon = styled.span`
     font-size: 18px;
     text-align: center;
     line-height: 22px;
+    ${OverTheSheet}
 `;
 
 const ArticleHomeIcon = styled(ArticleIcon)`
@@ -107,6 +114,7 @@ const ArticleItem = styled.span`
     color: inherit;
     font-size: 14px;
     line-height: 18px;
+    ${OverTheSheet}
 `;
 
 const GuideFooter = styled.footer`
@@ -115,12 +123,14 @@ const GuideFooter = styled.footer`
     display: flex;
     flex-direction: column;
     font-size: 13px;
+    ${OverTheSheet}
 `;
 
 const FooterSpan = styled.span`
     width: 192px;
     height: 15px;
     color: #909090;
+    ${OverTheSheet}
 `;
 
 const sectionItems = {
@@ -184,22 +194,20 @@ function makeArticle(item) {
 }
 
 export default class extends React.Component {
-    state = {
-        guideIsON: true
-    }
     render() {
-        const blog = sectionItems.fifthSection[0]
-        const github = sectionItems.fifthSection[1]
+        const { guideIsON, toggleGuide } = this.props;
+        const blog = sectionItems.fifthSection[0];
+        const github = sectionItems.fifthSection[1];
         const year = new Date().getFullYear();
         return (
-            <GuideWrapper>
+            <GuideWrapper guideIsON={guideIsON}>
                 <GuideBlackSheet
-                    guideIsON={this.state.guideIsON}
-                    onClick={() => { this.setState({ guideIsON: !this.state.guideIsON }) }}
+                    guideIsON={guideIsON}
+                    onClick={toggleGuide}
                 ></GuideBlackSheet>
                 <GuideLogoWrapper>
                     <Logo
-                        guideClicked={this.guideToggle}
+                        toggleGuide={toggleGuide}
                     ></Logo>
                 </GuideLogoWrapper>
                 <SectionWrapper>

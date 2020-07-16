@@ -8,7 +8,7 @@ import HeaderUserInfo from './HeaderUserInfoPopUp';
 import VirtualKeyboard from '../VirtualKeyboard';
 
 const HeaderWrapper = styled.header`
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.97);
     width: 100%;
     height: 56px;
     padding-left: 24px;
@@ -99,12 +99,15 @@ export default class extends React.Component {
         VKbd: false
     }
     render() {
+        const { toggleGuide } = this.props
         const { VKbd } = this.state
         ChangeTitle('Main Page!');
         return (
             <HeaderWrapper>
                 <HeaderLogoPlace></HeaderLogoPlace>
-                <Logo></Logo>
+                <Logo
+                    toggleGuide={toggleGuide}
+                ></Logo>
                 <HeaderSearch
                     onClick={() => {
                         this.setState({ VKbd: !VKbd })
