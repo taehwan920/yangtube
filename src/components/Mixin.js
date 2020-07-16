@@ -43,12 +43,12 @@ const MenuBtn = styled.div`
 
 `;
 
-const ClickEffect = styled.div`
+export const ClickEffect = styled.div`
     background-color: rgba(0, 0, 0, 0.0);
     width: 24px;
     height: 24px;
     top: 0px;
-    left: 0px;
+    right: 0.3px;
     position: absolute;
     border-radius: 50%;
     transform: scale(1);
