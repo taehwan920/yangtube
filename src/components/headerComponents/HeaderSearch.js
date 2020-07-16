@@ -6,12 +6,14 @@ const SearchWrapper = styled.section`
     width: 35%;
     height: 30px;
     display: flex;
-    flex-direction: row;
+    @media (max-width: 767px) {
+        display: none;
+    }
 `;
 
 const SearchBoxAndIcon = styled.div`
     width: 90%;
-    height: 100%;
+    height: 30px;
     position: relative;
     display: flex;
     justify-content: flex-start;
@@ -28,10 +30,9 @@ const SearchInput = styled.input`
 
 const KbdIcon = styled.span`
     position: absolute;
-    top: 5%;
-    left: 94%;
+    right: 12px;
     font-size: 18px;
-    line-height: 29px;
+    line-height: 30px;
     opacity: 0.6;
 
     &:hover {
@@ -41,8 +42,8 @@ const KbdIcon = styled.span`
 `;
 
 const SearchBtn = styled.button`
-    width: 10%;
-    height: 100%;
+    width: 65px;
+    height: 30px;
     font-size: 14px;
     color: rgba(0, 0, 0, 0.4);
     border: 0.5px solid rgba(0, 0, 0, 0.15);

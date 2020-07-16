@@ -56,7 +56,7 @@ const MiniSearchBtn = styled(HeaderBtn)`
     display: none;
     @media (max-width: 767px) {
         display: inline-block;
-        right: 202.5px;
+        right: 232.5px;
     }
 `;
 
