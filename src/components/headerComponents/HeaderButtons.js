@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { ClickEffect } from '../Mixin';
 import HeaderApps from './HeaderAppsPopUp'
 import HeaderAddVideo from './HeaderAddVideoPopUp';
@@ -23,6 +23,7 @@ const HeaderBtnSection = styled.section`
 const HeaderBtn = styled.button`
     width: 24px;
     height: 24px;
+    margin: 0px 8px; 
     position: absolute;
     font-size: 19px;
     line-height: 1.35;
@@ -41,23 +42,43 @@ const MiniSearchBtn = styled(HeaderBtn)`
     }
 `;
 
-const AddVideoBtn = styled(HeaderBtn)`
+export const PopUpAxisZ = css`
+    z-index: 348;
+`;
+
+export const AddVideoPosition = css`
     right: 182.5px;
 `;
 
+const AddVideoBtn = styled(HeaderBtn)`
+    ${AddVideoPosition}
+`;
+
 const AddVideoBtnPlusIcon = styled(HeaderBtn)`
-    bottom: 0.75px;
-    right: 3.5px;
+    bottom: 0.1px;
+    right: -4.5px;
     font-size: 10px;
     color: white;
 `;
 
-const AppsBtn = styled(HeaderBtn)`
+const AppsBtnPosition = css`
     right: 132.5px;
 `;
 
-const AlarmBtn = styled(HeaderBtn)`
+const AppsBtn = styled(HeaderBtn)`
+    ${AppsBtnPosition}
+`;
+
+export const AlarmBtnPosition = css`
     right: 82.5px;
+`;
+
+const AlarmBtn = styled(HeaderBtn)`
+    ${AlarmBtnPosition}
+`;
+
+export const UserInfoPosition = css`
+    right: 30px;
 `;
 
 const UserInfoIcon = styled.div`
@@ -65,7 +86,7 @@ const UserInfoIcon = styled.div`
     width: 30px;
     height: 30px;
     position: absolute;
-    right: 30px;
+    ${UserInfoPosition}
     border-radius: 50%;
     text-align: center;
     line-height: 1.4;
@@ -74,7 +95,19 @@ const UserInfoIcon = styled.div`
 `;
 
 export default class extends React.Component {
+    state = {
+        addVideoON: true,
+        appsON: true,
+        alarmsON: true,
+        userInfoON: true
+    }
+    onOff = (popupState) => {
+        this.setState({ popupState: !this.state.popupState })
+    }
+    //이 함수 좀 더 만져 보기
+
     render() {
+        const { addVideoON, appsON, alarmsON, userInfoON } = this.state
         return (
             <HeaderBtnSectionWrapper>
                 <HeaderBtnSection>
@@ -99,13 +132,9 @@ export default class extends React.Component {
                     </AlarmBtn>
                     <UserInfoIcon>G</UserInfoIcon>
                 </HeaderBtnSection>
-                <HeaderAddVideo>
-                </HeaderAddVideo>
-                <HeaderApps>
-                </HeaderApps>
-                <HeaderUserInfo>
-
-                </HeaderUserInfo>
+                <HeaderAddVideo addVideoON={addVideoON}></HeaderAddVideo>
+                <HeaderApps appsON={appsON}></HeaderApps>
+                <HeaderUserInfo userInfoON={userInfoON}></HeaderUserInfo>
             </HeaderBtnSectionWrapper>
         )
     }
