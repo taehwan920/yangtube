@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { PopUpArticle, PopUpArticleIcon } from './HeaderButtons';
 
 const AddVideoPopUpWrapper = styled.div`
-    background: white;
+    background: rgba(255, 255, 255, 0.97);
     border: solid 0.4px rgba(0, 0, 0, 0.3);
     border-top: none;
     width: 229px;

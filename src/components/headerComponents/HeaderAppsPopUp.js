@@ -7,7 +7,6 @@ const AppsPopUpWrapper = styled.div`
     border: solid 0.4px rgba(0, 0, 0, 0.3);
     border-top: none;
     width: 229px;
-    padding: 8px 0px;
     position: absolute;
     top: 42px;
     right: 132.5px;

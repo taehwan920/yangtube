@@ -157,7 +157,7 @@ export const ClickEffectHeader = styled.div`
 export default class extends React.Component {
     state = {
         addVideoON: false,
-        appsON: true,
+        appsON: false,
         alarmsON: true,
         userInfoON: true,
     }
@@ -172,7 +172,7 @@ export default class extends React.Component {
     onOff = stateType => () => {
         const states = this.sanitize(stateType);
         this.setState({
-            [states[0]]: !this.state[states],
+            [states[0]]: !this.state[states[0]],
             [states[1]]: false,
             [states[2]]: false,
             [states[3]]: false,
