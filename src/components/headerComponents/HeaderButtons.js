@@ -1,9 +1,9 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
-import { ClickEffect } from '../Mixin';
+import styled, { css, keyframes } from 'styled-components';
 import HeaderApps from './HeaderAppsPopUp'
 import HeaderAddVideo from './HeaderAddVideoPopUp';
 import HeaderUserInfo from './HeaderUserInfoPopUp';
+import AddVideoButton from './headerBtnComponents/AddVideoButton';
 
 const HeaderBtnSectionWrapper = styled.div`
     width:225px;
@@ -17,10 +17,9 @@ const HeaderBtnSection = styled.section`
     position: absolute;
     display: flex;
     align-items: center;
-    right
 `;
 
-const HeaderBtn = styled.button`
+export const HeaderBtn = styled.button`
     width: 24px;
     height: 24px;
     margin: 0px 8px; 
@@ -31,6 +30,7 @@ const HeaderBtn = styled.button`
     border: none;
     outline: none;
     background: none;
+    cursor: pointer;
 `;
 
 const MiniSearchBtn = styled(HeaderBtn)`
@@ -46,15 +46,15 @@ export const PopUpAxisZ = css`
     z-index: 348;
 `;
 
-export const AddVideoPosition = css`
+const AddVideoPosition = css`
     right: 182.5px;
 `;
 
-const AddVideoBtn = styled(HeaderBtn)`
+export const AddVideoBtn = styled(HeaderBtn)`
     ${AddVideoPosition}
 `;
 
-const AddVideoBtnPlusIcon = styled(HeaderBtn)`
+export const AddVideoBtnPlusIcon = styled(HeaderBtn)`
     bottom: 0.1px;
     right: -4.5px;
     font-size: 10px;
@@ -94,17 +94,90 @@ const UserInfoIcon = styled.div`
     color: white;
 `;
 
+export const PopUpSection = styled.section`
+    width: 229px;
+    padding: 8px 0px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+`;
+
+export const PopUpArticle = styled.div`
+    width: 229px;
+    height: 40px;
+    padding: 0px 20px;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+    }
+`;
+
+export const PopUpArticleIcon = styled.span`
+    width: 24px;
+    height: 24px;
+    margin-right: 22px;
+    font-size: 18px;
+    text-align: center;
+    line-height: 22px;
+    color: red;
+`;
+
+
+const HeaderClickAni = keyframes`
+    0% {
+        background-color: rgba(0, 0, 0, 0.4);
+        transform: scale(1);
+    }
+    30% {
+        background-color: rgba(0, 0, 0, 0.2);
+        transform: scale(1.7);
+    }
+    100% {
+        background-color: rgba(0, 0, 0, 0);
+        transform: scale(2);
+    }
+`;
+
+export const ClickEffectHeader = styled.div`
+    background-color: rgba(0, 0, 0, 0.0);
+    width: 24px;
+    height: 24px;
+    top: 0px;
+    right: 0.3px;
+    position: absolute;
+    border-radius: 50%;
+
+    &:active {
+        animation: ${HeaderClickAni} 0.5s ease-in-out;
+    }
+    
+`;
+
 export default class extends React.Component {
     state = {
-        addVideoON: true,
+        addVideoON: false,
         appsON: true,
         alarmsON: true,
-        userInfoON: true
+        userInfoON: true,
     }
-    onOff = (popupState) => {
-        this.setState({ popupState: !this.state.popupState })
+    sanitize = picked => {
+        const stateObj = Object.assign({}, this.state);
+        const states = Object.keys(stateObj);
+        const notPicked = states.filter(state => state !== picked);
+        console.log([picked, ...notPicked])
+        return [picked, ...notPicked];
     }
-    //이 함수 좀 더 만져 보기
+
+    onOff = stateType => () => {
+        const states = this.sanitize(stateType);
+        this.setState({
+            [states[0]]: !this.state[states],
+            [states[1]]: false,
+            [states[2]]: false,
+            [states[3]]: false,
+        })
+    }
 
     render() {
         const { addVideoON, appsON, alarmsON, userInfoON } = this.state
@@ -113,27 +186,25 @@ export default class extends React.Component {
                 <HeaderBtnSection>
                     <MiniSearchBtn>
                         <i class="fas fa-search"></i>
-                        <ClickEffect></ClickEffect>
+                        <ClickEffectHeader></ClickEffectHeader>
                     </MiniSearchBtn>
-                    <AddVideoBtn>
-                        <i class="fas fa-video"></i>
-                        <AddVideoBtnPlusIcon>
-                            <i class="fas fa-plus"></i>
-                        </AddVideoBtnPlusIcon>
-                        <ClickEffect></ClickEffect>
-                    </AddVideoBtn>
-                    <AppsBtn>
+                    <AddVideoButton onOff={this.onOff('addVideoON')}></AddVideoButton>
+                    <AppsBtn onClick={this.onOff('appsON')}>
                         <i class="fas fa-th"></i>
-                        <ClickEffect></ClickEffect>
+                        <ClickEffectHeader></ClickEffectHeader>
                     </AppsBtn>
                     <AlarmBtn>
                         <i class="fas fa-bell"></i>
-                        <ClickEffect></ClickEffect>
+                        <ClickEffectHeader></ClickEffectHeader>
                     </AlarmBtn>
                     <UserInfoIcon>G</UserInfoIcon>
                 </HeaderBtnSection>
-                <HeaderAddVideo addVideoON={addVideoON}></HeaderAddVideo>
-                <HeaderApps appsON={appsON}></HeaderApps>
+                {addVideoON
+                    ? <HeaderAddVideo addVideoON={addVideoON}></HeaderAddVideo>
+                    : null}
+                {appsON
+                    ? <HeaderApps appsON={appsON}></HeaderApps>
+                    : null}
                 <HeaderUserInfo userInfoON={userInfoON}></HeaderUserInfo>
             </HeaderBtnSectionWrapper>
         )

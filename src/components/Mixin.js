@@ -48,7 +48,7 @@ export const ClickEffect = styled.div`
     width: 24px;
     height: 24px;
     top: 0px;
-    right: 0.3px;
+    left: 0.3px;
     position: absolute;
     border-radius: 50%;
     transform: scale(1);
@@ -59,6 +59,8 @@ export const ClickEffect = styled.div`
         background-color: rgba(0, 0, 0, 0.2);
     }
 `;
+
+
 
 export class Logo extends React.Component {
     render() {
