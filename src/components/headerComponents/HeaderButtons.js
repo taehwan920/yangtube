@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, { css, keyframes } from 'styled-components';
-import HeaderApps from './HeaderAppsPopUp'
-import HeaderAddVideo from './HeaderAddVideoPopUp';
-import HeaderUserInfo from './HeaderUserInfoPopUp';
+import HeaderApps from './headerPopUpComponents/HeaderAppsPopUp'
+import HeaderAddVideoPopUp from './headerPopUpComponents/HeaderAddVideoPopUp';
+import HeaderUserInfoPopUp from './headerPopUpComponents/HeaderUserInfoPopUp';
 import AddVideoButton from './headerBtnComponents/AddVideoButton';
 import AppsButton from './headerBtnComponents/AppsButton';
 
@@ -64,15 +64,16 @@ export const AppsBtn = styled(HeaderBtn)`
 
 const UserInfoIcon = styled.div`
     background-color: #AA47BC;
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     position: absolute;
     right: 30px;
     border-radius: 50%;
     text-align: center;
-    line-height: 1.4;
+    line-height: 32px;
     font-size: 20px;
     color: white;
+    cursor: pointer;
 `;
 
 export const PopUpSection = styled.section`
@@ -145,7 +146,6 @@ export default class extends React.Component {
         const stateObj = Object.assign({}, this.state);
         const states = Object.keys(stateObj);
         const notPicked = states.filter(state => state !== picked);
-        console.log([picked, ...notPicked])
         return [picked, ...notPicked];
     }
 
@@ -169,15 +169,17 @@ export default class extends React.Component {
                     </MiniSearchBtn>
                     <AddVideoButton onOff={this.onOff('addVideoON')}></AddVideoButton>
                     <AppsButton onOff={this.onOff('appsON')}></AppsButton>
-                    <UserInfoIcon>G</UserInfoIcon>
+                    <UserInfoIcon draggable="true" onClick={this.onOff('userInfoON')}>G</UserInfoIcon>
                 </HeaderBtnSection>
                 {addVideoON
-                    ? <HeaderAddVideo addVideoON={addVideoON}></HeaderAddVideo>
+                    ? <HeaderAddVideoPopUp addVideoON={addVideoON}></HeaderAddVideoPopUp>
                     : null}
                 {appsON
                     ? <HeaderApps appsON={appsON}></HeaderApps>
                     : null}
-                <HeaderUserInfo userInfoON={userInfoON}></HeaderUserInfo>
+                {userInfoON
+                    ? <HeaderUserInfoPopUp userInfoON={userInfoON}></HeaderUserInfoPopUp>
+                    : null}
             </HeaderBtnSectionWrapper>
         )
     }

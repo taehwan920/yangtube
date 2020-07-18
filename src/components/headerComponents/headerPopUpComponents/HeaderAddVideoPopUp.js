@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PopUpArticle, PopUpArticleIcon } from './HeaderButtons';
+import { PopUpArticle, PopUpArticleIcon } from '../HeaderButtons';
 
 const AddVideoPopUpWrapper = styled.div`
     background: rgba(255, 255, 255, 0.97);

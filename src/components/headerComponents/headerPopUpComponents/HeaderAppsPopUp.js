@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PopUpArticle, PopUpArticleIcon, PopUpSection } from './HeaderButtons';
+import { PopUpArticle, PopUpArticleIcon, PopUpSection } from '../HeaderButtons';
 
 const AppsPopUpWrapper = styled.div`
     background: rgba(255, 255, 255, 0.97);
@@ -18,11 +18,11 @@ const AppsPopUpWrapper = styled.div`
 `;
 
 const popUpItems = [
-    [<i class="fas fa-tv"></i>, 'YouTube TV'],
-    [<i class="fas fa-music"></i>, 'YouTube Music'],
-    [<i class="fas fa-child"></i>, 'YouTube Kids'],
+    [<i class="fas fa-tv"></i>, 'YangTube TV'],
+    [<i class="fas fa-music"></i>, 'YangTube Music'],
+    [<i class="fas fa-child"></i>, 'YangTube Kids'],
     [<i class="fab fa-youtube"></i>, '크리에이터 아카데미'],
-    [<i class="fab fa-youtube"></i>, 'YouTube for Artists']
+    [<i class="fab fa-youtube"></i>, 'YangTube for Artists']
 ]
 
 export default class extends React.Component {
