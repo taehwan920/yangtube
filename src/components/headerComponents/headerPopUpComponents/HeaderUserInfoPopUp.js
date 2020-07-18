@@ -1,5 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import UserPopUpHome from './UserInfoPopUpComponents/UserPopUpHome';
+import NightModePopUp from './UserInfoPopUpComponents/NightModePopUp';
 
 const UserInfoCommonSetUp = css`
     width: 298px;
@@ -20,15 +22,15 @@ const UserInfoPopUpWrapper = styled.div`
     ${UserInfoCommonSetUp}
 `;
 
-const PopUpSection = styled.section`
+export const PopUpSection = styled.section`
     padding: 8px 0px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     ${UserInfoCommonSetUp}
 `;
 
-const PopUpArticle = styled.div`
+export const PopUpArticle = styled.div`
     height: 40px;
-    padding: 0px 20px;
+    padding: 0px 10px 0px 20px;
     display: flex;
     align-items: center;
     ${UserInfoCommonSetUp}
@@ -39,25 +41,7 @@ const PopUpArticle = styled.div`
     }
 `;
 
-const PopUpArticleHas3Items = styled(PopUpArticle)`
-    justify-content: space-between;
-`;
-
-const PopUpArticleItem = styled.span`
-    width: 202px;
-`;
-
-const UserPopUpArticleIcon = styled.span`
-    width: 24px;
-    height: 24px;
-    margin-right: 22px;
-    font-size: 20px;
-    text-align: center;
-    line-height: 22px;
-    color: rgba(0, 0, 0, 0.4);
-`;
-
-const UserHeader = styled.header`
+export const UserInfoHeader = styled.header`
     height: 60px;
     padding: 0px 20px;
     display: flex;
@@ -66,7 +50,7 @@ const UserHeader = styled.header`
     ${UserInfoCommonSetUp}
 `;
 
-const UserIcon = styled.div`
+export const UserInfoCircleIcon = styled.div`
     background-color: #AA47BC;
     width: 40px;
     height: 40px;
@@ -81,74 +65,73 @@ const UserIcon = styled.div`
     cursor: default;
 `;
 
-const UserName = styled.span`
+export const UserName = styled.span`
     margin-left: 24px;
     font-size: 20px;
 `;
 
-
-
-const RightArrowIcon = styled.span`
+export const RightArrowIcon = styled.span`
     width: 24px;
     height: 24px;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 22px;
-    color: rgba(0, 0, 0, 0.4);
+    color: rgba(0, 0, 0, 0.5);
 `;
 
-const LimitModeSpan = styled.span`
+export const LimitModeSpan = styled.span`
     width: 266px;
 `;
 
-const popUpItems = [
-    [<i class="fas fa-moon"></i>, '어두운 테마: 사용 안함', <i class="fas fa-chevron-right"></i>],
-    [<i class="far fa-file-word"></i>, '언어: 한국어', <i class="fas fa-chevron-right"></i>],
-    [<i class="fas fa-globe"></i>, '위치: 한국', <i class="fas fa-chevron-right"></i>],
-    [<i class="fas fa-cog"></i>, '설정'],
-    [<i class="fas fa-user-shield"></i>, 'YangTube의 내 데이터'],
-    [<i class="fas fa-question-circle"></i>, '고객센터'],
-    [<i class="fas fa-exclamation"></i>, '의견 보내기'],
-    [<i class="fas fa-keyboard"></i>, '단축키']
-];
+export const SubPopUpHeaderWrapper = styled.header`
+    height: 49px;
+    padding: 8px 0px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    ${UserInfoCommonSetUp}
+`;
 
-const limitMode = ['제한 모드: 사용 안함', <i class="fas fa-chevron-right"></i>];
-
+export const SubPopUpString = styled.span`
+    width: 242px;
+    font-size: 16px;
+`;
 
 export default class extends React.Component {
-    buildItems = (item) => {
-        if (item.length > 2) {
-            return (
-                <PopUpArticleHas3Items>
-                    <UserPopUpArticleIcon>{item[0]}</UserPopUpArticleIcon>
-                    <PopUpArticleItem>{item[1]}</PopUpArticleItem>
-                    <RightArrowIcon>{item[2]}</RightArrowIcon>
-                </PopUpArticleHas3Items>
-            );
-        } else {
-            return (
-                <PopUpArticle>
-                    <UserPopUpArticleIcon>{item[0]}</UserPopUpArticleIcon>
-                    <span>{item[1]}</span>
-                </PopUpArticle>
-            );
-        };
-    };
+    state = {
+        userInfoHome: false,
+        nightMode: true,
+        langConfig: false,
+        locationConfig: false,
+        limitMode: false
+    }
+
+    toggleMode = stateType => () => {
+        this.setState({
+            [stateType]: !this.state[stateType],
+            userInfoHome: !this.state.userInfoHome
+        })
+    }
+
     render() {
+        const { userInfoHome, nightMode, langConfig, locationConfig, limitMode } = this.state;
         return (
             <UserInfoPopUpWrapper userInfoON={this.props.userInfoON}>
-                <UserHeader>
-                    <UserIcon draggable="true"><i class="fas fa-user"></i></UserIcon>
-                    <UserName>Guest</UserName>
-                </UserHeader>
-                <PopUpSection>
-                    {popUpItems.map(item => this.buildItems(item))}
-                </PopUpSection>
-                <PopUpSection>
-                    <PopUpArticle>
-                        <LimitModeSpan>{limitMode[0]}</LimitModeSpan>
-                        <RightArrowIcon>{limitMode[1]}</RightArrowIcon>
-                    </PopUpArticle>
-                </PopUpSection>
+                {userInfoHome
+                    ? <UserPopUpHome toggleMode={this.toggleMode}></UserPopUpHome>
+                    : null}
+                {(!userInfoHome && nightMode)
+                    ? <NightModePopUp toggleMode={this.toggleMode} stateType={'nightMode'}></NightModePopUp>
+                    : null}
+                {(!userInfoHome && langConfig)
+                    ? null
+                    : null}
+                {(!userInfoHome && locationConfig)
+                    ? null
+                    : null}
+                {(!userInfoHome && limitMode)
+                    ? null
+                    : null}
             </UserInfoPopUpWrapper>
         )
     }

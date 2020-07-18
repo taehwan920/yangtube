@@ -140,7 +140,7 @@ export default class extends React.Component {
     state = {
         addVideoON: false,
         appsON: false,
-        userInfoON: false,
+        userInfoON: true,
     }
     sanitize = picked => {
         const stateObj = Object.assign({}, this.state);
@@ -169,7 +169,7 @@ export default class extends React.Component {
                     </MiniSearchBtn>
                     <AddVideoButton onOff={this.onOff('addVideoON')}></AddVideoButton>
                     <AppsButton onOff={this.onOff('appsON')}></AppsButton>
-                    <UserInfoIcon draggable="true" onClick={this.onOff('userInfoON')}>G</UserInfoIcon>
+                    <UserInfoIcon onClick={this.onOff('userInfoON')} draggable="true">G</UserInfoIcon>
                 </HeaderBtnSection>
                 {addVideoON
                     ? <HeaderAddVideoPopUp addVideoON={addVideoON}></HeaderAddVideoPopUp>
