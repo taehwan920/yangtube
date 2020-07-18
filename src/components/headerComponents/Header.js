@@ -44,9 +44,7 @@ export default class extends React.Component {
                 <HeaderButtons></HeaderButtons>
                 {VKbd
                     ? <VirtualKeyboard
-                        onClick={() => {
-                            this.setState({ VKbd: !VKbd })
-                        }}></VirtualKeyboard>
+                        onClick={() => { this.setState({ VKbd: !VKbd }) }}></VirtualKeyboard>
                     : null}
             </HeaderWrapper>
         )

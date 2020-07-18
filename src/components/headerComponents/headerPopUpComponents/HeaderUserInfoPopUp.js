@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import UserPopUpHome from './UserInfoPopUpComponents/UserPopUpHome';
+import UserPopUpHome from './UserInfoPopUpComponents/UserInfoPopUpHome';
 import NightModePopUp from './UserInfoPopUpComponents/NightModePopUp';
 import LanguageChangePopUp from './UserInfoPopUpComponents/LanguageChangePopUp';
 import LocationChangePopUp from './UserInfoPopUpComponents/LocationChangePopUp';
@@ -102,9 +102,9 @@ export const SubPopUpString = styled.span`
 
 export default class extends React.Component {
     state = {
-        userInfoHome: false,
+        userInfoHome: true,
         nightMode: false,
-        langChange: true,
+        langChange: false,
         locationChange: false,
         limitedMode: false
     }
