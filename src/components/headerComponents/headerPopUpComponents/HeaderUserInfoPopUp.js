@@ -4,6 +4,7 @@ import UserPopUpHome from './UserInfoPopUpComponents/UserPopUpHome';
 import NightModePopUp from './UserInfoPopUpComponents/NightModePopUp';
 import LanguageChangePopUp from './UserInfoPopUpComponents/LanguageChangePopUp';
 import LocationChangePopUp from './UserInfoPopUpComponents/LocationChangePopUp';
+import LimitedModePopUp from './UserInfoPopUpComponents/LimitedModePopUp';
 
 const UserInfoCommonSetUp = css`
     width: 298px;
@@ -80,7 +81,7 @@ export const RightArrowIcon = styled.span`
     color: rgba(0, 0, 0, 0.5);
 `;
 
-export const LimitModeSpan = styled.span`
+export const LimitedModeSpan = styled.span`
     width: 266px;
 `;
 
@@ -105,7 +106,7 @@ export default class extends React.Component {
         nightMode: false,
         langChange: true,
         locationChange: false,
-        limitMode: false
+        limitedMode: false
     }
 
     toggleMode = stateType => () => {
@@ -116,7 +117,7 @@ export default class extends React.Component {
     }
 
     render() {
-        const { userInfoHome, nightMode, langChange, locationChange, limitMode } = this.state;
+        const { userInfoHome, nightMode, langChange, locationChange, limitedMode } = this.state;
         return (
             <UserInfoPopUpWrapper userInfoON={this.props.userInfoON}>
                 {userInfoHome
@@ -131,8 +132,8 @@ export default class extends React.Component {
                 {(!userInfoHome && locationChange)
                     ? <LocationChangePopUp toggleMode={this.toggleMode} stateType={'locationChange'}></LocationChangePopUp>
                     : null}
-                {(!userInfoHome && limitMode)
-                    ? null
+                {(!userInfoHome && limitedMode)
+                    ? <LimitedModePopUp toggleMode={this.toggleMode} stateType={'limitedMode'}></LimitedModePopUp>
                     : null}
             </UserInfoPopUpWrapper>
         )

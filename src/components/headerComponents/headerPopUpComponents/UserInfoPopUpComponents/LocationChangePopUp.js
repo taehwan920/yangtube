@@ -19,7 +19,8 @@ const LocationChangeText = styled.span`
     line-height: 39px;
 `;
 
-const Languages = ['한국어', 'English', '日本語'];
+const LocationHeaderItems = ['위치 선택'];
+const LocationChangeItems = ['한국', '미국', '일본'];
 
 export default class extends React.Component {
     buildItem = item => {
@@ -37,10 +38,10 @@ export default class extends React.Component {
             <React.Fragment>
                 <SubPopUpHeaderWrapper>
                     <UserInfoLeftArrow toggleMode={toggleMode} stateType={stateType}></UserInfoLeftArrow>
-                    <SubPopUpString>위치 선택</SubPopUpString>
+                    <SubPopUpString>{LocationHeaderItems[0]}</SubPopUpString>
                 </SubPopUpHeaderWrapper>
                 <PopUpSection>
-                    {Languages.map(item => this.buildItem(item))}
+                    {LocationChangeItems.map(item => this.buildItem(item))}
                 </PopUpSection>
             </React.Fragment>
         )

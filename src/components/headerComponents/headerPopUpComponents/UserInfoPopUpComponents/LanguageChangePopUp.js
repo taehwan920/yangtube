@@ -19,7 +19,8 @@ const LangChangeText = styled.span`
     line-height: 39px;
 `;
 
-const Languages = ['한국어', 'English', '日本語'];
+const LanguageHeaderItems = ['언어 선택'];
+const LanguageChangeItems = ['한국어', 'English', '日本語'];
 
 export default class extends React.Component {
     buildItem = item => {
@@ -37,10 +38,10 @@ export default class extends React.Component {
             <React.Fragment>
                 <SubPopUpHeaderWrapper>
                     <UserInfoLeftArrow toggleMode={toggleMode} stateType={stateType}></UserInfoLeftArrow>
-                    <SubPopUpString>언어 선택</SubPopUpString>
+                    <SubPopUpString>{LanguageHeaderItems[0]}</SubPopUpString>
                 </SubPopUpHeaderWrapper>
                 <PopUpSection>
-                    {Languages.map(item => this.buildItem(item))}
+                    {LanguageChangeItems.map(item => this.buildItem(item))}
                 </PopUpSection>
             </React.Fragment>
         )
