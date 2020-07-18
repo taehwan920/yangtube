@@ -4,6 +4,7 @@ import HeaderApps from './HeaderAppsPopUp'
 import HeaderAddVideo from './HeaderAddVideoPopUp';
 import HeaderUserInfo from './HeaderUserInfoPopUp';
 import AddVideoButton from './headerBtnComponents/AddVideoButton';
+import AppsButton from './headerBtnComponents/AppsButton';
 
 const HeaderBtnSectionWrapper = styled.div`
     width:225px;
@@ -36,9 +37,9 @@ export const HeaderBtn = styled.button`
 const MiniSearchBtn = styled(HeaderBtn)`
     display: none;
     @media (max-width: 767px) {
-        position: relative;
+        position: absolute;
         display: inline-block;
-        right: 232.5px;
+        right: 182.5px;
     }
 `;
 
@@ -46,12 +47,8 @@ export const PopUpAxisZ = css`
     z-index: 348;
 `;
 
-const AddVideoPosition = css`
-    right: 182.5px;
-`;
-
 export const AddVideoBtn = styled(HeaderBtn)`
-    ${AddVideoPosition}
+    right: 132.5px;
 `;
 
 export const AddVideoBtnPlusIcon = styled(HeaderBtn)`
@@ -61,24 +58,8 @@ export const AddVideoBtnPlusIcon = styled(HeaderBtn)`
     color: white;
 `;
 
-const AppsBtnPosition = css`
-    right: 132.5px;
-`;
-
-const AppsBtn = styled(HeaderBtn)`
-    ${AppsBtnPosition}
-`;
-
-export const AlarmBtnPosition = css`
+export const AppsBtn = styled(HeaderBtn)`
     right: 82.5px;
-`;
-
-const AlarmBtn = styled(HeaderBtn)`
-    ${AlarmBtnPosition}
-`;
-
-export const UserInfoPosition = css`
-    right: 30px;
 `;
 
 const UserInfoIcon = styled.div`
@@ -86,7 +67,7 @@ const UserInfoIcon = styled.div`
     width: 30px;
     height: 30px;
     position: absolute;
-    ${UserInfoPosition}
+    right: 30px;
     border-radius: 50%;
     text-align: center;
     line-height: 1.4;
@@ -158,7 +139,6 @@ export default class extends React.Component {
     state = {
         addVideoON: false,
         appsON: false,
-        alarmsON: true,
         userInfoON: true,
     }
     sanitize = picked => {
@@ -175,12 +155,11 @@ export default class extends React.Component {
             [states[0]]: !this.state[states[0]],
             [states[1]]: false,
             [states[2]]: false,
-            [states[3]]: false,
         })
     }
 
     render() {
-        const { addVideoON, appsON, alarmsON, userInfoON } = this.state
+        const { addVideoON, appsON, userInfoON } = this.state
         return (
             <HeaderBtnSectionWrapper>
                 <HeaderBtnSection>
@@ -189,14 +168,7 @@ export default class extends React.Component {
                         <ClickEffectHeader></ClickEffectHeader>
                     </MiniSearchBtn>
                     <AddVideoButton onOff={this.onOff('addVideoON')}></AddVideoButton>
-                    <AppsBtn onClick={this.onOff('appsON')}>
-                        <i class="fas fa-th"></i>
-                        <ClickEffectHeader></ClickEffectHeader>
-                    </AppsBtn>
-                    <AlarmBtn>
-                        <i class="fas fa-bell"></i>
-                        <ClickEffectHeader></ClickEffectHeader>
-                    </AlarmBtn>
+                    <AppsButton onOff={this.onOff('appsON')}></AppsButton>
                     <UserInfoIcon>G</UserInfoIcon>
                 </HeaderBtnSection>
                 {addVideoON
