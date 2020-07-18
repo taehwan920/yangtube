@@ -108,7 +108,7 @@ const ToggleSwitchWrapper = styled.div`
 `;
 
 const ToggleTransition = css`
-    transition: all 0.4s ease-in-out;
+    transition: all 0.2s ease-in-out;
 `;
 
 const ToggleSwitchBar = styled.div`

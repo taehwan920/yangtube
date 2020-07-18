@@ -52,7 +52,7 @@ export default class extends React.Component {
                     {NightModeItem.map(item => this.buildItem(item))}
                     <NightModeToggleArticle>
                         <NightModeToggleText>
-                            {NightModeItem[2]}
+                            {NightModeItem[NightModeItem.length - 1]}
                         </NightModeToggleText>
                         <ToggleSwitch></ToggleSwitch>
                     </NightModeToggleArticle>

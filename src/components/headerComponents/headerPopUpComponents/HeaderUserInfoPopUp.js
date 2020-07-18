@@ -2,6 +2,8 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import UserPopUpHome from './UserInfoPopUpComponents/UserPopUpHome';
 import NightModePopUp from './UserInfoPopUpComponents/NightModePopUp';
+import LanguageChangePopUp from './UserInfoPopUpComponents/LanguageChangePopUp';
+import LocationChangePopUp from './UserInfoPopUpComponents/LocationChangePopUp';
 
 const UserInfoCommonSetUp = css`
     width: 298px;
@@ -100,9 +102,9 @@ export const SubPopUpString = styled.span`
 export default class extends React.Component {
     state = {
         userInfoHome: false,
-        nightMode: true,
-        langConfig: false,
-        locationConfig: false,
+        nightMode: false,
+        langChange: true,
+        locationChange: false,
         limitMode: false
     }
 
@@ -114,7 +116,7 @@ export default class extends React.Component {
     }
 
     render() {
-        const { userInfoHome, nightMode, langConfig, locationConfig, limitMode } = this.state;
+        const { userInfoHome, nightMode, langChange, locationChange, limitMode } = this.state;
         return (
             <UserInfoPopUpWrapper userInfoON={this.props.userInfoON}>
                 {userInfoHome
@@ -123,11 +125,11 @@ export default class extends React.Component {
                 {(!userInfoHome && nightMode)
                     ? <NightModePopUp toggleMode={this.toggleMode} stateType={'nightMode'}></NightModePopUp>
                     : null}
-                {(!userInfoHome && langConfig)
-                    ? null
+                {(!userInfoHome && langChange)
+                    ? <LanguageChangePopUp toggleMode={this.toggleMode} stateType={'langChange'}></LanguageChangePopUp>
                     : null}
-                {(!userInfoHome && locationConfig)
-                    ? null
+                {(!userInfoHome && locationChange)
+                    ? <LocationChangePopUp toggleMode={this.toggleMode} stateType={'locationChange'}></LocationChangePopUp>
                     : null}
                 {(!userInfoHome && limitMode)
                     ? null

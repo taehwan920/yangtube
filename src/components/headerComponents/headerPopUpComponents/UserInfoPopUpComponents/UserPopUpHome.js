@@ -18,8 +18,8 @@ const UserPopUpPictogram = styled.span`
 
 const popUpItems = [
     [<i class="fas fa-moon"></i>, '어두운 테마: 사용 안함', <i class="fas fa-chevron-right"></i>, 'nightMode'],
-    [<i class="fas fa-globe"></i>, '언어: 한국어', <i class="fas fa-chevron-right"></i>, 'langConfig'],
-    [<i class="fas fa-map-marker-alt"></i>, '위치: 한국', <i class="fas fa-chevron-right"></i>, 'locationConfig'],
+    [<i class="fas fa-globe"></i>, '언어: 한국어', <i class="fas fa-chevron-right"></i>, 'langChange'],
+    [<i class="fas fa-map-marker-alt"></i>, '위치: 한국', <i class="fas fa-chevron-right"></i>, 'locationChange'],
     [<i class="fas fa-cog"></i>, '설정'],
     [<i class="fas fa-user-shield"></i>, 'YangTube의 내 데이터'],
     [<i class="fas fa-question-circle"></i>, '고객센터'],
