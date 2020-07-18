@@ -99,7 +99,7 @@ export const PopUpArticleIcon = styled.span`
     width: 24px;
     height: 24px;
     margin-right: 22px;
-    font-size: 18px;
+    font-size: 22px;
     text-align: center;
     line-height: 22px;
     color: red;
