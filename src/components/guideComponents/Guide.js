@@ -21,10 +21,9 @@ const GuideWrapper = styled.aside`
 const GuideBlackSheet = styled.div`
     background-color: rgba(0, 0, 0, 0.5);
     width: 200vw;
-    height: 1100px;
+    height: 100vh;
     position: absolute;
     overflow: hidden;
-    transition: all 0.2s ease-out;
     opacity: ${props => (props.guideIsON ? '1' : '0')};
     z-index: ${props => (props.guideIsON ? '350' : '-350')};
     display: ${props => (props.guideIsON ? 'flex' : 'none')};
@@ -47,6 +46,8 @@ const GuideLogoWrapper = styled.header`
 const SectionWrapper = styled.div`
     background-color: white;
     width: 240px;
+    height: calc(100vh - 56px);
+    overflow-y: scroll;
     position: relative;
     left: 0px;
     display: flex;

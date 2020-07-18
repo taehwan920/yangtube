@@ -240,7 +240,7 @@ export default class extends React.Component {
                     <KbdRow>
                         {keySet[2].map(key => {
                             if (key === 'capslock') {
-                                return <CapsLockKey onClick={() => this.setState({ langIsKR: !langIsKR, shift: true, capsLock: !capsLock })}><i class="fab fa-adn"></i></CapsLockKey>
+                                return <CapsLockKey onClick={() => this.setState({ langIsKR: !langIsKR, shift: !shift, capsLock: !capsLock })}><i class="fab fa-adn"></i></CapsLockKey>
                             } else if (key === 'empty2') {
                                 return <Empty2></Empty2>
                             } else {

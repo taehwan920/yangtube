@@ -140,7 +140,7 @@ export default class extends React.Component {
     state = {
         addVideoON: false,
         appsON: false,
-        userInfoON: true,
+        userInfoON: false,
     }
     sanitize = picked => {
         const stateObj = Object.assign({}, this.state);

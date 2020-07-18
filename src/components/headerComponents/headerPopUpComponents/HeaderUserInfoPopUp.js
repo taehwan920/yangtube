@@ -51,7 +51,7 @@ const UserPopUpArticleIcon = styled.span`
     width: 24px;
     height: 24px;
     margin-right: 22px;
-    font-size: 18px;
+    font-size: 20px;
     text-align: center;
     line-height: 22px;
     color: rgba(0, 0, 0, 0.4);
@@ -71,12 +71,13 @@ const UserIcon = styled.div`
     width: 40px;
     height: 40px;
     right: 30px;
+    border: none;
     border-radius: 50%;
     text-align: center;
     line-height: 58px;
     overflow: hidden;
     font-size: 31px;
-    color: white;
+    color: rgba(255, 255, 255, 0.65);
     cursor: default;
 `;
 

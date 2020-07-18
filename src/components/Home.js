@@ -10,10 +10,10 @@ const HomeDiv = styled.div`
     position: relative;
     display: flex;
     width: 100%;
-    height: ${props => (props.guideIsON ? '1100px' : '100%')};;
+    height: ${props => (props.guideIsON ? '100vh' : '100%')};
+    overflow: ${props => (props.guideIsON ? 'hidden' : 'none')};
     background-color: #F9F9F9;
     z-index: 1;
-    overflow: ${props => (props.guideIsON ? 'hidden' : 'none')};
 `;
 
 export default class extends React.Component {
