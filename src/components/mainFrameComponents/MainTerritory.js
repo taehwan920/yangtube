@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import MainDescription from './MainDescription';
+import MainTitle from './MainTitle';
 import MainComments from './MainComments';
 import VideoFrame from './videoComponents/VideoFrame';
 import VideoNavPC from '../videoNavComponents/VideoNavPC';
@@ -15,13 +15,13 @@ const MainTerritory = styled.div`
 `;
 
 const MainFrameWrapper = styled.div`
-    width: 100%;
+    width: ${props => props.theaterMode ? '100%' : '1362px'};
     background: peru;
 `;
 
 const VideoInfoOuterWrapper = styled.div`
     background: steelblue;
-    margin: 0px 58px;
+    margin-left: 58px;
     display: flex;
 `;
 
@@ -44,20 +44,24 @@ export default class extends React.Component {
         const { mobileEnv, theaterMode } = this.state;
         return (
             <MainTerritory>
-                <MainFrameWrapper>
+                <MainFrameWrapper theaterMode={theaterMode}>
                     <VideoFrame theaterMode={theaterMode}></VideoFrame>
                     <VideoInfoOuterWrapper>
                         <VideoInfoInnerWrapper>
-                            <MainDescription></MainDescription>
+                            <MainTitle></MainTitle>
                             {mobileEnv
                                 ? <VideoNavPC></VideoNavPC>
                                 : null}
                             <MainComments></MainComments>
                         </VideoInfoInnerWrapper>
-                        <VideoNavPC></VideoNavPC>
+                        {theaterMode
+                            ? <VideoNavPC></VideoNavPC>
+                            : null}
                     </VideoInfoOuterWrapper>
                 </MainFrameWrapper>
-                {/* <VideoNavPC></VideoNavPC> */}
+                {theaterMode
+                    ? null
+                    : <VideoNavPC></VideoNavPC>}
             </MainTerritory>
         )
     }
