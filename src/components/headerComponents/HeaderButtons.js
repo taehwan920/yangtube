@@ -1,10 +1,11 @@
 import React from 'react';
-import styled, { css, keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import HeaderApps from './headerPopUpComponents/HeaderAppsPopUp'
 import HeaderAddVideoPopUp from './headerPopUpComponents/HeaderAddVideoPopUp';
 import HeaderUserInfoPopUp from './headerPopUpComponents/HeaderUserInfoPopUp';
 import AddVideoButton from './headerBtnComponents/AddVideoButton';
 import AppsButton from './headerBtnComponents/AppsButton';
+
 
 const HeaderBtnSectionWrapper = styled.div`
     width:225px;
@@ -41,10 +42,6 @@ const MiniSearchBtn = styled(HeaderBtn)`
         display: inline-block;
         right: 182.5px;
     }
-`;
-
-export const PopUpAxisZ = css`
-    z-index: 348;
 `;
 
 export const AddVideoBtn = styled(HeaderBtn)`
@@ -159,7 +156,8 @@ export default class extends React.Component {
     }
 
     render() {
-        const { addVideoON, appsON, userInfoON } = this.state
+        const { popUpSwitchON, popUps } = this.props;
+        const { addVideoON, appsON, userInfoON } = this.state;
         return (
             <HeaderBtnSectionWrapper>
                 <HeaderBtnSection>
@@ -167,17 +165,20 @@ export default class extends React.Component {
                         <i class="fas fa-search"></i>
                         <ClickEffectHeader></ClickEffectHeader>
                     </MiniSearchBtn>
-                    <AddVideoButton onOff={this.onOff('addVideoON')}></AddVideoButton>
-                    <AppsButton onOff={this.onOff('appsON')}></AppsButton>
-                    <UserInfoIcon onClick={this.onOff('userInfoON')} draggable="true">G</UserInfoIcon>
+                    <AddVideoButton popUpSwitchON={popUpSwitchON('addVideoON')} onOff={this.onOff('addVideoON')}></AddVideoButton>
+                    <AppsButton popUpSwitchON={popUpSwitchON('appsON')} onOff={this.onOff('appsON')}></AppsButton>
+                    <UserInfoIcon onClick={() => {
+                        this.onOff('userInfoON')();
+                        popUpSwitchON('userInfoON')();
+                    }} draggable="true">G</UserInfoIcon>
                 </HeaderBtnSection>
-                {addVideoON
+                {(addVideoON && popUps)
                     ? <HeaderAddVideoPopUp addVideoON={addVideoON}></HeaderAddVideoPopUp>
                     : null}
-                {appsON
+                {(appsON && popUps)
                     ? <HeaderApps appsON={appsON}></HeaderApps>
                     : null}
-                {userInfoON
+                {(userInfoON && popUps)
                     ? <HeaderUserInfoPopUp userInfoON={userInfoON}></HeaderUserInfoPopUp>
                     : null}
             </HeaderBtnSectionWrapper>

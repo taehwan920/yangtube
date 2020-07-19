@@ -23,30 +23,47 @@ const HeaderLogoPlace = styled.div`
     height: 40px;
 `;
 
+const PopUpsOffSwitch = styled.div`
+    width: 100vw;
+    height: inherit;
+    overflow: hidden;
+    position: absolute;
+    z-index: 19;
+`;
+
 export default class extends React.Component {
     state = {
         VKbd: false
-    }
+    };
+
     render() {
-        const { toggleGuide } = this.props
-        const { VKbd } = this.state
+        const { toggleGuide, popUpSwitchON, popUpSwitchOff, popUps } = this.props;
+        const { VKbd } = this.state;
         ChangeTitle('Main Page!');
         return (
-            <HeaderWrapper>
-                <HeaderLogoPlace></HeaderLogoPlace>
-                <Logo
-                    toggleGuide={toggleGuide}
-                ></Logo>
-                <HeaderSearch
-                    onClick={() => {
-                        this.setState({ VKbd: !VKbd })
-                    }}></HeaderSearch>
-                <HeaderButtons></HeaderButtons>
-                {VKbd
-                    ? <VirtualKeyboard
-                        onClick={() => { this.setState({ VKbd: !VKbd }) }}></VirtualKeyboard>
+            <React.Fragment>
+                <HeaderWrapper>
+                    <HeaderLogoPlace></HeaderLogoPlace>
+                    <Logo
+                        toggleGuide={toggleGuide}
+                    ></Logo>
+                    <HeaderSearch
+                        onClick={() => {
+                            this.setState({ VKbd: !VKbd })
+                        }}></HeaderSearch>
+                    <HeaderButtons
+                        popUpSwitchON={popUpSwitchON}
+                        popUps={popUps}
+                    ></HeaderButtons>
+                    {VKbd
+                        ? <VirtualKeyboard
+                            onClick={() => { this.setState({ VKbd: !VKbd }) }}></VirtualKeyboard>
+                        : null}
+                </HeaderWrapper>
+                {popUps
+                    ? <PopUpsOffSwitch onClick={popUpSwitchOff}></PopUpsOffSwitch>
                     : null}
-            </HeaderWrapper>
+            </React.Fragment>
         )
     }
 }

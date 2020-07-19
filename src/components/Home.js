@@ -11,25 +11,51 @@ const HomeDiv = styled.div`
     display: flex;
     width: 100%;
     height: ${props => (props.guideIsON ? '100vh' : '100%')};
+    height: ${props => (props.popUps ? '100vh' : '100%')};
     overflow: ${props => (props.guideIsON ? 'hidden' : 'none')};
+    overflow: ${props => (props.popUps ? 'hidden' : 'none')};
     background-color: #F9F9F9;
     z-index: 1;
 `;
 
 export default class extends React.Component {
     state = {
-        guideIsON: false
+        guideIsON: false,
+        popUps: false,
+        latest: null
     };
 
     toggleGuide = () => {
         this.setState({ guideIsON: !this.state.guideIsON })
     };
 
+    popUpSwitchON = (stateType) => () => {
+        if (this.state.latest === null || this.state.latest !== stateType) {
+            this.setState({
+                popUps: true,
+                latest: stateType
+            })
+        } else {
+            this.setState({
+                popUps: !this.state.popUps
+            })
+        };
+    };
+    popUpSwitchOff = () => {
+        this.setState({ popUps: false })
+    };
+
     render() {
-        const { guideIsON } = this.state;
+        const { guideIsON, popUps } = this.state;
         return (
-            <HomeDiv guideIsON={guideIsON}>
+            <HomeDiv
+                guideIsON={guideIsON}
+                popUps={popUps}
+            >
                 <Header
+                    popUps={popUps}
+                    popUpSwitchON={this.popUpSwitchON}
+                    popUpSwitchOff={this.popUpSwitchOff}
                     toggleGuide={this.toggleGuide}
                 ></Header>
                 <Guide
