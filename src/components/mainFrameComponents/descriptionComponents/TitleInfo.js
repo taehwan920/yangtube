@@ -5,7 +5,6 @@ const TitleInfo = styled.article`
     background: white;
     width: 100%;
     height: 40px;
-    
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -24,13 +23,14 @@ const ViewsAndDateSpan = styled.span`
 const TitleFunctionsWrapper = styled.div`
     height: 40px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
 `;
 
 const LikeAndDislikeBox = styled.div`
     height: 36px;
     margin-right: 10px;
+    padding-left: 4px;
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -59,31 +59,43 @@ const DislikeRate = styled.div`
 const TitleFunctionsItems = styled.div`
     height: 40px;
     display: flex;
-    padding: 0px 6px;
-    margin: 0px 4px;
-    justify-content: flex-start;
+    margin-right: 8px;
+    justify-content: space-around;
     align-item: center;
-    line-height: 38px;
+    line-height: 42px;
     cursor: pointer;
 `;
 
 const TitleFunctionsIcons = styled.span`
-    width: 24px;
-    height: 24px;
-    font-size: 20px;
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+    font-size: 16px;
+    line-height: 24px;
     color: rgba(0, 0, 0, 0.4);
+`;
+
+const LikeIcon = styled(TitleFunctionsIcons)`
+    font-size: 18px;
+    line-height: 0px;
 `;
 
 const DislikeIcon = styled(TitleFunctionsIcons)`
     transform: rotateZ(180deg);
+    font-size: 18px;
     line-height: 0px;
     padding-bottom: 30px;
     margin-right: 4px;
 `;
 
+const EllipsisIcon = styled(TitleFunctionsIcons)`
+    font-size: 18px;
+    margin-left: 8px;
+`;
+
 const TitleFunctionsTexts = styled.span`
     height: 16px;
-    margin-left: 5px;
+    font-size: 13px;
 `;
 
 const titleItems = {
@@ -115,9 +127,9 @@ export default class extends React.Component {
                 <TitleFunctionsWrapper>
                     <LikeAndDislikeBox>
                         <TitleFunctionsItems>
-                            <TitleFunctionsIcons>
+                            <LikeIcon>
                                 {titleItems.pictograms.like[0]}
-                            </TitleFunctionsIcons>
+                            </LikeIcon>
                             <TitleFunctionsTexts>
                                 {titleItems.pictograms.like[1]}
                             </TitleFunctionsTexts>
@@ -152,9 +164,9 @@ export default class extends React.Component {
                         </TitleFunctionsTexts>
                     </TitleFunctionsItems>
                     <TitleFunctionsItems>
-                        <TitleFunctionsIcons>
+                        <EllipsisIcon>
                             {titleItems.pictograms.more[0]}
-                        </TitleFunctionsIcons>
+                        </EllipsisIcon>
                     </TitleFunctionsItems>
                 </TitleFunctionsWrapper>
             </TitleInfo>
