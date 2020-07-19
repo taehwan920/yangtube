@@ -19,6 +19,7 @@ const LogoWrapper = styled.div`
     align-items: center;
     text-align: center;
     font-size: 20px;
+    z-index: 25;
 `;
 
 const LogoImg = styled.img`
@@ -67,8 +68,7 @@ export class Logo extends React.Component {
         return (
             <LogoWrapper>
                 <MenuBtn
-                    onClick={this.props.toggleGuide}
-                >
+                    onClick={this.props.toggleGuide}>
                     <ClickEffect></ClickEffect>
                     <i class="fas fa-bars"></i>
                 </MenuBtn >

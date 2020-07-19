@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const DescriptionWrapper = styled.section`
     background-color: beige;
-    width: 100%;
+    width: 80%;
     height: 293px;
 `;
 

@@ -21,6 +21,5 @@ a{
 }
 
 .move {
-    transform: translateX(480px);
-    background-color: black;
+    background-color: steelblue;
 }

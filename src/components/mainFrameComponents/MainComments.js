@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const CommentsWrapper = styled.section`
     background-color: lightgreen;
-    width: 100%;
+    width: 80%;
     height: 1500px;
 `;
 

@@ -14,7 +14,7 @@ export default class extends React.Component {
                 <AddVideoBtnPlusIcon>
                     <i class="fas fa-plus"></i>
                 </AddVideoBtnPlusIcon>
-                <ClickEffectHeader clicked={this.props.clicked}></ClickEffectHeader>
+                <ClickEffectHeader></ClickEffectHeader>
             </AddVideoBtn>
         )
     }

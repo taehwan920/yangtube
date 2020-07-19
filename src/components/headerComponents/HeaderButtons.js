@@ -33,6 +33,7 @@ export const HeaderBtn = styled.button`
     outline: none;
     background: none;
     cursor: pointer;
+    z-index: 25;
 `;
 
 const MiniSearchBtn = styled(HeaderBtn)`
@@ -71,6 +72,7 @@ const UserInfoIcon = styled.div`
     font-size: 20px;
     color: white;
     cursor: pointer;
+    z-index: 25;
 `;
 
 export const PopUpSection = styled.section`
@@ -108,7 +110,7 @@ const HeaderClickAni = keyframes`
         background-color: rgba(0, 0, 0, 0.4);
         transform: scale(1);
     }
-    30% {
+    40% {
         background-color: rgba(0, 0, 0, 0.2);
         transform: scale(1.7);
     }
@@ -126,8 +128,9 @@ export const ClickEffectHeader = styled.div`
     right: 0.3px;
     position: absolute;
     border-radius: 50%;
+    z-index: 25;
 
-    &:active {
+    &:hover {
         animation: ${HeaderClickAni} 0.5s ease-in-out;
     }
     

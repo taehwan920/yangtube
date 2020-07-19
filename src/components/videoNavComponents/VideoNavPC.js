@@ -4,10 +4,8 @@ import styled from 'styled-components';
 const VideoNavPCWrapper = styled.nav`
     background-color: skyblue;
     width: 402px;
-    height: 100rem;
-    margin-top: 24px;
-    margin-right: 24px;
-    top: 56px;
+    height: 1000px;
+    margin: 0px 24px;
     position: relative;
     display:inline-block;
     z-index: 1;
