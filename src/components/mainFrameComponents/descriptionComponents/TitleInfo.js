@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const TitleInfo = styled.article`
+const TitleInfo = styled.div`
     background: white;
     width: 100%;
     height: 40px;
