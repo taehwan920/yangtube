@@ -59,6 +59,9 @@ export default class extends React.Component {
                         ? <VirtualKeyboard
                             onClick={() => { this.setState({ VKbd: !VKbd }) }}></VirtualKeyboard>
                         : null}
+                    {popUps
+                        ? <PopUpsOffSwitch onClick={popUpSwitchOff}></PopUpsOffSwitch>
+                        : null}
                 </HeaderWrapper>
                 {popUps
                     ? <PopUpsOffSwitch onClick={popUpSwitchOff}></PopUpsOffSwitch>
