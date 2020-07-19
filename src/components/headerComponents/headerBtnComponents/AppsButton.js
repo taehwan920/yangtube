@@ -3,11 +3,11 @@ import { AppsBtn, ClickEffectHeader } from '../HeaderButtons';
 
 export default class extends React.Component {
     render() {
-        const { onOff, popUpSwitchON } = this.props;
+        const { onOff, popUpSwitchON, popUps } = this.props;
         return (
             <AppsBtn onClick={() => {
                 onOff();
-                popUpSwitchON();
+                popUpSwitchON(popUps);
             }}>
                 <i class="fas fa-th"></i>
                 <ClickEffectHeader></ClickEffectHeader>

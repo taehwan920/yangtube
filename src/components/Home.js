@@ -37,12 +37,16 @@ export default class extends React.Component {
             })
         } else {
             this.setState({
-                popUps: !this.state.popUps
+                popUps: false,
+                latest: null
             })
         };
     };
     popUpSwitchOff = () => {
-        this.setState({ popUps: false })
+        this.setState({
+            popUps: false,
+            latest: null
+        });
     };
 
     render() {

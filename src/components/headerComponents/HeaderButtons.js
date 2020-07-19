@@ -141,18 +141,26 @@ export default class extends React.Component {
     }
     sanitize = picked => {
         const stateObj = Object.assign({}, this.state);
-        const states = Object.keys(stateObj);
-        const notPicked = states.filter(state => state !== picked);
+        const statesArr = Object.keys(stateObj);
+        const notPicked = statesArr.filter(state => state !== picked);
         return [picked, ...notPicked];
     }
 
-    onOff = stateType => () => {
-        const states = this.sanitize(stateType);
-        this.setState({
-            [states[0]]: !this.state[states[0]],
-            [states[1]]: false,
-            [states[2]]: false,
-        })
+    onOff = stateType => popUps => {
+        const statesArr = this.sanitize(stateType);
+        if (popUps) {
+            this.setState({
+                [statesArr[0]]: !this.state[statesArr[0]],
+                [statesArr[1]]: false,
+                [statesArr[2]]: false,
+            })
+        } else {
+            this.setState({
+                [statesArr[0]]: true,
+                [statesArr[1]]: false,
+                [statesArr[2]]: false,
+            })
+        }
     }
 
     render() {
@@ -165,11 +173,11 @@ export default class extends React.Component {
                         <i class="fas fa-search"></i>
                         <ClickEffectHeader></ClickEffectHeader>
                     </MiniSearchBtn>
-                    <AddVideoButton popUpSwitchON={popUpSwitchON('addVideoON')} onOff={this.onOff('addVideoON')}></AddVideoButton>
-                    <AppsButton popUpSwitchON={popUpSwitchON('appsON')} onOff={this.onOff('appsON')}></AppsButton>
+                    <AddVideoButton popUps={popUps} popUpSwitchON={popUpSwitchON('addVideoON')} onOff={this.onOff('addVideoON')}></AddVideoButton>
+                    <AppsButton popUps={popUps} popUpSwitchON={popUpSwitchON('appsON')} onOff={this.onOff('appsON')}></AppsButton>
                     <UserInfoIcon onClick={() => {
                         this.onOff('userInfoON')();
-                        popUpSwitchON('userInfoON')();
+                        popUpSwitchON('userInfoON')(popUps);
                     }} draggable="true">G</UserInfoIcon>
                 </HeaderBtnSection>
                 {(addVideoON && popUps)

@@ -4,11 +4,11 @@ import { AddVideoBtn, AddVideoBtnPlusIcon, ClickEffectHeader } from '../HeaderBu
 
 export default class extends React.Component {
     render() {
-        const { onOff, popUpSwitchON } = this.props;
+        const { onOff, popUpSwitchON, popUps } = this.props;
         return (
             <AddVideoBtn onClick={() => {
                 onOff();
-                popUpSwitchON();
+                popUpSwitchON(popUps);
             }}>
                 <i class="fas fa-video"></i>
                 <AddVideoBtnPlusIcon>
