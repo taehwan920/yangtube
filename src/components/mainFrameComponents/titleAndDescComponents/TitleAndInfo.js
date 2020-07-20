@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import LikeAndDislike from './LikeAndDislike';
 
-const TitleInfo = styled.div`
+const TitleAndInfo = styled.div`
     background: white;
     width: 100%;
     height: 40px;
@@ -140,8 +140,6 @@ export const titleItems = {
 };
 
 export default class extends React.Component {
-
-
     buildItems = item => {
         return (
             <ViewsAndDateSpan>
@@ -149,13 +147,9 @@ export default class extends React.Component {
             </ViewsAndDateSpan>
         )
     };
-
-
-
     render() {
-
         return (
-            <TitleInfo>
+            <TitleAndInfo>
                 <ViewsAndDateWrapper>
                     {titleItems.viewsAndDate.map(item => this.buildItems(item))}
                 </ViewsAndDateWrapper>
@@ -184,7 +178,7 @@ export default class extends React.Component {
                         <TitleInfoClickEffect></TitleInfoClickEffect>
                     </TitleFunctionsItems>
                 </TitleFunctionsWrapper>
-            </TitleInfo>
+            </TitleAndInfo>
         )
     }
 }

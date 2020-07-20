@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import TitleInfo from './titleAndDescComponents/TitleInfo';
+import TitleAndInfo from './titleAndDescComponents/TitleAndInfo';
 import DescAndUploader from './titleAndDescComponents/DescAndUploader';
 
 const TitleAndDesc = styled.section`
     background-color: white;
     width: 100%;
-    height: calc(${props => props.realHeight || '0'}px + 293px);
+    height: calc(${props => props.realHeight || '0'}px + 292px);
 `;
 
 const TitleWrapper = styled.article`
@@ -54,7 +54,7 @@ export default class extends React.Component {
             <TitleAndDesc realHeight={realHeight}>
                 <TitleWrapper>
                     <Title>{titleItem}</Title>
-                    <TitleInfo></TitleInfo>
+                    <TitleAndInfo></TitleAndInfo>
                 </TitleWrapper>
                 <DescAndUploader
                     showMoreFunc={this.showMoreFunc}

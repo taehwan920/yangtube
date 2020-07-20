@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import MainTitle from './MainTitle';
+import MainTitleAndDesc from './MainTitleAndDesc';
 import MainComments from './MainComments';
 import VideoFrame from './videoComponents/VideoFrame';
 import VideoNavPC from '../videoNavComponents/VideoNavPC';
@@ -48,7 +48,7 @@ export default class extends React.Component {
                     <VideoFrame theaterMode={theaterMode}></VideoFrame>
                     <VideoInfoOuterWrapper>
                         <VideoInfoInnerWrapper>
-                            <MainTitle></MainTitle>
+                            <MainTitleAndDesc></MainTitleAndDesc>
                             {mobileEnv
                                 ? <VideoNavPC></VideoNavPC>
                                 : null}

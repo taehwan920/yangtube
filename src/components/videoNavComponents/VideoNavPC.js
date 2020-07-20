@@ -7,8 +7,12 @@ const VideoNavPCWrapper = styled.nav`
     height: 1000px;
     margin: 0px 24px;
     position: relative;
-    display:inline-block;
+    display: flex;
     z-index: 1;
+
+    @media (max-width: 1023px) {
+        width: 100%;
+    }
 `;
 
 
