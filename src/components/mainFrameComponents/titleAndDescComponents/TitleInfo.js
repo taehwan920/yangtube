@@ -8,7 +8,7 @@ const TitleInfo = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: rgba(0, 0, 0, 0.65);
+    color: #909090;
     font-size: 14px;
 `;
 const ViewsAndDateWrapper = styled.div`
@@ -42,17 +42,18 @@ const LikeRateChartBox = styled.div`
     height: 2px;
     position: absolute;
     bottom: -11px;
+    display: flex;
 `;
 
 const LikeRate = styled.div`
-    background: ${props => props.clicked ? '#065FD4' : 'rgba(0, 0, 0, 0.4)'};
-    width: ${props => props.likeRate || '100%'};
+    background-color: ${props => (props.liked || props.disliked) ? '#065FD4' : '#909090'};
+    width: ${props => props.likeRate || '100'}%;
     height: 2px;
 `;
 
 const DislikeRate = styled.div`
     background: rgba(0, 0, 0, 0.1);
-    width: ${props => props.dislikeRate || '0%'};
+    width: ${props => props.dislikeRate || '0'}%;
     height: 2px;
 `;
 
@@ -60,10 +61,19 @@ const TitleFunctionsItems = styled.div`
     height: 40px;
     display: flex;
     margin-right: 8px;
+    position: relative;
     justify-content: space-around;
     align-item: center;
     line-height: 42px;
     cursor: pointer;
+`;
+
+const LikeBox = styled(TitleFunctionsItems)`
+    color: ${props => props.liked ? '#065FD4' : '#909090'};
+`;
+
+const DislikeBox = styled(TitleFunctionsItems)`
+    color: ${props => props.disliked ? '#065FD4' : '#909090'};
 `;
 
 const TitleFunctionsIcons = styled.span`
@@ -72,7 +82,6 @@ const TitleFunctionsIcons = styled.span`
     padding: 8px;
     font-size: 16px;
     line-height: 24px;
-    color: rgba(0, 0, 0, 0.4);
 `;
 
 const LikeIcon = styled(TitleFunctionsIcons)`
@@ -98,12 +107,29 @@ const TitleFunctionsTexts = styled.span`
     font-size: 13px;
 `;
 
+const TitleInfoClickEffect = styled.div`
+    background-color: rgba(0, 0, 0, 0.0);
+    width: 24px;
+    height: 24px;
+    top: 8px;
+    left: 13px;
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(1);
+    transition: all 0.05s ease-in-out;
+
+    &:active {
+        transform: scale(1.5);
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+`;
+
 const titleItems = {
     title: '제목',
     viewsAndDate: ['조회수', '168,472회', '· 2020. 7. 19.'],
     pictograms: {
-        like: [<i class="fas fa-thumbs-up"></i>, '4.3만'],
-        dislike: [<i class="fas fa-thumbs-up"></i>, '1.3천'],
+        like: [<i class="fas fa-thumbs-up"></i>, 4327, '천'],
+        dislike: [<i class="fas fa-thumbs-up"></i>, 1364, '천'],
         share: [<i class="fas fa-share"></i>, '공유'],
         save: [<i class="fas fa-folder-plus"></i>, '저장'],
         more: [<i class="fas fa-ellipsis-h"></i>]
@@ -111,14 +137,45 @@ const titleItems = {
 };
 
 export default class extends React.Component {
+    state = {
+        liked: false,
+        disliked: false
+    };
+
     buildItems = item => {
         return (
             <ViewsAndDateSpan>
                 {item}
             </ViewsAndDateSpan>
         )
+    };
+
+    compressNum = number => {
+        const cutNum = number.toString().slice(0, 2);
+        return Number(cutNum) / 10;
+    };
+
+    sanitize = picked => {
+        const statesArr = Object.keys(this.state);
+        const notPicked = statesArr.filter(state => state !== picked);
+        return [picked, ...notPicked]
     }
+
+    clickThumb = stateType => () => {
+        const statesArr = this.sanitize(stateType);
+        this.setState({
+            [statesArr[0]]: !this.state[statesArr[0]],
+            [statesArr[1]]: false
+        })
+    };
+
     render() {
+        const { liked, disliked } = this.state;
+        const likeNum = titleItems.pictograms.like[1];
+        const dislikeNum = titleItems.pictograms.dislike[1];
+        const total = likeNum + dislikeNum;
+        const likeRate = parseInt(likeNum / total * 100).toString();
+        const dislikeRate = parseInt(dislikeNum / total * 100).toString();
         return (
             <TitleInfo>
                 <ViewsAndDateWrapper>
@@ -126,25 +183,31 @@ export default class extends React.Component {
                 </ViewsAndDateWrapper>
                 <TitleFunctionsWrapper>
                     <LikeAndDislikeBox>
-                        <TitleFunctionsItems>
+                        <LikeBox liked={liked} onClick={this.clickThumb('liked')}>
                             <LikeIcon>
                                 {titleItems.pictograms.like[0]}
                             </LikeIcon>
                             <TitleFunctionsTexts>
-                                {titleItems.pictograms.like[1]}
+                                {this.compressNum(titleItems.pictograms.like[1])}{titleItems.pictograms.like[2]}
                             </TitleFunctionsTexts>
-                        </TitleFunctionsItems>
-                        <TitleFunctionsItems>
+                        </LikeBox>
+                        <DislikeBox disliked={disliked} onClick={this.clickThumb('disliked')}>
                             <DislikeIcon>
                                 {titleItems.pictograms.dislike[0]}
                             </DislikeIcon>
                             <TitleFunctionsTexts>
-                                {titleItems.pictograms.dislike[1]}
+                                {this.compressNum(titleItems.pictograms.dislike[1])}{titleItems.pictograms.dislike[2]}
                             </TitleFunctionsTexts>
-                        </TitleFunctionsItems>
+                        </DislikeBox>
                         <LikeRateChartBox>
-                            <LikeRate></LikeRate>
-                            <DislikeRate></DislikeRate>
+                            <LikeRate
+                                likeRate={likeRate}
+                                liked={liked}
+                                disliked={disliked}
+                            ></LikeRate>
+                            <DislikeRate
+                                dislikeRate={dislikeRate}
+                            ></DislikeRate>
                         </LikeRateChartBox>
                     </LikeAndDislikeBox>
                     <TitleFunctionsItems>
@@ -167,6 +230,7 @@ export default class extends React.Component {
                         <EllipsisIcon>
                             {titleItems.pictograms.more[0]}
                         </EllipsisIcon>
+                        <TitleInfoClickEffect></TitleInfoClickEffect>
                     </TitleFunctionsItems>
                 </TitleFunctionsWrapper>
             </TitleInfo>

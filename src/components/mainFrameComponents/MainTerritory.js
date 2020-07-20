@@ -37,7 +37,7 @@ const VideoInfoInnerWrapper = styled.div`
 
 export default class extends React.Component {
     state = {
-        mobileEnv: true,
+        mobileEnv: false,
         theaterMode: false
     }
     render() {
