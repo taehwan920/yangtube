@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import LikeAndDislike from './LikeAndDislike';
 
 const TitleInfo = styled.div`
     background: white;
@@ -27,7 +28,7 @@ const TitleFunctionsWrapper = styled.div`
     align-items: center;
 `;
 
-const LikeAndDislikeBox = styled.div`
+export const LikeAndDislikeBox = styled.div`
     height: 36px;
     margin-right: 10px;
     padding-left: 4px;
@@ -37,7 +38,7 @@ const LikeAndDislikeBox = styled.div`
     align-items: center;
 `;
 
-const LikeRateChartBox = styled.div`
+export const LikeRateChartBox = styled.div`
     width: 100%;
     height: 2px;
     position: absolute;
@@ -45,13 +46,13 @@ const LikeRateChartBox = styled.div`
     display: flex;
 `;
 
-const LikeRate = styled.div`
+export const LikeRate = styled.div`
     background-color: ${props => (props.liked || props.disliked) ? '#065FD4' : '#909090'};
     width: ${props => props.likeRate || '100'}%;
     height: 2px;
 `;
 
-const DislikeRate = styled.div`
+export const DislikeRate = styled.div`
     background: rgba(0, 0, 0, 0.1);
     width: ${props => props.dislikeRate || '0'}%;
     height: 2px;
@@ -68,11 +69,11 @@ const TitleFunctionsItems = styled.div`
     cursor: pointer;
 `;
 
-const LikeBox = styled(TitleFunctionsItems)`
+export const LikeBox = styled(TitleFunctionsItems)`
     color: ${props => props.liked ? '#065FD4' : '#909090'};
 `;
 
-const DislikeBox = styled(TitleFunctionsItems)`
+export const DislikeBox = styled(TitleFunctionsItems)`
     color: ${props => props.disliked ? '#065FD4' : '#909090'};
 `;
 
@@ -84,17 +85,19 @@ const TitleFunctionsIcons = styled.span`
     line-height: 24px;
 `;
 
-const LikeIcon = styled(TitleFunctionsIcons)`
+export const LikeIcon = styled(TitleFunctionsIcons)`
     font-size: 18px;
     line-height: 0px;
+    position: relative;
 `;
 
-const DislikeIcon = styled(TitleFunctionsIcons)`
+export const DislikeIcon = styled(TitleFunctionsIcons)`
     transform: rotateZ(180deg);
     font-size: 18px;
     line-height: 0px;
     padding-bottom: 30px;
     margin-right: 4px;
+    position: relative;
 `;
 
 const EllipsisIcon = styled(TitleFunctionsIcons)`
@@ -102,12 +105,12 @@ const EllipsisIcon = styled(TitleFunctionsIcons)`
     margin-left: 8px;
 `;
 
-const TitleFunctionsTexts = styled.span`
+export const TitleFunctionsTexts = styled.span`
     height: 16px;
     font-size: 13px;
 `;
 
-const TitleInfoClickEffect = styled.div`
+export const TitleInfoClickEffect = styled.div`
     background-color: rgba(0, 0, 0, 0.0);
     width: 24px;
     height: 24px;
@@ -124,7 +127,7 @@ const TitleInfoClickEffect = styled.div`
     }
 `;
 
-const titleItems = {
+export const titleItems = {
     title: '제목',
     viewsAndDate: ['조회수', '168,472회', '· 2020. 7. 19.'],
     pictograms: {
@@ -137,10 +140,7 @@ const titleItems = {
 };
 
 export default class extends React.Component {
-    state = {
-        liked: false,
-        disliked: false
-    };
+
 
     buildItems = item => {
         return (
@@ -150,66 +150,17 @@ export default class extends React.Component {
         )
     };
 
-    compressNum = number => {
-        const cutNum = number.toString().slice(0, 2);
-        return Number(cutNum) / 10;
-    };
 
-    sanitize = picked => {
-        const statesArr = Object.keys(this.state);
-        const notPicked = statesArr.filter(state => state !== picked);
-        return [picked, ...notPicked]
-    }
-
-    clickThumb = stateType => () => {
-        const statesArr = this.sanitize(stateType);
-        this.setState({
-            [statesArr[0]]: !this.state[statesArr[0]],
-            [statesArr[1]]: false
-        })
-    };
 
     render() {
-        const { liked, disliked } = this.state;
-        const likeNum = titleItems.pictograms.like[1];
-        const dislikeNum = titleItems.pictograms.dislike[1];
-        const total = likeNum + dislikeNum;
-        const likeRate = parseInt(likeNum / total * 100).toString();
-        const dislikeRate = parseInt(dislikeNum / total * 100).toString();
+
         return (
             <TitleInfo>
                 <ViewsAndDateWrapper>
                     {titleItems.viewsAndDate.map(item => this.buildItems(item))}
                 </ViewsAndDateWrapper>
                 <TitleFunctionsWrapper>
-                    <LikeAndDislikeBox>
-                        <LikeBox liked={liked} onClick={this.clickThumb('liked')}>
-                            <LikeIcon>
-                                {titleItems.pictograms.like[0]}
-                            </LikeIcon>
-                            <TitleFunctionsTexts>
-                                {this.compressNum(titleItems.pictograms.like[1])}{titleItems.pictograms.like[2]}
-                            </TitleFunctionsTexts>
-                        </LikeBox>
-                        <DislikeBox disliked={disliked} onClick={this.clickThumb('disliked')}>
-                            <DislikeIcon>
-                                {titleItems.pictograms.dislike[0]}
-                            </DislikeIcon>
-                            <TitleFunctionsTexts>
-                                {this.compressNum(titleItems.pictograms.dislike[1])}{titleItems.pictograms.dislike[2]}
-                            </TitleFunctionsTexts>
-                        </DislikeBox>
-                        <LikeRateChartBox>
-                            <LikeRate
-                                likeRate={likeRate}
-                                liked={liked}
-                                disliked={disliked}
-                            ></LikeRate>
-                            <DislikeRate
-                                dislikeRate={dislikeRate}
-                            ></DislikeRate>
-                        </LikeRateChartBox>
-                    </LikeAndDislikeBox>
+                    <LikeAndDislike></LikeAndDislike>
                     <TitleFunctionsItems>
                         <TitleFunctionsIcons>
                             {titleItems.pictograms.share[0]}
