@@ -9,7 +9,7 @@ const OverTheSheet = css`
 const GuideWrapper = styled.aside`
     background-color: white;
     width: 240px;
-    position: absolute;
+    position: fixed;
     display: flex;
     flex-direction: column;
     color: rgba(0, 0, 0, 0.7);
@@ -20,7 +20,7 @@ const GuideWrapper = styled.aside`
 
 const GuideBlackSheet = styled.div`
     background-color: rgba(0, 0, 0, 0.5);
-    width: 200vw;
+    width: 150vw;
     height: 100vh;
     position: absolute;
     overflow: hidden;
