@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import TitleAndInfo from './titleAndDescComponents/TitleAndInfo';
-import DescAndUploader from './titleAndDescComponents/DescAndUploader';
+import TitleAndInfo from './TitleAndInfo';
+import DescAndUploader from './DescAndUploader';
 
 const TitleAndDesc = styled.section`
     background-color: white;

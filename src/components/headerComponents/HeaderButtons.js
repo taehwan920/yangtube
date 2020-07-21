@@ -111,11 +111,9 @@ const HeaderClickAni = keyframes`
         transform: scale(1);
     }
     40% {
-        background-color: rgba(0, 0, 0, 0.2);
         transform: scale(1.7);
     }
     100% {
-        background-color: rgba(0, 0, 0, 0);
         transform: scale(2);
     }
 `;
