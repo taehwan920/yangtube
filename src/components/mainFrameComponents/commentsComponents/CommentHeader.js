@@ -28,6 +28,7 @@ const CommentSortBox = styled.div`
     height: 100%;
     color: rgba(0, 0, 0, 0.5);
     cursor: pointer;
+    position: relative;
 `;
 
 const CommentSortIcon = styled.span`
@@ -145,6 +146,7 @@ const CommentInputBtn = styled.div`
     text-align: center;
     border-radius: 3px;
     cursor: pointer;
+    position: relative;
 `;
 
 const CommentInputSubmitBtn = styled(CommentInputBtn)`
@@ -154,10 +156,18 @@ const CommentInputSubmitBtn = styled(CommentInputBtn)`
     margin-left: 8px;
 `;
 
-const CommentBtnClickEffect = styled.div`
+const CommentClickEffect = styled.div`
     width: 100%;
     height: 100%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 0.3s linear;
 
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
 `;
 
 const comHeaderItems = {
@@ -200,7 +210,17 @@ export default class extends React.Component {
     }
 
     cancelComment = () => {
-        const inputTag = document.querySelector('.comment-input')
+        const inputTag = document.querySelector('.comment-input');
+        inputTag.value = '';
+        this.setState({
+            inputFocused: false,
+            inputting: false,
+            inputHeight: 0
+        })
+    }
+
+    submitComment = () => {
+        const inputTag = document.querySelector('.comment-input');
         inputTag.value = '';
         this.setState({
             inputFocused: false,
@@ -218,10 +238,11 @@ export default class extends React.Component {
                     <CommentSortBox>
                         <CommentSortIcon><i class="fas fa-sort-amount-down"></i></CommentSortIcon>
                         <CommentSortText>정렬 기준</CommentSortText>
+                        <CommentClickEffect></CommentClickEffect>
                     </CommentSortBox>
                 </CommentHeaderHeader>
                 <CommentInputAndUserWrapper>
-                    <CommentInputUserIcon>
+                    <CommentInputUserIcon draggable="true">
                         G
                     </CommentInputUserIcon>
                     <CommentInputPartWrapper>
@@ -245,9 +266,11 @@ export default class extends React.Component {
                             <CommentInputBtnBox>
                                 <CommentInputBtn onClick={this.cancelComment}>
                                     {comHeaderItems.subBtn[0]}
+                                    <CommentClickEffect></CommentClickEffect>
                                 </CommentInputBtn>
-                                <CommentInputSubmitBtn inputting={inputting}>
+                                <CommentInputSubmitBtn onClick={this.submitComment} inputting={inputting}>
                                     {comHeaderItems.subBtn[1]}
+                                    <CommentClickEffect></CommentClickEffect>
                                 </CommentInputSubmitBtn>
                             </CommentInputBtnBox>
                         </CommentInputBtnsWrapper>
