@@ -4,9 +4,10 @@ import CommentHeader from './CommentHeader';
 import CommentContents from './CommentContents';
 
 const CommentsWrapper = styled.section`
-    background-color: lightgreen;
+    background-color: white;
     width: 100%;
-    height: 1000px;
+    height: max-content;
+    padding-bottom: 125px;
     display: flex;
     flex-direction: column;
 `;

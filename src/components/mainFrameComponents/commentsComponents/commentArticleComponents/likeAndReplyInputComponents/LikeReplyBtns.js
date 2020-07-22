@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { shortNum } from '../../../../DB';
 
 const LikeAndReplyWrapper = styled.div`
     width: 100%;
@@ -93,9 +94,21 @@ export default class extends React.Component {
         })
     }
 
+    shortenNum = (num, lang) => {
+        if (num < 1000) { return [num] }
+        const divider = shortNum[lang];
+        for (let i in divider) {
+            if (num / divider[i][0] >= 1) {
+                let temp = parseInt(num / divider[i][0] * 10) / 10;
+                return [temp, divider[i][1]];
+            }
+        };
+    };
+
     render() {
-        const { toggleReply } = this.props;
+        const { toggleReply, like } = this.props;
         const { liked, disliked } = this.state;
+        const likedNumber = this.shortenNum(like, 'kr');
         return (
             <LikeAndReplyWrapper>
                 <LikeIcon
@@ -108,7 +121,9 @@ export default class extends React.Component {
                     liked={liked}
                     onClick={this.toggleLike}
                 >
-                    3.6억
+                    {likedNumber.length < 2
+                        ? likedNumber[0]
+                        : `${likedNumber[0]}${likedNumber[1]}`}
                 </LikeNum>
                 <DislikeIcon
                     disliked={disliked}

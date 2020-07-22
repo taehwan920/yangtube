@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { reportFixed } from '../../../DB';
 
 const PopUpWrapper = styled.div`
     background-color: white;
@@ -49,7 +50,7 @@ export default class extends React.Component {
                         <i class="fas fa-flag"></i>
                     </ReportIcon>
                     <ReportTxt>
-                        신고
+                        {reportFixed.text}
                     </ReportTxt>
                 </PopUpItem>
             </PopUpWrapper>

@@ -10,10 +10,13 @@ const CommentArticleWrapper = styled.article`
 
 export default class extends React.Component {
     render() {
+        const { commentItem } = this.props;
+        const replyItems = commentItem.reply;
+        console.log(commentItem);
         return (
             <CommentArticleWrapper>
-                <CommentUserAndContent></CommentUserAndContent>
-                <ReplySwitches></ReplySwitches>
+                <CommentUserAndContent commentItem={commentItem}></CommentUserAndContent>
+                <ReplySwitches replyItems={replyItems}></ReplySwitches>
             </CommentArticleWrapper>
         )
     };

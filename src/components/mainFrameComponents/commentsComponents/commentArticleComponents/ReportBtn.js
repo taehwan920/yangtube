@@ -48,7 +48,6 @@ export default class extends React.Component {
             if (this.wrapperRef.current.contains(e.target) === null) { return; }
             if (this.wrapperRef && !this.wrapperRef.current.contains(e.target)) {
                 this.setState({ btnClicked: false })
-                console.log('aaa')
             }
         }
 
@@ -63,7 +62,7 @@ export default class extends React.Component {
                 hovering={hovering}
                 btnClicked={btnClicked}>
                 <ReportIconBox
-                    onClick={() => this.setState({ btnClicked: true })}
+                    onClick={() => this.setState({ btnClicked: !this.state.btnClicked })}
                 >
                     <i class="fas fa-ellipsis-v"></i>
                     <ClickEffect></ClickEffect>

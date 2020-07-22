@@ -22,17 +22,29 @@ export default class extends React.Component {
         hovering: false
     }
     render() {
+        const { commentItem } = this.props;
+        const { content, iconColor, userName, timestamp } = commentItem.main;
         const { hovering } = this.state;
         return (
             <CommentUserAndContentWrapper
                 onMouseOver={() => this.setState({ hovering: true })}
                 onMouseOut={() => this.setState({ hovering: false })}
             >
-                <CommentUserIcon></CommentUserIcon>
+                <CommentUserIcon
+                    iconColor={iconColor}
+                    userName={userName}
+                ></CommentUserIcon>
                 <UserAndContentWrapper>
-                    <CommentUserAndTime></CommentUserAndTime>
-                    <CommentContent></CommentContent>
-                    <LikeAndReply></LikeAndReply>
+                    <CommentUserAndTime
+                        userName={userName}
+                        timestamp={timestamp}
+                    ></CommentUserAndTime>
+                    <CommentContent
+                        content={content}
+                    ></CommentContent>
+                    <LikeAndReply
+                        item={commentItem.main}
+                    ></LikeAndReply>
                 </UserAndContentWrapper>
                 <ReportBtn hovering={hovering}></ReportBtn>
             </CommentUserAndContentWrapper>

@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
-import { commentItems } from '../CommentContents';
+import styled, { css } from 'styled-components';
+
 
 const CommentContentWrapper = styled.div`
     width: 100%;
@@ -10,14 +10,17 @@ const CommentContentWrapper = styled.div`
 
 const CommentContent = styled.div`
     width: 100%;
-    height: ${props => props.realHeight || 'auto'}px;
+    height: ${props => props.realHeight || 'max-content'}px;
     font-size: 14px;
     white-space: pre-wrap;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    text-overflow: '';
+    ${props => !props.realHeight && css`
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        text-overflow: '';
+    `}
+    
 `;
 
 const CommentHiddenBox = styled.div`
@@ -47,8 +50,10 @@ export default class extends React.Component {
         realHeight: null
     }
 
+    contentRef = React.createRef();
+
     showToggle = () => {
-        const realHeight = document.querySelector('.hidden-box').clientHeight;
+        const realHeight = this.contentRef.current.clientHeight;
         if (!this.state.showMore) {
             this.setState({
                 showMore: true,
@@ -62,18 +67,24 @@ export default class extends React.Component {
         }
     }
     render() {
+        const { content } = this.props;
         const { realHeight } = this.state;
+        const numberOfLine = content.split('\n').length;
         return (
             <CommentContentWrapper>
                 <CommentContent realHeight={realHeight}>
-                    {commentItems.main.content}
+                    {content}
                 </CommentContent>
-                <CommentShowMore onClick={this.showToggle}>
-                    {realHeight ? '간략히' : '자세히 보기'}
-                </CommentShowMore>
                 <CommentHiddenBox
-                    className="hidden-box"
-                >{commentItems.main.content}</CommentHiddenBox>
+                    ref={this.contentRef}>
+                    {content}
+                </CommentHiddenBox>
+                {numberOfLine <= 4
+                    ? null
+                    : <CommentShowMore
+                        onClick={this.showToggle}>
+                        {realHeight ? '간략히' : '자세히 보기'}
+                    </CommentShowMore>}
             </CommentContentWrapper>
         )
     }

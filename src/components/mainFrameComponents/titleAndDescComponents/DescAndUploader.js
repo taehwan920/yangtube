@@ -142,6 +142,7 @@ export default class extends React.Component {
     render() {
         const { realHeight, showMore, showMoreFunc } = this.props;
         const { subscribed } = this.state;
+        const numberOfLine = descItems.description.split('\n').length;
         return (
             <DescAndUploaderWrapper realHeight={realHeight}>
                 <UploaderWrapper>
@@ -176,9 +177,11 @@ export default class extends React.Component {
                     <DescTextWrapper realHeight={realHeight}>
                         {descItems.description}
                     </DescTextWrapper>
-                    <ShowMoreBtn realHeight={realHeight} onClick={showMoreFunc}>
-                        {showMore ? '간략히' : '더보기'}
-                    </ShowMoreBtn>
+                    {numberOfLine <= 3
+                        ? null
+                        : <ShowMoreBtn realHeight={realHeight} onClick={showMoreFunc}>
+                            {showMore ? '간략히' : '더보기'}
+                        </ShowMoreBtn>}
                 </DesciptionWrapper>
             </DescAndUploaderWrapper >
         )

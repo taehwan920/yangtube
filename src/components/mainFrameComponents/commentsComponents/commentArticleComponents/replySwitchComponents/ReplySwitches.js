@@ -40,14 +40,19 @@ export default class extends React.Component {
         this.setState({ replyVisible: false })
     }
     render() {
+        const { replyItems } = this.props;
         const { replyVisible } = this.state;
         return (
             <React.Fragment>
                 {replyVisible
                     ? null
-                    : <ReplyOpenSwitch openReplies={this.openReplies}></ReplyOpenSwitch>}
+                    : <ReplyOpenSwitch
+                        replyLength={replyItems.length}
+                        openReplies={this.openReplies}></ReplyOpenSwitch>}
                 {replyVisible
-                    ? <ReplyCloseSwitch closeReplies={this.closeReplies}></ReplyCloseSwitch>
+                    ? <ReplyCloseSwitch
+                        replyItems={replyItems}
+                        closeReplies={this.closeReplies}></ReplyCloseSwitch>
                     : null}
             </React.Fragment>
         )
