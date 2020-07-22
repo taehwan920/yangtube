@@ -65,7 +65,7 @@ const CommentInputUserIcon = styled.div`
 
 const CommentInputPartWrapper = styled.div`
     width: calc(100% - 56px);
-    height: 100%;
+    height: max-content;
     display: flex;
     
     flex-direction: column;
@@ -259,18 +259,20 @@ export default class extends React.Component {
                                 <CommentInputBorderAni inputFocused={inputFocused}></CommentInputBorderAni>
                             </CommentInputBorderAniBox>
                         </CommentInputContainer>
-                        <CommentInputBtnsWrapper>
-                            <CommentInputBtnBox>
-                                <CommentInputBtn onClick={this.cancelComment}>
-                                    {comHeaderItems.subBtn[0]}
-                                    <CommentClickEffect></CommentClickEffect>
-                                </CommentInputBtn>
-                                <CommentInputSubmitBtn onClick={this.submitComment} inputting={inputting}>
-                                    {comHeaderItems.subBtn[1]}
-                                    <CommentClickEffect></CommentClickEffect>
-                                </CommentInputSubmitBtn>
-                            </CommentInputBtnBox>
-                        </CommentInputBtnsWrapper>
+                        {inputFocused
+                            ? <CommentInputBtnsWrapper>
+                                <CommentInputBtnBox>
+                                    <CommentInputBtn onClick={this.cancelComment}>
+                                        {comHeaderItems.subBtn[0]}
+                                        <CommentClickEffect></CommentClickEffect>
+                                    </CommentInputBtn>
+                                    <CommentInputSubmitBtn onClick={this.submitComment} inputting={inputting}>
+                                        {comHeaderItems.subBtn[1]}
+                                        <CommentClickEffect></CommentClickEffect>
+                                    </CommentInputSubmitBtn>
+                                </CommentInputBtnBox>
+                            </CommentInputBtnsWrapper>
+                            : null}
                     </CommentInputPartWrapper>
                 </CommentInputAndUserWrapper>
             </CommentHeaderWrapper>

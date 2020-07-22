@@ -44,9 +44,14 @@ export default class extends React.Component {
     wrapperRef = React.createRef();
 
     clickOutside = (e) => {
-        if (this.wrapperRef && !this.wrapperRef.current.contains(e.target)) {
-            this.setState({ btnClicked: false })
+        if (this.state.btnClicked) {
+            if (this.wrapperRef.current.contains(e.target) === null) { return; }
+            if (this.wrapperRef && !this.wrapperRef.current.contains(e.target)) {
+                this.setState({ btnClicked: false })
+                console.log('aaa')
+            }
         }
+
     }
 
     render() {

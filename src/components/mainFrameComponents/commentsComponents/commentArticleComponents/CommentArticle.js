@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import CommentUserAndContent from './CommentUserAndContent';
-import ReplySwitch from './replySwitchComponents/ReplySwitch';
+import ReplySwitches from './replySwitchComponents/ReplySwitches';
 
 const CommentArticleWrapper = styled.article`
     width: 100%;
@@ -13,7 +13,7 @@ export default class extends React.Component {
         return (
             <CommentArticleWrapper>
                 <CommentUserAndContent></CommentUserAndContent>
-                <ReplySwitch></ReplySwitch>
+                <ReplySwitches></ReplySwitches>
             </CommentArticleWrapper>
         )
     };

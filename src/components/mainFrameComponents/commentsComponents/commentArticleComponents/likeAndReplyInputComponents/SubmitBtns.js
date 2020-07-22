@@ -40,14 +40,17 @@ export default class extends React.Component {
             <ReplyBtnsWrapper>
                 <ReplyBtnsBox>
                     <ReplyBtns
+                        draggable="true"
                         onClick={() => {
                             cancelReply();
                             toggleReply();
                         }}
                     >취소</ReplyBtns>
                     <ReplySubmitBtn
+                        draggable="true"
                         inputting={inputting}
                         onClick={() => {
+                            if (!inputting) { return; }
                             submitReply();
                             toggleReply();
                         }}
