@@ -102,7 +102,6 @@ const CommentPlaceHolder = styled.div`
     height: 21px;
     color: rgba(0, 0, 0, 0.6);
     font-size: 13.5px;
-    cursor: none;
     position: absolute;
     z-index: 25;
     display:${props => props.inputting ? 'none' : 'inline'};
