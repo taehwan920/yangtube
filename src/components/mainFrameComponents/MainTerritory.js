@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import MainTitleAndDesc from './titleAndDescComponents/MainTitleAndDesc';
-import MainComments from './MainComments';
+import MainComments from './commentsComponents/MainComments';
 import VideoFrame from './videoComponents/VideoFrame';
 import VideoNavPC from '../videoNavComponents/VideoNavPC';
 

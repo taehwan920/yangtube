@@ -250,7 +250,6 @@ export default class extends React.Component {
                                 공개 댓글 추가...
                             </CommentPlaceHolder>
                             <CommentInput
-                                type="textarea"
                                 className="comment-input"
                                 inputHeight={inputHeight}
                                 onFocus={() => this.setState({ inputFocused: true })}
