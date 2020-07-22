@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import LikeReplyBtns from './LikeReplyBtns';
-import ReplyInputAndUser from './ReplyInputAndUser';
+import ReplyUserIconAndInput from './ReplyUserIconAndInput';
 
 const CommentLikeAndReplyBox = styled.div`
     width: 100%;
@@ -29,7 +29,9 @@ export default class extends React.Component {
                     toggleReply={this.toggleReply}
                 ></LikeReplyBtns>
                 {replyActive
-                    ? <ReplyInputAndUser></ReplyInputAndUser>
+                    ? <ReplyUserIconAndInput
+                        toggleReply={this.toggleReply}
+                    ></ReplyUserIconAndInput>
                     : null}
             </CommentLikeAndReplyBox>
         )

@@ -79,7 +79,6 @@ const CommentInputContainer = styled.div`
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     position: relative;
     display: flex;
-    flex-direction: flex-start;
 `;
 
 const CommentInputBorderAniBox = styled.div`
@@ -180,7 +179,7 @@ export default class extends React.Component {
         inputHeight: 0
     }
 
-    resizeInput = (str) => {
+    resizeInput = str => {
         const strArr = str.split('\n');
         if (strArr.length <= 1) {
             return 21

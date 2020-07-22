@@ -27,19 +27,31 @@ const ReplyBtns = styled.div`
 `;
 
 const ReplySubmitBtn = styled(ReplyBtns)`
-    background-color: ${props => props.replying ? '#065FD4' : '#CCCCCC'};
-    cursor: ${props => props.replying ? 'pointer' : 'default'};
+    background-color: ${props => props.inputting ? '#065FD4' : '#CCCCCC'};
+    cursor: ${props => props.inputting ? 'pointer' : 'default'};
     color: white;
     margin-left: 8px;
 `;
 
 export default class extends React.Component {
     render() {
+        const { inputting, toggleReply, cancelReply, submitReply } = this.props;
         return (
             <ReplyBtnsWrapper>
                 <ReplyBtnsBox>
-                    <ReplyBtns>취소</ReplyBtns>
-                    <ReplySubmitBtn>답글</ReplySubmitBtn>
+                    <ReplyBtns
+                        onClick={() => {
+                            cancelReply();
+                            toggleReply();
+                        }}
+                    >취소</ReplyBtns>
+                    <ReplySubmitBtn
+                        inputting={inputting}
+                        onClick={() => {
+                            submitReply();
+                            toggleReply();
+                        }}
+                    >답글</ReplySubmitBtn>
                 </ReplyBtnsBox>
             </ReplyBtnsWrapper>
         )
