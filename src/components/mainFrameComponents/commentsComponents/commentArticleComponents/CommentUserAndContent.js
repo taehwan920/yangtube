@@ -11,23 +11,30 @@ const CommentUserAndContentWrapper = styled.div`
     display: flex;
 `;
 
-const CommentNameAndContentWrapper = styled.div`
+const UserAndContentWrapper = styled.div`
     width: calc(100% - 40px - 56px);
     display: flex;
     flex-direction: column;
 `;
 
 export default class extends React.Component {
+    state = {
+        hovering: false
+    }
     render() {
+        const { hovering } = this.state;
         return (
-            <CommentUserAndContentWrapper>
+            <CommentUserAndContentWrapper
+                onMouseOver={() => this.setState({ hovering: true })}
+                onMouseOut={() => this.setState({ hovering: false })}
+            >
                 <CommentUserIcon></CommentUserIcon>
-                <CommentNameAndContentWrapper>
+                <UserAndContentWrapper>
                     <CommentUserAndTime></CommentUserAndTime>
                     <CommentContent></CommentContent>
                     <LikeAndReply></LikeAndReply>
-                </CommentNameAndContentWrapper>
-                <ReportBtn></ReportBtn>
+                </UserAndContentWrapper>
+                <ReportBtn hovering={hovering}></ReportBtn>
             </CommentUserAndContentWrapper>
         )
     }

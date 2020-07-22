@@ -33,6 +33,7 @@ const CommentHiddenBox = styled.div`
 `;
 
 const CommentShowMore = styled.div`
+    width: max-content;
     height: 16px;
     margin-top: 4px;
     font-size: 14px;

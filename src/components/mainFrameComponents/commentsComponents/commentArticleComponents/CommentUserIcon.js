@@ -8,12 +8,14 @@ const CommentUserIconWrapper = styled.div`
 
 const CommentUserIconBox = styled.div`
     width: 100%;
-    height: 43px;
+    height: 40px;
+    cursor: pointer;
 `;
 
 const CommentUserIcon = styled.div`
     width: 40px;
     height: 40px;
+    margin-right: 16px;
     color: white;
     background-color: #EC407A;
     border-radius: 50%;
@@ -27,7 +29,7 @@ export default class extends React.Component {
         return (
             <CommentUserIconWrapper>
                 <CommentUserIconBox>
-                    <CommentUserIcon>
+                    <CommentUserIcon draggable="true">
                         V
                     </CommentUserIcon>
                 </CommentUserIconBox>

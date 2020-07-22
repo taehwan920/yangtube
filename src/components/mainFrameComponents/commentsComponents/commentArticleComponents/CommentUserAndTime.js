@@ -6,6 +6,7 @@ const CommentUserAndTimeWrapper = styled.div`
     height: 20px;
     margin-bottom: 2px;
     font-size: 13px;
+    cursor: pointer;
 `;
 
 const CommentUserName = styled.span`
