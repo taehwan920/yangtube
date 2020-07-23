@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import LikeAndDislike from './titleAndInfo/LikeAndDislike';
+import More from './titleAndInfo/More';
 
 const TitleAndInfo = styled.div`
     background: white;
@@ -58,7 +59,7 @@ export const DislikeRate = styled.div`
     height: 2px;
 `;
 
-const TitleFunctionsItems = styled.div`
+export const TitleFunctionsItems = styled.div`
     height: 40px;
     display: flex;
     margin-right: 8px;
@@ -100,7 +101,7 @@ export const DislikeIcon = styled(TitleFunctionsIcons)`
     position: relative;
 `;
 
-const EllipsisIcon = styled(TitleFunctionsIcons)`
+export const EllipsisIcon = styled(TitleFunctionsIcons)`
     font-size: 18px;
     margin-left: 8px;
 `;
@@ -133,9 +134,8 @@ export const titleItems = {
     pictograms: {
         like: [<i class="fas fa-thumbs-up"></i>, 4327, '천'],
         dislike: [<i class="fas fa-thumbs-up"></i>, 1364, '천'],
-        share: [<i class="fas fa-share"></i>, '공유'],
-        save: [<i class="fas fa-folder-plus"></i>, '저장'],
-        more: [<i class="fas fa-ellipsis-h"></i>]
+        share: ['공유'],
+        save: ['저장'],
     }
 };
 
@@ -157,26 +157,21 @@ export default class extends React.Component {
                     <LikeAndDislike></LikeAndDislike>
                     <TitleFunctionsItems>
                         <TitleFunctionsIcons>
-                            {titleItems.pictograms.share[0]}
+                            <i class="fas fa-share"></i>
                         </TitleFunctionsIcons>
                         <TitleFunctionsTexts>
-                            {titleItems.pictograms.share[1]}
+                            {titleItems.pictograms.share[0]}
                         </TitleFunctionsTexts>
                     </TitleFunctionsItems>
                     <TitleFunctionsItems>
                         <TitleFunctionsIcons>
-                            {titleItems.pictograms.save[0]}
+                            <i class="fas fa-folder-plus"></i>
                         </TitleFunctionsIcons>
                         <TitleFunctionsTexts>
-                            {titleItems.pictograms.save[1]}
+                            {titleItems.pictograms.save[0]}
                         </TitleFunctionsTexts>
                     </TitleFunctionsItems>
-                    <TitleFunctionsItems>
-                        <EllipsisIcon>
-                            {titleItems.pictograms.more[0]}
-                        </EllipsisIcon>
-                        <TitleInfoClickEffect></TitleInfoClickEffect>
-                    </TitleFunctionsItems>
+                    <More></More>
                 </TitleFunctionsWrapper>
             </TitleAndInfo>
         )

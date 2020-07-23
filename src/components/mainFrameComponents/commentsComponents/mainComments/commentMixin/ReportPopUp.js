@@ -19,7 +19,7 @@ const PopUpWrapper = styled.div`
 const PopUpItem = styled.div`
     width: 100%;
     height: 36px;
-    padding: 0px 26px 0px 24px;
+    padding: 0px 30px 0px 22px;
     display: flex;
     align-items: center;
 
@@ -31,6 +31,7 @@ const PopUpItem = styled.div`
 const ReportIcon = styled.span`
     width: 24px;
     height: 24px;
+    font-size: 20px;
     margin-right: 16px;
 `;
 
