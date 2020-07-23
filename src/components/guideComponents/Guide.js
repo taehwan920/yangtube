@@ -9,12 +9,12 @@ const OverTheSheet = css`
 const GuideWrapper = styled.aside`
     background-color: white;
     width: 240px;
-    position: fixed;
+    position: absolute;
     display: flex;
     flex-direction: column;
     color: rgba(0, 0, 0, 0.7);
-    transition: transform 0.18s ease-out;
-    transform: ${props => (props.guideIsON ? 'translateX(0px);' : 'translateX(-240px)')};
+    transition: all 0.18s ease-out;
+    left: ${props => props.guideIsON ? '0px' : '-240px'};
     ${OverTheSheet}
 `;
 

@@ -8,6 +8,7 @@ import styled from 'styled-components';
 const HomeDiv = styled.div`
     position: relative;
     display: flex;
+    justify-content: center;
     width: 100%;
     background-color: #F9F9F9;
     z-index: 1;

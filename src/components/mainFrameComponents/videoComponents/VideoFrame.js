@@ -7,8 +7,10 @@ const VideoFrame = styled.div`
     height: calc(100vw / 235 * 100);
 
     ${props => !props.theaterMode && css`
-        width: 1280px;
-        height: 720px;
+        max-width: 1280px;
+        max-height: 720px;
+        width: 68.45vw;
+        height: calc(68.45vw / 16 * 9);
         margin-left: 82px;
         margin-top: 24px;
     `}

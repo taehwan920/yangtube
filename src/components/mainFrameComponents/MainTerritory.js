@@ -21,24 +21,25 @@ const MainFrameWrapper = styled.div`
 `;
 
 const VideoInfoOuterWrapper = styled.div`
+    width: max-content;
     background: inherit;
-    margin-left: 58px;
+    margin-left: 82px;
     display: flex;
 `;
 
 const VideoInfoInnerWrapper = styled.div`
     background: inherit;
-    width: 1280px;
+    width: 68.45vw;
+    max-width: 1280px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    margin-left: 24px;
 `;
 
 export default class extends React.Component {
     state = {
-        mobileEnv: true,
+        mobileEnv: false,
         theaterMode: false
     }
     render() {
@@ -48,7 +49,9 @@ export default class extends React.Component {
                 <MainFrameWrapper theaterMode={theaterMode}>
                     <VideoFrame theaterMode={theaterMode}></VideoFrame>
                     <VideoInfoOuterWrapper>
-                        <VideoInfoInnerWrapper>
+                        <VideoInfoInnerWrapper
+                            theaterMode={theaterMode}
+                        >
                             <MainTitleAndDesc></MainTitleAndDesc>
                             {mobileEnv
                                 ? <VideoNavNonPC></VideoNavNonPC>

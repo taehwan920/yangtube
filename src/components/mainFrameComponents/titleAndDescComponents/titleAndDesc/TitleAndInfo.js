@@ -18,8 +18,21 @@ const ViewsAndDateWrapper = styled.div`
     align-items: center;
 `;
 
-const ViewsAndDateSpan = styled.span`
+const ViewsSpan = styled.span`
     margin-right: 3px;
+`;
+
+const TitleInfoDot = styled.span`
+    margin: 0px 4px;
+    @media (max-width: 565px){
+        display: none;
+    }
+`;
+
+const DateSpan = styled.span`
+    @media (max-width: 565px){
+        display: none;
+    }
 `;
 
 const TitleFunctionsWrapper = styled.div`
@@ -130,7 +143,7 @@ export const TitleInfoClickEffect = styled.div`
 
 export const titleItems = {
     title: '제목',
-    viewsAndDate: ['조회수', '168,472회', '· 2020. 7. 19.'],
+    viewsAndDate: ['조회수', '168,472회', '·', '2020. 7. 19.'],
     pictograms: {
         like: [<i class="fas fa-thumbs-up"></i>, 4327, '천'],
         dislike: [<i class="fas fa-thumbs-up"></i>, 1364, '천'],
@@ -140,18 +153,19 @@ export const titleItems = {
 };
 
 export default class extends React.Component {
-    buildItems = item => {
-        return (
-            <ViewsAndDateSpan>
-                {item}
-            </ViewsAndDateSpan>
-        )
-    };
     render() {
         return (
             <TitleAndInfo>
                 <ViewsAndDateWrapper>
-                    {titleItems.viewsAndDate.map(item => this.buildItems(item))}
+                    <ViewsSpan>
+                        조회수 168,482회
+                    </ViewsSpan>
+                    <TitleInfoDot>
+                        ·
+                    </TitleInfoDot>
+                    <DateSpan>
+                        2020. 7. 19.
+                    </DateSpan>
                 </ViewsAndDateWrapper>
                 <TitleFunctionsWrapper>
                     <LikeAndDislike></LikeAndDislike>
