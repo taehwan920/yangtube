@@ -51,24 +51,9 @@ const popUpItems = [
 ]
 
 export default class extends React.Component {
-    componentDidMount() {
-        document.addEventListener('mousedown', this.clickOutside);
-    }
-
-    popUpRef = React.createRef();
-
-    clickOutside = e => {
-        if (this.popUpRef.current === null) { return; }
-        if (this.popUpRef && !this.popUpRef.current.contains(e.target)) {
-            this.props.popUpOff();
-        }
-    }
-
     render() {
         return (
-            <PopUpWrapper
-                ref={this.popUpRef}
-            >
+            <PopUpWrapper>
                 {popUpItems.map(item => {
                     return (
                         <PopUpArticle>

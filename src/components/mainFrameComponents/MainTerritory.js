@@ -4,6 +4,7 @@ import MainTitleAndDesc from './titleAndDescComponents/MainTitleAndDesc';
 import MainComments from './commentsComponents/MainComments';
 import VideoFrame from './videoComponents/VideoFrame';
 import VideoNavPC from '../videoNavComponents/VideoNavPC';
+import VideoNavNonPC from '../videoNavComponents/VideoNavNonPC';
 
 
 const MainTerritory = styled.div`
@@ -26,18 +27,18 @@ const VideoInfoOuterWrapper = styled.div`
 `;
 
 const VideoInfoInnerWrapper = styled.div`
+    background: inherit;
     width: 1280px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     margin-left: 24px;
-    background: salmon;
 `;
 
 export default class extends React.Component {
     state = {
-        mobileEnv: false,
+        mobileEnv: true,
         theaterMode: false
     }
     render() {
@@ -50,7 +51,7 @@ export default class extends React.Component {
                         <VideoInfoInnerWrapper>
                             <MainTitleAndDesc></MainTitleAndDesc>
                             {mobileEnv
-                                ? <VideoNavPC></VideoNavPC>
+                                ? <VideoNavNonPC></VideoNavNonPC>
                                 : null}
                             <MainComments></MainComments>
                         </VideoInfoInnerWrapper>
