@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import LikeAndDislike from './LikeAndDislike';
+import LikeAndDislike from './titleAndInfo/LikeAndDislike';
 
 const TitleAndInfo = styled.div`
     background: white;

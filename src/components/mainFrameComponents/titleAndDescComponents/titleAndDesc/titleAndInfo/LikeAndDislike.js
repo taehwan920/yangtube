@@ -9,9 +9,9 @@ import {
     DislikeIcon,
     DislikeRate,
     TitleFunctionsTexts
-} from './TitleAndInfo';
+} from '../TitleAndInfo';
 import styled from 'styled-components'
-import { titleItems } from './TitleAndInfo';
+import { titleItems } from '../TitleAndInfo';
 
 const LikeEffect = styled.div`
     background-color: rgba(0, 0, 0, 0.0);

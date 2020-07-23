@@ -15,12 +15,12 @@ const MainTerritory = styled.div`
 `;
 
 const MainFrameWrapper = styled.div`
-    width: ${props => props.theaterMode ? '100%' : '1362px'};
+    width: ${props => props.theaterMode ? '100%' : 'max-content'};
     background: peru;
 `;
 
 const VideoInfoOuterWrapper = styled.div`
-    background: steelblue;
+    background: inherit;
     margin-left: 58px;
     display: flex;
 `;
