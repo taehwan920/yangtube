@@ -19,7 +19,6 @@ const ViewsAndDateWrapper = styled.div`
 `;
 
 const ViewsSpan = styled.span`
-    margin-right: 3px;
 `;
 
 const TitleInfoDot = styled.span`
@@ -75,11 +74,10 @@ export const DislikeRate = styled.div`
 export const TitleFunctionsItems = styled.div`
     height: 40px;
     display: flex;
-    margin-right: 8px;
+    margin-right: 6px;
     position: relative;
-    justify-content: space-around;
-    align-item: center;
-    line-height: 42px;
+    justify-content: space-evenly;
+    align-items: center;
     cursor: pointer;
 `;
 
@@ -122,6 +120,7 @@ export const EllipsisIcon = styled(TitleFunctionsIcons)`
 export const TitleFunctionsTexts = styled.span`
     height: 16px;
     font-size: 13px;
+    line-height: 16px;
 `;
 
 export const TitleInfoClickEffect = styled.div`
@@ -158,7 +157,7 @@ export default class extends React.Component {
             <TitleAndInfo>
                 <ViewsAndDateWrapper>
                     <ViewsSpan>
-                        조회수 168,482회
+                        조회수 16만회
                     </ViewsSpan>
                     <TitleInfoDot>
                         ·

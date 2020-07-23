@@ -18,12 +18,30 @@ const MainTerritory = styled.div`
 const MainFrameWrapper = styled.div`
     width: ${props => props.theaterMode ? '100%' : 'max-content'};
     background: peru;
+    padding-left: 56px;
+    @media(max-width: 767px) {
+        width: 100%;
+    }
+    @media(max-width: 565px) {
+        padding-left: 0px;
+    }
+`;
+
+const MainFrameContainer = styled.div`
+    width: ${props => props.theaterMode ? '100%' : 'max-content'};
+    background: lightgreen;
+    margin-left: 24px;
+    padding-top: 24px;
+    @media(max-width: 767px) {
+        width: 100%;
+    }
 `;
 
 const VideoInfoOuterWrapper = styled.div`
     width: max-content;
     background: inherit;
     margin-left: 82px;
+    margin-left: 0px;
     display: flex;
 `;
 
@@ -35,6 +53,11 @@ const VideoInfoInnerWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+
+    @media(max-width: 1023px) {
+        width: 95.1vw;
+        height: calc(95.1vw / 16 * 9);
+    }
 `;
 
 export default class extends React.Component {
@@ -47,21 +70,23 @@ export default class extends React.Component {
         return (
             <MainTerritory>
                 <MainFrameWrapper theaterMode={theaterMode}>
-                    <VideoFrame theaterMode={theaterMode}></VideoFrame>
-                    <VideoInfoOuterWrapper>
-                        <VideoInfoInnerWrapper
-                            theaterMode={theaterMode}
-                        >
-                            <MainTitleAndDesc></MainTitleAndDesc>
-                            {mobileEnv
-                                ? <VideoNavNonPC></VideoNavNonPC>
+                    <MainFrameContainer>
+                        <VideoFrame theaterMode={theaterMode}></VideoFrame>
+                        <VideoInfoOuterWrapper>
+                            <VideoInfoInnerWrapper
+                                theaterMode={theaterMode}
+                            >
+                                <MainTitleAndDesc></MainTitleAndDesc>
+                                {mobileEnv
+                                    ? <VideoNavNonPC></VideoNavNonPC>
+                                    : null}
+                                <MainComments></MainComments>
+                            </VideoInfoInnerWrapper>
+                            {theaterMode
+                                ? <VideoNavPC></VideoNavPC>
                                 : null}
-                            <MainComments></MainComments>
-                        </VideoInfoInnerWrapper>
-                        {theaterMode
-                            ? <VideoNavPC></VideoNavPC>
-                            : null}
-                    </VideoInfoOuterWrapper>
+                        </VideoInfoOuterWrapper>
+                    </MainFrameContainer>
                 </MainFrameWrapper>
                 {theaterMode
                     ? null

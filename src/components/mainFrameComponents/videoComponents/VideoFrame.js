@@ -11,8 +11,13 @@ const VideoFrame = styled.div`
         max-height: 720px;
         width: 68.45vw;
         height: calc(68.45vw / 16 * 9);
-        margin-left: 82px;
-        margin-top: 24px;
+        margin-left: 0px;
+        margin-top: 0px;
+
+        @media(max-width: 1023px) {
+            width: 95.1vw;
+            height: calc(95.1vw / 16 * 9);
+        }
     `}
 `;
 
