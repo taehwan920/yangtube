@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import ReplyOpenSwitch from './ReplyOpenSwitch';
-import ReplyCloseSwitch from './ReplyCloseSwitch';
+import ReplyOpenSwitch from './replySwitches/ReplyOpenSwitch';
+import ReplyCloseSwitch from './replySwitches/ReplyCloseSwitch';
 
 export const ReplySwitchBox = styled.div`
     width: max-content;

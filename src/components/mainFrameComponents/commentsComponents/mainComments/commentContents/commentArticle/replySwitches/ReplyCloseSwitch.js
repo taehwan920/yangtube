@@ -1,13 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ReplySwitchBox, ReplySwitchIcon, ReplySwitchText } from './ReplySwitches';
-import ReplyContents from './ReplyContents';
+import { ReplySwitchBox, ReplySwitchIcon, ReplySwitchText } from '../ReplySwitches';
+import ReplyContents from './replyCloseSwitch/ReplyContents';
 
 const ReplySwitchToInvisibleWrapper = styled.div`
     width: calc(100% - 56px);
     height: auto;
     margin-left: 56px;
-    
     cursor: pointer;
 `;
 

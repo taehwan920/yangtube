@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { player } from '../../../../DB';
+import { player } from '../../../../../../DB';
 
 const ReplyUserIconBox = styled.div`
     width: 24px;

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import SubmitBtns from './SubmitBtns';
+import SubmitBtns from './replyInput/SubmitBtns';
 
 const ReplyInputAndBtnWrapper = styled.div`
     width: calc(100% - 40px);

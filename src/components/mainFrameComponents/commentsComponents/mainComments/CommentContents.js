@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import CommentArticle from './commentArticleComponents/CommentArticle';
-import { commentItems } from '../../DB';
+import { commentItems } from '../../../DB';
+import CommentArticle from './commentContents/CommentArticle';
 
 const CommentContentsListWrapper = styled.section`
     width: 100%;

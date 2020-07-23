@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { reportFixed } from '../../../DB';
+import { reportFixed } from '../../../../DB';
 
 const PopUpWrapper = styled.div`
     background-color: white;

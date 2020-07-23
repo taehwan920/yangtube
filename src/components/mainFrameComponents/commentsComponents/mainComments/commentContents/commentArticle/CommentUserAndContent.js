@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import CommentUserIcon from './CommentUserIcon';
-import CommentUserAndTime from './CommentUserAndTime';
-import CommentContent from './CommentContent';
-import LikeAndReply from './likeAndReplyInputComponents/LikeAndReply';
-import ReportBtn from './ReportBtn';
+import CommentUserIcon from '../../commentMixin/CommentUserIcon';
+import CommentUserAndTime from '../../commentMixin/CommentUserAndTime';
+import CommentContent from '../../commentMixin/CommentContent';
+import LikeAndReply from '../../commentMixin/LikeAndReply';
+import ReportBtn from '../../commentMixin/ReportBtn';
 
 const CommentUserAndContentWrapper = styled.div`
     width: 100%;

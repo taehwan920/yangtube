@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ReplySwitchBox, ReplySwitchIcon, ReplySwitchText } from './ReplySwitches';
+import { ReplySwitchBox, ReplySwitchIcon, ReplySwitchText } from '../ReplySwitches';
 
 const ReplySwitchToVisibleWrapper = styled.div`
     width: calc(100% - 56px);

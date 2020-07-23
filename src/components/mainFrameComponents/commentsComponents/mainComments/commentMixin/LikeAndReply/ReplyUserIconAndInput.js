@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import ReplyInput from './ReplyInput';
-import ReplyUserIcon from './ReplyUserIcon';
+import ReplyUserIcon from './userIconAndInput/ReplyUserIcon';
+import ReplyInput from './userIconAndInput/ReplyInput';
 
 const ReplyInputAndIconWrapper = styled.div`
     width: 100%;

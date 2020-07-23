@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import ReportBtn from '../ReportBtn';
-import CommentUserIcon from '../CommentUserIcon';
-import CommentUserAndTime from '../CommentUserAndTime';
-import CommentContent from '../CommentContent';
-import LikeAndReply from '../likeAndReplyInputComponents/LikeAndReply';
+import CommentUserIcon from '../../../../commentMixin/CommentUserIcon';
+import CommentUserAndTime from '../../../../commentMixin/CommentUserAndTime';
+import CommentContent from '../../../../commentMixin/CommentContent';
+import LikeAndReply from '../../../../commentMixin/LikeAndReply';
+import ReportBtn from '../../../../commentMixin/ReportBtn';
 
 const ReplyListWrapper = styled.div`
     width: 100%;

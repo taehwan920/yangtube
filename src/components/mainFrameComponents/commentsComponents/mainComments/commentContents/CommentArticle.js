@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import CommentUserAndContent from './CommentUserAndContent';
-import ReplySwitches from './replySwitchComponents/ReplySwitches';
+import CommentUserAndContent from './commentArticle/CommentUserAndContent';
+import ReplySwitches from './commentArticle/ReplySwitches';
 
 const CommentArticleWrapper = styled.article`
     width: 100%;

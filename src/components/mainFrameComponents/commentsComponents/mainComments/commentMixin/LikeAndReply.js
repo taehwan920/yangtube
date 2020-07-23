@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import LikeReplyBtns from './LikeReplyBtns';
-import ReplyUserIconAndInput from './ReplyUserIconAndInput';
+import LikeReplyBtns from './LikeAndReply/LikeReplyBtns';
+import ReplyUserIconAndInput from './LikeAndReply/ReplyUserIconAndInput';
 
 const CommentLikeAndReplyBox = styled.div`
     width: 100%;

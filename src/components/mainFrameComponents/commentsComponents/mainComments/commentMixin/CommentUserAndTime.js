@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { timestampTxt } from '../../../DB';
+import { timestampTxt } from '../../../../DB';
 
 const CommentUserAndTimeWrapper = styled.div`
     width: 100%;

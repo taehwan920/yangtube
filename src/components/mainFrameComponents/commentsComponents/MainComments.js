@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import CommentHeader from './CommentHeader';
-import CommentContents from './CommentContents';
+import CommentHeader from './mainComments/CommentHeader';
+import CommentContents from './mainComments/CommentContents';
 
 const CommentsWrapper = styled.section`
     background-color: white;
