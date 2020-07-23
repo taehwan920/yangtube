@@ -1,10 +1,10 @@
 import React from 'react';
 import { EllipsisIcon, TitleFunctionsItems, TitleInfoClickEffect } from '../TitleAndInfo';
-import MorePopUp from './more/MorePopUp';
+import PopUp from './more/PopUp';
 
 export default class extends React.Component {
     state = {
-        popUp: true
+        popUp: false
     }
     render() {
         const { popUp } = this.state;
@@ -15,9 +15,9 @@ export default class extends React.Component {
                 </EllipsisIcon>
                 <TitleInfoClickEffect></TitleInfoClickEffect>
                 {popUp
-                    ? <MorePopUp
+                    ? <PopUp
                         popUpOff={() => this.setState({ popUp: false })}
-                    ></MorePopUp>
+                    ></PopUp>
                     : null}
             </TitleFunctionsItems>
         )

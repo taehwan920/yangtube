@@ -4,7 +4,7 @@ import { descItems } from '../../DescAndUploader';
 import SubscribeNoteBtn from './subBtns/SubscribeNoteBtn';
 
 const SubsBtnWrapper = styled.div`
-    width: auto;
+    width: max-content;
     height: 51px;
     display: flex;
     justify-content: center;
@@ -34,13 +34,20 @@ export default class extends React.Component {
     state = {
         subscribed: false
     }
+
+    subsRef = React.createRef();
+
+    clickSubs = () => {
+        this.setState({ subscribed: !this.state.subscribed });
+    };
+
     render() {
         const { subscribed } = this.state;
         return (
             <SubsBtnWrapper>
                 <SubsBtn
                     subscribed={subscribed}
-                    onClick={() => this.setState({ subscribed: !this.state.subscribed })}>
+                    onClick={this.clickSubs}>
                     <SubsBtnTxt subscribed={subscribed}>
                         {subscribed
                             ? descItems.subBtn[1]

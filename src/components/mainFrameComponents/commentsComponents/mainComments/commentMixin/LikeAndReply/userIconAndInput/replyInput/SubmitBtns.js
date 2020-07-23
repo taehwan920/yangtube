@@ -23,6 +23,7 @@ const ReplyBtns = styled.div`
     padding: 10px 16px;
     text-align: center;
     border-radius: 3px;
+    position: relative;
     cursor: pointer;
 `;
 
@@ -31,6 +32,20 @@ const ReplySubmitBtn = styled(ReplyBtns)`
     cursor: ${props => props.inputting ? 'pointer' : 'default'};
     color: white;
     margin-left: 8px;
+`;
+
+const ClickEffect = styled.div`
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 0.1s linear;
+    
+    &:active{
+        background-color: rgba(0, 0, 0, 0.1);
+    }
 `;
 
 export default class extends React.Component {
@@ -44,8 +59,10 @@ export default class extends React.Component {
                         onClick={() => {
                             cancelReply();
                             toggleReply();
-                        }}
-                    >취소</ReplyBtns>
+                        }}>
+                        취소
+                        <ClickEffect></ClickEffect>
+                    </ReplyBtns>
                     <ReplySubmitBtn
                         draggable="true"
                         inputting={inputting}
@@ -53,8 +70,10 @@ export default class extends React.Component {
                             if (!inputting) { return; }
                             submitReply();
                             toggleReply();
-                        }}
-                    >답글</ReplySubmitBtn>
+                        }}>
+                        답글
+                        <ClickEffect></ClickEffect>
+                    </ReplySubmitBtn>
                 </ReplyBtnsBox>
             </ReplyBtnsWrapper>
         )

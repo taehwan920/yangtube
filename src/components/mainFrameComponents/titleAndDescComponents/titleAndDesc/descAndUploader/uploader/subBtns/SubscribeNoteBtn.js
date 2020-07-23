@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import NotePopUp from './subscribeNoteBtn/NotePopUp';
 
 const NotificationIcon = styled.span`
     width: 40px;
@@ -31,11 +32,34 @@ const SubsClickEffect = styled.div`
 `;
 
 export default class extends React.Component {
+    state = {
+        popUp: false
+    }
+
+    componentDidMount() {
+        document.addEventListener('mousedown', this.clickOutside);
+    }
+
+    popUpRef = React.createRef();
+
+    clickOutside = e => {
+        if (this.popUpRef.current === null) { return; }
+        if (this.popUpRef && !this.popUpRef.current.contains(e.target)) {
+            this.setState({ popUp: false });
+        }
+    };
+
     render() {
+        const { popUp } = this.state;
         return (
-            <NotificationIcon>
+            <NotificationIcon
+                ref={this.popUpRef}
+                onClick={() => this.setState({ popUp: !this.state.popUp })}>
                 <i class="far fa-bell"></i>
                 <SubsClickEffect></SubsClickEffect>
+                {popUp
+                    ? <NotePopUp></NotePopUp>
+                    : null}
             </NotificationIcon>
         )
     }

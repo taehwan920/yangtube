@@ -24,8 +24,15 @@ const UploaderImg = styled.img`
     border-radius: 50%;
 `;
 
+const InfoAndBtnContainer = styled.div`
+    width: calc(100% - 64px);
+    height: 51px;
+    display: flex;
+    justify-content: space-between;
+`;
+
 const UploaderInfoWrapper = styled.div`
-    width: 89%;
+    width: 100%;
     height: 51px;
     display: flex;
     flex-direction: column;
@@ -50,13 +57,15 @@ export default class extends React.Component {
                 <UploaderImgBox>
                     <UploaderImg alt="YangTuber" src="./images/sheep_profile.png" draggable="true" />
                 </UploaderImgBox>
-                <UploaderInfoWrapper>
-                    <UploaderName>{descItems.name}</UploaderName>
-                    <SubscribersNum>
-                        {descItems.subscriber[0]}{descItems.subsNum}{descItems.subscriber[1]}
-                    </SubscribersNum>
-                </UploaderInfoWrapper>
-                <SubsBtns></SubsBtns>
+                <InfoAndBtnContainer>
+                    <UploaderInfoWrapper>
+                        <UploaderName>{descItems.name}</UploaderName>
+                        <SubscribersNum>
+                            {descItems.subscriber[0]}{descItems.subsNum}{descItems.subscriber[1]}
+                        </SubscribersNum>
+                    </UploaderInfoWrapper>
+                    <SubsBtns></SubsBtns>
+                </InfoAndBtnContainer>
             </UploaderWrapper>
         )
     }
