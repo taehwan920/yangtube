@@ -52,7 +52,7 @@ const CommentInput = styled.textarea`
 
 export default class extends React.Component {
     render() {
-        const { inputFocused, inputting, inputHeight, changeInput } = this.props;
+        const { changeInput, focusIn, focusOut, inputFocused, inputting, inputHeight } = this.props;
         return (
             <CommentInputContainer inputHeight={inputHeight}>
                 <CommentPlaceHolder inputting={inputting}>
@@ -61,8 +61,8 @@ export default class extends React.Component {
                 <CommentInput
                     className="comment-input"
                     inputHeight={inputHeight}
-                    onFocus={() => this.setState({ inputFocused: true })}
-                    onBlur={() => this.setState({ inputFocused: false })}
+                    onFocus={focusIn}
+                    onBlur={focusOut}
                     onChange={changeInput}
                 />
                 <CommentInputBorderAniBox inputHeight={inputHeight}>

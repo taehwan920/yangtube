@@ -37,7 +37,7 @@ export default class extends React.Component {
     };
 
     render() {
-        const { toggleGuide, popUpSwitchON, popUpSwitchOff, popUps } = this.props;
+        const { toggleGuide } = this.props;
         const { VKbd } = this.state;
         ChangeTitle('Main Page!');
         return (
@@ -51,21 +51,12 @@ export default class extends React.Component {
                         onClick={() => {
                             this.setState({ VKbd: !VKbd })
                         }}></HeaderSearch>
-                    <HeaderButtons
-                        popUpSwitchON={popUpSwitchON}
-                        popUps={popUps}
-                    ></HeaderButtons>
+                    <HeaderButtons></HeaderButtons>
                     {VKbd
                         ? <VirtualKeyboard
                             onClick={() => { this.setState({ VKbd: !VKbd }) }}></VirtualKeyboard>
                         : null}
-                    {popUps
-                        ? <PopUpsOffSwitch onClick={popUpSwitchOff}></PopUpsOffSwitch>
-                        : null}
                 </HeaderWrapper>
-                {popUps
-                    ? <PopUpsOffSwitch onClick={popUpSwitchOff}></PopUpsOffSwitch>
-                    : null}
             </React.Fragment>
         )
     }

@@ -32,10 +32,28 @@ export default class extends React.Component {
             </PopUpArticle>
         )
     }
+
+    componentDidMount() {
+        document.addEventListener('mousedown', this.clickOutside);
+    }
+
+    btnRef = React.createRef();
+
+    clickOutside = (e) => {
+        if (this.props.addVideoON) {
+            if (this.btnRef.current === null) { return; }
+            if (this.btnRef && !this.btnRef.current.contains(e.target)) {
+                this.props.popUpOff();
+            }
+        }
+    };
+
     render() {
         const { addVideoON } = this.props;
         return (
-            <AddVideoPopUpWrapper addVideoON={addVideoON}>
+            <AddVideoPopUpWrapper
+                ref={this.btnRef}
+                addVideoON={addVideoON}>
                 {popUpItems.map((item) => this.buildItems(item))}
             </AddVideoPopUpWrapper>
         )

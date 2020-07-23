@@ -147,25 +147,18 @@ export default class extends React.Component {
         return [picked, ...notPicked];
     }
 
-    onOff = stateType => popUps => {
+    onOff = stateType => () => {
         const statesArr = this.sanitize(stateType);
-        if (popUps) {
-            this.setState({
-                [statesArr[0]]: !this.state[statesArr[0]],
-                [statesArr[1]]: false,
-                [statesArr[2]]: false,
-            })
-        } else {
-            this.setState({
-                [statesArr[0]]: true,
-                [statesArr[1]]: false,
-                [statesArr[2]]: false,
-            })
-        }
+        this.setState({
+            [statesArr[0]]: !this.state[statesArr[0]],
+            [statesArr[1]]: false,
+            [statesArr[2]]: false,
+        })
     }
 
+
+
     render() {
-        const { popUpSwitchON, popUps } = this.props;
         const { addVideoON, appsON, userInfoON } = this.state;
         return (
             <HeaderBtnSectionWrapper>
@@ -174,21 +167,30 @@ export default class extends React.Component {
                         <i class="fas fa-search"></i>
                         <ClickEffectHeader></ClickEffectHeader>
                     </MiniSearchBtn>
-                    <AddVideoButton popUps={popUps} popUpSwitchON={popUpSwitchON('addVideoON')} onOff={this.onOff('addVideoON')}></AddVideoButton>
-                    <AppsButton popUps={popUps} popUpSwitchON={popUpSwitchON('appsON')} onOff={this.onOff('appsON')}></AppsButton>
-                    <UserInfoIcon onClick={() => {
-                        this.onOff('userInfoON')();
-                        popUpSwitchON('userInfoON')(popUps);
-                    }} draggable="true">G</UserInfoIcon>
+                    <AddVideoButton
+                        onOff={this.onOff('addVideoON')}
+                        clickOut
+                    ></AddVideoButton>
+                    <AppsButton onOff={this.onOff('appsON')}></AppsButton>
+                    <UserInfoIcon onClick={this.onOff('userInfoON')} draggable="true">G</UserInfoIcon>
                 </HeaderBtnSection>
-                {(addVideoON && popUps)
-                    ? <HeaderAddVideoPopUp addVideoON={addVideoON}></HeaderAddVideoPopUp>
+                {(addVideoON)
+                    ? <HeaderAddVideoPopUp
+                        addVideoON={addVideoON}
+                        popUpOff={() => this.setState({ addVideoON: false })}
+                    ></HeaderAddVideoPopUp>
                     : null}
-                {(appsON && popUps)
-                    ? <HeaderApps appsON={appsON}></HeaderApps>
+                {(appsON)
+                    ? <HeaderApps
+                        appsON={appsON}
+                        popUpOff={() => this.setState({ appsON: false })}
+                    ></HeaderApps>
                     : null}
-                {(userInfoON && popUps)
-                    ? <HeaderUserInfoPopUp userInfoON={userInfoON}></HeaderUserInfoPopUp>
+                {(userInfoON)
+                    ? <HeaderUserInfoPopUp
+                        userInfoON={userInfoON}
+                        popUpOff={() => this.setState({ userInfoON: false })}
+                    ></HeaderUserInfoPopUp>
                     : null}
             </HeaderBtnSectionWrapper>
         )

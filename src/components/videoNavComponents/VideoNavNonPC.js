@@ -15,6 +15,7 @@ const VideoNavPCWrapper = styled.nav`
     }
 `;
 
+
 export default class extends React.Component {
     render() {
         return (

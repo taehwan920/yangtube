@@ -116,10 +116,27 @@ export default class extends React.Component {
         })
     }
 
+    componentDidMount() {
+        document.addEventListener('mousedown', this.clickOutside);
+    }
+
+    btnRef = React.createRef();
+
+    clickOutside = (e) => {
+        if (this.props.userInfoON) {
+            if (this.btnRef.current === null) { return; }
+            if (this.btnRef && !this.btnRef.current.contains(e.target)) {
+                this.props.popUpOff();
+            }
+        }
+    };
+
     render() {
         const { userInfoHome, nightMode, langChange, locationChange, limitedMode } = this.state;
         return (
-            <UserInfoPopUpWrapper userInfoON={this.props.userInfoON}>
+            <UserInfoPopUpWrapper
+                ref={this.btnRef}
+                userInfoON={this.props.userInfoON}>
                 {userInfoHome
                     ? <UserPopUpHome toggleMode={this.toggleMode}></UserPopUpHome>
                     : null}

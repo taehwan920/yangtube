@@ -19,44 +19,19 @@ const HomeDiv = styled.div`
 
 export default class extends React.Component {
     state = {
-        guideIsON: false,
-        popUps: false,
-        latest: null
+        guideIsON: false
     };
 
     toggleGuide = () => {
         this.setState({ guideIsON: !this.state.guideIsON })
     };
-
-    popUpSwitchON = (stateType) => () => {
-        if (this.state.latest === null || this.state.latest !== stateType) {
-            this.setState({
-                popUps: true,
-                latest: stateType
-            })
-        } else {
-            this.setState({
-                popUps: false,
-                latest: null
-            })
-        };
-    };
-    popUpSwitchOff = () => {
-        this.setState({
-            popUps: false,
-            latest: null
-        });
-    };
-
     render() {
-        const { guideIsON, popUps } = this.state;
+        const { guideIsON } = this.state;
         return (
             <HomeDiv
                 guideIsON={guideIsON}
-                popUps={popUps}
             >
                 <Header
-                    popUps={popUps}
                     popUpSwitchON={this.popUpSwitchON}
                     popUpSwitchOff={this.popUpSwitchOff}
                     toggleGuide={this.toggleGuide}

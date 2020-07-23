@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import InputBtns from './inputPart/InputBtns';
-import inputContainer from './inputPart/InputContainer';
+import InputContainer from './inputPart/InputContainer';
 
 const CommentInputPartWrapper = styled.div`
     width: calc(100% - 56px);
@@ -70,12 +70,14 @@ export default class extends React.Component {
         const { inputFocused, inputting, inputHeight } = this.state;
         return (
             <CommentInputPartWrapper>
-                <inputContainer
+                <InputContainer
                     inputFocused={inputFocused}
                     inputting={inputting}
                     inputHeight={inputHeight}
                     changeInput={this.changeInput}
-                ></inputContainer>
+                    focusIn={() => this.setState({ inputFocused: true })}
+                    focusOut={() => this.setState({ inputFocused: false })}
+                ></InputContainer>
                 {inputFocused
                     ? <InputBtns
                         inputting={inputting}

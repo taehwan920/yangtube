@@ -20,8 +20,6 @@ const CommentInputUserIcon = styled.div`
     line-height: 42px;
 `;
 
-
-
 export default class extends React.Component {
 
     render() {
@@ -35,4 +33,4 @@ export default class extends React.Component {
             </CommentInputAndUserWrapper>
         )
     }
-}
+};
