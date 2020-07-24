@@ -21,13 +21,30 @@ const SearchBoxAndIcon = styled.div`
     align-items: center;
 `;
 
-const SearchInput = styled.input`
+const InputContainer = styled.div`
     width: 100%;
     height: 100%;
-    font-size: 16px;
-    padding-left: 6px;
+    padding: 2px 6px;
     border: 0.5px solid rgba(0, 0, 0, 0.15);
     border-right: 0.25px solid rgba(0, 0, 0, 0.15);
+    position: relative;
+`;
+
+const InputBox = styled.div`
+    width: 100%;
+    height: 100%;
+    padding-right: 34px;
+`;
+
+const SearchInput = styled.input`
+    width: 100%;
+    height: 24px;
+    border: none;
+    font-size: 16px;
+    
+    &:focus {
+        outline: none;
+    }
 `;
 
 const KbdIcon = styled.span`
@@ -70,10 +87,14 @@ export default class extends React.Component {
         return (
             <SearchWrapper>
                 <SearchBoxAndIcon>
-                    <SearchInput placeholder="검색" type="text" />
-                    <KbdIcon onClick={toggleVkbd}>
-                        <i class="fas fa-keyboard"></i>
-                    </KbdIcon>
+                    <InputContainer>
+                        <InputBox>
+                            <SearchInput placeholder="검색" type="text" />
+                        </InputBox>
+                        <KbdIcon onClick={toggleVkbd}>
+                            <i class="fas fa-keyboard"></i>
+                        </KbdIcon>
+                    </InputContainer>
                 </SearchBoxAndIcon>
                 <SearchBtn>
                     <i class="fas fa-search"></i>
