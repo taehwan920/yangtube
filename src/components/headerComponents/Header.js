@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ChangeTitle, Logo } from '../Mixin';
-import HeaderSearch from './header/HeaderSearch';
-import HeaderButtons from './header/HeaderButtons';
+import { ChangeTitle } from '../Mixin';
+import HeaderHome from './header/HeaderHome';
 import VirtualKeyboard from '../VirtualKeyboard';
+import MiniSearch from './header/MiniSearch';
+
 
 const HeaderWrapper = styled.header`
     background-color: rgba(255, 255, 255, 0.97);
@@ -18,11 +19,6 @@ const HeaderWrapper = styled.header`
     z-index: 20;
 `;
 
-const HeaderLogoPlace = styled.div`
-    width: 155px;
-    height: 40px;
-`;
-
 export default class extends React.Component {
     state = {
         VKbd: false,
@@ -33,6 +29,14 @@ export default class extends React.Component {
         this.setState({ VKbd: !this.state.VKbd });
     }
 
+    toggleMiniSearch = () => {
+        this.setState({ miniSearchBox: !this.state.miniSearchBox });
+    }
+
+    offMiniSearch = () => {
+        this.setState({ miniSearchBox: false });
+    }
+
     render() {
         const { toggleGuide } = this.props;
         const { VKbd, miniSearchBox } = this.state;
@@ -40,20 +44,19 @@ export default class extends React.Component {
         return (
             <HeaderWrapper>
                 {miniSearchBox
-                    ? null
-                    : <React.Fragment>
-                        <HeaderLogoPlace></HeaderLogoPlace>
-                        <Logo
-                            toggleGuide={toggleGuide}
-                        ></Logo>
-                        <HeaderSearch
-                            toggleVkbd={this.toggleVkbd}></HeaderSearch>
-                        <HeaderButtons></HeaderButtons>
-                        {VKbd
-                            ? <VirtualKeyboard
-                                onClick={() => { this.setState({ VKbd: !VKbd }) }}></VirtualKeyboard>
-                            : null}
-                    </React.Fragment>}
+                    ? <MiniSearch
+                        offMiniSearch={this.offMiniSearch}
+                        toggleVkbd={this.toggleVkbd}
+                    ></MiniSearch>
+                    : <HeaderHome
+                        toggleGuide={toggleGuide}
+                        toggleMiniSearch={this.toggleMiniSearch}
+                        toggleVkbd={this.toggleVkbd}
+                    ></HeaderHome>}
+                {VKbd
+                    ? <VirtualKeyboard
+                        onClick={() => { this.setState({ VKbd: !VKbd }) }}></VirtualKeyboard>
+                    : null}
             </HeaderWrapper>
         )
     }

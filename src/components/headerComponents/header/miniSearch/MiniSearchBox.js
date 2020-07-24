@@ -3,10 +3,11 @@ import styled from 'styled-components';
 
 
 const SearchWrapper = styled.section`
-    width: 40%;
+    width: calc(100% - 48px);
     height: 30px;
+    margin-right: 24px;
     display: flex;
-    @media (max-width: 767px) {
+    @media (min-width: 768px) {
         display: none;
     }
 `;
@@ -51,12 +52,26 @@ const SearchBtn = styled.button`
 `;
 
 export default class extends React.Component {
+    componentDidMount() {
+        window.addEventListener('resize', this.disappearIfTooWide);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.disappearIfTooWide);
+    }
+
+    disappearIfTooWide = e => {
+        if (e.target.innerWidth < 768) { return; }
+        this.props.offMiniSearch();
+    }
+
     render() {
+        const { toggleVkbd } = this.props;
         return (
             <SearchWrapper>
                 <SearchBoxAndIcon>
                     <SearchInput placeholder="검색" type="text" />
-                    <KbdIcon onClick={this.props.toggleVkbd}>
+                    <KbdIcon onClick={toggleVkbd}>
                         <i class="fas fa-keyboard"></i>
                     </KbdIcon>
                 </SearchBoxAndIcon>

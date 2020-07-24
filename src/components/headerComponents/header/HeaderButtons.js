@@ -156,17 +156,18 @@ export default class extends React.Component {
     }
 
     render() {
+        const { toggleMiniSearch } = this.props;
         const { addVideoON, appsON, userInfoON } = this.state;
         return (
             <HeaderBtnSectionWrapper>
                 <HeaderBtnSection>
-                    <MiniSearchBtn>
+                    <MiniSearchBtn
+                        onClick={toggleMiniSearch}>
                         <i class="fas fa-search"></i>
                         <ClickEffectHeader></ClickEffectHeader>
                     </MiniSearchBtn>
                     <AddVideoButton
                         onOff={this.onOff('addVideoON')}
-                        clickOut
                     ></AddVideoButton>
                     <AppsButton onOff={this.onOff('appsON')}></AppsButton>
                     <UserInfoIcon onClick={this.onOff('userInfoON')} draggable="true">G</UserInfoIcon>
