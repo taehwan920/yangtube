@@ -1,18 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ToggleSwitch } from '../Mixin';
+import { ToggleSwitch } from '../../Mixin';
 import VideoItem from './VideoNavMixin/VideoItem';
 
 const VideoNavPCWrapper = styled.nav`
     background-color: inherit;
-    width: 100%;
+    width: 402px;
     height: max-content;
+    margin: 0px 24px;
+    padding-top: 24px;
     position: relative;
     display: flex;
     flex-direction: column;
     z-index: 1;
 
-    @media (min-width: 1024px) {
+    @media (max-width: 1023px) {
         display: none;
     }
 `;
@@ -56,7 +58,7 @@ const AutoPlayTxt = styled.span`
 `;
 
 const arr = [];
-for (let i = 0; i < 6; i++) {
+for (let i = 0; i < 12; i++) {
     arr.push(i)
 }
 

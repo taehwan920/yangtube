@@ -32,6 +32,11 @@ const InfoContent = styled.span`
 const InfoTitle = styled(InfoContent)`
     font-size: 14px;
     margin-bottom: 4px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: '';
 `;
 
 const InfoUploader = styled(InfoContent)`
