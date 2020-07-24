@@ -6,7 +6,7 @@ import InputAndUser from './commentHeader/InputAndUser';
 const CommentHeaderWrapper = styled.header`
     background: inherit;
     width: 100%;
-    min-height: 119.5px;
+    min-height: 88px;
     margin-bottom: 32px;
 `;
 

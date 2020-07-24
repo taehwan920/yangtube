@@ -4,7 +4,7 @@ import InputPart from './inputAndUser/InputPart';
 
 const CommentInputAndUserWrapper = styled.div`
     width: 100%;
-    min-height: 71.5px;
+    min-height: 40px;
     display: flex;
 `;
 
