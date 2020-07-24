@@ -33,28 +33,12 @@ export default class extends React.Component {
                 <span>{item[1]}</span>
             </PopUpArticle>
         )
-    }
-
-    componentDidMount() {
-        document.addEventListener('mousedown', this.clickOutside);
-    }
-
-    btnRef = React.createRef();
-
-    clickOutside = (e) => {
-        if (this.props.appsON) {
-            if (this.btnRef.current === null) { return; }
-            if (this.btnRef && !this.btnRef.current.contains(e.target)) {
-                this.props.popUpOff();
-            }
-        }
     };
 
     render() {
         const { appsON } = this.props;
         return (
             <AppsPopUpWrapper
-                ref={this.btnRef}
                 appsON={appsON}>
                 <PopUpSection>
                     {this.buildItems(popUpItems[0])}

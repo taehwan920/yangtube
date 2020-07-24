@@ -5,6 +5,7 @@ import AppsButton from './headerButtons/AppsButton';
 import HeaderAddVideoPopUp from './headerButtons/HeaderAddVideoPopUp';
 import HeaderAppsPopUp from './headerButtons/HeaderAppsPopUp';
 import HeaderUserInfoPopUp from './headerButtons/HeaderUserInfoPopUp';
+import UserInfoButton from './headerButtons/UserInfoButton';
 
 const HeaderBtnSectionWrapper = styled.div`
     width:225px;
@@ -57,21 +58,6 @@ export const AddVideoBtnPlusIcon = styled(HeaderBtn)`
 
 export const AppsBtn = styled(HeaderBtn)`
     right: 82.5px;
-`;
-
-const UserInfoIcon = styled.div`
-    background-color: #AA47BC;
-    width: 32px;
-    height: 32px;
-    position: absolute;
-    right: 30px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 32px;
-    font-size: 20px;
-    color: white;
-    cursor: pointer;
-    z-index: 25;
 `;
 
 export const PopUpSection = styled.section`
@@ -168,26 +154,30 @@ export default class extends React.Component {
                     </MiniSearchBtn>
                     <AddVideoButton
                         onOff={this.onOff('addVideoON')}
+                        popUpOff={() => this.setState({ addVideoON: false })}
                     ></AddVideoButton>
-                    <AppsButton onOff={this.onOff('appsON')}></AppsButton>
-                    <UserInfoIcon onClick={this.onOff('userInfoON')} draggable="true">G</UserInfoIcon>
+                    <AppsButton
+                        onOff={this.onOff('appsON')}
+                        popUpOff={() => this.setState({ appsON: false })}
+                    ></AppsButton>
+                    <UserInfoButton
+                        onOff={this.onOff('userInfoON')}
+                        popUpOff={() => this.setState({ userInfoON: false })}
+                    ></UserInfoButton>
                 </HeaderBtnSection>
                 {(addVideoON)
                     ? <HeaderAddVideoPopUp
                         addVideoON={addVideoON}
-                        popUpOff={() => this.setState({ addVideoON: false })}
                     ></HeaderAddVideoPopUp>
                     : null}
                 {(appsON)
                     ? <HeaderAppsPopUp
                         appsON={appsON}
-                        popUpOff={() => this.setState({ appsON: false })}
                     ></HeaderAppsPopUp>
                     : null}
                 {(userInfoON)
                     ? <HeaderUserInfoPopUp
                         userInfoON={userInfoON}
-                        popUpOff={() => this.setState({ userInfoON: false })}
                     ></HeaderUserInfoPopUp>
                     : null}
             </HeaderBtnSectionWrapper>

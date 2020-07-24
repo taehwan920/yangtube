@@ -40,6 +40,10 @@ export default class extends React.Component {
         document.addEventListener('mousedown', this.clickOutside);
     }
 
+    componentWillUnmount() {
+        document.removeEventListener('mousedown', this.clickOutside);
+    }
+
     popUpRef = React.createRef();
 
     clickOutside = e => {
