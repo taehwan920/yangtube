@@ -17,8 +17,9 @@ const MainTerritory = styled.div`
 
 const MainFrameWrapper = styled.div`
     width: ${props => props.theaterMode ? '100%' : 'max-content'};
+    height: 100%;
     background: inherit;
-    padding-left: 56px;
+    padding-left: ${props => props.theaterMode ? '0' : '56'}px;
     @media(max-width: 767px) {
         width: 100%;
     }
@@ -28,26 +29,44 @@ const MainFrameWrapper = styled.div`
 `;
 
 const MainFrameContainer = styled.div`
-    width: ${props => props.theaterMode ? '100%' : 'max-content'};
+    width: max-content;
+    height: 100%;
     background: inherit;
-    margin-left: 24px;
-    padding-top: 24px;
+    margin-left: ${props => props.theaterMode ? '0px' : '24px'};
+    padding-top: ${props => props.theaterMode ? '0px' : '24px'};
+    display: flex;
+    flex-direction: column;
+    align-items: ${props => props.theaterMode ? 'center' : 'flex-start'};
     @media(max-width: 767px) {
-        width: 100%;
+        width: ${props => props.theaterMode ? 'max-content' : '100%'};
     }
 `;
 
 const VideoInfoOuterWrapper = styled.div`
     width: max-content;
     background: inherit;
-    margin-left: 82px;
-    margin-left: 0px;
+    margin-left: ${props => props.theaterMode ? '82px' : '0px'};
     display: flex;
+    
+
+    @media(min-width: 1024px) {
+        width: ${props => props.theaterMode ? 'min-content' : 'max-content'};
+    }
+
+    @media(max-width: 1023px) {
+        margin-left: ${props => props.theaterMode ? '24px' : '0px'};
+        margin-right: ${props => props.theaterMode ? '24px' : '0px'};
+    }
+
+    @media(max-width: 500px) {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
 `;
 
 const VideoInfoInnerWrapper = styled.div`
     background: inherit;
-    width: 68.45vw;
+    width: ${props => props.theaterMode ? '52vw' : '68.45vw'};
     max-width: 1280px;
     display: flex;
     flex-direction: column;
@@ -62,16 +81,16 @@ const VideoInfoInnerWrapper = styled.div`
 
 export default class extends React.Component {
     state = {
-        theaterMode: false
+        theaterMode: true
     }
     render() {
         const { theaterMode } = this.state;
         return (
             <MainTerritory>
                 <MainFrameWrapper theaterMode={theaterMode}>
-                    <MainFrameContainer>
+                    <MainFrameContainer theaterMode={theaterMode}>
                         <VideoFrame theaterMode={theaterMode}></VideoFrame>
-                        <VideoInfoOuterWrapper>
+                        <VideoInfoOuterWrapper theaterMode={theaterMode}>
                             <VideoInfoInnerWrapper
                                 theaterMode={theaterMode}
                             >

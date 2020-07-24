@@ -6,9 +6,10 @@ import MainTerritory from './mainFrameComponents/MainTerritory';
 import styled from 'styled-components';
 
 const HomeDiv = styled.div`
-    position: relative;
-    display: flex;
     width: 100%;
+    height: 100vh;
+    display: flex;
+    position: relative;
     background-color: #F9F9F9;
     z-index: 1;
     height: ${props => (props.guideIsON ? '100vh' : 'max-content')};
