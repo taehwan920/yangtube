@@ -4,7 +4,7 @@ import DescAndUploader from './titleAndDesc/DescAndUploader';
 import TitleAndInfo from './titleAndDesc/TitleAndInfo';
 
 const TitleAndDesc = styled.section`
-    background-color: white;
+    background-color: inherit;
     width: 100%;
     height: calc(${props => props.realHeight || '0'}px + 292px);
 `;
@@ -18,7 +18,6 @@ const TitleWrapper = styled.article`
 `;
 
 const Title = styled.div`
-    background: white;
     width: 100%;
     height: 24px;
     font-size: 18px;

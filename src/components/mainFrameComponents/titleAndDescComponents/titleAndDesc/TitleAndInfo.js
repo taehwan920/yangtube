@@ -4,7 +4,6 @@ import LikeAndDislike from './titleAndInfo/LikeAndDislike';
 import More from './titleAndInfo/More';
 
 const TitleAndInfo = styled.div`
-    background: white;
     width: 100%;
     height: 40px;
     display: flex;

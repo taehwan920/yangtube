@@ -6,14 +6,22 @@ const PopUpWrapper = styled.div`
     background-color: white;
     width: max-content;
     height: 52px;
-    color: rgba(0, 0, 0, 0.5);
     padding: 8px 0px;
-    cursor: pointer;
+    position: absolute;
+    top: 35px;
+    left: 5px;
     display: flex;
     align-items: center;
+    color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
     box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2), 
         0 1px 5px 0 rgba(0, 0, 0, 0.12), 
         0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    z-index: 26;
+
+    @media(max-width: 1023px) {
+        left: -85px;
+    }
 `;
 
 const PopUpItem = styled.div`

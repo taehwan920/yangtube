@@ -7,6 +7,7 @@ const VideoNavPCWrapper = styled.nav`
     background-color: inherit;
     width: 100%;
     height: max-content;
+    padding: 24px 0px;
     position: relative;
     display: flex;
     flex-direction: column;

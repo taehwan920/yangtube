@@ -7,7 +7,7 @@ const PopUpWrapper = styled.section`
     height: auto;
     padding: 8px 0px;
     position: absolute;
-    top: 40px;
+    top: 45px;
     left: 5px;
     display: flex;
     flex-direction: column;
@@ -15,6 +15,10 @@ const PopUpWrapper = styled.section`
         0 1px 5px 0 rgba(0, 0, 0, 0.12), 
         0 3px 1px -2px rgba(0, 0, 0, 0.2);
     z-index: 26;
+
+    @media(max-width: 1023px) {
+        left: -110px;
+    }
 `;
 
 const PopUpArticle = styled.article`
@@ -22,6 +26,7 @@ const PopUpArticle = styled.article`
     height: 36px;
     padding: 0px 36px 0px 16px;
     display: flex;
+    align-items: center;
     
     &:hover{
         background: rgba(0, 0, 0, 0.1);

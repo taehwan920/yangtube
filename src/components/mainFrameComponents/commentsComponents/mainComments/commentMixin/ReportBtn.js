@@ -5,6 +5,7 @@ import ReportPopUp from './ReportPopUp';
 const ReportWrapper = styled.div`
     width: 40px;
     height: 100%;
+    position: relative;
     font-size: 18px;
     color: rgba(0, 0, 0, 0.4);
     opacity: ${props => props.hovering || props.btnClicked ? '1' : '0'};

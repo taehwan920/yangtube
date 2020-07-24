@@ -5,7 +5,7 @@ import CommentArticle from './commentContents/CommentArticle';
 
 const CommentContentsListWrapper = styled.section`
     width: 100%;
-    background: white;
+    background: inherit;
 `;
 
 export default class extends React.Component {

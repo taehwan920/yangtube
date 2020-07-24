@@ -8,7 +8,7 @@ import VideoNavPC from './videoNavComponents/VideoNavPC';
 
 
 const MainTerritory = styled.div`
-    background-color: pink;
+    background-color: inherit;
     top: 56px;
     position: relative;
     display: flex;
@@ -17,7 +17,7 @@ const MainTerritory = styled.div`
 
 const MainFrameWrapper = styled.div`
     width: ${props => props.theaterMode ? '100%' : 'max-content'};
-    background: peru;
+    background: inherit;
     padding-left: 56px;
     @media(max-width: 767px) {
         width: 100%;

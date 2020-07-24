@@ -4,7 +4,7 @@ import CommentHeader from './mainComments/CommentHeader';
 import CommentContents from './mainComments/CommentContents';
 
 const CommentsWrapper = styled.section`
-    background-color: white;
+    background-color: inherit;
     width: 100%;
     height: max-content;
     padding-bottom: 125px;

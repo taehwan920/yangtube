@@ -4,7 +4,7 @@ import HeaderHeader from './commentHeader/HeaderHeader';
 import InputAndUser from './commentHeader/InputAndUser';
 
 const CommentHeaderWrapper = styled.header`
-    background: white;
+    background: inherit;
     width: 100%;
     min-height: 119.5px;
     margin-bottom: 32px;
