@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { SubPopUpHeaderWrapper, SubPopUpString, PopUpSection } from '../HeaderUserInfoPopUp';
-import { UserInfoLeftArrow, ToggleSwitch } from '../../../Mixin';
+import { UserInfoLeftArrow, ToggleSwitch } from '../../../../Mixin';
 
 const UserInfoCommonSetUp = css`
     width: 298px;

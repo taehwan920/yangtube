@@ -1,11 +1,10 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-import HeaderApps from './headerPopUpComponents/HeaderAppsPopUp'
-import HeaderAddVideoPopUp from './headerPopUpComponents/HeaderAddVideoPopUp';
-import HeaderUserInfoPopUp from './headerPopUpComponents/HeaderUserInfoPopUp';
-import AddVideoButton from './headerBtnComponents/AddVideoButton';
-import AppsButton from './headerBtnComponents/AppsButton';
-
+import AddVideoButton from './headerButtons/AddVideoButton';
+import AppsButton from './headerButtons/AppsButton';
+import HeaderAddVideoPopUp from './headerButtons/HeaderAddVideoPopUp';
+import HeaderAppsPopUp from './headerButtons/HeaderAppsPopUp';
+import HeaderUserInfoPopUp from './headerButtons/HeaderUserInfoPopUp';
 
 const HeaderBtnSectionWrapper = styled.div`
     width:225px;
@@ -156,8 +155,6 @@ export default class extends React.Component {
         })
     }
 
-
-
     render() {
         const { addVideoON, appsON, userInfoON } = this.state;
         return (
@@ -181,10 +178,10 @@ export default class extends React.Component {
                     ></HeaderAddVideoPopUp>
                     : null}
                 {(appsON)
-                    ? <HeaderApps
+                    ? <HeaderAppsPopUp
                         appsON={appsON}
                         popUpOff={() => this.setState({ appsON: false })}
-                    ></HeaderApps>
+                    ></HeaderAppsPopUp>
                     : null}
                 {(userInfoON)
                     ? <HeaderUserInfoPopUp

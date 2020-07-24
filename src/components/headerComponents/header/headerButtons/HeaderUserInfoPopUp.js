@@ -1,10 +1,10 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import UserPopUpHome from './UserInfoPopUpComponents/UserInfoPopUpHome';
-import NightModePopUp from './UserInfoPopUpComponents/NightModePopUp';
-import LanguageChangePopUp from './UserInfoPopUpComponents/LanguageChangePopUp';
-import LocationChangePopUp from './UserInfoPopUpComponents/LocationChangePopUp';
-import LimitedModePopUp from './UserInfoPopUpComponents/LimitedModePopUp';
+import UserPopUpHome from './userInfoPopUp/UserInfoPopUpHome';
+import NightModePopUp from './userInfoPopUp/NightModePopUp';
+import LanguageChangePopUp from './userInfoPopUp/LanguageChangePopUp';
+import LocationChangePopUp from './userInfoPopUp/LocationChangePopUp';
+import LimitedModePopUp from './userInfoPopUp/LimitedModePopUp';
 
 const UserInfoCommonSetUp = css`
     width: 298px;

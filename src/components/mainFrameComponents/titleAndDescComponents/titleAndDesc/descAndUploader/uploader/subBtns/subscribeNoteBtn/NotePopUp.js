@@ -6,8 +6,9 @@ const PopUpWrapper = styled.section`
     width: max-content;
     height: max-content;
     padding: 8px 0px;
+    border-radius: 3px;
     position: absolute;
-    top: 40px;
+    top: 45px;
     left: 5px;
     display: flex;
     flex-direction: column;
@@ -15,6 +16,10 @@ const PopUpWrapper = styled.section`
         0 1px 5px 0 rgba(0, 0, 0, 0.12), 
         0 3px 1px -2px rgba(0, 0, 0, 0.2);
     z-index: 26;
+
+    @media(max-width: 1023px) {
+        left: -120px;
+    }
 `;
 
 const PopUpArticle = styled.article`

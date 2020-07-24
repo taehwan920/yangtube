@@ -6,6 +6,7 @@ const PopUpWrapper = styled.section`
     width: max-content;
     height: auto;
     padding: 8px 0px;
+    border-radius: 3px;
     position: absolute;
     top: 45px;
     left: 5px;

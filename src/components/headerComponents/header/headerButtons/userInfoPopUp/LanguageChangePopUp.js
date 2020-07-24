@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { SubPopUpHeaderWrapper, SubPopUpString, PopUpSection } from '../HeaderUserInfoPopUp'
-import { UserInfoLeftArrow } from '../../../Mixin';
+import { UserInfoLeftArrow } from '../../../../Mixin';
 
-const LocationChangeArticle = styled.article`
+const LangChangeArticle = styled.article`
     width: 298px;
     height: 40px;
     &:hover {
@@ -12,24 +12,24 @@ const LocationChangeArticle = styled.article`
     }
 `;
 
-const LocationChangeText = styled.span`
+const LangChangeText = styled.span`
     width: 226px;
     height: 40px;
     margin: 0px 16px 0px 56px;
     line-height: 39px;
 `;
 
-const LocationHeaderItems = ['위치 선택'];
-const LocationChangeItems = ['한국', '미국', '일본'];
+const LanguageHeaderItems = ['언어 선택'];
+const LanguageChangeItems = ['한국어', 'English', '日本語'];
 
 export default class extends React.Component {
     buildItem = item => {
         return (
-            <LocationChangeArticle>
-                <LocationChangeText>
+            <LangChangeArticle>
+                <LangChangeText>
                     {item}
-                </LocationChangeText>
-            </LocationChangeArticle>
+                </LangChangeText>
+            </LangChangeArticle>
         )
     };
     render() {
@@ -38,10 +38,10 @@ export default class extends React.Component {
             <React.Fragment>
                 <SubPopUpHeaderWrapper>
                     <UserInfoLeftArrow toggleMode={toggleMode} stateType={stateType}></UserInfoLeftArrow>
-                    <SubPopUpString>{LocationHeaderItems[0]}</SubPopUpString>
+                    <SubPopUpString>{LanguageHeaderItems[0]}</SubPopUpString>
                 </SubPopUpHeaderWrapper>
                 <PopUpSection>
-                    {LocationChangeItems.map(item => this.buildItem(item))}
+                    {LanguageChangeItems.map(item => this.buildItem(item))}
                 </PopUpSection>
             </React.Fragment>
         )

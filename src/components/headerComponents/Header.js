@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ChangeTitle, Logo } from '../Mixin';
-import HeaderSearch from './HeaderSearch';
-import HeaderButtons from './HeaderButtons';
+import HeaderSearch from './header/HeaderSearch';
+import HeaderButtons from './header/HeaderButtons';
 import VirtualKeyboard from '../VirtualKeyboard';
 
 const HeaderWrapper = styled.header`
@@ -23,41 +23,38 @@ const HeaderLogoPlace = styled.div`
     height: 40px;
 `;
 
-const PopUpsOffSwitch = styled.div`
-    width: 100vw;
-    height: inherit;
-    overflow: hidden;
-    position: absolute;
-    z-index: 19;
-`;
-
 export default class extends React.Component {
     state = {
-        VKbd: false
+        VKbd: false,
+        miniSearchBox: false
     };
+
+    toggleVkbd = () => {
+        this.setState({ VKbd: !this.state.VKbd });
+    }
 
     render() {
         const { toggleGuide } = this.props;
-        const { VKbd } = this.state;
+        const { VKbd, miniSearchBox } = this.state;
         ChangeTitle('Main Page!');
         return (
-            <React.Fragment>
-                <HeaderWrapper>
-                    <HeaderLogoPlace></HeaderLogoPlace>
-                    <Logo
-                        toggleGuide={toggleGuide}
-                    ></Logo>
-                    <HeaderSearch
-                        onClick={() => {
-                            this.setState({ VKbd: !VKbd })
-                        }}></HeaderSearch>
-                    <HeaderButtons></HeaderButtons>
-                    {VKbd
-                        ? <VirtualKeyboard
-                            onClick={() => { this.setState({ VKbd: !VKbd }) }}></VirtualKeyboard>
-                        : null}
-                </HeaderWrapper>
-            </React.Fragment>
+            <HeaderWrapper>
+                {miniSearchBox
+                    ? null
+                    : <React.Fragment>
+                        <HeaderLogoPlace></HeaderLogoPlace>
+                        <Logo
+                            toggleGuide={toggleGuide}
+                        ></Logo>
+                        <HeaderSearch
+                            toggleVkbd={this.toggleVkbd}></HeaderSearch>
+                        <HeaderButtons></HeaderButtons>
+                        {VKbd
+                            ? <VirtualKeyboard
+                                onClick={() => { this.setState({ VKbd: !VKbd }) }}></VirtualKeyboard>
+                            : null}
+                    </React.Fragment>}
+            </HeaderWrapper>
         )
     }
 }
