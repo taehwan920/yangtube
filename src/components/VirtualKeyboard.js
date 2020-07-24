@@ -141,12 +141,96 @@ const SpaceBar = styled(Key)`
 `;
 
 
+
 export default class extends React.Component {
     state = {
         langIsKR: true,
         shift: false,
         capsLock: false
     }
+
+    isCompositeVowel = (lastStr, newStr) => {
+        console.log(lastStr, newStr)
+        if (lastStr === 'ㅗ') {
+            const canCombine = ['ㅏ', 'ㅣ', 'ㅐ'];
+            console.log(canCombine.includes(newStr))
+            if (canCombine.includes(newStr)) { return true; }
+        } else if (lastStr === 'ㅜ') {
+            const canCombine = ['ㅓ', 'ㅣ', 'ㅔ'];
+            console.log(canCombine.includes(newStr))
+            if (canCombine.includes(newStr)) { return true; }
+        } else if (lastStr === 'ㅡ') {
+            const canCombine = 'ㅣ';
+            console.log(canCombine === newStr)
+            if (canCombine === newStr) { return true; }
+        }
+        return false;
+    }
+
+    combineString = (already, lastChr, newInput) => {
+        return already.slice(0, -1) + Hangul.a([...Hangul.d(lastChr), newInput])
+    }
+
+    assembleKR = (already, newInput) => {
+        let result;
+        if (already.length > 0) {
+            const lastChr = already.slice(-1)
+            // 이미 입력돼 있던 문자열 중 마지막 글자가 자음일 경우
+            if (Hangul.endsWithConsonant(lastChr)) {
+                Hangul.isVowel(newInput)
+                    ? result = this.combineString(already, lastChr, newInput)
+                    : result = already + newInput
+                // 마지막 글자가 모음일 경우
+            } else {
+                // 이때 새로 입력된 글자가 모음일 경우
+                if (Hangul.isVowel(newInput)) {
+                    const lastVowel = Hangul.d(lastChr).slice(-1)[0];
+                    this.isCompositeVowel(lastVowel, newInput)
+                        ? result = this.combineString(already, lastChr, newInput)
+                        : result = already + newInput
+                } else {
+                    result = this.combineString(already, lastChr, newInput)
+                }
+            }
+        } else {
+            result = already + newInput
+        }
+        return result
+    };
+
+    strPushed = e => {
+        const { langIsKR, shift, capsLock } = this.state;
+        const searchInput = document.querySelector('#searchInput');
+        const newlyInput = e.target.innerHTML;
+        const alreadyInputStr = searchInput.value || '';
+        let newResult;
+        langIsKR
+            ? newResult = this.assembleKR(alreadyInputStr, newlyInput)
+            : newResult = alreadyInputStr + newlyInput
+        searchInput.value = newResult
+        if (shift && !capsLock) {
+            this.setState({ shift: false })
+        }
+    };
+
+    deleteStr = e => {
+        const { langIsKR } = this.state;
+        const searchInput = document.querySelector('#searchInput');
+        const alreadyInputStr = searchInput.value || '';
+        let newResult;
+        if (alreadyInputStr.length < 1) { return; }
+        if (langIsKR) {
+            const lastStr = alreadyInputStr.slice(-1)
+            const deleteLastStr = Hangul.d(lastStr).slice(0, -1)
+            newResult = alreadyInputStr.slice(0, -1) + Hangul.a(deleteLastStr)
+        } else {
+            newResult = newResult.slice(0, -1);
+        }
+        searchInput.value = newResult;
+    };
+
+    // 드래그 가능한 함수 만들 것
+
     render() {
         const { langIsKR, shift, capsLock } = this.state;
         let keySet;
@@ -158,58 +242,7 @@ export default class extends React.Component {
             shift
                 ? keySet = keyRows.EN_Cap
                 : keySet = keyRows.EN_small
-        };
-
-        // 드래그 가능한 함수 만들 것
-
-        function assembleKR(already, newInput) {
-            let result;
-            if (already.length > 0) {
-                const lastChr = already.slice(-1)
-                if (Hangul.endsWithConsonant(lastChr)) {
-                    Hangul.isVowel(newInput)
-                        ? result = already.slice(0, -1) + Hangul.a([...Hangul.d(lastChr), newInput])
-                        : result = already + newInput
-                } else {
-                    Hangul.isVowel(newInput)
-                        ? result = already + newInput
-                        : result = already.slice(0, -1) + Hangul.a([...Hangul.d(lastChr), newInput])
-                }
-            } else {
-                result = already + newInput
-            }
-            return result
         }
-
-        function strPushed(e) {
-            const searchInput = document.querySelector('#searchInput');
-            const newlyInput = e.target.innerHTML;
-            const alreadyInputStr = searchInput.value || '';
-            let newResult;
-            langIsKR
-                ? newResult = assembleKR(alreadyInputStr, newlyInput)
-                : newResult = alreadyInputStr + newlyInput
-            searchInput.value = newResult
-            if (shift && !capsLock) {
-                this.setState({ shift: false })
-            }
-        }
-
-        function deleteStr(e) {
-            const searchInput = document.querySelector('#searchInput');
-            const alreadyInputStr = searchInput.value || '';
-            let newResult;
-            if (alreadyInputStr.length < 1) { return; }
-            if (langIsKR) {
-                const lastStr = alreadyInputStr.slice(-1)
-                const deleteLastStr = Hangul.d(lastStr).slice(0, -1)
-                newResult = alreadyInputStr.slice(0, -1) + Hangul.a(deleteLastStr)
-            } else {
-                newResult = newResult.slice(0, -1);
-            }
-            searchInput.value = newResult;
-        }
-
         return (
             <KbdWrapper draggable="true">
                 <KbdRowsWrapper>
@@ -220,9 +253,9 @@ export default class extends React.Component {
                     <KbdRow>
                         {keySet[0].map(key => {
                             if (key === 'backspace') {
-                                return <BackSpace onClick={deleteStr}><i class="fas fa-backspace"></i></BackSpace>
+                                return <BackSpace onClick={this.deleteStr}><i class="fas fa-backspace"></i></BackSpace>
                             } else {
-                                return <Key onClick={strPushed}>{key}</Key>
+                                return <Key onClick={this.strPushed}>{key}</Key>
                             }
                         })}
                     </KbdRow>
@@ -231,9 +264,9 @@ export default class extends React.Component {
                             if (key === 'empty') {
                                 return <Empty></Empty>
                             } else if (key === '\\' || key === '|') {
-                                return <BackSlash onClick={strPushed}>{key}</BackSlash>
+                                return <BackSlash onClick={this.strPushed}>{key}</BackSlash>
                             } else {
-                                return <Key onClick={strPushed}>{key}</Key>
+                                return <Key onClick={this.strPushed}>{key}</Key>
                             }
                         })}
                     </KbdRow>
@@ -244,7 +277,7 @@ export default class extends React.Component {
                             } else if (key === 'empty2') {
                                 return <Empty2></Empty2>
                             } else {
-                                return <Key onClick={strPushed}>{key}</Key>
+                                return <Key onClick={this.strPushed}>{key}</Key>
                             }
                         })}
                     </KbdRow>
@@ -253,14 +286,14 @@ export default class extends React.Component {
                             if (key === 'shift') {
                                 return <ShiftKey now={shift} onClick={() => this.setState({ shift: !shift })}><i class="far fa-caret-square-up"></i></ShiftKey>
                             } else {
-                                return <Key onClick={strPushed}>{key}</Key>
+                                return <Key onClick={this.strPushed}>{key}</Key>
                             }
                         })}
                     </KbdRow>
                     <KbdRow>
                         {keySet[4].map(key => {
                             if (key === ' ') {
-                                return <SpaceBar onClick={strPushed}>{key}</SpaceBar>
+                                return <SpaceBar onClick={this.strPushed}>{key}</SpaceBar>
                             } else {
                                 return <CtrlAltKey>{key}</CtrlAltKey>
                             }
@@ -270,4 +303,4 @@ export default class extends React.Component {
             </KbdWrapper>
         )
     }
-}
+};
