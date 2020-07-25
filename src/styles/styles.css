@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
 html, body, #root {
+    width: 100vw;
     height: max-content;
     background-color: #f9f9f9;
 }

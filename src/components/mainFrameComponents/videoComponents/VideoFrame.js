@@ -4,28 +4,39 @@ import styled, { css } from 'styled-components';
 const VideoFrame = styled.div`
     background: gray;
     width: 100vw;
-    height: calc(100vw / 235 * 100);
+    height: ${props => props.viewPort / 235 * 100}px;
+    max-height: 720px;
 
     ${props => !props.theaterMode && css`
         max-width: 1280px;
         max-height: 720px;
-        width: 68.45vw;
-        height: calc(68.45vw / 16 * 9);
-        margin-left: 0px;
-        margin-top: 0px;
 
         @media(max-width: 1023px) {
-            width: 95.1vw;
-            height: calc(95.1vw / 16 * 9);
+            width: calc(${props => props.viewPort}px - 24px);
+            height: calc((${props => props.viewPort}px - 24px) / 16 * 9);
+        }
+    
+        @media(min-width: 1024px) and (max-width: 1754px) {
+            width: calc(${props => props.viewPort}px - 24px - 450px);
+            height: calc((${props => props.viewPort}px - 24px - 450px) / 16 * 9);
+        }
+    
+        @media(min-width: 1755px) {
+            width: calc(${props => props.viewPort - props.newMargin * 2}px - 24px - 450px);
+            height: calc((${props => props.viewPort - props.newMargin * 2}px - 24px - 450px) / 16 * 9);
         }
     `}
 `;
 
 export default class extends React.Component {
     render() {
-        const { theaterMode } = this.props;
+        const { theaterMode, newMargin, viewPort } = this.props;
         return (
-            <VideoFrame theaterMode={theaterMode}>
+            <VideoFrame
+                newMargin={newMargin}
+                viewPort={viewPort}
+                theaterMode={theaterMode}>
+                동영상자리
             </VideoFrame>
         )
     }

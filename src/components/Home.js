@@ -6,7 +6,7 @@ import MainTerritory from './mainFrameComponents/MainTerritory';
 import styled from 'styled-components';
 
 const HomeDiv = styled.div`
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     display: flex;
     position: relative;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { ToggleSwitch } from '../../Mixin';
 import VideoItem from './VideoNavMixin/VideoItem';
 
-const VideoNavPCWrapper = styled.nav`
+const VideoNavNonPCWrapper = styled.nav`
     background-color: inherit;
     width: 100%;
     height: max-content;
@@ -64,7 +64,7 @@ for (let i = 0; i < 6; i++) {
 export default class extends React.Component {
     render() {
         return (
-            <VideoNavPCWrapper>
+            <VideoNavNonPCWrapper>
                 <NextVideoSection>
                     <NextVideoHeader>
                         <NextVideoText>
@@ -82,7 +82,7 @@ export default class extends React.Component {
                         <VideoItem></VideoItem>
                     )
                 })}
-            </VideoNavPCWrapper>
+            </VideoNavNonPCWrapper>
         )
     }
 };
