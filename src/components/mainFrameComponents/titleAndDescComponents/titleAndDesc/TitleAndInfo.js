@@ -18,6 +18,9 @@ const ViewsAndDateWrapper = styled.div`
 `;
 
 const ViewsSpan = styled.span`
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
 `;
 
 const TitleInfoDot = styled.span`
@@ -120,6 +123,7 @@ export const TitleFunctionsTexts = styled.span`
     height: 16px;
     font-size: 13px;
     line-height: 16px;
+    white-space: nowrap;
 `;
 
 export const TitleInfoClickEffect = styled.div`

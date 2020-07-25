@@ -8,7 +8,6 @@ import {
     DislikeBox,
     DislikeIcon,
     DislikeRate,
-    TitleFunctionsTexts
 } from '../TitleAndInfo';
 import styled from 'styled-components'
 import { titleItems } from '../TitleAndInfo';
@@ -33,6 +32,12 @@ const LikeEffect = styled.div`
 const DislikeEffect = styled(LikeEffect)`
     top: 7px;
     left: 5px;
+`;
+
+const LikeTexts = styled.span`
+    height: 16px;
+    font-size: 13px;
+    line-height: 16px;
 `;
 
 
@@ -73,18 +78,18 @@ export default class extends React.Component {
                         {titleItems.pictograms.like[0]}
                         <LikeEffect></LikeEffect>
                     </LikeIcon>
-                    <TitleFunctionsTexts>
+                    <LikeTexts>
                         {this.compressNum(titleItems.pictograms.like[1])}{titleItems.pictograms.like[2]}
-                    </TitleFunctionsTexts>
+                    </LikeTexts>
                 </LikeBox>
                 <DislikeBox disliked={disliked} onClick={this.clickThumb('disliked')}>
                     <DislikeIcon>
                         {titleItems.pictograms.dislike[0]}
                         <DislikeEffect></DislikeEffect>
                     </DislikeIcon>
-                    <TitleFunctionsTexts>
+                    <LikeTexts>
                         {this.compressNum(titleItems.pictograms.dislike[1])}{titleItems.pictograms.dislike[2]}
-                    </TitleFunctionsTexts>
+                    </LikeTexts>
                 </DislikeBox>
                 <LikeRateChartBox>
                     <LikeRate

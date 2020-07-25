@@ -126,7 +126,7 @@ const VideoInfoInnerWrapper = styled.div`
 
 export default class extends React.Component {
     state = {
-        theaterMode: false,
+        theaterMode: true,
         newMargin: null,
         viewPort: null
     }

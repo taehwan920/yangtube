@@ -4,8 +4,9 @@ import styled, { css } from 'styled-components';
 const VideoFrame = styled.div`
     background: gray;
     width: 100vw;
-    height: ${props => props.viewPort / 235 * 100}px;
-    max-height: 720px;
+    height: ${props => (props.viewPort / 935 * 338) + 100}px;
+    max-height: 776px;
+    min-height: 480px;
 
     ${props => !props.theaterMode && css`
         max-width: 1280px;
