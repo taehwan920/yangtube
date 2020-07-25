@@ -111,15 +111,15 @@ const VideoInfoInnerWrapper = styled.div`
     justify-content: flex-start;
 
     @media(max-width: 1023px) {
-        width: calc(${props => props.viewPort}px - 24px);
+        width: calc(${props => props.viewWidth}px - 24px);
     }
 
     @media(min-width: 1024px) and (max-width: 1754px) {
-        width: calc(${props => props.viewPort}px - 24px - 450px);
+        width: calc(${props => props.viewWidth}px - 24px - 450px);
     }
 
     @media(min-width: 1755px) {
-        width: calc(${props => props.viewPort - props.newMargin * 2}px - 24px - 450px)
+        width: calc(${props => props.viewWidth - props.newMargin * 2}px - 24px - 450px)
     }
 }
 `;
@@ -127,34 +127,19 @@ const VideoInfoInnerWrapper = styled.div`
 export default class extends React.Component {
     state = {
         theaterMode: true,
-        newMargin: null,
-        viewPort: null
+        newMargin: null
     }
 
-    resetMargin1 = () => {
+    getSize = () => {
         const nowWidth = window.innerWidth;
-        console.log(nowWidth);
-        this.setState({ viewPort: nowWidth });
-        if (nowWidth < 1755) { return; }
-        let result = nowWidth - 1755;
-        this.setState({ newMargin: result / 2 });
-    }
-
-    resetMargin = () => {
-        const nowWidth = window.innerWidth;
-        let result = nowWidth - 1755;
-        if (result < 0) { result = 0; }
+        let newWidth = nowWidth - 1755;
+        if (newWidth < 0) { newWidth = 0; }
         this.setState({
-            newMargin: result / 2,
-            viewPort: nowWidth
+            newMargin: newWidth / 2
         });
     }
 
     componentDidMount() {
-        if (this.state.viewPort === null) {
-            const nowWidth = window.innerWidth;
-            this.setState({ viewPort: nowWidth });
-        }
         if (this.state.newMargin === null) {
             const nowWidth = window.innerWidth;
             nowWidth >= 1755
@@ -162,11 +147,12 @@ export default class extends React.Component {
                 : this.setState({ newMargin: 0 });
         };
 
-        window.addEventListener('resize', this.resetMargin);
+        window.addEventListener('resize', this.getSize);
     };
 
     render() {
-        const { theaterMode, newMargin, viewPort } = this.state;
+        const { theaterMode, newMargin } = this.state;
+        const viewWidth = window.innerWidth;
         return (
             <MainTerritory
                 newMargin={newMargin}
@@ -176,14 +162,13 @@ export default class extends React.Component {
                     <MainFrameContainer theaterMode={theaterMode}>
                         <VideoFrame
                             newMargin={newMargin}
-                            viewPort={viewPort}
                             theaterMode={theaterMode}></VideoFrame>
                         <VideoInfoOuterWrapper
                             newMargin={newMargin}
                             theaterMode={theaterMode}>
                             <VideoInfoInnerWrapper
                                 newMargin={newMargin}
-                                viewPort={viewPort}
+                                viewWidth={viewWidth}
                                 theaterMode={theaterMode}
                             >
                                 <MainTitleAndDesc></MainTitleAndDesc>
