@@ -100,7 +100,7 @@ const VideoInfoOuterWrapper = styled.div`
     }
 
 `;
-// width: 68.45vw;
+
 const VideoInfoInnerWrapper = styled.div`
     background: inherit;
     max-width: 1280px;
@@ -126,8 +126,8 @@ const VideoInfoInnerWrapper = styled.div`
 
 export default class extends React.Component {
     state = {
-        theaterMode: true,
-        newMargin: null
+        newMargin: null,
+        theaterMode: true
     }
 
     getSize = () => {
@@ -151,7 +151,7 @@ export default class extends React.Component {
     };
 
     render() {
-        const { theaterMode, newMargin } = this.state;
+        const { newMargin, theaterMode } = this.state;
         const viewWidth = window.innerWidth;
         return (
             <MainTerritory
@@ -162,18 +162,18 @@ export default class extends React.Component {
                     <MainFrameContainer theaterMode={theaterMode}>
                         <VideoFrame
                             newMargin={newMargin}
-                            theaterMode={theaterMode}></VideoFrame>
+                            theaterMode={theaterMode}
+                        />
                         <VideoInfoOuterWrapper
                             newMargin={newMargin}
                             theaterMode={theaterMode}>
                             <VideoInfoInnerWrapper
                                 newMargin={newMargin}
                                 viewWidth={viewWidth}
-                                theaterMode={theaterMode}
-                            >
-                                <MainTitleAndDesc></MainTitleAndDesc>
-                                <VideoNavNonPC></VideoNavNonPC>
-                                <MainComments></MainComments>
+                                theaterMode={theaterMode}>
+                                <MainTitleAndDesc />
+                                <VideoNavNonPC />
+                                <MainComments />
                             </VideoInfoInnerWrapper>
                             {theaterMode
                                 ? <VideoNavPC></VideoNavPC>
@@ -183,7 +183,7 @@ export default class extends React.Component {
                 </MainFrameWrapper>
                 {theaterMode
                     ? null
-                    : <VideoNavPC></VideoNavPC>}
+                    : <VideoNavPC />}
             </MainTerritory>
         )
     }

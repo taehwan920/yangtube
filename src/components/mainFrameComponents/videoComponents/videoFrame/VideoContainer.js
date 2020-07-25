@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 const VideoWrapper = styled.div`
-    background-color: gray;
+    background-color: pink;
 
     ${props => props.theaterMode && css`
         min-width: 450px;
@@ -43,7 +43,6 @@ export default class extends React.Component {
                 theaterMode={theaterMode}
                 viewHeight={viewHeight}
                 viewWidth={viewWidth}>
-                나 여깄다
             </VideoWrapper>
         )
     }

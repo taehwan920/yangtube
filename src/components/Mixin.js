@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 
 export const ChangeTitle = (str) => {
     document.title = `${str} | YangTube`;
-}
+};
 
 export const toggleGuide = () => {
     const guide = document.querySelector('.guide-wrapper');
     guide.classList.toggle('move');
-}
+};
 
 const LogoWrapper = styled.div`
     width: 155px;

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import VideoContainer from './videoFrame/VideoContainer';
+import VideoInterFace from './videoFrame/VideoInterFace';
 
 const VideoFrame = styled.div`
     background: black;
@@ -9,8 +10,8 @@ const VideoFrame = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 
-    height: ${props => props.viewHeight * 0.8212}px;
     ${props => props.theaterMode && css`
         width: 100vw;
 
@@ -51,8 +52,11 @@ const VideoFrame = styled.div`
 export default class extends React.Component {
     state = {
         frameHeight: null,
-        frameWidth: null
-    }
+        frameWidth: null,
+        videoActivated: false,
+        videoPaused: false
+    };
+
     getHeight = () => {
         const newHeight = window.innerHeight;
         const newWidth = window.innerWidth;
@@ -60,16 +64,43 @@ export default class extends React.Component {
             frameHeight: newHeight,
             frameWidth: newWidth
         });
-    }
+    };
+
     componentDidMount() {
         window.addEventListener('resize', this.getHeight)
+    };
+
+    mouseOnVideo = () => {
+        if (this.state.videoPaused) { return; }
+        this.setState({
+            videoActivated: true
+        })
+        setTimeout(this.mouseOutVideo, 5000);
     }
+
+    mouseOutVideo = () => {
+        if (this.state.videoPaused) { return; }
+        this.setState({
+            videoActivated: false
+        })
+    }
+
+    pauseVideo = () => {
+        this.setState({
+            videoActivated: true,
+            videoPaused: !this.state.videoPaused
+        })
+    }
+
     render() {
         const { theaterMode, newMargin } = this.props;
-        const { frameHeight, frameWidth } = this.state;
+        const { frameHeight, frameWidth, videoActivated } = this.state;
         const viewHeight = window.innerHeight, viewWidth = window.innerWidth;
         return (
             <VideoFrame
+                onClick={this.pauseVideo}
+                onMouseOut={this.mouseOutVideo}
+                onMouseOver={this.mouseOnVideo}
                 newMargin={newMargin}
                 frameHeight={frameHeight}
                 frameWidth={frameWidth}
@@ -77,8 +108,10 @@ export default class extends React.Component {
                 viewHeight={viewHeight}
                 theaterMode={theaterMode}>
                 <VideoContainer
-                    theaterMode={theaterMode}>
-                </VideoContainer>
+                    theaterMode={theaterMode} />
+                <VideoInterFace
+                    videoActivated={videoActivated}
+                />
             </VideoFrame>
         )
     }
