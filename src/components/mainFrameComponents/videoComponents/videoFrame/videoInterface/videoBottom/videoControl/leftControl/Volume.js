@@ -8,14 +8,12 @@ const VolumeSlideBox = styled.div`
     position: relative;
     display: flex;
     align-items: center;
-    z-index: 27;
 `;
 
 const VolumeRange = styled.input`
     -webkit-appearance: none;
     background: transparent;
     width: 100%;
-    z-index: 28;
 
     &:focus {
         outline: none;
@@ -46,7 +44,6 @@ const VolumeSlide = styled.div`
     position: absolute;
     bottom: calc(50% - 1.5px);
     cursor: pointer;
-    z-index: 27;
 `;
 
 export default class extends React.Component {

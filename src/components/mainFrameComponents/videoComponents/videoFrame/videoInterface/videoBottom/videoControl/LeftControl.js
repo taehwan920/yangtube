@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PlayPause from './leftControl/PlayPause';
 import Volume from './leftControl/Volume';
+import MuteBtn from './leftControl/MuteBtn';
 
 const LeftControlBox = styled.div`
     width: max-content;
@@ -18,13 +19,10 @@ const CommonBtn = styled.span`
     align-items: center;
     color: white;
     font-size: 18px;
-    cursor: pointer
+    cursor: pointer;
 `;
 
 const NextButton = styled(CommonBtn)`
-`;
-
-const MuteButton = styled(CommonBtn)`
 `;
 
 const TimeDisplay = styled.div`
@@ -51,7 +49,7 @@ export default class extends React.Component {
                     videoPaused={videoPaused}
                 />
                 <NextButton><i class="fas fa-step-forward"></i></NextButton>
-                <MuteButton><i class="fas fa-volume-up"></i></MuteButton>
+                <MuteBtn />
                 <Volume />
                 <TimeDisplay>
                     <TimeTextBox>

@@ -11,6 +11,7 @@ const VideoBottomWrapper = styled.div`
     bottom: 0px;
     left: 12px;
     z-index: 26;
+    opacity: ${props => props.videoActivated ? 1 : 0};
 `;
 
 export default class extends React.Component {
@@ -20,9 +21,10 @@ export default class extends React.Component {
     };
 
     render() {
-        const { pauseVideo, videoPaused } = this.props;
+        const { pauseVideo, videoActivated, videoPaused } = this.props;
         return (
             <VideoBottomWrapper
+                videoActivated={videoActivated}
                 onClick={this.clickVideoBottom}
 
             >

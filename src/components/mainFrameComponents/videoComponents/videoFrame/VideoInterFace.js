@@ -8,12 +8,11 @@ export default class extends React.Component {
         return (
             <React.Fragment>
                 {videoActivated ? <VideoGradient /> : null}
-                {videoActivated
-                    ? <VideoBottom
-                        pauseVideo={pauseVideo}
-                        videoPaused={videoPaused}
-                    />
-                    : null}
+                <VideoBottom
+                    pauseVideo={pauseVideo}
+                    videoActivated={videoActivated}
+                    videoPaused={videoPaused}
+                />
             </React.Fragment>
         )
     }
