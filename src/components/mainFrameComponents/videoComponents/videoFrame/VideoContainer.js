@@ -50,6 +50,7 @@ export default class extends React.Component {
         const {
             getCurrent,
             getDuration,
+            muted,
             theaterMode,
             videoPaused,
             volume
@@ -64,6 +65,7 @@ export default class extends React.Component {
                 <Video
                     getCurrent={getCurrent}
                     getDuration={getDuration}
+                    muted={muted}
                     videoPaused={videoPaused}
                     volume={volume}
                 />

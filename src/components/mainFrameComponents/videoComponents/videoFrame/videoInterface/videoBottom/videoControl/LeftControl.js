@@ -43,6 +43,8 @@ export default class extends React.Component {
     render() {
         const {
             getVol,
+            muted,
+            toggleMute,
             pauseVideo,
             videoPaused,
             volume
@@ -55,7 +57,10 @@ export default class extends React.Component {
                     videoPaused={videoPaused}
                 />
                 <NextButton><i class="fas fa-step-forward"></i></NextButton>
-                <MuteBtn />
+                <MuteBtn
+                    muted={muted}
+                    toggleMute={toggleMute}
+                />
                 <Volume
                     getVol={getVol}
                     volume={volume}

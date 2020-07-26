@@ -32,19 +32,11 @@ const MuteSlash = styled.div`
 `;
 
 export default class extends React.Component {
-    state = {
-        muted: false
-    };
-
-    muteVolume = () => {
-        this.setState({ muted: !this.state.muted });
-    };
-
     render() {
-        const { muted } = this.state;
+        const { muted, toggleMute } = this.props;
         return (
             <MuteButton
-                onClick={this.muteVolume}>
+                onClick={toggleMute}>
                 <i class="fas fa-volume-up"></i>
                 <MuteSlashBox>
                     <MuteSlash muted={muted} />

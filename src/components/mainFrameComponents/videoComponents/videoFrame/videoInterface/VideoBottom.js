@@ -24,7 +24,9 @@ export default class extends React.Component {
         const {
             currentTime,
             getVol,
+            muted,
             theaterMode,
+            toggleMute,
             toggleTheater,
             pauseVideo,
             vidDuration,
@@ -42,7 +44,9 @@ export default class extends React.Component {
                 />
                 <VideoControl
                     getVol={getVol}
+                    muted={muted}
                     theaterMode={theaterMode}
+                    toggleMute={toggleMute}
                     toggleTheater={toggleTheater}
                     pauseVideo={pauseVideo}
                     videoPaused={videoPaused}

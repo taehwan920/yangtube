@@ -16,9 +16,16 @@ export default class extends React.Component {
         this.vidRef.volume = this.props.volume;
     }
 
+    toggleMuteVideo = () => {
+        this.props.muted
+            ? this.vidRef['muted'] = true
+            : this.vidRef['muted'] = false;
+    };
+
     componentDidUpdate() {
-        this.playPause();
         this.changeVolume();
+        this.toggleMuteVideo();
+        this.playPause();
     }
 
     render() {

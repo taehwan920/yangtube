@@ -15,7 +15,9 @@ export default class extends React.Component {
     render() {
         const {
             getVol,
+            muted,
             theaterMode,
+            toggleMute,
             toggleTheater,
             pauseVideo,
             videoPaused,
@@ -25,6 +27,8 @@ export default class extends React.Component {
             <VideoControlBox>
                 <LeftControl
                     getVol={getVol}
+                    muted={muted}
+                    toggleMute={toggleMute}
                     pauseVideo={pauseVideo}
                     videoPaused={videoPaused}
                     volume={volume}

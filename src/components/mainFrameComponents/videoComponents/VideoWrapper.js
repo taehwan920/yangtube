@@ -6,7 +6,13 @@ export default class extends React.Component {
     state = {
         currentTime: 0,
         vidDuration: 1,
-        volume: 1
+        volume: 1,
+        muted: false
+    }
+
+    toggleMute = () => {
+        console.log('aaa')
+        this.setState({ muted: !this.state.muted });
     }
 
     getVol = e => {
@@ -31,9 +37,11 @@ export default class extends React.Component {
             toggleTheater,
             pauseVideo,
             videoActivated,
-            videoPaused } = this.props;
+            videoPaused
+        } = this.props;
         const {
             currentTime,
+            muted,
             vidDuration,
             volume
         } = this.state;
@@ -42,6 +50,7 @@ export default class extends React.Component {
                 <VideoContainer
                     getCurrent={this.getCurrent}
                     getDuration={this.getDuration}
+                    muted={muted}
                     theaterMode={theaterMode}
                     videoPaused={videoPaused}
                     volume={volume}
@@ -49,7 +58,9 @@ export default class extends React.Component {
                 <VideoInterFace
                     currentTime={currentTime}
                     getVol={this.getVol}
+                    muted={muted}
                     theaterMode={theaterMode}
+                    toggleMute={this.toggleMute}
                     toggleTheater={toggleTheater}
                     pauseVideo={pauseVideo}
                     vidDuration={vidDuration}

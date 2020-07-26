@@ -6,7 +6,9 @@ export default class extends React.Component {
     render() {
         const { currentTime,
             getVol,
+            muted,
             theaterMode,
+            toggleMute,
             toggleTheater,
             pauseVideo,
             vidDuration,
@@ -20,7 +22,9 @@ export default class extends React.Component {
                 <VideoBottom
                     currentTime={currentTime}
                     getVol={getVol}
+                    muted={muted}
                     theaterMode={theaterMode}
+                    toggleMute={toggleMute}
                     toggleTheater={toggleTheater}
                     pauseVideo={pauseVideo}
                     vidDuration={vidDuration}
