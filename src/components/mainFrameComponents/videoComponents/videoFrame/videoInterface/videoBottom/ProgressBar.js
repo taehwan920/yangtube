@@ -6,6 +6,7 @@ const ProgressBarBox = styled.div`
     height: 5px;
     position: absolute;
     bottom: 35px;
+    cursor: pointer;
 `;
 
 const TotalProgress = styled.div`

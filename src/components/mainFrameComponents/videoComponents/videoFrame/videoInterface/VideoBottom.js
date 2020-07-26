@@ -10,13 +10,22 @@ const VideoBottomWrapper = styled.div`
     position: absolute;
     bottom: 0px;
     left: 12px;
+    z-index: 26;
 `;
 
 export default class extends React.Component {
+
+    clickVideoBottom = e => {
+        e.stopPropagation();
+    };
+
     render() {
         const { pauseVideo, videoPaused } = this.props;
         return (
-            <VideoBottomWrapper>
+            <VideoBottomWrapper
+                onClick={this.clickVideoBottom}
+
+            >
                 <ProgressBar />
                 <VideoControl
                     pauseVideo={pauseVideo}

@@ -8,6 +8,7 @@ const VideoControlBox = styled.div`
     height: 36px;
     display: flex;
     justify-content: space-between;
+    z-index: auto;
 `;
 
 export default class extends React.Component {
