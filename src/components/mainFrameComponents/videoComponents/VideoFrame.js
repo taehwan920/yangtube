@@ -109,7 +109,7 @@ export default class extends React.Component {
     }
 
     render() {
-        const { theaterMode, newMargin } = this.props;
+        const { newMargin, theaterMode, toggleTheater } = this.props;
         const { frameHeight, frameWidth, videoPaused, videoActivated } = this.state;
         const viewHeight = window.innerHeight, viewWidth = window.innerWidth;
         return (
@@ -126,8 +126,9 @@ export default class extends React.Component {
                 theaterMode={theaterMode}>
                 <VideoWrapper
                     theaterMode={theaterMode}
-                    videoPaused={videoPaused}
+                    toggleTheater={toggleTheater}
                     pauseVideo={this.pauseVideo}
+                    videoPaused={videoPaused}
                     videoActivated={videoActivated} />
             </VideoFrame>
         )

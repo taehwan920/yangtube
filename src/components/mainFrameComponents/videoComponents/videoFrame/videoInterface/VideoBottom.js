@@ -21,15 +21,15 @@ export default class extends React.Component {
     };
 
     render() {
-        const { pauseVideo, videoActivated, videoPaused } = this.props;
+        const { theaterMode, toggleTheater, pauseVideo, videoActivated, videoPaused } = this.props;
         return (
             <VideoBottomWrapper
                 videoActivated={videoActivated}
-                onClick={this.clickVideoBottom}
-
-            >
+                onClick={this.clickVideoBottom}>
                 <ProgressBar />
                 <VideoControl
+                    theaterMode={theaterMode}
+                    toggleTheater={toggleTheater}
                     pauseVideo={pauseVideo}
                     videoPaused={videoPaused}
                 />

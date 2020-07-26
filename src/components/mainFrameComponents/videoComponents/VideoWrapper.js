@@ -7,14 +7,16 @@ export default class extends React.Component {
         paused: false
     }
     render() {
-        const { theaterMode, pauseVideo, videoActivated, videoPaused } = this.props;
+        const { theaterMode, toggleTheater, pauseVideo, videoActivated, videoPaused } = this.props;
         return (
             <React.Fragment>
                 <VideoContainer
                     theaterMode={theaterMode} />
                 <VideoInterFace
-                    videoPaused={videoPaused}
+                    theaterMode={theaterMode}
+                    toggleTheater={toggleTheater}
                     pauseVideo={pauseVideo}
+                    videoPaused={videoPaused}
                     videoActivated={videoActivated}
                 />
             </React.Fragment>

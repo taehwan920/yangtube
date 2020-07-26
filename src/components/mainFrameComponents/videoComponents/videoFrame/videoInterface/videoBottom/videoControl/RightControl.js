@@ -30,8 +30,8 @@ const TheaterBtn = styled(CommonBtn)`
 `;
 
 const TheaterRec = styled.div`
-    width: 20px;
-    height: 14px;
+    width: ${props => props.theaterMode ? '16px' : '20px'};
+    height: ${props => props.theaterMode ? '10px' : '14px'};
     border: 2px solid white;
 `;
 
@@ -63,6 +63,7 @@ const FullscreenIcon = styled.span`
 
 export default class extends React.Component {
     render() {
+        const { theaterMode, toggleTheater } = this.props;
         return (
             <RightControlBox>
                 <CaptionBtn>
@@ -71,8 +72,10 @@ export default class extends React.Component {
                 <ConfigBtn>
                     <i class="fas fa-cog"></i>
                 </ConfigBtn>
-                <TheaterBtn>
-                    <TheaterRec />
+                <TheaterBtn
+                    onClick={toggleTheater}>
+                    <TheaterRec
+                        theaterMode={theaterMode} />
                 </TheaterBtn>
                 <FullscreenBtn>
                     <FullscreenIcon>
