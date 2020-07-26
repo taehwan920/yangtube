@@ -15,10 +15,6 @@ const VolumeRange = styled.input`
     background: transparent;
     width: 100%;
 
-    &:focus {
-        outline: none;
-    }
-
     &::-webkit-slider-runnable-track{
         background: transparent;
         width: 100%;

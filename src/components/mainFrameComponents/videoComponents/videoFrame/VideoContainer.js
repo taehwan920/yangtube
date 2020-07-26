@@ -1,15 +1,16 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import Video from './videoContainer/Video';
 
 const VideoWrapper = styled.div`
-    background-color: gray;
+    background-color: ${props => props.theaterMode ? 'black' : 'white'};
 
     ${props => props.theaterMode && css`
         min-width: 450px;
         min-height: 253px;
 
         @media(min-width: 1380px) {
-            width: ${props => props.viewHeight * 0.8211 / 9 * 16}px;
+            width: ${props => props.viewHeight * 0.822 / 9 * 16}px;
             height: 100%;
         }
 
@@ -32,17 +33,32 @@ const VideoWrapper = styled.div`
         min-width: 427px;
         min-height: 240px;
     `}
+
+    &:fullscreen{
+        max-width: none;
+        width: 100%;
+    }
+
+    &:-webkit-full-screen{
+        max-width: none;
+        width: 100%;
+    }
 `;
 
 export default class extends React.Component {
     render() {
-        const { theaterMode } = this.props;
+        const { getCurrent, getDuration, theaterMode, videoPaused } = this.props;
         const viewHeight = window.innerHeight, viewWidth = window.innerWidth;
         return (
             <VideoWrapper
                 theaterMode={theaterMode}
                 viewHeight={viewHeight}
-                viewWidth={viewWidth} />
+                viewWidth={viewWidth}>
+                <Video
+                    getCurrent={getCurrent}
+                    getDuration={getDuration}
+                    videoPaused={videoPaused} />
+            </VideoWrapper>
         )
     }
 }

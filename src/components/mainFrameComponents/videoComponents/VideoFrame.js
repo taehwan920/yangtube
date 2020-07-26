@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import VideoWrapper from './VideoWrapper';
+import PlayToggleAni from './PlayToggleAni';
 
 
 const VideoFrame = styled.div`
@@ -56,6 +57,7 @@ export default class extends React.Component {
         frameWidth: null,
         videoActivated: false,
         videoPaused: false,
+        clicked: 0
     };
 
     getHeight = () => {
@@ -108,13 +110,18 @@ export default class extends React.Component {
         })
     }
 
+    clickEvent = () => {
+        this.pauseVideo();
+        this.setState({ clicked: this.state.clicked + 1 })
+    }
+
     render() {
         const { newMargin, theaterMode, toggleTheater } = this.props;
-        const { frameHeight, frameWidth, videoPaused, videoActivated } = this.state;
+        const { clicked, frameHeight, frameWidth, videoPaused, videoActivated } = this.state;
         const viewHeight = window.innerHeight, viewWidth = window.innerWidth;
         return (
             <VideoFrame
-                onClick={this.pauseVideo}
+                onClick={this.clickEvent}
                 onMouseLeave={this.outVideo}
                 onMouseEnter={this.onVideo}
                 onMouseMove={this.mouseMoved}
@@ -130,6 +137,8 @@ export default class extends React.Component {
                     pauseVideo={this.pauseVideo}
                     videoPaused={videoPaused}
                     videoActivated={videoActivated} />
+                <PlayToggleAni
+                    clicked={clicked} />
             </VideoFrame>
         )
     }

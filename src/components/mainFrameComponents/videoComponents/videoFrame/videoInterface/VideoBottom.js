@@ -21,12 +21,21 @@ export default class extends React.Component {
     };
 
     render() {
-        const { theaterMode, toggleTheater, pauseVideo, videoActivated, videoPaused } = this.props;
+        const { currentTime,
+            vidDuration,
+            theaterMode,
+            toggleTheater,
+            pauseVideo,
+            videoActivated,
+            videoPaused } = this.props;
         return (
             <VideoBottomWrapper
                 videoActivated={videoActivated}
                 onClick={this.clickVideoBottom}>
-                <ProgressBar />
+                <ProgressBar
+                    currentTime={currentTime}
+                    vidDuration={vidDuration}
+                />
                 <VideoControl
                     theaterMode={theaterMode}
                     toggleTheater={toggleTheater}
