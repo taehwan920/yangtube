@@ -41,7 +41,13 @@ const TimeTextBox = styled.div`
 
 export default class extends React.Component {
     render() {
-        const { pauseVideo, videoPaused } = this.props;
+        const {
+            getVol,
+            pauseVideo,
+            videoPaused,
+            volume
+        } = this.props;
+
         return (
             <LeftControlBox>
                 <PlayPause
@@ -50,7 +56,10 @@ export default class extends React.Component {
                 />
                 <NextButton><i class="fas fa-step-forward"></i></NextButton>
                 <MuteBtn />
-                <Volume />
+                <Volume
+                    getVol={getVol}
+                    volume={volume}
+                />
                 <TimeDisplay>
                     <TimeTextBox>
                         0:00 / 1:51

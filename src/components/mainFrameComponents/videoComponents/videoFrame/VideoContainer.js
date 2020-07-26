@@ -47,17 +47,26 @@ const VideoWrapper = styled.div`
 
 export default class extends React.Component {
     render() {
-        const { getCurrent, getDuration, theaterMode, videoPaused } = this.props;
+        const {
+            getCurrent,
+            getDuration,
+            theaterMode,
+            videoPaused,
+            volume
+        } = this.props;
         const viewHeight = window.innerHeight, viewWidth = window.innerWidth;
         return (
             <VideoWrapper
                 theaterMode={theaterMode}
                 viewHeight={viewHeight}
-                viewWidth={viewWidth}>
+                viewWidth={viewWidth}
+            >
                 <Video
                     getCurrent={getCurrent}
                     getDuration={getDuration}
-                    videoPaused={videoPaused} />
+                    videoPaused={videoPaused}
+                    volume={volume}
+                />
             </VideoWrapper>
         )
     }

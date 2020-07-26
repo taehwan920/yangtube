@@ -12,8 +12,13 @@ export default class extends React.Component {
             : this.vidRef['play']();
     }
 
+    changeVolume = () => {
+        this.vidRef.volume = this.props.volume;
+    }
+
     componentDidUpdate() {
         this.playPause();
+        this.changeVolume();
     }
 
     render() {

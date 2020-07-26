@@ -3,11 +3,11 @@ import styled, { css } from 'styled-components';
 
 const ProgressContainer = styled.div`
     width: 100%;
-    height: 18px;
+    height: 20px;
     position: absolute;
     display: flex;
     align-items: center;
-    bottom: 34.5px;
+    bottom: 32.5px;
     cursor: pointer;
 `;
 
@@ -15,7 +15,7 @@ const ProgressBox = styled.div`
     position: absolute;
     width: 100%;
     height: 5px;
-    bottom: 4px;
+    bottom: 6px;
 `;
 
 const hoverAni = css`
@@ -39,6 +39,18 @@ const TotalProgress = styled.div`
 //     top: 0px;
 //     left: 0px;
 // `;
+
+const CurrentBall = styled.div`
+    background: red;
+    width: 2.5px;
+    height: 3px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0px;
+    left: calc(${props => props.progressRate || 0}% - 1px);
+    transition: all 0.1s linear;
+    transform: ${props => props.scaleUp ? 'scale(3.75)' : 'scale(1)'};
+`;
 
 const CurrentProgress = styled.div`
     background: red;
@@ -76,6 +88,10 @@ export default class extends React.Component {
                         scaleUp={scaleUp}
                     >
                         <CurrentProgress
+                            scaleUp={scaleUp}
+                            progressRate={progressRate}
+                        />
+                        <CurrentBall
                             scaleUp={scaleUp}
                             progressRate={progressRate}
                         />

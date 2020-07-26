@@ -21,13 +21,17 @@ export default class extends React.Component {
     };
 
     render() {
-        const { currentTime,
-            vidDuration,
+        const {
+            currentTime,
+            getVol,
             theaterMode,
             toggleTheater,
             pauseVideo,
+            vidDuration,
             videoActivated,
-            videoPaused } = this.props;
+            videoPaused,
+            volume
+        } = this.props;
         return (
             <VideoBottomWrapper
                 videoActivated={videoActivated}
@@ -37,10 +41,12 @@ export default class extends React.Component {
                     vidDuration={vidDuration}
                 />
                 <VideoControl
+                    getVol={getVol}
                     theaterMode={theaterMode}
                     toggleTheater={toggleTheater}
                     pauseVideo={pauseVideo}
                     videoPaused={videoPaused}
+                    volume={volume}
                 />
             </VideoBottomWrapper>
         )

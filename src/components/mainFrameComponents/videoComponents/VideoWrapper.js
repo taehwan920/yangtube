@@ -5,7 +5,12 @@ import VideoInterFace from './videoFrame/VideoInterFace';
 export default class extends React.Component {
     state = {
         currentTime: 0,
-        vidDuration: 1
+        vidDuration: 1,
+        volume: 1
+    }
+
+    getVol = e => {
+        this.setState({ volume: e.target.value });
     }
 
     getDuration = e => {
@@ -27,7 +32,11 @@ export default class extends React.Component {
             pauseVideo,
             videoActivated,
             videoPaused } = this.props;
-        const { currentTime, vidDuration } = this.state;
+        const {
+            currentTime,
+            vidDuration,
+            volume
+        } = this.state;
         return (
             <React.Fragment>
                 <VideoContainer
@@ -35,15 +44,18 @@ export default class extends React.Component {
                     getDuration={this.getDuration}
                     theaterMode={theaterMode}
                     videoPaused={videoPaused}
+                    volume={volume}
                 />
                 <VideoInterFace
                     currentTime={currentTime}
-                    vidDuration={vidDuration}
+                    getVol={this.getVol}
                     theaterMode={theaterMode}
                     toggleTheater={toggleTheater}
                     pauseVideo={pauseVideo}
+                    vidDuration={vidDuration}
                     videoPaused={videoPaused}
                     videoActivated={videoActivated}
+                    volume={volume}
                 />
             </React.Fragment>
         )
