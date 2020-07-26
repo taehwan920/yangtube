@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ProgressBarBox = styled.div`
-    background: skyblue;
     width: 100%;
     height: 5px;
     position: absolute;

@@ -4,7 +4,6 @@ import ProgressBar from './videoBottom/ProgressBar';
 import VideoControl from './videoBottom/VideoControl';
 
 const VideoBottomWrapper = styled.div`
-    background: green;
     width: calc(100% - 24px);
     height: 39px;
     padding-top: 3px;
@@ -15,10 +14,14 @@ const VideoBottomWrapper = styled.div`
 
 export default class extends React.Component {
     render() {
+        const { pauseVideo, videoPaused } = this.props;
         return (
             <VideoBottomWrapper>
                 <ProgressBar />
-                <VideoControl />
+                <VideoControl
+                    pauseVideo={pauseVideo}
+                    videoPaused={videoPaused}
+                />
             </VideoBottomWrapper>
         )
     }

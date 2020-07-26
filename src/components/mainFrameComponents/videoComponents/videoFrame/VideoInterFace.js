@@ -4,11 +4,16 @@ import VideoBottom from './videoInterface/VideoBottom';
 
 export default class extends React.Component {
     render() {
-        const { videoActivated } = this.props;
+        const { pauseVideo, videoActivated, videoPaused } = this.props;
         return (
             <React.Fragment>
                 {videoActivated ? <VideoGradient /> : null}
-                {videoActivated ? <VideoBottom /> : null}
+                {videoActivated
+                    ? <VideoBottom
+                        pauseVideo={pauseVideo}
+                        videoPaused={videoPaused}
+                    />
+                    : null}
             </React.Fragment>
         )
     }

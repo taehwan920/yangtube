@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import VideoContainer from './videoFrame/VideoContainer';
-import VideoInterFace from './videoFrame/VideoInterFace';
+import VideoWrapper from './VideoWrapper';
+
 
 const VideoFrame = styled.div`
     background: black;
@@ -54,9 +54,8 @@ export default class extends React.Component {
         frameHeight: null,
         frameWidth: null,
         videoActivated: false,
-        videoPaused: false
+        videoPaused: false,
     };
-
 
     getHeight = () => {
         const newHeight = window.innerHeight;
@@ -110,7 +109,7 @@ export default class extends React.Component {
 
     render() {
         const { theaterMode, newMargin } = this.props;
-        const { frameHeight, frameWidth, videoActivated } = this.state;
+        const { frameHeight, frameWidth, videoPaused, videoActivated } = this.state;
         const viewHeight = window.innerHeight, viewWidth = window.innerWidth;
         return (
             <VideoFrame
@@ -124,11 +123,11 @@ export default class extends React.Component {
                 viewWidth={viewWidth}
                 viewHeight={viewHeight}
                 theaterMode={theaterMode}>
-                <VideoContainer
-                    theaterMode={theaterMode} />
-                <VideoInterFace
-                    videoActivated={videoActivated}
-                />
+                <VideoWrapper
+                    theaterMode={theaterMode}
+                    videoPaused={videoPaused}
+                    pauseVideo={this.pauseVideo}
+                    videoActivated={videoActivated} />
             </VideoFrame>
         )
     }
