@@ -14,22 +14,26 @@ const VideoControlBox = styled.div`
 export default class extends React.Component {
     render() {
         const {
+            currentTime,
             getVol,
             muted,
             theaterMode,
             toggleMute,
             toggleTheater,
             pauseVideo,
+            vidDuration,
             videoPaused,
             volume
         } = this.props;
         return (
             <VideoControlBox>
                 <LeftControl
+                    currentTime={currentTime}
                     getVol={getVol}
                     muted={muted}
                     toggleMute={toggleMute}
                     pauseVideo={pauseVideo}
+                    vidDuration={vidDuration}
                     videoPaused={videoPaused}
                     volume={volume}
                 />

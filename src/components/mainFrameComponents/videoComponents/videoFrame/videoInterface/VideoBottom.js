@@ -43,12 +43,14 @@ export default class extends React.Component {
                     vidDuration={vidDuration}
                 />
                 <VideoControl
+                    currentTime={currentTime}
                     getVol={getVol}
                     muted={muted}
                     theaterMode={theaterMode}
                     toggleMute={toggleMute}
                     toggleTheater={toggleTheater}
                     pauseVideo={pauseVideo}
+                    vidDuration={vidDuration}
                     videoPaused={videoPaused}
                     volume={volume}
                 />
