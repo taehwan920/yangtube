@@ -1,6 +1,6 @@
 import React from 'react';
-// import styled from 'styled-components';
 import VideoGradient from './videoInterface/VideoGradient';
+import VideoBottom from './videoInterface/VideoBottom';
 
 export default class extends React.Component {
     render() {
@@ -8,6 +8,7 @@ export default class extends React.Component {
         return (
             <React.Fragment>
                 {videoActivated ? <VideoGradient /> : null}
+                {videoActivated ? <VideoBottom /> : null}
             </React.Fragment>
         )
     }

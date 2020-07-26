@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 const VideoWrapper = styled.div`
-    background-color: pink;
+    background-color: beige;
 
     ${props => props.theaterMode && css`
         min-width: 450px;

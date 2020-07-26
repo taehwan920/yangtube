@@ -35,7 +35,6 @@ const NextVideoHeader = styled.header`
     margin-bottom: 12px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
 `;
 
 const NextVideoText = styled.div`
@@ -48,6 +47,7 @@ const AutoPlayBox = styled.div`
     width: max-content;
     height: 22px;
     display: flex;
+    align-items: center;
 `;
 
 const AutoPlayTxt = styled.span`

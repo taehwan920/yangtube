@@ -4,9 +4,7 @@ import VideoContainer from './videoFrame/VideoContainer';
 import VideoInterFace from './videoFrame/VideoInterFace';
 
 const VideoFrame = styled.div`
-    background: skyblue;
-    min-width: 450px;
-    min-height: 480px;
+    background: black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,6 +12,8 @@ const VideoFrame = styled.div`
 
     ${props => props.theaterMode && css`
         width: 100vw;
+        min-width: 450px;
+        min-height: 480px;
 
         @media(min-width: 1380px) {
             height: ${props => props.frameHeight ? props.frameHeight * 0.8212 : props.viewHeight * 0.8212}px;
