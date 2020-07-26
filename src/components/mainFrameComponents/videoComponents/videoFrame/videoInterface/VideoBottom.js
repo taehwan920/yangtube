@@ -32,7 +32,8 @@ export default class extends React.Component {
             vidDuration,
             videoActivated,
             videoPaused,
-            volume
+            volume,
+            updateCurrent
         } = this.props;
         return (
             <VideoBottomWrapper
@@ -41,6 +42,7 @@ export default class extends React.Component {
                 <ProgressBar
                     currentTime={currentTime}
                     vidDuration={vidDuration}
+                    updateCurrent={updateCurrent}
                 />
                 <VideoControl
                     currentTime={currentTime}

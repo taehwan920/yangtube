@@ -75,13 +75,16 @@ export default class extends React.Component {
     }
 
     render() {
-        const { currentTime, vidDuration } = this.props;
+        const { currentTime, vidDuration, updateCurrent } = this.props;
         const { scaleUp } = this.state;
         const progressRate = currentTime / vidDuration * 100;
         return (
             <ProgressContainer
+                ref={ref => this.progressRef = ref}
                 onMouseOver={this.makeBig}
                 onMouseOut={this.makeSmall}
+                onClick={updateCurrent(this.progressRef, vidDuration)}
+
             >
                 <ProgressBox>
                     <TotalProgress

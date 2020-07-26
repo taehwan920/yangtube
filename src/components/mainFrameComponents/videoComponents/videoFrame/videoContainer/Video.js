@@ -26,7 +26,7 @@ export default class extends React.Component {
         this.changeVolume();
         this.toggleMuteVideo();
         this.playPause();
-    }
+    };
 
     render() {
         const { getCurrent, getDuration } = this.props;

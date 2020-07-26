@@ -10,14 +10,11 @@ export default class extends React.Component {
         muted: false
     }
 
-    toggleMute = () => {
-        console.log('aaa')
-        this.setState({ muted: !this.state.muted });
-    }
+    vidRef = React.createRef();
 
     getVol = e => {
         this.setState({ volume: e.target.value });
-    }
+    };
 
     getDuration = e => {
         this.setState({
@@ -29,7 +26,18 @@ export default class extends React.Component {
         this.setState({
             currentTime: e.target.currentTime
         })
-    }
+    };
+
+    toggleMute = () => {
+        this.setState({ muted: !this.state.muted });
+    };
+
+    updateCurrent = (ref, du) => e => {
+        console.log(this.vidRef.current.currentTime);
+        const newCurrent = (e.nativeEvent.offsetX / ref.offsetWidth) * du;
+        this.vidRef.current.currentTime = newCurrent;
+        this.setState({ currentTime: newCurrent });
+    };
 
     render() {
         const {
@@ -48,11 +56,13 @@ export default class extends React.Component {
         return (
             <React.Fragment>
                 <VideoContainer
+                    currentTime={currentTime}
                     getCurrent={this.getCurrent}
                     getDuration={this.getDuration}
                     muted={muted}
                     theaterMode={theaterMode}
                     videoPaused={videoPaused}
+                    vidRef={this.vidRef}
                     volume={volume}
                 />
                 <VideoInterFace
@@ -67,6 +77,7 @@ export default class extends React.Component {
                     videoPaused={videoPaused}
                     videoActivated={videoActivated}
                     volume={volume}
+                    updateCurrent={this.updateCurrent}
                 />
             </React.Fragment>
         )

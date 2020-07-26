@@ -14,7 +14,8 @@ export default class extends React.Component {
             vidDuration,
             videoActivated,
             videoPaused,
-            volume
+            volume,
+            updateCurrent
         } = this.props;
         return (
             <React.Fragment>
@@ -31,6 +32,7 @@ export default class extends React.Component {
                     videoActivated={videoActivated}
                     videoPaused={videoPaused}
                     volume={volume}
+                    updateCurrent={updateCurrent}
                 />
             </React.Fragment>
         )
