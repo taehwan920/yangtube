@@ -4,7 +4,7 @@ import VideoContainer from './videoFrame/VideoContainer';
 import VideoInterFace from './videoFrame/VideoInterFace';
 
 const VideoFrame = styled.div`
-    background: black;
+    background: skyblue;
     min-width: 450px;
     min-height: 480px;
     display: flex;
@@ -57,6 +57,7 @@ export default class extends React.Component {
         videoPaused: false
     };
 
+
     getHeight = () => {
         const newHeight = window.innerHeight;
         const newWidth = window.innerWidth;
@@ -67,22 +68,37 @@ export default class extends React.Component {
     };
 
     componentDidMount() {
-        window.addEventListener('resize', this.getHeight)
+        window.addEventListener('resize', this.getHeight);
     };
 
-    mouseOnVideo = () => {
-        if (this.state.videoPaused) { return; }
-        this.setState({
-            videoActivated: true
-        })
-        setTimeout(this.mouseOutVideo, 5000);
-    }
+    onVideo = () => {
+        if (this.state.videoPaused) return;
+        this.setState({ videoActivated: true });
+    };
 
-    mouseOutVideo = () => {
-        if (this.state.videoPaused) { return; }
+    outVideo = () => {
+        clearTimeout(this.timeout);
+        this.timeout = null;
+        if (this.state.videoPaused) return;
         this.setState({
             videoActivated: false
         })
+    }
+
+    timeout;
+
+    moveOnVideo = () => {
+        clearTimeout(this.timeout);
+        this.timeout = null;
+        if (this.state.videoPaused) return;
+        this.setState({ videoActivated: true });
+        this.timeout = setTimeout(this.outVideo, 3000);
+    }
+
+    mouseMoved = () => {
+        !this.state.videoActivated
+            ? this.onVideo()
+            : this.moveOnVideo();
     }
 
     pauseVideo = () => {
@@ -99,8 +115,9 @@ export default class extends React.Component {
         return (
             <VideoFrame
                 onClick={this.pauseVideo}
-                onMouseOut={this.mouseOutVideo}
-                onMouseOver={this.mouseOnVideo}
+                onMouseLeave={this.outVideo}
+                onMouseEnter={this.onVideo}
+                onMouseMove={this.mouseMoved}
                 newMargin={newMargin}
                 frameHeight={frameHeight}
                 frameWidth={frameWidth}
