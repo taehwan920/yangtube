@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import PlayPause from './leftControl/PlayPause';
-import Volume from './leftControl/Volume';
 import MuteBtn from './leftControl/MuteBtn';
 import TimeDisplay from './leftControl/TimeDisplay';
 
@@ -58,15 +57,12 @@ export default class extends React.Component {
                 />
                 <NextButton><i class="fas fa-step-forward"></i></NextButton>
                 <MuteBtn
-                    muted={muted}
-                    toggleMute={toggleMute}
-                    mouseOnVol={this.mouseOnVol}
-                    mouseOutVol={this.mouseOutVol}
-                    volume={volume}
-                />
-                <Volume
                     getVol={getVol}
                     hoverOnVol={hoverOnVol}
+                    muted={muted}
+                    mouseOnVol={this.mouseOnVol}
+                    mouseOutVol={this.mouseOutVol}
+                    toggleMute={toggleMute}
                     volume={volume}
                 />
                 <TimeDisplay

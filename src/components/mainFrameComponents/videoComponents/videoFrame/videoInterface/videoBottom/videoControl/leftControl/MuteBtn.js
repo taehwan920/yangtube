@@ -1,50 +1,45 @@
 import React from 'react';
 import styled from 'styled-components';
+import Volume from './muteBtn/Volume';
+import MuteIcon from './muteBtn/MuteIcon';
 
 const MuteButton = styled.div`
-    width: 36px;
+    width: max-content;
     height: 36px;
+    padding-left: 5px;
     position: relative;
     display: flex;
-    justify-content: center;
     align-items: center;
     color: white;
     font-size: 18px;
     cursor: pointer;
 `;
 
-const MuteSlashBox = styled.div`
-    width: 32px;
-    height: 32px;
-    position: absolute;
-    transform-origin: center;
-    transform: rotate(45deg);
-    
-`;
-
-const MuteSlash = styled.div`
-    background: white;
-    width: ${props => props.muted ? '32px' : '0px'};
-    height: 2.5px;
-    position: absolute;
-    top: 15px;
-    transition: width 0.2s linear;
-`;
-
 export default class extends React.Component {
     render() {
-        const { muted, toggleMute, mouseOnVol, mouseOutVol, volume } = this.props;
+        const {
+            getVol,
+            hoverOnVol,
+            muted,
+            mouseOnVol,
+            mouseOutVol,
+            toggleMute,
+            volume } = this.props;
         return (
             <MuteButton
                 onMouseOver={mouseOnVol}
                 onMouseLeave={mouseOutVol}
-                onClick={toggleMute}>
-                {volume > 0.5
-                    ? <i class="fas fa-volume-up"></i>
-                    : <i class="fas fa-volume-down"></i>}
-                <MuteSlashBox>
-                    <MuteSlash muted={muted} />
-                </MuteSlashBox>
+            >
+                <MuteIcon
+                    muted={muted}
+                    toggleMute={toggleMute}
+                    volume={volume}
+                />
+                <Volume
+                    getVol={getVol}
+                    hoverOnVol={hoverOnVol}
+                    volume={volume}
+                />
             </MuteButton>
         )
     }
