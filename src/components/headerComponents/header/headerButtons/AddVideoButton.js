@@ -15,7 +15,6 @@ export default class extends React.Component {
 
     clickOutside = (e) => {
         if (this.props.addVideoON) {
-            if (this.btnRef.current === null) { return; }
             if (this.btnRef && !this.btnRef.current.contains(e.target)) {
                 this.props.popUpOff();
             }

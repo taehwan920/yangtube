@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import FullScreenBtn from './rightControl/FullScreenBtn';
+import ConfigBtn from './rightControl/ConfigBtn';
 
 const RightControlBox = styled.div`
     width: max-content;
@@ -18,9 +19,6 @@ const CommonBtn = styled.span`
     color: white;
     font-size: 18px;
     cursor: pointer;
-`;
-
-const ConfigBtn = styled(CommonBtn)`
 `;
 
 const TheaterBtn = styled(CommonBtn)`
@@ -41,9 +39,7 @@ export default class extends React.Component {
         } = this.props;
         return (
             <RightControlBox>
-                <ConfigBtn>
-                    <i class="fas fa-cog"></i>
-                </ConfigBtn>
+                <ConfigBtn />
                 <TheaterBtn
                     onClick={toggleTheater}>
                     <TheaterRec

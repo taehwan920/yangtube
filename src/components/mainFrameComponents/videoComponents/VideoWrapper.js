@@ -15,7 +15,7 @@ export default class extends React.Component {
         },
         vidDuration: 1,
         volume: 1,
-    }
+    };
 
     vidRef = React.createRef();
 

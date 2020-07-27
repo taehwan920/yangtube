@@ -41,7 +41,7 @@ export default class extends React.Component {
                 onTimeUpdate={getCurrent}
                 onEnded={pauseVideo}
                 ref={ref => this.videoRef = ref}
-                src="./videos/dog.mp4" />
+                src="./videos/firecracker.mp4" />
         )
     }
 }

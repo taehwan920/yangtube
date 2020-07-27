@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 const ProgressContainer = styled.div`
     width: 100%;
-    height: 36px;
+    height: 26px;
     position: absolute;
     display: flex;
     align-items: center;
@@ -35,7 +35,7 @@ const TotalProgress = styled.div`
 const HoverProgress = styled.div`
     width: max-content;
     position: absolute;
-    top: 0px;
+    bottom: 36px;
     opacity: ${props => props.hovering ? 1 : 0};
     font-size: 13px;
     color: white;
@@ -98,7 +98,7 @@ export default class extends React.Component {
     hoverTime = e => {
         this.hovering = true;
         const position = e.nativeEvent.offsetX / this.progressRef.offsetWidth * 100;
-        if (position < 1 || position > 99) return;
+        if (position < 1.5 || position > 98.5) return;
         const hoverWidth = this.hoverRef.clientWidth / 2;
         this.hoverRef.style.left = `calc(${position}% - ${hoverWidth}px)`;
         const temp = parseInt(e.nativeEvent.offsetX / this.progressRef.offsetWidth * this.props.vidDuration);

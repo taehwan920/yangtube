@@ -4,7 +4,8 @@ import VideoBottom from './videoInterface/VideoBottom';
 
 export default class extends React.Component {
     render() {
-        const { currentTime,
+        const {
+            currentTime,
             getVol,
             muted,
             scrubCurrent,
