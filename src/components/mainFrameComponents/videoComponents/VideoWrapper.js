@@ -1,14 +1,19 @@
 import React from 'react';
 import VideoContainer from './videoFrame/VideoContainer';
 import VideoInterFace from './videoFrame/VideoInterFace';
-import ArrowAni from './ArrowAni';
+import KeyAni from './KeyAni';
 
 export default class extends React.Component {
     state = {
         currentTime: 0,
         muted: false,
         keyPressed: false,
-        rightArrow: false,
+        keyState: {
+            upDown: [false, { upArrow: false }],
+            leftRight: [false, { rightArrow: false }],
+            mute: false,
+            caption: false
+        },
         vidDuration: 1,
         volume: 1,
     }
@@ -40,27 +45,97 @@ export default class extends React.Component {
     };
 
     updateByArrow = e => {
+        e.preventDefault();
+        const { currentTime, volume } = this.state;
+        const leftArrow = 37;
+        const upArrow = 38;
+        const rightArrow = 39;
+        const downArrow = 40;
+        const spacebar = 32;
+        const m = 77;
+        const c = 67;
+
         let newCurrent;
-        if (e.keyCode === 37) {
-            newCurrent = this.state.currentTime - 5;
+        if (e.keyCode === leftArrow) {
+            newCurrent = currentTime - 5;
             this.vidRef.current.videoRef.currentTime = newCurrent;
             this.setState({
                 currentTime: newCurrent,
                 keyPressed: true,
-                rightArrow: false
+                keyState: {
+                    upDown: [false, { upArrow: false }],
+                    leftRight: [true, { rightArrow: false }],
+                    mute: false,
+                    caption: false
+                }
             })
         }
-        else if (e.keyCode === 39) {
-            newCurrent = this.state.currentTime + 5;
+        if (e.keyCode === rightArrow) {
+            newCurrent = currentTime + 5;
             this.vidRef.current.videoRef.currentTime = newCurrent;
             this.setState({
                 currentTime: newCurrent,
                 keyPressed: true,
-                rightArrow: true
+                keyState: {
+                    upDown: [false, { upArrow: false }],
+                    leftRight: [true, { rightArrow: true }],
+                    mute: false,
+                    caption: false
+                }
             })
-        } else if (e.keyCode === 32) {
-            e.preventDefault();
+        }
+        if (e.keyCode === spacebar) {
             this.props.PauseAndEvent();
+        }
+        let newVolume;
+        if (e.keyCode === upArrow) {
+            newVolume = volume + 0.05 > 1 ? 1 : volume + 0.05;
+            this.setState({
+                volume: newVolume,
+                keyPressed: true,
+                keyState: {
+                    upDown: [true, { upArrow: true }],
+                    leftRight: [false, { rightArrow: false }],
+                    mute: false,
+                    caption: false
+                }
+            });
+        }
+        if (e.keyCode === downArrow) {
+            newVolume = volume - 0.05 < 0 ? 0 : volume - 0.05;
+            this.setState({
+                volume: newVolume,
+                keyPressed: true,
+                keyState: {
+                    upDown: [true, { upArrow: false }],
+                    leftRight: [false, { rightArrow: false }],
+                    mute: false,
+                    caption: false
+                }
+            });
+        }
+        if (e.keyCode === m) {
+            this.setState({
+                muted: !this.state.muted,
+                keyPressed: true,
+                keyState: {
+                    upDown: [false, { upArrow: false }],
+                    leftRight: [false, { rightArrow: false }],
+                    mute: true, caption: false
+                }
+            });
+        }
+        if (e.keyCode === c) {
+            this.setState({
+                muted: !this.state.muted,
+                keyPressed: true,
+                keyState: {
+                    upDown: [false, { upArrow: false }],
+                    leftRight: [false, { rightArrow: false }],
+                    mute: false,
+                    caption: true
+                }
+            });
         }
     };
 
@@ -89,8 +164,8 @@ export default class extends React.Component {
         const {
             currentTime,
             keyPressed,
+            keyState,
             muted,
-            rightArrow,
             vidDuration,
             volume
         } = this.state;
@@ -121,10 +196,10 @@ export default class extends React.Component {
                     volume={volume}
                     updateCurrent={this.updateCurrent}
                 />
-                <ArrowAni
+                <KeyAni
                     arrowAniEnd={this.arrowAniEnd}
                     keyPressed={keyPressed}
-                    rightArrow={rightArrow}
+                    keyState={keyState}
                 />
             </React.Fragment>
         )

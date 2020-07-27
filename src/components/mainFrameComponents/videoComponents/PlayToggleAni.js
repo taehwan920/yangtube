@@ -29,7 +29,6 @@ const ToggleIcon = styled.div`
     ${props => props.clicked && css`
         animation: ${ToggKF} 0.2s ease-out;
     `}
-    
 `;
 
 export default class extends React.Component {
