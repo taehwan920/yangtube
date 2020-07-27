@@ -34,7 +34,11 @@ const TheaterRec = styled.div`
 
 export default class extends React.Component {
     render() {
-        const { theaterMode, toggleTheater } = this.props;
+        const {
+            theaterMode,
+            toggleFullVF,
+            toggleTheater,
+        } = this.props;
         return (
             <RightControlBox>
                 <ConfigBtn>
@@ -45,7 +49,10 @@ export default class extends React.Component {
                     <TheaterRec
                         theaterMode={theaterMode} />
                 </TheaterBtn>
-                <FullScreenBtn />
+                <FullScreenBtn
+                    toggleFullVF={toggleFullVF}
+                    toggleTheater={toggleTheater}
+                />
             </RightControlBox>
         )
     }

@@ -44,7 +44,6 @@ export default class extends React.Component {
     };
 
     updateByArrow = e => {
-        e.preventDefault();
         const { currentTime, volume } = this.state;
         const leftArrow = 37;
         const upArrow = 38;
@@ -56,6 +55,7 @@ export default class extends React.Component {
 
         let newCurrent;
         if (e.keyCode === leftArrow) {
+            e.preventDefault();
             newCurrent = currentTime - 5;
             this.vidRef.current.videoRef.currentTime = newCurrent;
             this.setState({
@@ -69,6 +69,7 @@ export default class extends React.Component {
             })
         }
         if (e.keyCode === rightArrow) {
+            e.preventDefault();
             newCurrent = currentTime + 5;
             this.vidRef.current.videoRef.currentTime = newCurrent;
             this.setState({
@@ -82,10 +83,12 @@ export default class extends React.Component {
             })
         }
         if (e.keyCode === spacebar) {
+            e.preventDefault();
             this.props.PauseAndEvent();
         }
         let newVolume;
         if (e.keyCode === upArrow) {
+            e.preventDefault();
             newVolume = volume + 0.05 > 1 ? 1 : volume + 0.05;
             this.setState({
                 volume: newVolume,
@@ -98,6 +101,7 @@ export default class extends React.Component {
             });
         }
         if (e.keyCode === downArrow) {
+            e.preventDefault();
             newVolume = volume - 0.05 < 0 ? 0 : volume - 0.05;
             this.setState({
                 volume: newVolume,
@@ -110,6 +114,7 @@ export default class extends React.Component {
             });
         }
         if (e.keyCode === m) {
+            e.preventDefault();
             this.setState({
                 muted: !this.state.muted,
                 keyPressed: true,
@@ -121,6 +126,7 @@ export default class extends React.Component {
             });
         }
         if (e.keyCode === t) {
+            e.preventDefault();
             this.props.toggleTheater();
         }
     };
@@ -142,6 +148,7 @@ export default class extends React.Component {
     render() {
         const {
             theaterMode,
+            toggleFullVF,
             toggleTheater,
             pauseVideo,
             videoActivated,
@@ -174,6 +181,7 @@ export default class extends React.Component {
                     muted={muted}
                     scrubCurrent={this.scrubCurrent}
                     theaterMode={theaterMode}
+                    toggleFullVF={toggleFullVF}
                     toggleMute={this.toggleMute}
                     toggleTheater={toggleTheater}
                     pauseVideo={pauseVideo}

@@ -37,12 +37,22 @@ const FullscreenIcon = styled.span`
 `;
 
 export default class extends React.Component {
+    toggleFullSc = () => {
+        this.props.toggleFullVF();
+    }
+
     render() {
         return (
-            <FullscreenBtn>
-                <FullscreenIcon>
-                    <i class="fas fa-expand"></i>
-                </FullscreenIcon>
+            <FullscreenBtn
+                onClick={this.toggleFullSc}
+            >
+                {document.fullscreenElement
+                    ? <FullscreenIcon>
+                        <i class="fas fa-compress"></i>
+                    </FullscreenIcon>
+                    : <FullscreenIcon>
+                        <i class="fas fa-expand"></i>
+                    </FullscreenIcon>}
             </FullscreenBtn>
         )
     }

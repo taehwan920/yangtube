@@ -18,6 +18,7 @@ export default class extends React.Component {
             getVol,
             muted,
             theaterMode,
+            toggleFullVF,
             toggleMute,
             toggleTheater,
             pauseVideo,
@@ -39,7 +40,9 @@ export default class extends React.Component {
                 />
                 <RightControl
                     theaterMode={theaterMode}
-                    toggleTheater={toggleTheater} />
+                    toggleFullVF={toggleFullVF}
+                    toggleTheater={toggleTheater}
+                />
             </VideoControlBox>
         )
     }

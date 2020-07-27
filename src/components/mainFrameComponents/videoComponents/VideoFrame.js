@@ -3,14 +3,12 @@ import styled, { css } from 'styled-components';
 import VideoWrapper from './VideoWrapper';
 import PlayToggleAni from './PlayToggleAni';
 
-
 const VideoFrame = styled.div`
     background: black;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    z-index: auto;
 
     ${props => props.theaterMode && css`
         width: 100vw;
@@ -30,9 +28,9 @@ const VideoFrame = styled.div`
         }
     `}
     
+    
     ${props => !props.theaterMode && css`
-        max-width: 1280px;
-        max-height: 720px;
+        
 
         @media(max-width: 1023px) {
             width: calc(${props => props.viewWidth}px - 24px);
@@ -87,6 +85,14 @@ export default class extends React.Component {
         })
     }
 
+    toggleFullVF = () => {
+        if (document.fullscreenElement) {
+            document.exitFullscreen();
+        } else {
+            this.videoFrameRef.requestFullscreen();
+        }
+    }
+
     timeout;
 
     moveOnVideo = () => {
@@ -125,6 +131,7 @@ export default class extends React.Component {
         const viewHeight = window.innerHeight, viewWidth = window.innerWidth;
         return (
             <VideoFrame
+                ref={ref => this.videoFrameRef = ref}
                 onClick={this.PauseAndEvent}
                 onMouseLeave={this.outVideo}
                 onMouseEnter={this.onVideo}
@@ -137,11 +144,13 @@ export default class extends React.Component {
                 theaterMode={theaterMode}>
                 <VideoWrapper
                     theaterMode={theaterMode}
+                    toggleFullVF={this.toggleFullVF}
                     toggleTheater={toggleTheater}
                     PauseAndEvent={this.PauseAndEvent}
                     pauseVideo={this.pauseVideo}
+                    videoActivated={videoActivated}
                     videoPaused={videoPaused}
-                    videoActivated={videoActivated} />
+                />
                 <PlayToggleAni
                     aniEnd={this.aniEnd}
                     clicked={clicked}

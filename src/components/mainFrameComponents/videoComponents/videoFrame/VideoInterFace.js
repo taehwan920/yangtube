@@ -9,6 +9,7 @@ export default class extends React.Component {
             muted,
             scrubCurrent,
             theaterMode,
+            toggleFullVF,
             toggleMute,
             toggleTheater,
             pauseVideo,
@@ -27,6 +28,7 @@ export default class extends React.Component {
                     muted={muted}
                     scrubCurrent={scrubCurrent}
                     theaterMode={theaterMode}
+                    toggleFullVF={toggleFullVF}
                     toggleMute={toggleMute}
                     toggleTheater={toggleTheater}
                     pauseVideo={pauseVideo}
