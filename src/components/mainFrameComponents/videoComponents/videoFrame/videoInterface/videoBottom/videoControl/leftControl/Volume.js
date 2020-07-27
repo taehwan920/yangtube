@@ -3,12 +3,14 @@ import styled from 'styled-components';
 
 const VolumeSlideBox = styled.div`
     background: transparent;
-    width: 57px;
+    width: ${props => props.hoverOnVol ? '57px' : '0px'};
+    opacity: ${props => props.hoverOnVol ? 1 : 0};
     height: 36px;
     padding: 0px 5px;
     position: relative;
     display: flex;
     align-items: center;
+    transition: width 0.2s ease-out;
 `;
 
 const VolumeRange = styled.input`
@@ -44,9 +46,11 @@ const VolumeSlide = styled.div`
 
 export default class extends React.Component {
     render() {
-        const { getVol, volume } = this.props;
+        const { getVol, volume, hoverOnVol } = this.props;
         return (
-            <VolumeSlideBox>
+            <VolumeSlideBox
+                hoverOnVol={hoverOnVol}
+            >
                 <VolumeRange
                     onChange={getVol}
                     type="range"

@@ -33,11 +33,15 @@ const MuteSlash = styled.div`
 
 export default class extends React.Component {
     render() {
-        const { muted, toggleMute } = this.props;
+        const { muted, toggleMute, mouseOnVol, mouseOutVol, volume } = this.props;
         return (
             <MuteButton
+                onMouseOver={mouseOnVol}
+                onMouseLeave={mouseOutVol}
                 onClick={toggleMute}>
-                <i class="fas fa-volume-up"></i>
+                {volume > 0.5
+                    ? <i class="fas fa-volume-up"></i>
+                    : <i class="fas fa-volume-down"></i>}
                 <MuteSlashBox>
                     <MuteSlash muted={muted} />
                 </MuteSlashBox>

@@ -27,6 +27,17 @@ const NextButton = styled(CommonBtn)`
 `;
 
 export default class extends React.Component {
+    state = {
+        hoverOnVol: false
+    }
+
+    mouseOnVol = () => {
+        this.setState({ hoverOnVol: true });
+    }
+    mouseOutVol = () => {
+        this.setState({ hoverOnVol: false });
+    }
+
     render() {
         const {
             currentTime,
@@ -38,7 +49,7 @@ export default class extends React.Component {
             videoPaused,
             volume
         } = this.props;
-
+        const { hoverOnVol } = this.state;
         return (
             <LeftControlBox>
                 <PlayPause
@@ -49,9 +60,13 @@ export default class extends React.Component {
                 <MuteBtn
                     muted={muted}
                     toggleMute={toggleMute}
+                    mouseOnVol={this.mouseOnVol}
+                    mouseOutVol={this.mouseOutVol}
+                    volume={volume}
                 />
                 <Volume
                     getVol={getVol}
+                    hoverOnVol={hoverOnVol}
                     volume={volume}
                 />
                 <TimeDisplay
