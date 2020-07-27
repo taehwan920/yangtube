@@ -18,6 +18,7 @@ const VolumeRange = styled.input`
     background: transparent;
     width: 100%;
     height: 100%;
+    z-index: 26;
 
     &::-webkit-slider-runnable-track{
         background: transparent;
@@ -32,12 +33,22 @@ const VolumeRange = styled.input`
         border-radius: 50%;
         cursor:pointer;
         -webkit-appearance: none;
+        
     }
 `;
 
 const VolumeSlide = styled.div`
-    background: white;
+    background: gray;
     width: calc(100% - 10px);
+    height: 3px;
+    position: absolute;
+    bottom: calc(50% - 1px);
+    cursor: pointer;
+`;
+
+const VolumeCurrentSlide = styled.div`
+    background: white;
+    width: ${props => props.volume * 100}%;
     height: 3px;
     position: absolute;
     bottom: calc(50% - 1px);
@@ -59,7 +70,11 @@ export default class extends React.Component {
                     step="0.05"
                     value={volume}
                 />
-                <VolumeSlide />
+                <VolumeSlide>
+                    <VolumeCurrentSlide
+                        volume={volume}
+                    />
+                </VolumeSlide>
             </VolumeSlideBox>
         )
     }
