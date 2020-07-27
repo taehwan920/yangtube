@@ -110,7 +110,7 @@ export default class extends React.Component {
         })
     }
 
-    clickEvent = () => {
+    PauseAndEvent = () => {
         this.pauseVideo();
         this.setState({ clicked: true })
     }
@@ -125,7 +125,7 @@ export default class extends React.Component {
         const viewHeight = window.innerHeight, viewWidth = window.innerWidth;
         return (
             <VideoFrame
-                onClick={this.clickEvent}
+                onClick={this.PauseAndEvent}
                 onMouseLeave={this.outVideo}
                 onMouseEnter={this.onVideo}
                 onMouseMove={this.mouseMoved}
@@ -138,6 +138,7 @@ export default class extends React.Component {
                 <VideoWrapper
                     theaterMode={theaterMode}
                     toggleTheater={toggleTheater}
+                    PauseAndEvent={this.PauseAndEvent}
                     pauseVideo={this.pauseVideo}
                     videoPaused={videoPaused}
                     videoActivated={videoActivated} />

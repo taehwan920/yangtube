@@ -24,7 +24,7 @@ const ToggleIcon = styled.div`
     top: 45%;
     left: 45%;
     color: white;
-    font-size: 20px; 
+    font-size: 26px; 
     opacity: 0;
     ${props => props.clicked && css`
         animation: ${ToggKF} 0.2s ease-out;
@@ -47,7 +47,6 @@ export default class extends React.Component {
                         onAnimationEnd={aniEnd}
                     ><i class="fas fa-play"></i></ToggleIcon>}
             </React.Fragment>
-
         )
     }
-}
+};

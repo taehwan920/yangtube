@@ -1,5 +1,6 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
+import FullScreenBtn from './rightControl/FullScreenBtn';
 
 const RightControlBox = styled.div`
     width: max-content;
@@ -35,32 +36,6 @@ const TheaterRec = styled.div`
     border: 2px solid white;
 `;
 
-const FullscreenBtn = styled(CommonBtn)`
-`;
-
-const FullAni = keyframes`
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.15);
-    }
-    100% {
-        transform: scale(1);
-    }
-`;
-
-const FullscreenIcon = styled.span`
-    width: max-content;
-    height: max-content;
-    font-size: 18px;
-    color: 18px;
-    
-    &:hover{
-        animation: ${FullAni} 0.25s ease-in;
-    }
-`;
-
 export default class extends React.Component {
     render() {
         const { theaterMode, toggleTheater } = this.props;
@@ -77,11 +52,7 @@ export default class extends React.Component {
                     <TheaterRec
                         theaterMode={theaterMode} />
                 </TheaterBtn>
-                <FullscreenBtn>
-                    <FullscreenIcon>
-                        <i class="fas fa-expand"></i>
-                    </FullscreenIcon>
-                </FullscreenBtn>
+                <FullScreenBtn />
             </RightControlBox>
         )
     }
