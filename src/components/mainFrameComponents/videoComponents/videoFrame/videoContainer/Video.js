@@ -8,25 +8,30 @@ const Video = styled.video`
 export default class extends React.Component {
     playPause = () => {
         this.props.videoPaused
-            ? this.vidRef['pause']()
-            : this.vidRef['play']();
+            ? this.videoRef['pause']()
+            : this.videoRef['play']();
     }
 
     changeVolume = () => {
-        this.vidRef.volume = this.props.volume;
+        this.videoRef.volume = this.props.volume;
     }
 
     toggleMuteVideo = () => {
         this.props.muted
-            ? this.vidRef['muted'] = true
-            : this.vidRef['muted'] = false;
+            ? this.videoRef['muted'] = true
+            : this.videoRef['muted'] = false;
     };
 
     componentDidUpdate() {
         this.changeVolume();
         this.toggleMuteVideo();
         this.playPause();
+
     };
+
+    componentDidMount() {
+        this.videoRef.currentTime = this.props.currentTime;
+    }
 
     render() {
         const { getCurrent, getDuration } = this.props;
@@ -34,7 +39,7 @@ export default class extends React.Component {
             <Video
                 onLoadedData={getDuration}
                 onTimeUpdate={getCurrent}
-                ref={ref => this.vidRef = ref}
+                ref={ref => this.videoRef = ref}
                 src="./videos/dive.mp4" />
         )
     }

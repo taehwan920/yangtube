@@ -42,14 +42,14 @@ const TotalProgress = styled.div`
 
 const CurrentBall = styled.div`
     background: red;
-    width: 2.5px;
+    width: 4px;
     height: 3px;
     border-radius: 50%;
     position: absolute;
     bottom: 0px;
     left: calc(${props => props.progressRate || 0}% - 1px);
     transition: all 0.1s linear;
-    transform: ${props => props.scaleUp ? 'scale(3.75)' : 'scale(1)'};
+    transform: ${props => props.scaleUp ? 'scale(3.2)' : 'scale(1)'};
 `;
 
 const CurrentProgress = styled.div`
@@ -74,6 +74,11 @@ export default class extends React.Component {
         this.setState({ scaleUp: false });
     }
 
+    mouseDown = false
+    moveOnBar = e => {
+        this.mouseDown && this.props.scrubCurrent(this.progressRef, this.props.vidDuration, e)
+    }
+
     render() {
         const { currentTime, vidDuration, updateCurrent } = this.props;
         const { scaleUp } = this.state;
@@ -84,7 +89,9 @@ export default class extends React.Component {
                 onMouseOver={this.makeBig}
                 onMouseOut={this.makeSmall}
                 onClick={updateCurrent(this.progressRef, vidDuration)}
-
+                onMouseDown={() => this.mouseDown = true}
+                onMouseUp={() => this.mouseDown = false}
+                onMouseMove={this.moveOnBar}
             >
                 <ProgressBox>
                     <TotalProgress

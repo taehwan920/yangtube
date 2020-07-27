@@ -23,19 +23,22 @@ export default class extends React.Component {
     };
 
     getCurrent = e => {
-        this.setState({
-            currentTime: e.target.currentTime
-        })
+        this.setState({ currentTime: e.target.currentTime });
     };
 
     toggleMute = () => {
         this.setState({ muted: !this.state.muted });
     };
 
-    updateCurrent = (ref, du) => e => {
-        console.log(this.vidRef.current.currentTime);
+    scrubCurrent = (ref, du, e) => {
         const newCurrent = (e.nativeEvent.offsetX / ref.offsetWidth) * du;
-        this.vidRef.current.currentTime = newCurrent;
+        this.vidRef.current.videoRef.currentTime = newCurrent;
+        this.setState({ currentTime: newCurrent });
+    };
+
+    updateCurrent = (ref, du) => e => {
+        const newCurrent = (e.nativeEvent.offsetX / ref.offsetWidth) * du;
+        this.vidRef.current.videoRef.currentTime = newCurrent;
         this.setState({ currentTime: newCurrent });
     };
 
@@ -69,6 +72,7 @@ export default class extends React.Component {
                     currentTime={currentTime}
                     getVol={this.getVol}
                     muted={muted}
+                    scrubCurrent={this.scrubCurrent}
                     theaterMode={theaterMode}
                     toggleMute={this.toggleMute}
                     toggleTheater={toggleTheater}

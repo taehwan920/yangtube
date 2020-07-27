@@ -7,6 +7,7 @@ export default class extends React.Component {
         const { currentTime,
             getVol,
             muted,
+            scrubCurrent,
             theaterMode,
             toggleMute,
             toggleTheater,
@@ -24,6 +25,7 @@ export default class extends React.Component {
                     currentTime={currentTime}
                     getVol={getVol}
                     muted={muted}
+                    scrubCurrent={scrubCurrent}
                     theaterMode={theaterMode}
                     toggleMute={toggleMute}
                     toggleTheater={toggleTheater}

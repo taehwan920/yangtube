@@ -25,6 +25,7 @@ export default class extends React.Component {
             currentTime,
             getVol,
             muted,
+            scrubCurrent,
             theaterMode,
             toggleMute,
             toggleTheater,
@@ -41,6 +42,7 @@ export default class extends React.Component {
                 onClick={this.clickVideoBottom}>
                 <ProgressBar
                     currentTime={currentTime}
+                    scrubCurrent={scrubCurrent}
                     vidDuration={vidDuration}
                     updateCurrent={updateCurrent}
                 />
