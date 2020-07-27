@@ -57,7 +57,7 @@ export default class extends React.Component {
         frameWidth: null,
         videoActivated: false,
         videoPaused: true,
-        clicked: 0
+        clicked: false
     };
 
     getHeight = () => {
@@ -112,7 +112,11 @@ export default class extends React.Component {
 
     clickEvent = () => {
         this.pauseVideo();
-        this.setState({ clicked: this.state.clicked + 1 })
+        this.setState({ clicked: true })
+    }
+
+    aniEnd = () => {
+        this.setState({ clicked: false })
     }
 
     render() {
@@ -138,7 +142,9 @@ export default class extends React.Component {
                     videoPaused={videoPaused}
                     videoActivated={videoActivated} />
                 <PlayToggleAni
-                    clicked={clicked} />
+                    aniEnd={this.aniEnd}
+                    clicked={clicked}
+                    videoPaused={videoPaused} />
             </VideoFrame>
         )
     }

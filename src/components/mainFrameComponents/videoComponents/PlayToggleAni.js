@@ -24,24 +24,28 @@ const ToggleIcon = styled.div`
     top: 45%;
     left: 45%;
     color: white;
+    font-size: 20px; 
     opacity: 0;
-    ${props => props.clicked > 0 && css`
+    ${props => props.clicked && css`
         animation: ${ToggKF} 0.2s ease-out;
-        `}
+    `}
     
 `;
 
 export default class extends React.Component {
     render() {
-        const { videoPaused, clicked } = this.props;
+        const { aniEnd, clicked, videoPaused } = this.props;
         return (
             <React.Fragment>
-                <ToggleIcon
-                    clicked={clicked}>
-                    {videoPaused
-                        ? <i class="fas fa-play"></i>
-                        : <i class="fas fa-pause"></i>}
-                </ToggleIcon>
+                {videoPaused
+                    ? <ToggleIcon
+                        clicked={clicked}
+                        onAnimationEnd={aniEnd}
+                    ><i class="fas fa-pause"></i></ToggleIcon>
+                    : <ToggleIcon
+                        clicked={clicked}
+                        onAnimationEnd={aniEnd}
+                    ><i class="fas fa-play"></i></ToggleIcon>}
             </React.Fragment>
 
         )
