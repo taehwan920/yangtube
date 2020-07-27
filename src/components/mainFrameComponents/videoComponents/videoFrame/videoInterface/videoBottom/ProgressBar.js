@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 const ProgressContainer = styled.div`
     width: 100%;
-    height: 20px;
+    height: 36px;
     position: absolute;
     display: flex;
     align-items: center;
@@ -32,13 +32,14 @@ const TotalProgress = styled.div`
     ${hoverAni}
 `;
 
-// const HoverProgress = styled.div`
-//     width: 100%;
-//     height: 3px;
-//     position: absolute;
-//     top: 0px;
-//     left: 0px;
-// `;
+const HoverProgress = styled.div`
+    width: max-content;
+    position: absolute;
+    top: 0px;
+    opacity: ${props => props.hovering ? 1 : 0};
+    font-size: 13px;
+    color: white;
+`;
 
 const CurrentBall = styled.div`
     background: red;
@@ -64,19 +65,45 @@ const CurrentProgress = styled.div`
 
 export default class extends React.Component {
     state = {
-        scaleUp: false
-    }
+        scaleUp: false,
+    };
 
     makeBig = () => {
         this.setState({ scaleUp: true });
+    };
+
+    mouseOverInit = () => {
+        this.hovering = true;
+        this.makeBig();
     }
+
+    mouseOutInit = () => {
+        this.hovering = false;
+        this.makeSmall();
+    };
+
     makeSmall = () => {
         this.setState({ scaleUp: false });
-    }
+    };
 
     mouseDown = false
     moveOnBar = e => {
-        this.mouseDown && this.props.scrubCurrent(this.progressRef, this.props.vidDuration, e)
+        this.mouseDown && this.props.scrubCurrent(this.progressRef, this.props.vidDuration, e);
+        this.hoverTime(e)
+    };
+
+    hovering;
+    hoverMin;
+    hoverSec;
+    hoverTime = e => {
+        this.hovering = true;
+        const position = e.nativeEvent.offsetX / this.progressRef.offsetWidth * 100;
+        if (position < 1 || position > 99) return;
+        const hoverWidth = this.hoverRef.clientWidth / 2;
+        this.hoverRef.style.left = `calc(${position}% - ${hoverWidth}px)`;
+        const temp = parseInt(e.nativeEvent.offsetX / this.progressRef.offsetWidth * this.props.vidDuration);
+        this.hoverMin = parseInt(temp / 60) < 10 ? `0${parseInt(temp / 60)}` : parseInt(temp / 60);
+        this.hoverSec = parseInt(temp % 60) < 10 ? `0${parseInt(temp % 60)}` : parseInt(temp % 60);
     }
 
     render() {
@@ -86,8 +113,8 @@ export default class extends React.Component {
         return (
             <ProgressContainer
                 ref={ref => this.progressRef = ref}
-                onMouseOver={this.makeBig}
-                onMouseOut={this.makeSmall}
+                onMouseOver={this.mouseOverInit}
+                onMouseOut={this.mouseOutInit}
                 onClick={updateCurrent(this.progressRef, vidDuration)}
                 onMouseDown={() => this.mouseDown = true}
                 onMouseUp={() => this.mouseDown = false}
@@ -107,7 +134,14 @@ export default class extends React.Component {
                         />
                     </TotalProgress>
                 </ProgressBox>
+                <HoverProgress
+                    ref={ref => this.hoverRef = ref}
+                    hovering={this.hovering}
+                    progressRate={progressRate}
+                >
+                    {this.hoverMin}:{this.hoverSec}
+                </HoverProgress>
             </ProgressContainer>
         )
     }
-}
+};

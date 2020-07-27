@@ -37,12 +37,6 @@ export default class extends React.Component {
         this.setState({ muted: !this.state.muted });
     };
 
-    scrubCurrent = (ref, du, e) => {
-        const newCurrent = (e.nativeEvent.offsetX / ref.offsetWidth) * du;
-        this.vidRef.current.videoRef.currentTime = newCurrent;
-        this.setState({ currentTime: newCurrent });
-    };
-
     updateByArrow = e => {
         const { currentTime, volume } = this.state;
         const leftArrow = 37;
@@ -134,6 +128,12 @@ export default class extends React.Component {
     arrowAniEnd = () => {
         this.setState({ keyPressed: false })
     }
+
+    scrubCurrent = (ref, du, e) => {
+        const newCurrent = (e.nativeEvent.offsetX / ref.offsetWidth) * du;
+        this.vidRef.current.videoRef.currentTime = newCurrent;
+        this.setState({ currentTime: newCurrent });
+    };
 
     updateCurrent = (ref, du) => e => {
         const newCurrent = (e.nativeEvent.offsetX / ref.offsetWidth) * du;

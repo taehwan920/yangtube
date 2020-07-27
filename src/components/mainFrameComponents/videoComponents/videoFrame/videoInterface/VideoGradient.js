@@ -10,9 +10,8 @@ const GradientPart = styled.div`
     height: 50.625%;
     padding-top: 49px;
     position: absolute;
-    top: 49.375%;
+    bottom: 0;
 `;
-
 export default class extends React.Component {
     render() {
         return (

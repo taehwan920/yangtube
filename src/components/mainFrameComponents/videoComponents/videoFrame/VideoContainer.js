@@ -6,10 +6,12 @@ const VideoWrapper = styled.div`
     background-color: ${props => {
         if (props.theaterMode) {
             return 'black'
-        } else if (props.isFullscreen) {
-            return 'black'
         } else {
-            return 'white'
+            if (props.isFullscreen) {
+                return 'black'
+            } else {
+                return 'white'
+            }
         }
     }};
 
@@ -60,6 +62,11 @@ const VideoWrapper = styled.div`
 `;
 
 export default class extends React.Component {
+    isFullscreen;
+    componentDidUpdate() {
+        this.isFullscreen = document.fullscreenElement;
+    }
+
     render() {
         const {
             currentTime,
@@ -73,10 +80,9 @@ export default class extends React.Component {
             volume
         } = this.props;
         const viewHeight = window.innerHeight, viewWidth = window.innerWidth;
-        const isFullscreen = document.fullscreenElement;
         return (
             <VideoWrapper
-                isFullscreen={isFullscreen}
+                isFullscreen={this.isFullscreen}
                 theaterMode={theaterMode}
                 viewHeight={viewHeight}
                 viewWidth={viewWidth}
