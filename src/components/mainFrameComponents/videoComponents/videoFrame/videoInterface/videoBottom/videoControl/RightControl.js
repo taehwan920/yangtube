@@ -20,10 +20,6 @@ const CommonBtn = styled.span`
     cursor: pointer;
 `;
 
-const CaptionBtn = styled(CommonBtn)`
-    font-size: 20px;
-`;
-
 const ConfigBtn = styled(CommonBtn)`
 `;
 
@@ -41,9 +37,6 @@ export default class extends React.Component {
         const { theaterMode, toggleTheater } = this.props;
         return (
             <RightControlBox>
-                <CaptionBtn>
-                    <i class="far fa-closed-captioning"></i>
-                </CaptionBtn>
                 <ConfigBtn>
                     <i class="fas fa-cog"></i>
                 </ConfigBtn>

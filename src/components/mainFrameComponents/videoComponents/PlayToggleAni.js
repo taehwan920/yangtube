@@ -27,7 +27,7 @@ const ToggleIcon = styled.div`
     font-size: 26px; 
     opacity: 0;
     ${props => props.clicked && css`
-        animation: ${ToggKF} 0.2s ease-out;
+        animation: ${ToggKF} 0.4s ease-out;
     `}
 `;
 

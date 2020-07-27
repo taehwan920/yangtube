@@ -26,7 +26,7 @@ const ToggleIcon = styled.div`
     color: white;
     opacity: 0;
     ${props => props.keyPressed && css`
-        animation: ${ToggKF} 0.2s ease-out;
+        animation: ${ToggKF} 0.4s ease-out;
     `}
 `;
 
@@ -72,7 +72,8 @@ export default class extends React.Component {
                             <ToggleText>
                                 5
                         </ToggleText>
-                        </ToggleIcon>}
+                        </ToggleIcon>
+                    }
                 </React.Fragment>
             )
         }
@@ -99,7 +100,8 @@ export default class extends React.Component {
                             <ToggleArrowIcon>
                                 <i class="fas fa-volume-down"></i>
                             </ToggleArrowIcon>
-                        </ToggleIcon>}
+                        </ToggleIcon>
+                    }
                 </React.Fragment>
             )
         }
@@ -107,32 +109,28 @@ export default class extends React.Component {
 
     muteAni = () => {
         const { arrowAniEnd, keyPressed, keyState } = this.props;
-        if (keyState.mute) {
+        if (keyState.mute[0]) {
             return (
-                <ToggleIcon
-                    keyPressed={keyPressed}
-                    onAnimationEnd={arrowAniEnd}
-                >
-                    <ToggleArrowIcon>
-                        <i class="fas fa-volume-mute"></i>
-                    </ToggleArrowIcon>
-                </ToggleIcon>
-            )
-        }
-    };
-
-    captionAni = () => {
-        const { arrowAniEnd, keyPressed, keyState } = this.props;
-        if (keyState.caption) {
-            return (
-                <ToggleIcon
-                    keyPressed={keyPressed}
-                    onAnimationEnd={arrowAniEnd}
-                >
-                    <ToggleArrowIcon>
-                        <i class="far fa-closed-captioning"></i>
-                    </ToggleArrowIcon>
-                </ToggleIcon>
+                <React.Fragment>
+                    {keyState.mute[1].muteOn
+                        ? <ToggleIcon
+                            keyPressed={keyPressed}
+                            onAnimationEnd={arrowAniEnd}
+                        >
+                            <ToggleArrowIcon>
+                                <i class="fas fa-volume-mute"></i>
+                            </ToggleArrowIcon>
+                        </ToggleIcon>
+                        : <ToggleIcon
+                            keyPressed={keyPressed}
+                            onAnimationEnd={arrowAniEnd}
+                        >
+                            <ToggleArrowIcon>
+                                <i class="fas fa-volume-up"></i>
+                            </ToggleArrowIcon>
+                        </ToggleIcon>
+                    }
+                </React.Fragment>
             )
         }
     };
@@ -143,7 +141,6 @@ export default class extends React.Component {
                 {this.LRAni()}
                 {this.UDAni()}
                 {this.muteAni()}
-                {this.captionAni()}
             </React.Fragment>
         )
     }

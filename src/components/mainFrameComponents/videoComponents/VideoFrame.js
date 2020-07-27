@@ -56,7 +56,7 @@ export default class extends React.Component {
         frameHeight: null,
         frameWidth: null,
         videoActivated: false,
-        videoPaused: true,
+        videoPaused: false,
         clicked: false
     };
 

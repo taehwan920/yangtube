@@ -11,8 +11,7 @@ export default class extends React.Component {
         keyState: {
             upDown: [false, { upArrow: false }],
             leftRight: [false, { rightArrow: false }],
-            mute: false,
-            caption: false
+            mute: [false, { muteOn: false }]
         },
         vidDuration: 1,
         volume: 1,
@@ -53,7 +52,7 @@ export default class extends React.Component {
         const downArrow = 40;
         const spacebar = 32;
         const m = 77;
-        const c = 67;
+        const t = 84;
 
         let newCurrent;
         if (e.keyCode === leftArrow) {
@@ -65,8 +64,7 @@ export default class extends React.Component {
                 keyState: {
                     upDown: [false, { upArrow: false }],
                     leftRight: [true, { rightArrow: false }],
-                    mute: false,
-                    caption: false
+                    mute: [false, { muteOn: false }],
                 }
             })
         }
@@ -79,8 +77,7 @@ export default class extends React.Component {
                 keyState: {
                     upDown: [false, { upArrow: false }],
                     leftRight: [true, { rightArrow: true }],
-                    mute: false,
-                    caption: false
+                    mute: [false, { muteOn: false }]
                 }
             })
         }
@@ -96,8 +93,7 @@ export default class extends React.Component {
                 keyState: {
                     upDown: [true, { upArrow: true }],
                     leftRight: [false, { rightArrow: false }],
-                    mute: false,
-                    caption: false
+                    mute: [false, { muteOn: false }]
                 }
             });
         }
@@ -109,8 +105,7 @@ export default class extends React.Component {
                 keyState: {
                     upDown: [true, { upArrow: false }],
                     leftRight: [false, { rightArrow: false }],
-                    mute: false,
-                    caption: false
+                    mute: [false, { muteOn: false }]
                 }
             });
         }
@@ -121,21 +116,12 @@ export default class extends React.Component {
                 keyState: {
                     upDown: [false, { upArrow: false }],
                     leftRight: [false, { rightArrow: false }],
-                    mute: true, caption: false
+                    mute: [true, { muteOn: !this.state.keyState.mute[1].muteOn }]
                 }
             });
         }
-        if (e.keyCode === c) {
-            this.setState({
-                muted: !this.state.muted,
-                keyPressed: true,
-                keyState: {
-                    upDown: [false, { upArrow: false }],
-                    leftRight: [false, { rightArrow: false }],
-                    mute: false,
-                    caption: true
-                }
-            });
+        if (e.keyCode === t) {
+            this.props.toggleTheater();
         }
     };
 
@@ -177,6 +163,7 @@ export default class extends React.Component {
                     getDuration={this.getDuration}
                     muted={muted}
                     theaterMode={theaterMode}
+                    pauseVideo={pauseVideo}
                     videoPaused={videoPaused}
                     vidRef={this.vidRef}
                     volume={volume}

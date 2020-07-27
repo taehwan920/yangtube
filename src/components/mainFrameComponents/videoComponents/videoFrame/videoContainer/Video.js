@@ -34,11 +34,12 @@ export default class extends React.Component {
     }
 
     render() {
-        const { getCurrent, getDuration } = this.props;
+        const { getCurrent, getDuration, pauseVideo } = this.props;
         return (
             <Video
                 onLoadedData={getDuration}
                 onTimeUpdate={getCurrent}
+                onEnded={pauseVideo}
                 ref={ref => this.videoRef = ref}
                 src="./videos/dive.mp4" />
         )

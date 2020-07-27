@@ -53,6 +53,7 @@ export default class extends React.Component {
             getDuration,
             muted,
             theaterMode,
+            pauseVideo,
             videoPaused,
             vidRef,
             volume
@@ -65,11 +66,12 @@ export default class extends React.Component {
                 viewWidth={viewWidth}
             >
                 <Video
+                    ref={vidRef}
                     currentTime={currentTime}
                     getCurrent={getCurrent}
                     getDuration={getDuration}
                     muted={muted}
-                    ref={vidRef}
+                    pauseVideo={pauseVideo}
                     videoPaused={videoPaused}
                     volume={volume}
                 />
