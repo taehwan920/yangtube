@@ -23,7 +23,7 @@ export default class extends React.Component {
     };
 
     render() {
-        const { addVideoON, onOff } = this.props;
+        const { onOff } = this.props;
         return (
             <AddVideoBtn
                 ref={this.btnRef}
@@ -33,11 +33,6 @@ export default class extends React.Component {
                     <i class="fas fa-plus"></i>
                 </AddVideoBtnPlusIcon>
                 <ClickEffectHeader></ClickEffectHeader>
-                {(addVideoON)
-                    ? <HeaderAddVideoPopUp
-                        addVideoON={addVideoON}
-                    ></HeaderAddVideoPopUp>
-                    : null}
             </AddVideoBtn>
         )
     }

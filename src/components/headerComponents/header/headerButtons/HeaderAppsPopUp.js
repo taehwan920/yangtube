@@ -9,7 +9,7 @@ const AppsPopUpWrapper = styled.div`
     width: 229px;
     position: absolute;
     top: 42px;
-    right: 0px;
+    right: 82.5px;
     display: ${props => props.appsON ? 'flex' : 'none'};
     flex-direction: column;
     z-index: 348;

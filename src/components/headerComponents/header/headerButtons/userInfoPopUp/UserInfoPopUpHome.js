@@ -4,6 +4,7 @@ import { PopUpArticle, PopUpSection, RightArrowIcon, UserName, UserInfoHeader, U
 
 const PopUpArticleString = styled.span`
     width: 202px;
+    text-align: left;
 `;
 
 const UserPopUpPictogram = styled.span`

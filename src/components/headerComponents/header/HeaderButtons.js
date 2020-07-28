@@ -3,6 +3,9 @@ import styled, { keyframes } from 'styled-components';
 import AddVideoButton from './headerButtons/AddVideoButton';
 import AppsButton from './headerButtons/AppsButton';
 import UserInfoButton from './headerButtons/UserInfoButton';
+import HeaderAddVideoPopUp from './headerButtons/HeaderAddVideoPopUp';
+import HeaderAppsPopUp from './headerButtons/HeaderAppsPopUp';
+import HeaderUserInfoPopUp from './headerButtons/HeaderUserInfoPopUp';
 
 const HeaderBtnSectionWrapper = styled.div`
     width:225px;
@@ -121,13 +124,16 @@ export default class extends React.Component {
         addVideoON: false,
         appsON: false,
         userInfoON: false,
-    }
+    };
+
+    userInfoRef = React.createRef();
+
     sanitize = picked => {
         const stateObj = Object.assign({}, this.state);
         const statesArr = Object.keys(stateObj);
         const notPicked = statesArr.filter(state => state !== picked);
         return [picked, ...notPicked];
-    }
+    };
 
     onOff = stateType => () => {
         const statesArr = this.sanitize(stateType);
@@ -136,7 +142,7 @@ export default class extends React.Component {
             [statesArr[1]]: false,
             [statesArr[2]]: false,
         })
-    }
+    };
 
     render() {
         const { toggleMiniSearch } = this.props;
@@ -162,10 +168,27 @@ export default class extends React.Component {
                     <UserInfoButton
                         onOff={this.onOff('userInfoON')}
                         popUpOff={() => this.setState({ userInfoON: false })}
+                        userInfoRef={this.userInfoRef}
                         userInfoON={userInfoON}
                     ></UserInfoButton>
                 </HeaderBtnSection>
+                {(addVideoON)
+                    ? <HeaderAddVideoPopUp
+                        addVideoON={addVideoON}
+                    ></HeaderAddVideoPopUp>
+                    : null}
+                {(appsON)
+                    ? <HeaderAppsPopUp
+                        appsON={appsON}
+                    ></HeaderAppsPopUp>
+                    : null}
+                {(userInfoON)
+                    ? <HeaderUserInfoPopUp
+                        ref={this.userInfoRef}
+                        userInfoON={userInfoON}
+                    ></HeaderUserInfoPopUp>
+                    : null}
             </HeaderBtnSectionWrapper>
         )
     }
-}
+};

@@ -10,7 +10,7 @@ const AddVideoPopUpWrapper = styled.div`
     padding: 8px 0px;
     position: absolute;
     top: 42px;
-    right: 0px;
+    right: 132.5px;
     display: ${props => props.addVideoON ? 'flex' : 'none'};
     flex-direction: column;
     z-index: 348;

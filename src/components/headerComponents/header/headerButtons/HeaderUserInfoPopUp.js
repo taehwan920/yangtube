@@ -28,6 +28,7 @@ const UserInfoPopUpWrapper = styled.div`
 export const PopUpSection = styled.section`
     padding: 8px 0px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    color: black;
     ${UserInfoCommonSetUp}
 `;
 
@@ -35,6 +36,7 @@ export const PopUpArticle = styled.div`
     height: 40px;
     padding: 0px 10px 0px 20px;
     display: flex;
+    justify-content: flex-start;
     align-items: center;
     ${UserInfoCommonSetUp}
 
@@ -71,6 +73,7 @@ export const UserInfoCircleIcon = styled.div`
 export const UserName = styled.span`
     margin-left: 24px;
     font-size: 20px;
+    color: black;
 `;
 
 export const RightArrowIcon = styled.span`
@@ -83,6 +86,7 @@ export const RightArrowIcon = styled.span`
 
 export const LimitedModeSpan = styled.span`
     width: 266px;
+    text-align: left;
 `;
 
 export const SubPopUpHeaderWrapper = styled.header`
@@ -120,6 +124,7 @@ export default class extends React.Component {
         const { userInfoHome, nightMode, langChange, locationChange, limitedMode } = this.state;
         return (
             <UserInfoPopUpWrapper
+                ref={ref => this.UIPopUpRef = ref}
                 userInfoON={this.props.userInfoON}>
                 {userInfoHome
                     ? <UserPopUpHome toggleMode={this.toggleMode}></UserPopUpHome>

@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import HeaderUserInfoPopUp from './HeaderUserInfoPopUp';
 
 const UserInfoIcon = styled.div`
     background-color: #AA47BC;
@@ -29,27 +28,24 @@ export default class extends React.Component {
     btnRef = React.createRef();
 
     clickOutside = (e) => {
+        const { userInfoRef } = this.props;
         if (this.props.userInfoON) {
-            if (this.btnRef.current === null) { return; }
             if (this.btnRef && !this.btnRef.current.contains(e.target)) {
-                this.props.popUpOff();
+                if (userInfoRef.current && !userInfoRef.current.UIPopUpRef.contains(e.target)) {
+                    this.props.popUpOff();
+                }
             }
         }
     };
 
     render() {
-        const { onOff, userInfoON } = this.props;
+        const { onOff } = this.props;
         return (
             <UserInfoIcon
                 ref={this.btnRef}
                 onClick={onOff}
                 draggable="true">
                 G
-                {(userInfoON)
-                    ? <HeaderUserInfoPopUp
-                        userInfoON={userInfoON}
-                    ></HeaderUserInfoPopUp>
-                    : null}
             </UserInfoIcon>
         )
     }
