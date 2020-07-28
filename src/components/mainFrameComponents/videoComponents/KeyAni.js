@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css, keyframes } from 'styled-components';
+import VolumeText from './keyAnimation/VolumeText';
 
 const ToggKF = keyframes`
     from{
@@ -51,7 +52,8 @@ export default class extends React.Component {
             return (
                 <React.Fragment>
                     {keyState.leftRight[1].rightArrow
-                        ? <ToggleIcon
+                        ?
+                        <ToggleIcon
                             keyPressed={keyPressed}
                             onAnimationEnd={arrowAniEnd}
                         >
@@ -60,9 +62,10 @@ export default class extends React.Component {
                             </ToggleArrowIcon>
                             <ToggleText>
                                 5
-                        </ToggleText>
+                            </ToggleText>
                         </ToggleIcon>
-                        : <ToggleIcon
+                        :
+                        <ToggleIcon
                             keyPressed={keyPressed}
                             onAnimationEnd={arrowAniEnd}
                         >
@@ -80,27 +83,41 @@ export default class extends React.Component {
     };
 
     UDAni = () => {
-        const { arrowAniEnd, keyPressed, keyState } = this.props;
+        const { arrowAniEnd, keyPressed, keyState, volume } = this.props;
         if (keyState.upDown[0]) {
             return (
                 <React.Fragment>
                     {keyState.upDown[1].upArrow
-                        ? <ToggleIcon
-                            keyPressed={keyPressed}
-                            onAnimationEnd={arrowAniEnd}
-                        >
-                            <ToggleArrowIcon>
-                                <i class="fas fa-volume-up"></i>
-                            </ToggleArrowIcon>
-                        </ToggleIcon>
-                        : <ToggleIcon
-                            keyPressed={keyPressed}
-                            onAnimationEnd={arrowAniEnd}
-                        >
-                            <ToggleArrowIcon>
-                                <i class="fas fa-volume-down"></i>
-                            </ToggleArrowIcon>
-                        </ToggleIcon>
+                        ?
+                        <React.Fragment>
+                            <ToggleIcon
+                                keyPressed={keyPressed}
+                                onAnimationEnd={arrowAniEnd}
+                            >
+                                <ToggleArrowIcon>
+                                    <i class="fas fa-volume-up"></i>
+                                </ToggleArrowIcon>
+                            </ToggleIcon>
+                            <VolumeText
+                                keyPressed={keyPressed}
+                                volume={volume}
+                            />
+                        </React.Fragment>
+                        :
+                        <React.Fragment>
+                            <ToggleIcon
+                                keyPressed={keyPressed}
+                                onAnimationEnd={arrowAniEnd}
+                            >
+                                <ToggleArrowIcon>
+                                    <i class="fas fa-volume-down"></i>
+                                </ToggleArrowIcon>
+                            </ToggleIcon>
+                            <VolumeText
+                                keyPressed={keyPressed}
+                                volume={volume}
+                            />
+                        </React.Fragment>
                     }
                 </React.Fragment>
             )

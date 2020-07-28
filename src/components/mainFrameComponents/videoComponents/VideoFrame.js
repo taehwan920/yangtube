@@ -9,6 +9,7 @@ const VideoFrame = styled.div`
     justify-content: center;
     align-items: center;
     position: relative;
+    overflow: hidden;
 
     ${props => props.theaterMode && css`
         width: 100vw;

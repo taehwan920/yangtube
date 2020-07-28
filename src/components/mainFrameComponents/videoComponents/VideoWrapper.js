@@ -195,6 +195,7 @@ export default class extends React.Component {
                     arrowAniEnd={this.arrowAniEnd}
                     keyPressed={keyPressed}
                     keyState={keyState}
+                    volume={volume}
                 />
             </React.Fragment>
         )

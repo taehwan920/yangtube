@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const Video = styled.video`
     width: 100%;
+    z-index: -100;
 `;
 
 export default class extends React.Component {
@@ -41,7 +42,7 @@ export default class extends React.Component {
                 onTimeUpdate={getCurrent}
                 onEnded={pauseVideo}
                 ref={ref => this.videoRef = ref}
-                src="./videos/firecracker.mp4" />
+                src="./videos/dive.mp4" />
         )
     }
 }

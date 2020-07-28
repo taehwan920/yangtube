@@ -9,6 +9,7 @@ const VideoInfoOuterWrapper = styled.div`
     background: inherit;
     padding: 0px ${props => props.theaterMode ? '24px' : '0px'};
     display: flex;
+    z-index: 2;
 
     @media(min-width: 1024px) {
         width: ${props => props.theaterMode ? 'min-content' : 'max-content'};
