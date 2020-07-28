@@ -17,6 +17,10 @@ export default class extends React.Component {
         this.videoRef.volume = this.props.volume;
     }
 
+    setPlaySpeed = () => {
+        this.videoRef.playbackRate = this.props.playSpeed;
+    }
+
     toggleMuteVideo = () => {
         this.props.muted
             ? this.videoRef['muted'] = true
@@ -25,6 +29,7 @@ export default class extends React.Component {
 
     componentDidUpdate() {
         this.changeVolume();
+        this.setPlaySpeed();
         this.toggleMuteVideo();
         this.playPause();
 

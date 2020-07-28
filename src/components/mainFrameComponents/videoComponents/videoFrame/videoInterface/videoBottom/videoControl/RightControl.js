@@ -33,13 +33,16 @@ const TheaterRec = styled.div`
 export default class extends React.Component {
     render() {
         const {
+            getPlaySpeed,
             theaterMode,
             toggleFullVF,
             toggleTheater,
         } = this.props;
         return (
             <RightControlBox>
-                <ConfigBtn />
+                <ConfigBtn
+                    getPlaySpeed={getPlaySpeed}
+                />
                 <TheaterBtn
                     onClick={toggleTheater}>
                     <TheaterRec

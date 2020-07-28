@@ -6,6 +6,7 @@ export default class extends React.Component {
     render() {
         const {
             currentTime,
+            getPlaySpeed,
             getVol,
             muted,
             scrubCurrent,
@@ -25,6 +26,7 @@ export default class extends React.Component {
                 {videoActivated ? <VideoGradient /> : null}
                 <VideoBottom
                     currentTime={currentTime}
+                    getPlaySpeed={getPlaySpeed}
                     getVol={getVol}
                     muted={muted}
                     scrubCurrent={scrubCurrent}

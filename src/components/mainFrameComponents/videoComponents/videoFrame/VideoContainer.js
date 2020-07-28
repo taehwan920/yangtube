@@ -75,6 +75,7 @@ export default class extends React.Component {
             muted,
             theaterMode,
             pauseVideo,
+            playSpeed,
             videoPaused,
             vidRef,
             volume
@@ -94,6 +95,7 @@ export default class extends React.Component {
                     getDuration={getDuration}
                     muted={muted}
                     pauseVideo={pauseVideo}
+                    playSpeed={playSpeed}
                     videoPaused={videoPaused}
                     volume={volume}
                 />

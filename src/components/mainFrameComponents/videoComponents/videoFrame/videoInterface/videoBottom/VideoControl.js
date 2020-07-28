@@ -15,6 +15,7 @@ export default class extends React.Component {
     render() {
         const {
             currentTime,
+            getPlaySpeed,
             getVol,
             muted,
             theaterMode,
@@ -39,6 +40,7 @@ export default class extends React.Component {
                     volume={volume}
                 />
                 <RightControl
+                    getPlaySpeed={getPlaySpeed}
                     theaterMode={theaterMode}
                     toggleFullVF={toggleFullVF}
                     toggleTheater={toggleTheater}

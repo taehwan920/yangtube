@@ -23,6 +23,7 @@ export default class extends React.Component {
     render() {
         const {
             currentTime,
+            getPlaySpeed,
             getVol,
             muted,
             scrubCurrent,
@@ -49,6 +50,7 @@ export default class extends React.Component {
                 />
                 <VideoControl
                     currentTime={currentTime}
+                    getPlaySpeed={getPlaySpeed}
                     getVol={getVol}
                     muted={muted}
                     theaterMode={theaterMode}

@@ -13,14 +13,19 @@ export default class extends React.Component {
             leftRight: [false, { rightArrow: false }],
             mute: [false, { muteOn: false }]
         },
+        playSpeed: 1.0,
         vidDuration: 1,
         volume: 1,
     };
 
     vidRef = React.createRef();
 
-    getVol = e => {
-        this.setState({ volume: e.target.value });
+    arrowAniEnd = () => {
+        this.setState({ keyPressed: false })
+    };
+
+    getCurrent = e => {
+        this.setState({ currentTime: e.target.currentTime });
     };
 
     getDuration = e => {
@@ -29,8 +34,13 @@ export default class extends React.Component {
         });
     };
 
-    getCurrent = e => {
-        this.setState({ currentTime: e.target.currentTime });
+    getPlaySpeed = num => {
+        console.log('getspeed!')
+        this.setState({ playSpeed: num });
+    };
+
+    getVol = e => {
+        this.setState({ volume: e.target.value });
     };
 
     toggleMute = () => {
@@ -125,15 +135,13 @@ export default class extends React.Component {
         }
     };
 
-    arrowAniEnd = () => {
-        this.setState({ keyPressed: false })
-    }
-
     scrubCurrent = (ref, du, e) => {
         const newCurrent = (e.nativeEvent.offsetX / ref.offsetWidth) * du;
         this.vidRef.current.videoRef.currentTime = newCurrent;
         this.setState({ currentTime: newCurrent });
     };
+
+
 
     updateCurrent = (ref, du) => e => {
         const newCurrent = (e.nativeEvent.offsetX / ref.offsetWidth) * du;
@@ -159,6 +167,7 @@ export default class extends React.Component {
             keyPressed,
             keyState,
             muted,
+            playSpeed,
             vidDuration,
             volume
         } = this.state;
@@ -171,12 +180,14 @@ export default class extends React.Component {
                     muted={muted}
                     theaterMode={theaterMode}
                     pauseVideo={pauseVideo}
+                    playSpeed={playSpeed}
                     videoPaused={videoPaused}
                     vidRef={this.vidRef}
                     volume={volume}
                 />
                 <VideoInterFace
                     currentTime={currentTime}
+                    getPlaySpeed={this.getPlaySpeed}
                     getVol={this.getVol}
                     muted={muted}
                     scrubCurrent={this.scrubCurrent}

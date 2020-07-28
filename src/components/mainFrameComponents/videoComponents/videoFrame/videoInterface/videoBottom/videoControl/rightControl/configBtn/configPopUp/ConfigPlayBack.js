@@ -3,10 +3,10 @@ import { ConfigItem, ConfigItemIcon, ConfigText, ItemLeftBox, ItemRightBox } fro
 
 export default class extends React.Component {
     render() {
-        const { togglePlayBack } = this.props;
+        const { togglePlayback } = this.props;
         return (
             <ConfigItem
-                onClick={togglePlayBack}
+                onClick={togglePlayback}
             >
                 <ItemLeftBox>
                     재생 속도

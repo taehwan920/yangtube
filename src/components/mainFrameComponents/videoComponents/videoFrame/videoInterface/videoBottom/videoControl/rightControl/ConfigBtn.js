@@ -44,7 +44,7 @@ const ConfigIcon = styled.span`
 
 export default class extends React.Component {
     state = {
-        configActivated: true,
+        configActivated: false,
     }
     clickInit = e => {
         e.stopPropagation();
@@ -75,6 +75,7 @@ export default class extends React.Component {
     }
 
     render() {
+        const { getPlaySpeed } = this.props;
         const { configActivated } = this.state;
         return (
             <ConfigBtn
@@ -90,6 +91,7 @@ export default class extends React.Component {
                 {configActivated
                     ? <ConfigPopUp
                         popUpRef={this.popUpRef}
+                        getPlaySpeed={getPlaySpeed}
                     />
                     : null}
             </ConfigBtn>

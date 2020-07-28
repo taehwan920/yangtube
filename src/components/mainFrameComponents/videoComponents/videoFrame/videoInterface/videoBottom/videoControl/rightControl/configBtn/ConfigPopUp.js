@@ -15,7 +15,7 @@ const ConfigPopUpWrapper = styled.section`
     bottom: 49px;
     right: 0px;
     z-index: 71;
-    transition: height 0.3s ease-out;
+    transition: height 0.2s ease-out;
 `;
 
 const ConfigPopUpBox = styled.div`
@@ -25,7 +25,7 @@ const ConfigPopUpBox = styled.div`
     bottom: 8px;
     display: flex;
     align-items: flex-end;
-    transition: transform 0.2s linear;
+    transition: transform 0.18s linear;
     transform: ${props => props.playbackActive ? 'translate(-125.5px, 0px)' : 'translate(125.5px, 0px)'}
 `;
 
@@ -111,18 +111,28 @@ const PlaybackCheckBox = styled.div`
     opacity: ${props => props.checkOrNot ? 1 : 0};
 `;
 
-const playbackList = [0.25, 0.5, 0.75, '보통', 1.25, 1.5, 1.75, 2];
+const playbackList = [0.25, 0.5, 0.75, '보통', 1.25, 1.5, 1.75, 2.0];
 
 export default class extends React.Component {
     state = {
         playbackActive: false,
         playbackArr: [false, false, false, true, false, false, false, false]
-    }
+    };
 
-    togglePlayBack = () => {
-        console.log('aaa')
+    togglePlayback = () => {
         this.setState({ playbackActive: !this.state.playbackActive });
-    }
+    };
+
+    selectPlayback = idx => () => {
+        const sampleArr = [false, false, false, false, false, false, false, false];
+        const newSpeed = typeof (playbackList[idx]) === 'string' ? 1.0 : playbackList[idx];
+        sampleArr[idx] = true;
+        this.setState({
+            playbackActive: false,
+            playbackArr: sampleArr,
+        });
+        this.props.getPlaySpeed(newSpeed);
+    };
 
     render() {
         const { playbackActive, playbackArr } = this.state;
@@ -139,14 +149,14 @@ export default class extends React.Component {
                     >
                         <ConfigAutoPlay />
                         <ConfigPlayBack
-                            togglePlayBack={this.togglePlayBack}
+                            togglePlayback={this.togglePlayback}
                         />
                     </ConfigItemHeadPart>
                     <ConfigItemTailPart
                         ref={ref => this.tailRef = ref}
                     >
                         <ConfigTailHeader
-                            onClick={this.togglePlayBack}
+                            onClick={this.togglePlayback}
                         >
                             <ConfigItemIcon>
                                 <i class="fas fa-chevron-left"></i>
@@ -156,7 +166,7 @@ export default class extends React.Component {
                         {playbackList.map(item => {
                             const itemIdx = playbackList.indexOf(item);
                             return (
-                                <ConfigItem data-key={itemIdx}>
+                                <ConfigItem onClick={this.selectPlayback(itemIdx)}>
                                     <ItemLeftBox>
                                         <PlaybackCheckBox
                                             checkOrNot={playbackArr[itemIdx]}
@@ -173,4 +183,4 @@ export default class extends React.Component {
             </ConfigPopUpWrapper>
         )
     }
-}
+};
