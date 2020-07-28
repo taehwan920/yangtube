@@ -2,8 +2,13 @@ import React from 'react';
 import { ConfigItem, ConfigItemIcon, ConfigText, ItemLeftBox, ItemRightBox } from '../ConfigPopUp';
 
 export default class extends React.Component {
+    getSpeedtxt = (arr, list) => {
+        const newTxt = list[arr.indexOf(true)]
+        return newTxt
+    }
+
     render() {
-        const { togglePlayback } = this.props;
+        const { togglePlayback, playbackArr, playbackList } = this.props;
         return (
             <ConfigItem
                 onClick={togglePlayback}
@@ -13,7 +18,7 @@ export default class extends React.Component {
                 </ItemLeftBox>
                 <ItemRightBox>
                     <ConfigText>
-                        보통
+                        {this.getSpeedtxt(playbackArr, playbackList) || '보통'}
                     </ConfigText>
                     <ConfigItemIcon>
                         <i class="fas fa-chevron-right"></i>

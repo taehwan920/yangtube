@@ -111,13 +111,13 @@ const PlaybackCheckBox = styled.div`
     opacity: ${props => props.checkOrNot ? 1 : 0};
 `;
 
-const playbackList = [0.25, 0.5, 0.75, '보통', 1.25, 1.5, 1.75, 2.0];
-
 export default class extends React.Component {
     state = {
         playbackActive: false,
         playbackArr: [false, false, false, true, false, false, false, false]
     };
+
+    playbackList = [0.25, 0.5, 0.75, '보통', 1.25, 1.5, 1.75, 2.0];
 
     togglePlayback = () => {
         this.setState({ playbackActive: !this.state.playbackActive });
@@ -125,7 +125,7 @@ export default class extends React.Component {
 
     selectPlayback = idx => () => {
         const sampleArr = [false, false, false, false, false, false, false, false];
-        const newSpeed = typeof (playbackList[idx]) === 'string' ? 1.0 : playbackList[idx];
+        const newSpeed = typeof (this.playbackList[idx]) === 'string' ? 1.0 : this.playbackList[idx];
         sampleArr[idx] = true;
         this.setState({
             playbackActive: false,
@@ -150,6 +150,8 @@ export default class extends React.Component {
                         <ConfigAutoPlay />
                         <ConfigPlayBack
                             togglePlayback={this.togglePlayback}
+                            playbackArr={playbackArr}
+                            playbackList={this.playbackList}
                         />
                     </ConfigItemHeadPart>
                     <ConfigItemTailPart
@@ -163,8 +165,8 @@ export default class extends React.Component {
                             </ConfigItemIcon>
                             <ConfigText>재생 속도</ConfigText>
                         </ConfigTailHeader>
-                        {playbackList.map(item => {
-                            const itemIdx = playbackList.indexOf(item);
+                        {this.playbackList.map(item => {
+                            const itemIdx = this.playbackList.indexOf(item);
                             return (
                                 <ConfigItem onClick={this.selectPlayback(itemIdx)}>
                                     <ItemLeftBox>

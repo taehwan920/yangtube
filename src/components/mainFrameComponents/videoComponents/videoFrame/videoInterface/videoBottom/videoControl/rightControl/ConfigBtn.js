@@ -85,6 +85,7 @@ export default class extends React.Component {
             >
                 <ConfigIcon
                     ref={this.iconRef}
+                    configActivated={configActivated}
                 >
                     <i class="fas fa-cog"></i>
                 </ConfigIcon>
