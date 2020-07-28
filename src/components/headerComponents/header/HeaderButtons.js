@@ -2,9 +2,6 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import AddVideoButton from './headerButtons/AddVideoButton';
 import AppsButton from './headerButtons/AppsButton';
-import HeaderAddVideoPopUp from './headerButtons/HeaderAddVideoPopUp';
-import HeaderAppsPopUp from './headerButtons/HeaderAppsPopUp';
-import HeaderUserInfoPopUp from './headerButtons/HeaderUserInfoPopUp';
 import UserInfoButton from './headerButtons/UserInfoButton';
 
 const HeaderBtnSectionWrapper = styled.div`
@@ -153,33 +150,21 @@ export default class extends React.Component {
                         <ClickEffectHeader></ClickEffectHeader>
                     </MiniSearchBtn>
                     <AddVideoButton
+                        addVideoON={addVideoON}
                         onOff={this.onOff('addVideoON')}
                         popUpOff={() => this.setState({ addVideoON: false })}
                     ></AddVideoButton>
                     <AppsButton
+                        appsON={appsON}
                         onOff={this.onOff('appsON')}
                         popUpOff={() => this.setState({ appsON: false })}
                     ></AppsButton>
                     <UserInfoButton
                         onOff={this.onOff('userInfoON')}
                         popUpOff={() => this.setState({ userInfoON: false })}
+                        userInfoON={userInfoON}
                     ></UserInfoButton>
                 </HeaderBtnSection>
-                {(addVideoON)
-                    ? <HeaderAddVideoPopUp
-                        addVideoON={addVideoON}
-                    ></HeaderAddVideoPopUp>
-                    : null}
-                {(appsON)
-                    ? <HeaderAppsPopUp
-                        appsON={appsON}
-                    ></HeaderAppsPopUp>
-                    : null}
-                {(userInfoON)
-                    ? <HeaderUserInfoPopUp
-                        userInfoON={userInfoON}
-                    ></HeaderUserInfoPopUp>
-                    : null}
             </HeaderBtnSectionWrapper>
         )
     }

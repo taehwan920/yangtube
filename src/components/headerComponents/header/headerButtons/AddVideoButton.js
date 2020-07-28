@@ -1,5 +1,6 @@
 import React from 'react';
 import { AddVideoBtn, AddVideoBtnPlusIcon, ClickEffectHeader } from '../HeaderButtons';
+import HeaderAddVideoPopUp from './HeaderAddVideoPopUp';
 
 
 export default class extends React.Component {
@@ -22,7 +23,7 @@ export default class extends React.Component {
     };
 
     render() {
-        const { onOff } = this.props;
+        const { addVideoON, onOff } = this.props;
         return (
             <AddVideoBtn
                 ref={this.btnRef}
@@ -32,6 +33,11 @@ export default class extends React.Component {
                     <i class="fas fa-plus"></i>
                 </AddVideoBtnPlusIcon>
                 <ClickEffectHeader></ClickEffectHeader>
+                {(addVideoON)
+                    ? <HeaderAddVideoPopUp
+                        addVideoON={addVideoON}
+                    ></HeaderAddVideoPopUp>
+                    : null}
             </AddVideoBtn>
         )
     }

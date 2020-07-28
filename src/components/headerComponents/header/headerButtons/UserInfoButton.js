@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import HeaderUserInfoPopUp from './HeaderUserInfoPopUp';
 
 const UserInfoIcon = styled.div`
     background-color: #AA47BC;
@@ -37,13 +38,18 @@ export default class extends React.Component {
     };
 
     render() {
-        const { onOff } = this.props;
+        const { onOff, userInfoON } = this.props;
         return (
             <UserInfoIcon
                 ref={this.btnRef}
                 onClick={onOff}
                 draggable="true">
                 G
+                {(userInfoON)
+                    ? <HeaderUserInfoPopUp
+                        userInfoON={userInfoON}
+                    ></HeaderUserInfoPopUp>
+                    : null}
             </UserInfoIcon>
         )
     }

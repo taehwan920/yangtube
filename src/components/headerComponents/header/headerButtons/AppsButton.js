@@ -1,5 +1,6 @@
 import React from 'react';
 import { AppsBtn, ClickEffectHeader } from '../HeaderButtons';
+import HeaderAppsPopUp from './HeaderAppsPopUp';
 
 export default class extends React.Component {
     componentDidMount() {
@@ -21,13 +22,18 @@ export default class extends React.Component {
     };
 
     render() {
-        const { onOff } = this.props;
+        const { appsON, onOff } = this.props;
         return (
             <AppsBtn
                 ref={this.btnRef}
                 onClick={onOff}>
                 <i class="fas fa-th"></i>
                 <ClickEffectHeader></ClickEffectHeader>
+                {(appsON)
+                    ? <HeaderAppsPopUp
+                        appsON={appsON}
+                    ></HeaderAppsPopUp>
+                    : null}
             </AppsBtn>
         )
     }
