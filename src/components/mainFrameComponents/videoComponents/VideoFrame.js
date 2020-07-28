@@ -52,11 +52,11 @@ const VideoFrame = styled.div`
 
 export default class extends React.Component {
     state = {
+        clicked: false,
         frameHeight: null,
         frameWidth: null,
         videoActivated: false,
         videoPaused: false,
-        clicked: false
     };
 
     getHeight = () => {
@@ -73,14 +73,14 @@ export default class extends React.Component {
     };
 
     onVideo = () => {
-        if (this.state.videoPaused) return;
+        if (this.state.videoActivated) return;
         this.setState({ videoActivated: true });
     };
 
     outVideo = () => {
         clearTimeout(this.timeout);
         this.timeout = null;
-        if (this.state.videoPaused) return;
+        if (this.state.videoActivated) return;
         this.setState({
             videoActivated: false
         })
@@ -92,14 +92,14 @@ export default class extends React.Component {
         } else {
             this.videoFrameRef.requestFullscreen();
         }
-    }
+    };
 
     timeout;
 
     moveOnVideo = () => {
         clearTimeout(this.timeout);
         this.timeout = null;
-        if (this.state.videoPaused) return;
+        if (this.state.videoActivated) return;
         this.setState({ videoActivated: true });
         this.timeout = setTimeout(this.outVideo, 3000);
     }

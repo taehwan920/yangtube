@@ -20,7 +20,7 @@ const ProgressBox = styled.div`
 
 const hoverAni = css`
     transition: all 0.1s linear;
-    transform: ${props => props.scaleUp ? 'scaleY(1.35)' : 'scaleY(1)'};
+    transform: ${props => props.scaleUp ? 'scaleY(2.5)' : 'scaleY(1)'};
 `;
 
 const TotalProgress = styled.div`
@@ -50,7 +50,7 @@ const CurrentBall = styled.div`
     bottom: 0px;
     left: calc(${props => props.progressRate || 0}% - 1px);
     transition: all 0.1s linear;
-    transform: ${props => props.scaleUp ? 'scale(3.2)' : 'scale(1)'};
+    transform: ${props => props.scaleUp ? 'scale(2)' : 'scale(1)'};
 `;
 
 const CurrentProgress = styled.div`
@@ -60,7 +60,8 @@ const CurrentProgress = styled.div`
     position: absolute;
     top: 0px;
     left: 0px;
-    ${hoverAni}
+    transition: all 0.1s linear;
+    transform: ${props => props.scaleUp ? 'scaleY(1.5)' : 'scaleY(1)'};
 `;
 
 export default class extends React.Component {

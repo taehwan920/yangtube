@@ -6,15 +6,43 @@ import ConfigPlayBack from './configPopUp/ConfigPlayBack';
 const ConfigPopUpWrapper = styled.section`
     background: #252525;
     width: 251px;
-    height: max-content;
-    padding: 8px 0px;
+    height: ${props => props.playbackActive ? '400px' : '96px'};
     border-radius: 2px;
     position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    overflow: hidden;
     bottom: 49px;
     right: 0px;
+    z-index: 71;
+    transition: height 0.3s ease-out;
+`;
+
+const ConfigPopUpBox = styled.div`
+    width: 502px;
+    height: 400px;
+    position: absolute;
+    bottom: 8px;
+    display: flex;
+    align-items: flex-end;
+    transition: transform 0.2s linear;
+    transform: ${props => props.playbackActive ? 'translate(-125.5px, 0px)' : 'translate(125.5px, 0px)'}
+`;
+
+const ConfigItemHeadPart = styled.div`
+    width: 251px;
+    height: 400px;
     display: flex;
     flex-direction: column;
-    z-index: 71;
+    justify-content: flex-end;
+`;
+
+const ConfigItemTailPart = styled.div`
+    width: 251px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 `;
 
 export const ConfigItem = styled.article`
@@ -44,15 +72,104 @@ export const ItemRightBox = styled.div`
     height: 100%;
     display: flex;
     justify-content: flex-end;
-    align-items:center;
+    align-items: center;
 `;
 
+export const ConfigItemIcon = styled.span`
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const ConfigText = styled.span`
+    margin-right: 4px;
+`;
+
+const ConfigTailHeader = styled.header`
+    width: 100%;
+    height: 51px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid gray;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: white;
+`;
+
+const PlaybackCheckBox = styled.div`
+    margin-right: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: white;
+    opacity: ${props => props.checkOrNot ? 1 : 0};
+`;
+
+const playbackList = [0.25, 0.5, 0.75, '보통', 1.25, 1.5, 1.75, 2];
+
 export default class extends React.Component {
+    state = {
+        playbackActive: false,
+        playbackArr: [false, false, false, true, false, false, false, false]
+    }
+
+    togglePlayBack = () => {
+        console.log('aaa')
+        this.setState({ playbackActive: !this.state.playbackActive });
+    }
+
     render() {
+        const { playbackActive, playbackArr } = this.state;
         return (
-            <ConfigPopUpWrapper>
-                <ConfigAutoPlay />
-                <ConfigPlayBack />
+            <ConfigPopUpWrapper
+                ref={ref => this.popUp = ref}
+                playbackActive={playbackActive}
+            >
+                <ConfigPopUpBox
+                    playbackActive={playbackActive}
+                >
+                    <ConfigItemHeadPart
+                        ref={ref => this.headRef = ref}
+                    >
+                        <ConfigAutoPlay />
+                        <ConfigPlayBack
+                            togglePlayBack={this.togglePlayBack}
+                        />
+                    </ConfigItemHeadPart>
+                    <ConfigItemTailPart
+                        ref={ref => this.tailRef = ref}
+                    >
+                        <ConfigTailHeader
+                            onClick={this.togglePlayBack}
+                        >
+                            <ConfigItemIcon>
+                                <i class="fas fa-chevron-left"></i>
+                            </ConfigItemIcon>
+                            <ConfigText>재생 속도</ConfigText>
+                        </ConfigTailHeader>
+                        {playbackList.map(item => {
+                            const itemIdx = playbackList.indexOf(item);
+                            return (
+                                <ConfigItem data-key={itemIdx}>
+                                    <ItemLeftBox>
+                                        <PlaybackCheckBox
+                                            checkOrNot={playbackArr[itemIdx]}
+                                        >
+                                            <i class="fas fa-check"></i>
+                                        </PlaybackCheckBox>
+                                        <span>{item}</span>
+                                    </ItemLeftBox>
+                                </ConfigItem>
+                            )
+                        })}
+                    </ConfigItemTailPart>
+                </ConfigPopUpBox>
             </ConfigPopUpWrapper>
         )
     }

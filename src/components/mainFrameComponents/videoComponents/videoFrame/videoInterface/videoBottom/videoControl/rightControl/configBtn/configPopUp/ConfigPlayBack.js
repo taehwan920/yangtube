@@ -1,24 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
-import { ConfigItem, ItemLeftBox, ItemRightBox } from '../ConfigPopUp';
-
-const ConfigText = styled.span`
-    margin-right: 4px;
-`;
-
-const ConfigItemIcon = styled.span`
-    width: 24px;
-    height: 24px;
-    margin-right: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`;
+import { ConfigItem, ConfigItemIcon, ConfigText, ItemLeftBox, ItemRightBox } from '../ConfigPopUp';
 
 export default class extends React.Component {
     render() {
+        const { togglePlayBack } = this.props;
         return (
-            <ConfigItem>
+            <ConfigItem
+                onClick={togglePlayBack}
+            >
                 <ItemLeftBox>
                     재생 속도
                 </ItemLeftBox>

@@ -31,21 +31,26 @@ const ConfigBtn = styled.div`
     cursor: pointer;
 `;
 
-const configIcon = styled.span`
+const ConfigIcon = styled.span`
     width: 36px;
     height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transform-origin: center;
 
-    animation: ${props => props.activated ? ConfigON : ConfigOff} 0.3s linear;
+    animation: ${props => props.configActivated ? ConfigON : ConfigOff} 0.3s linear;
 `;
 
 export default class extends React.Component {
     state = {
-        activated: false
+        configActivated: true,
     }
     clickInit = e => {
         e.stopPropagation();
-        this.setState({ activated: !this.state.activated });
+        if (this.iconRef && this.iconRef.current.contains(e.target)) {
+            this.setState({ configActivated: !this.state.configActivated });
+        }
     }
 
     componentDidMount() {
@@ -56,33 +61,36 @@ export default class extends React.Component {
         document.removeEventListener('mousedown', this.clickOutside);
     }
 
-    popUpRef = React.createRef();
+    btnRef = React.createRef();
+    iconRef = React.createRef();
 
     clickOutside = e => {
-        if (this.popUpRef.current === null) { return; }
-        if (this.popUpRef && !this.popUpRef.current.contains(e.target)) {
+        if (this.btnRef && !this.btnRef.current.contains(e.target)) {
             this.turnOff();
         }
     };
 
     turnOff = () => {
-        this.setState({ activated: false });
+        this.setState({ configActivated: false });
     }
 
     render() {
-
-        const { activated } = this.state;
+        const { configActivated } = this.state;
         return (
             <ConfigBtn
-                ref={this.popUpRef}
-                activated={activated}
+                ref={this.btnRef}
+                configActivated={configActivated}
                 onClick={this.clickInit}
             >
-                <configIcon>
+                <ConfigIcon
+                    ref={this.iconRef}
+                >
                     <i class="fas fa-cog"></i>
-                </configIcon>
-                {activated
-                    ? <ConfigPopUp />
+                </ConfigIcon>
+                {configActivated
+                    ? <ConfigPopUp
+                        popUpRef={this.popUpRef}
+                    />
                     : null}
             </ConfigBtn>
         )
