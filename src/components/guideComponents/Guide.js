@@ -13,7 +13,8 @@ const GuideWrapper = styled.aside`
     display: flex;
     flex-direction: column;
     color: rgba(0, 0, 0, 0.7);
-    transition: all 0.18s ease-out;
+    transition: left 0.18s ease-out;
+    top: ${props => props.guidePosY}px;
     left: ${props => props.guideIsON ? '0px' : '-240px'};
     ${OverTheSheet}
 `;
@@ -168,40 +169,67 @@ const sectionItems = {
     ]
 };
 
-function makeArticle(item) {
-    if (item.length > 2) {
-        return (
-            <GuideSectionHomeArticle>
-                <ArticleHomeIcon>
-                    {item[0]}
-                </ArticleHomeIcon>
-                <ArticleItem>
-                    {item[1]}
-                </ArticleItem>
-            </GuideSectionHomeArticle>
-        )
-    } else {
-        return (
-            <GuideSectionArticle>
-                <ArticleIcon>
-                    {item[0]}
-                </ArticleIcon>
-                <ArticleItem>
-                    {item[1]}
-                </ArticleItem>
-            </GuideSectionArticle>
-        )
-    }
-}
+function debounce(func, wait = 15, immediate = true) {
+    var timeout;
+    return function () {
+        var context = this, args = arguments;
+        var later = function () {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
+};
 
 export default class extends React.Component {
+    makeArticle(item) {
+        if (item.length > 2) {
+            return (
+                <GuideSectionHomeArticle>
+                    <ArticleHomeIcon>
+                        {item[0]}
+                    </ArticleHomeIcon>
+                    <ArticleItem>
+                        {item[1]}
+                    </ArticleItem>
+                </GuideSectionHomeArticle>
+            )
+        } else {
+            return (
+                <GuideSectionArticle>
+                    <ArticleIcon>
+                        {item[0]}
+                    </ArticleIcon>
+                    <ArticleItem>
+                        {item[1]}
+                    </ArticleItem>
+                </GuideSectionArticle>
+            )
+        }
+    };
+
+    setPosY = () => {
+        this.guidePosY = window.scrollY;
+    };
+
+    componentDidMount(prevProps, prevState, snapshot) {
+        window.addEventListener('scroll', debounce(this.setPosY));
+    };
+
     render() {
         const { guideIsON, toggleGuide } = this.props;
         const blog = sectionItems.fifthSection[0];
         const github = sectionItems.fifthSection[1];
         const year = new Date().getFullYear();
         return (
-            <GuideWrapper guideIsON={guideIsON}>
+            <GuideWrapper
+                ref={ref => this.guideRef = ref}
+                guidePosY={this.guidePosY}
+                guideIsON={guideIsON}
+            >
                 <GuideBlackSheet
                     guideIsON={guideIsON}
                     onClick={toggleGuide}
@@ -213,25 +241,25 @@ export default class extends React.Component {
                 </GuideLogoWrapper>
                 <SectionWrapper>
                     <GuideSection>
-                        {sectionItems.firstSection.map(item => makeArticle(item))}
+                        {sectionItems.firstSection.map(item => this.makeArticle(item))}
                     </GuideSection>
                     <GuideSection>
-                        {sectionItems.secondSection.map(item => makeArticle(item))}
+                        {sectionItems.secondSection.map(item => this.makeArticle(item))}
                     </GuideSection>
                     <GuideSection>
                         <GuideSectionHeader>인기 YANGTUBE</GuideSectionHeader>
-                        {sectionItems.thirdSection.map(item => makeArticle(item))}
+                        {sectionItems.thirdSection.map(item => this.makeArticle(item))}
                     </GuideSection>
                     <GuideSection>
-                        {sectionItems.fourthSection.map(item => makeArticle(item))}
+                        {sectionItems.fourthSection.map(item => this.makeArticle(item))}
                     </GuideSection>
                     <GuideSection>
                         <GuideSectionHeader>YANG TAEHWAN 더보기</GuideSectionHeader>
-                        {makeArticle(blog)}
-                        {makeArticle(github)}
+                        {this.makeArticle(blog)}
+                        {this.makeArticle(github)}
                     </GuideSection>
                     <GuideSection>
-                        {sectionItems.sixthSection.map(item => makeArticle(item))}
+                        {sectionItems.sixthSection.map(item => this.makeArticle(item))}
                     </GuideSection>
                     <GuideFooter>
                         <FooterSpan>© {year} YangTube</FooterSpan>

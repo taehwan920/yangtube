@@ -16,18 +16,43 @@ const HomeDiv = styled.div`
     overflow: ${props => (props.guideIsON ? 'hidden' : 'none')};
 `;
 
+
+
 export default class extends React.Component {
     state = {
-        guideIsON: false
+        guideIsON: false,
+        guidePosY: 0
+    };
+
+    getSnapshotBeforeUpdate(prevProps, prevState) {
+        return prevState.guidePosY;
+    };
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (snapshot) {
+            const page = this.homeRef;
+            page.scrollTop = snapshot;
+        };
+    };
+
+    setPos = () => {
+        if (!this.state.guideIsON) {
+            this.setState({ guidePosY: window.scrollY });
+        }
+    };
+
+    componentDidMount() {
+        window.addEventListener('scroll', this.setPos);
     };
 
     toggleGuide = () => {
-        this.setState({ guideIsON: !this.state.guideIsON })
+        this.setState({ guideIsON: !this.state.guideIsON });
     };
     render() {
         const { guideIsON } = this.state;
         return (
             <HomeDiv
+                ref={ref => this.homeRef = ref}
                 guideIsON={guideIsON}
             >
                 <Header
@@ -41,4 +66,4 @@ export default class extends React.Component {
             </HomeDiv>
         )
     }
-}
+};
