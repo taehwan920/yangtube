@@ -1,6 +1,7 @@
 import React from 'react';
-import VideoGradient from './videoInterface/VideoGradient';
+import VideoBottomGradient from './videoInterface/VideoBottomGradient';
 import VideoBottom from './videoInterface/VideoBottom';
+import VideoTopGradient from './videoInterface/VideoTopGradient';
 
 export default class extends React.Component {
     render() {
@@ -8,6 +9,7 @@ export default class extends React.Component {
             currentTime,
             getPlaySpeed,
             getVol,
+            isFullscreen,
             muted,
             scrubCurrent,
             theaterMode,
@@ -23,7 +25,8 @@ export default class extends React.Component {
         } = this.props;
         return (
             <React.Fragment>
-                {videoActivated ? <VideoGradient /> : null}
+                {videoActivated && document.fullscreenElement ? <VideoTopGradient /> : null}
+                {videoActivated ? <VideoBottomGradient /> : null}
                 <VideoBottom
                     currentTime={currentTime}
                     getPlaySpeed={getPlaySpeed}

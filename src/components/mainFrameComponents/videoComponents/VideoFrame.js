@@ -53,7 +53,7 @@ const VideoFrame = styled.div`
 
 export default class extends React.Component {
     state = {
-        clicked: false,
+        animationTriggered: false,
         frameHeight: null,
         frameWidth: null,
         repeatPlay: false,
@@ -92,6 +92,12 @@ export default class extends React.Component {
         })
     };
 
+    closeCtxMenu = () => {
+        this.setState({
+            videoCtxMenu: false
+        });
+    };
+
     openCtxMenu = e => {
         if (this.state.videoCtxMenu) return;
         e.preventDefault();
@@ -100,16 +106,12 @@ export default class extends React.Component {
         });
     };
 
-    closeCtxMenu = () => {
-        this.setState({
-            videoCtxMenu: false
-        });
-    };
-
     toggleFullVF = () => {
         if (document.fullscreenElement) {
+            this.setState({ isFullscreen: false });
             document.exitFullscreen();
         } else {
+            this.setState({ isFullscreen: true });
             this.videoFrameRef.requestFullscreen();
         }
     };
@@ -144,7 +146,7 @@ export default class extends React.Component {
 
     PauseAndEvent = () => {
         this.pauseVideo();
-        this.setState({ clicked: true });
+        this.setState({ animationTriggered: true });
     };
 
     urlCopyClicked = () => {
@@ -154,7 +156,7 @@ export default class extends React.Component {
     }
 
     aniEnd = () => {
-        this.setState({ clicked: false });
+        this.setState({ animationTriggered: false });
     };
 
     urlAniEnd = () => {
@@ -169,7 +171,7 @@ export default class extends React.Component {
             queryStr
         } = this.props;
         const {
-            clicked,
+            animationTriggered,
             frameHeight,
             frameWidth,
             repeatPlay,
@@ -207,11 +209,10 @@ export default class extends React.Component {
                 />
                 <PlayToggleAni
                     aniEnd={this.aniEnd}
-                    clicked={clicked}
+                    animationTriggered={animationTriggered}
                     videoPaused={videoPaused} />
                 <URLCopyAni
                     aniEnd={this.aniEnd}
-                    clicked={clicked}
                     urlAniEnd={this.urlAniEnd}
                     urlCopied={urlCopied}
                 />
