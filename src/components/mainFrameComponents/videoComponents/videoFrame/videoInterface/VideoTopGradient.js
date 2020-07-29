@@ -31,11 +31,12 @@ const TitleTxt = styled.span`
 `;
 export default class extends React.Component {
     render() {
+        const { contentData } = this.props;
         return (
             <GradientPart>
                 <GradientTitle>
                     <TitleTxt>
-                        제목
+                        {contentData.title}
                     </TitleTxt>
                 </GradientTitle>
             </GradientPart>

@@ -5,6 +5,7 @@ const videoSummary = [
         videoUrl: './videos/dive.mp4',
         thumbnailUrl: './images/thumbnails/dive_thumb.png',
         uploader: 'YangTuber',
+        views: 383754731,
         timestamp: 1564194484807,
         duration: 111
     },
@@ -14,51 +15,57 @@ const videoSummary = [
         videoUrl: './videos/dog.mp4',
         thumbnailUrl: './images/thumbnails/dog_thumb.png',
         uploader: 'YangTuber',
+        views: 38375,
         timestamp: 1595800682512,
         duration: 7
     },
     {
-        title: '[교토] 수족관 돌고래 쇼!  🐬🦈🐬',
+        title: '[교토] 교토 수족관 돌고래 쇼  🐬🦈🐬',
         pageUrl: '/dolphin',
         videoUrl: './videos/dolphin.mp4',
         thumbnailUrl: './images/thumbnails/dolphin_thumb.png',
         uploader: 'YangTuber',
+        views: 298423,
         timestamp: 1594861785383,
         duration: 38
     },
     {
-        title: '🎉 도쿄 근교에서 열린 여름 불꽃놀이 축제에 갔다 왔어요 🎉',
+        title: '도쿄 여름 불꽃놀이 축제',
         pageUrl: '/firecracker',
         videoUrl: './videos/firecracker.mp4',
         thumbnailUrl: './images/thumbnails/firecracker_thumb.png',
         uploader: 'YangTuber',
+        views: 331,
         timestamp: 1565585131547,
         duration: 27
     },
     {
-        title: '[오사카] 유니버설 스튜디오 재팬에서 본 공연 💃',
+        title: '[오사카] 유니버설 스튜디오 재팬 해리포터 댄스 공연 직캠',
         pageUrl: '/dance',
         videoUrl: './videos/dance.mp4',
         thumbnailUrl: './images/thumbnails/dance_thumb.png',
         uploader: 'YangTuber',
+        views: 1231,
         timestamp: 1588397284807,
         duration: 102
     },
     {
-        title: '졸커 주의보) 🐏의 되새김질 먹방',
+        title: '졸커 주의) 양 되새김질 먹방',
         pageUrl: '/sheep',
         videoUrl: './videos/sheep.mp4',
         thumbnailUrl: './images/thumbnails/sheep_thumb.png',
         uploader: 'YangTuber',
+        views: 9324,
         timestamp: 1592625484807,
         duration: 12
     },
     {
-        title: '앉아! 🐶',
+        title: '앉아!',
         pageUrl: '/playwithdog',
         videoUrl: './videos/playwithdog.mp4',
         thumbnailUrl: './images/thumbnails/playwithdog_thumb.png',
         uploader: 'YangTuber',
+        views: 8312731212,
         timestamp: 1595499869963,
         duration: 28
     },
@@ -66,8 +73,9 @@ const videoSummary = [
         title: '🙉 원숭이의 물구나무 점프력 😮😲',
         pageUrl: '/monkeyshow',
         videoUrl: './videos/monkeyshow.mp4',
-        thumbnailUrl: './images/thumbnails/monkeyshow.png',
+        thumbnailUrl: './images/thumbnails/monkeyshow_thumb.png',
         uploader: 'YangTuber',
+        views: 9234894,
         timestamp: 1543873464007,
         duration: 26
     },

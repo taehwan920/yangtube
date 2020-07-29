@@ -2,12 +2,13 @@ import VideoSummary from './VideoSummary';
 
 const dive = {
     title: VideoSummary[0].title,
+    pageUrl: VideoSummary[0].pageUrl,
     videoUrl: VideoSummary[0].videoUrl,
     thunbnailUrl: VideoSummary[0].thumbnailUrl,
     uploader: VideoSummary[0].uploader,
     uploaderIcon: './images/sheep_profile.png',
     subscribers: 1648292,
-    views: 383754731,
+    views: VideoSummary[0].views,
     timestamp: VideoSummary[0].timestamp,
     likes: 12834,
     dislikes: 3904,
@@ -61,7 +62,7 @@ const dive = {
         },
         {
             name: '관심맨',
-            iconColor: '#EC407A',
+            iconColor: '#DD1828',
             timestamp: 1595687284807,
             content: `2020년 7월에 보고 있는 사람 손 🖐`,
             likes: 32388,
@@ -184,14 +185,14 @@ idiot🤪 : 2019? 2019?`,
         },
         {
             name: '엄마가 준비한 식사',
-            iconColor: '#EC407A',
+            iconColor: '#0288D1',
             timestamp: 1595687284807,
             content: `와.. 물 깨끗한 거 봐 수질 무쳤다 진짜`,
             likes: 28,
             replies: [
                 {
                     name: '엄앵란아줌마',
-                    iconColor: '#EC407A',
+                    iconColor: '#33691E',
                     timestamp: 1596030615541,
                     content: `엄`,
                     likes: 0

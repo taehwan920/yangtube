@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import VideoThumbnail from 'react-video-thumbnail';
 import { timestampTxt } from '../../../DB';
 
 const NextVideoItemWrapper = styled.article`
@@ -11,12 +10,17 @@ const NextVideoItemWrapper = styled.article`
     display: flex;
 `;
 
-const NextVideoThumbnail = styled.div`
+const NextVideoThumbnailBox = styled.div`
     background: gray;
     width: 168px;
     height: 94px;
     position: relative;
     margin-right: 8px;
+    cursor: pointer;
+`;
+
+const NextVidThumbnail = styled.img`
+    width: 100%;
 `;
 
 const NextVideoInfoBox = styled.div`
@@ -29,6 +33,7 @@ const NextVideoInfoBox = styled.div`
 const InfoContent = styled.span`
     width: 100%;
     height: max-content;
+    cursor: pointer;
 `;
 
 const InfoTitle = styled(InfoContent)`
@@ -43,7 +48,7 @@ const InfoTitle = styled(InfoContent)`
 
 const InfoUploader = styled(InfoContent)`
     font-size: 13px;
-    margin-bottom: 2px;
+    margin-bottom: 3px;
     color: rgba(0, 0, 0, 0.7);
 `;
 
@@ -94,30 +99,55 @@ export default class extends React.Component {
             return [Math.round(timeGap / sec), timestampTxt[lang].sec]
         }
     };
+
+    parseDecimal = (num, divider) => {
+        let parsed;
+        num / divider / 10 > 100
+            ? parsed = parseInt(num / divider) / 10
+            : parsed = parseInt(num / divider);
+        return parsed;
+    };
+
+    parseNum = (num, lang) => {
+        if (lang === 'kr') {
+            if (num / 10 ** 8 > 1) {
+                return [this.parseDecimal(num, 10 ** 8), '억'];
+            } else if (num / 10 ** 4 > 1) {
+                return [this.parseDecimal(num, 10 ** 4), '만'];
+            } else if (num / 10 ** 3 > 1) {
+                return [this.parseDecimal(num, 10 ** 3), '천'];
+            } else {
+                return num
+            }
+        }
+    };
+
     render() {
-        const {
-            title,
-            uploader,
-            views,
-            timestamp,
-            videoUrl
-        } = this.props;
+        const { video } = this.props;
         return (
             <NextVideoItemWrapper>
-                <NextVideoThumbnail>
-                    <VideoThumbnail
-                        videoUrl={videoUrl}
-                        width={168}
-                        height={94}
+                <NextVideoThumbnailBox>
+                    <NextVidThumbnail
+                        src={video.thumbnailUrl}
                     />
-                </NextVideoThumbnail>
+                </NextVideoThumbnailBox>
                 <NextVideoInfoBox>
-                    <InfoTitle>{title}</InfoTitle>
-                    <InfoUploader>{uploader}</InfoUploader>
+                    <InfoTitle>
+                        {video.title}
+                    </InfoTitle>
+                    <InfoUploader>
+                        {video.uploader}
+                    </InfoUploader>
                     <InfoNumberBox>
-                        <InfoViewNums>{views}</InfoViewNums>
-                        <InfoDot>·</InfoDot>
-                        <InfoTimestamp>{this.getTimeStamp(timestamp, 'kr')}</InfoTimestamp>
+                        <InfoViewNums>
+                            {this.parseNum(video.views, 'kr')}회
+                        </InfoViewNums>
+                        <InfoDot>
+                            ·
+                        </InfoDot>
+                        <InfoTimestamp>
+                            {this.getTimeStamp(video.timestamp, 'kr')}
+                        </InfoTimestamp>
                     </InfoNumberBox>
                 </NextVideoInfoBox>
             </NextVideoItemWrapper>

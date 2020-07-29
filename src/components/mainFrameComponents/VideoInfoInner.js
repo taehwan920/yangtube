@@ -43,10 +43,10 @@ export default class extends React.Component {
                 <MainTitleAndDesc
                     contentData={contentData}
                 />
-                <MainComments
+                <VideoNavNonPC
                     contentData={contentData}
                 />
-                <VideoNavNonPC
+                <MainComments
                     contentData={contentData}
                 />
             </VideoInfoInnerWrapper>

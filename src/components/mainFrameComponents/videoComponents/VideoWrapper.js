@@ -213,6 +213,7 @@ export default class extends React.Component {
                     videoActivated={videoActivated}
                     volume={volume}
                     updateCurrent={this.updateCurrent}
+                    contentData={contentData}
                 />
                 <KeyAni
                     arrowAniEnd={this.arrowAniEnd}

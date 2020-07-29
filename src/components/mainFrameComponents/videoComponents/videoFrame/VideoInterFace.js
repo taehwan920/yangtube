@@ -9,7 +9,6 @@ export default class extends React.Component {
             currentTime,
             getPlaySpeed,
             getVol,
-            isFullscreen,
             muted,
             scrubCurrent,
             theaterMode,
@@ -21,11 +20,17 @@ export default class extends React.Component {
             videoActivated,
             videoPaused,
             volume,
-            updateCurrent
+            updateCurrent,
+            contentData
         } = this.props;
         return (
             <React.Fragment>
-                {videoActivated && document.fullscreenElement ? <VideoTopGradient /> : null}
+                {videoActivated && document.fullscreenElement
+                    ?
+                    <VideoTopGradient
+                        contentData={contentData}
+                    />
+                    : null}
                 {videoActivated ? <VideoBottomGradient /> : null}
                 <VideoBottom
                     currentTime={currentTime}

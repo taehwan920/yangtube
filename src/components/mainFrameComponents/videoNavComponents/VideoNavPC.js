@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { ToggleSwitch } from '../../Mixin';
 import VideoItem from './VideoNavMixin/VideoItem';
+import VideoSummary from '../../DB/VideoSummary';
 
 const VideoNavPCWrapper = styled.nav`
     background-color: inherit;
@@ -57,13 +58,17 @@ const AutoPlayTxt = styled.span`
     font-size: 13px;
 `;
 
-const arr = [];
-for (let i = 0; i < 12; i++) {
-    arr.push(i)
-}
-
 export default class extends React.Component {
     render() {
+        const {
+            contentData
+        } = this.props;
+        const thisVideo = VideoSummary.filter(video => video.pageUrl === contentData.pageUrl)[0];
+        const thisVidIdx = VideoSummary.indexOf(thisVideo);
+        const nextVidIdx = thisVidIdx >= VideoSummary.length ? 0 : thisVidIdx + 1;
+        const nextVid = VideoSummary[nextVidIdx];
+        const restOfVideos = VideoSummary.filter(video => VideoSummary.indexOf(video) !== thisVidIdx && VideoSummary.indexOf(video) !== nextVidIdx);
+        const doubleRest = [...restOfVideos, ...restOfVideos];
         return (
             <VideoNavPCWrapper>
                 <NextVideoSection>
@@ -72,26 +77,20 @@ export default class extends React.Component {
                             다음 동영상
                         </NextVideoText>
                         <AutoPlayBox>
-                            <AutoPlayTxt>자동재생</AutoPlayTxt>
+                            <AutoPlayTxt>
+                                자동재생
+                            </AutoPlayTxt>
                             <ToggleSwitch />
                         </AutoPlayBox>
                     </NextVideoHeader>
                     <VideoItem
-                        title={'댕댕이와 행복한 시간'}
-                        uploader={'YangTuber'}
-                        views={'12만 회'}
-                        timestamp={1596020833408}
-                        videoUrl={'./videos/dog.mp4'}
+                        video={nextVid}
                     />
                 </NextVideoSection>
-                {arr.map(item => {
+                {doubleRest.map(video => {
                     return (
                         <VideoItem
-                            title={'원숭이 쑈!'}
-                            uploader={'YangTuber'}
-                            views={'12만 회'}
-                            timestamp={1596020833408}
-                            videoUrl={'./videos/monkeyshow.mp4'}
+                            video={video}
                         />
                     )
                 })}

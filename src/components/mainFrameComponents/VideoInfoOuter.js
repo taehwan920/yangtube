@@ -62,7 +62,8 @@ export default class extends React.Component {
                     contentData={contentData}
                 />
                 {theaterMode
-                    ? <VideoNavPC
+                    ?
+                    <VideoNavPC
                         contentData={contentData}
                     />
                     : null}
