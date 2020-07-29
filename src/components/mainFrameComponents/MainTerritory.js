@@ -64,6 +64,7 @@ export default class extends React.Component {
     };
 
     render() {
+        const { queryStr } = this.props;
         const { newMargin, theaterMode } = this.state;
         return (
             <MainTerritory
@@ -73,6 +74,7 @@ export default class extends React.Component {
                     newMargin={newMargin}
                     theaterMode={theaterMode}
                     toggleTheater={this.toggleTheater}
+                    queryStr={queryStr}
                 />
                 {theaterMode
                     ? null

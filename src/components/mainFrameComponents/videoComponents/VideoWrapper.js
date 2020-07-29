@@ -141,16 +141,25 @@ export default class extends React.Component {
         this.setState({ currentTime: newCurrent });
     };
 
-
+    setCurrentByQS = num => {
+        const video = this.vidRef.current.videoRef;
+        if (num < 0 || num > video.duration) return;
+        console.log(num);
+        video.currentTime = num;
+        this.setState({ currentTime: num });
+    }
 
     updateCurrent = (ref, du) => e => {
         const newCurrent = (e.nativeEvent.offsetX / ref.offsetWidth) * du;
+        console.log(newCurrent);
         this.vidRef.current.videoRef.currentTime = newCurrent;
         this.setState({ currentTime: newCurrent });
     };
 
     componentDidMount() {
         document.addEventListener('keydown', this.updateByArrow);
+        const startPoint = parseInt(this.props.queryStr.start);
+        this.setCurrentByQS(startPoint);
     }
 
     render() {

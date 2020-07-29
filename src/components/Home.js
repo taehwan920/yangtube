@@ -2,6 +2,7 @@ import React from 'react';
 import Guide from './guideComponents/Guide';
 import Header from './headerComponents/Header';
 import MainTerritory from './mainFrameComponents/MainTerritory';
+import queryString from 'query-string';
 
 import styled from 'styled-components';
 
@@ -50,6 +51,7 @@ export default class extends React.Component {
     };
     render() {
         const { guideIsON } = this.state;
+        const queryStr = queryString.parse(this.props.location.search);
         return (
             <HomeDiv
                 ref={ref => this.homeRef = ref}
@@ -62,7 +64,9 @@ export default class extends React.Component {
                     guideIsON={guideIsON}
                     toggleGuide={this.toggleGuide}
                 ></Guide>
-                <MainTerritory></MainTerritory>
+                <MainTerritory
+                    queryStr={queryStr}
+                ></MainTerritory>
             </HomeDiv>
         )
     }

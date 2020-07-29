@@ -1,6 +1,5 @@
 import React from 'react';
 import { AddVideoBtn, AddVideoBtnPlusIcon, ClickEffectHeader } from '../HeaderButtons';
-import HeaderAddVideoPopUp from './HeaderAddVideoPopUp';
 
 
 export default class extends React.Component {

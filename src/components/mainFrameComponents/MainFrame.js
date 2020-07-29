@@ -30,7 +30,12 @@ const MainFrameContainer = styled.div`
 
 export default class extends React.Component {
     render() {
-        const { newMargin, theaterMode, toggleTheater } = this.props;
+        const {
+            newMargin,
+            theaterMode,
+            toggleTheater,
+            queryStr
+        } = this.props;
         return (
             <MainFrameWrapper
                 theaterMode={theaterMode}>
@@ -40,6 +45,7 @@ export default class extends React.Component {
                         newMargin={newMargin}
                         theaterMode={theaterMode}
                         toggleTheater={toggleTheater}
+                        queryStr={queryStr}
                     />
                     <VideoInfoOuter
                         newMargin={newMargin}
