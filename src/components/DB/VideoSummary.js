@@ -5,7 +5,7 @@ const videoSummary = [
         videoUrl: './videos/dive.mp4',
         thumbnailUrl: './images/thumbnails/dive_thumb.png',
         uploader: 'YangTuber',
-        timestamp: 1595687284807,
+        timestamp: 1564194484807,
         duration: 111
     },
     {
