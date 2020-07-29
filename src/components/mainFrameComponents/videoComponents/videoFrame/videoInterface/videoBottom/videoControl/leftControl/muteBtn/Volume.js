@@ -20,6 +20,10 @@ const VolumeRange = styled.input`
     height: 100%;
     z-index: 26;
 
+    &:focus {
+        outline: none;
+    }
+
     &::-webkit-slider-runnable-track{
         background: transparent;
         width: 100%;
@@ -51,7 +55,7 @@ const VolumeCurrentSlide = styled.div`
     width: ${props => props.volume * 100}%;
     height: 3px;
     position: absolute;
-    bottom: calc(50% - 1px);
+    bottom: calc(50% - 2px);
     cursor: pointer;
 `;
 

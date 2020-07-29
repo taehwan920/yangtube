@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 const ProgressContainer = styled.div`
     width: 100%;
@@ -18,18 +18,14 @@ const ProgressBox = styled.div`
     bottom: 6px;
 `;
 
-const hoverAni = css`
-    transition: all 0.1s linear;
-    transform: ${props => props.scaleUp ? 'scaleY(2.5)' : 'scaleY(1)'};
-`;
-
 const TotalProgress = styled.div`
     background: #999999;
     width: 100%;
     height: 3px;
     position: absolute;
     top: 1px;
-    ${hoverAni}
+    transition: all 0.08s linear;
+    transform: ${props => props.scaleUp ? 'scaleY(1.6)' : 'scaleY(1)'};
 `;
 
 const HoverProgress = styled.div`
@@ -43,14 +39,14 @@ const HoverProgress = styled.div`
 
 const CurrentBall = styled.div`
     background: red;
-    width: 4px;
+    width: 5px;
     height: 3px;
     border-radius: 50%;
     position: absolute;
     bottom: 0px;
     left: calc(${props => props.progressRate || 0}% - 1px);
     transition: all 0.1s linear;
-    transform: ${props => props.scaleUp ? 'scale(2)' : 'scale(1)'};
+    transform: ${props => props.scaleUp ? 'scale(2.75)' : 'scale(1)'};
 `;
 
 const CurrentProgress = styled.div`
@@ -60,8 +56,8 @@ const CurrentProgress = styled.div`
     position: absolute;
     top: 0px;
     left: 0px;
-    transition: all 0.1s linear;
-    transform: ${props => props.scaleUp ? 'scaleY(1.5)' : 'scaleY(1)'};
+    transition: all 0.08s linear;
+    transform: ${props => props.scaleUp ? 'scaleY(1.05)' : 'scaleY(1)'};
 `;
 
 export default class extends React.Component {
