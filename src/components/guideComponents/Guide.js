@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { Logo } from '../Mixin';
+import { debounce, Logo } from '../Mixin';
 
 const OverTheSheet = css`
     z-index: 351;
@@ -169,20 +169,7 @@ const sectionItems = {
     ]
 };
 
-function debounce(func, wait = 15, immediate = true) {
-    var timeout;
-    return function () {
-        var context = this, args = arguments;
-        var later = function () {
-            timeout = null;
-            if (!immediate) func.apply(context, args);
-        };
-        var callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow) func.apply(context, args);
-    };
-};
+
 
 export default class extends React.Component {
     makeArticle(item) {

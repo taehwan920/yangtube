@@ -2,6 +2,8 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import VideoWrapper from './VideoWrapper';
 import PlayToggleAni from './PlayToggleAni';
+import VideoCtxMenu from './videoFrame/VideoCtxMenu';
+
 
 const VideoFrame = styled.div`
     background: black;
@@ -31,8 +33,6 @@ const VideoFrame = styled.div`
     
     
     ${props => !props.theaterMode && css`
-        
-
         @media(max-width: 1023px) {
             width: calc(${props => props.viewWidth}px - 24px);
             height: calc((${props => props.viewWidth}px - 24px) / 16 * 9);
@@ -57,6 +57,11 @@ export default class extends React.Component {
         frameWidth: null,
         videoActivated: false,
         videoPaused: false,
+        videoCtxMenu: false,
+    };
+
+    componentDidMount() {
+        window.addEventListener('resize', this.getHeight);
     };
 
     getHeight = () => {
@@ -68,22 +73,32 @@ export default class extends React.Component {
         });
     };
 
-    componentDidMount() {
-        window.addEventListener('resize', this.getHeight);
-    };
-
     onVideo = () => {
-        if (this.state.videoActivated) return;
+        if (this.state.videoPaused) return;
         this.setState({ videoActivated: true });
     };
 
     outVideo = () => {
         clearTimeout(this.timeout);
         this.timeout = null;
-        if (this.state.videoActivated) return;
+        if (this.state.videoPaused) return;
         this.setState({
             videoActivated: false
         })
+    };
+
+    openCtxMenu = e => {
+        if (this.state.videoCtxMenu) return;
+        e.preventDefault();
+        this.setState({
+            videoCtxMenu: true,
+        });
+    };
+
+    closeCtxMenu = () => {
+        this.setState({
+            videoCtxMenu: false
+        });
     };
 
     toggleFullVF = () => {
@@ -99,12 +114,12 @@ export default class extends React.Component {
     moveOnVideo = () => {
         clearTimeout(this.timeout);
         this.timeout = null;
-        if (this.state.videoActivated) return;
+        if (this.state.videoPaused) return;
         this.setState({ videoActivated: true });
         this.timeout = setTimeout(this.outVideo, 3000);
     }
 
-    mouseMoved = () => {
+    mouseMoved = e => {
         !this.state.videoActivated
             ? this.onVideo()
             : this.moveOnVideo();
@@ -127,13 +142,28 @@ export default class extends React.Component {
     }
 
     render() {
-        const { newMargin, theaterMode, toggleTheater, queryStr } = this.props;
-        const { clicked, frameHeight, frameWidth, videoPaused, videoActivated } = this.state;
+        const {
+            newMargin,
+            theaterMode,
+            toggleTheater,
+            queryStr
+        } = this.props;
+        const {
+            clicked,
+            frameHeight,
+            frameWidth,
+            ctxPosX,
+            ctxPosY,
+            videoActivated,
+            videoCtxMenu,
+            videoPaused,
+        } = this.state;
         const viewHeight = window.innerHeight, viewWidth = window.innerWidth;
         return (
             <VideoFrame
                 ref={ref => this.videoFrameRef = ref}
                 onClick={this.PauseAndEvent}
+                onContextMenu={this.openCtxMenu}
                 onMouseLeave={this.outVideo}
                 onMouseEnter={this.onVideo}
                 onMouseMove={this.mouseMoved}
@@ -157,6 +187,12 @@ export default class extends React.Component {
                     aniEnd={this.aniEnd}
                     clicked={clicked}
                     videoPaused={videoPaused} />
+                <VideoCtxMenu
+                    closeCtxMenu={this.closeCtxMenu}
+                    ctxPosX={ctxPosX}
+                    ctxPosY={ctxPosY}
+                    videoCtxMenu={videoCtxMenu}
+                />
             </VideoFrame>
         )
     }
