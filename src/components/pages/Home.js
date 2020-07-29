@@ -1,8 +1,9 @@
 import React from 'react';
-import Guide from './guideComponents/Guide';
-import Header from './headerComponents/Header';
-import MainTerritory from './mainFrameComponents/MainTerritory';
+import Guide from '../guideComponents/Guide';
+import Header from '../headerComponents/Header';
+import MainTerritory from '../mainFrameComponents/MainTerritory';
 import queryString from 'query-string';
+import data from '../DB/Dive'
 
 import styled from 'styled-components';
 
@@ -17,13 +18,13 @@ const HomeDiv = styled.div`
     overflow: ${props => (props.guideIsON ? 'hidden' : 'none')};
 `;
 
-
-
 export default class extends React.Component {
     state = {
         guideIsON: false,
         guidePosY: 0
     };
+
+    contentData = data;
 
     getSnapshotBeforeUpdate(prevProps, prevState) {
         return prevState.guidePosY;
@@ -66,6 +67,7 @@ export default class extends React.Component {
                 ></Guide>
                 <MainTerritory
                     queryStr={queryStr}
+                    contentData={this.contentData}
                 ></MainTerritory>
             </HomeDiv>
         )

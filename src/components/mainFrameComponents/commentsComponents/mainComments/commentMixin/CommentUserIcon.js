@@ -29,14 +29,14 @@ export default class extends React.Component {
         return str.slice(0, 1);
     }
     render() {
-        const { iconColor, userName } = this.props;
+        const { iconColor, name } = this.props;
         return (
             <CommentUserIconWrapper>
                 <CommentUserIconBox>
                     <CommentUserIcon
                         draggable="true"
                         iconColor={iconColor}>
-                        {this.getInitial(userName) || 'V'}
+                        {this.getInitial(name) || 'V'}
                     </CommentUserIcon>
                 </CommentUserIconBox>
             </CommentUserIconWrapper>

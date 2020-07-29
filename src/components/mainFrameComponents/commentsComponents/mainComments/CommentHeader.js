@@ -25,13 +25,14 @@ export const CommentClickEffect = styled.div`
 `;
 
 export default class extends React.Component {
-
-
     render() {
+        const { contentData } = this.props;
         return (
             <CommentHeaderWrapper>
-                <HeaderHeader></HeaderHeader>
-                <InputAndUser></InputAndUser>
+                <HeaderHeader
+                    contentData={contentData}
+                />
+                <InputAndUser />
             </CommentHeaderWrapper>
         )
     }

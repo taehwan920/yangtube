@@ -12,16 +12,27 @@ const ReplySwitchToInvisibleWrapper = styled.div`
 
 export default class extends React.Component {
     render() {
-        const { closeReplies, replyItems } = this.props;
+        const {
+            closeReplies,
+            replyItems
+        } = this.props;
         return (
             <ReplySwitchToInvisibleWrapper>
-                <ReplySwitchBox onClick={closeReplies}>
-                    <ReplySwitchIcon><i class="fas fa-caret-up"></i></ReplySwitchIcon>
-                    <ReplySwitchText>{`답글 ${replyItems.length}개 숨기기`}</ReplySwitchText>
+                <ReplySwitchBox
+                    onClick={closeReplies}
+                >
+                    <ReplySwitchIcon>
+                        <i class="fas fa-caret-up"></i>
+                    </ReplySwitchIcon>
+                    <ReplySwitchText>
+                        {`답글 숨기기`}
+                    </ReplySwitchText>
                 </ReplySwitchBox>
                 {replyItems.map(replyItem => {
                     return (
-                        <ReplyContents replyItem={replyItem}></ReplyContents>
+                        <ReplyContents
+                            replyItem={replyItem}
+                        />
                     )
                 })}
             </ReplySwitchToInvisibleWrapper>

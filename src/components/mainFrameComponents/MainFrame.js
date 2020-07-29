@@ -34,7 +34,8 @@ export default class extends React.Component {
             newMargin,
             theaterMode,
             toggleTheater,
-            queryStr
+            queryStr,
+            contentData
         } = this.props;
         return (
             <MainFrameWrapper
@@ -46,10 +47,12 @@ export default class extends React.Component {
                         theaterMode={theaterMode}
                         toggleTheater={toggleTheater}
                         queryStr={queryStr}
+                        contentData={contentData}
                     />
                     <VideoInfoOuter
                         newMargin={newMargin}
                         theaterMode={theaterMode}
+                        contentData={contentData}
                     />
                 </MainFrameContainer>
             </MainFrameWrapper>

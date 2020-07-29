@@ -1,6 +1,6 @@
 const videoSummary = [
     {
-        title: '🐟 오키나와 바닷 속 풍경',
+        title: '🐟 오키나와 바닷 속 풍경 [수중 카메라 촬영]',
         pageUrl: '/home',
         videoUrl: './videos/dive.mp4',
         thumbnailUrl: './images/thumbnails/dive_thumb.png',

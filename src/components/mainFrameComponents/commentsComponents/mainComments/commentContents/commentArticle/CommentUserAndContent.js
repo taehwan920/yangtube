@@ -23,7 +23,7 @@ export default class extends React.Component {
     }
     render() {
         const { commentItem } = this.props;
-        const { content, iconColor, userName, timestamp } = commentItem.main;
+        const { name, iconColor, timestamp, content, likes } = commentItem;
         const { hovering } = this.state;
         return (
             <CommentUserAndContentWrapper
@@ -32,21 +32,24 @@ export default class extends React.Component {
             >
                 <CommentUserIcon
                     iconColor={iconColor}
-                    userName={userName}
-                ></CommentUserIcon>
+                    name={name}
+                />
                 <UserAndContentWrapper>
                     <CommentUserAndTime
-                        userName={userName}
+                        name={name}
                         timestamp={timestamp}
-                    ></CommentUserAndTime>
+                    />
                     <CommentContent
                         content={content}
-                    ></CommentContent>
+                    />
                     <LikeAndReply
                         item={commentItem.main}
-                    ></LikeAndReply>
+                        likes={likes}
+                    />
                 </UserAndContentWrapper>
-                <ReportBtn hovering={hovering}></ReportBtn>
+                <ReportBtn
+                    hovering={hovering}
+                />
             </CommentUserAndContentWrapper>
         )
     }

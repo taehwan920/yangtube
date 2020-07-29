@@ -9,6 +9,7 @@ import ReportBtn from '../../../../commentMixin/ReportBtn';
 const ReplyListWrapper = styled.div`
     width: 100%;
     height: max-content;
+    margin: 12px 0px;
     display: flex;
 `;
 
@@ -23,30 +24,41 @@ export default class extends React.Component {
         hovering: false
     }
     render() {
-        const { replyItem } = this.props;
-        const { content, iconColor, timestamp, userName } = replyItem;
+        const {
+            replyItem
+        } = this.props;
+        const {
+            content,
+            iconColor,
+            likes,
+            name,
+            timestamp
+        } = replyItem;
         const { hovering } = this.state;
         return (
             <ReplyListWrapper
                 onMouseOver={() => this.setState({ hovering: true })}
-                onMouseOut={() => this.setState({ hovering: false })}>
+                onMouseOut={() => this.setState({ hovering: false })}
+            >
                 <CommentUserIcon
                     iconColor={iconColor}
-                    userName={userName}
-                ></CommentUserIcon>
+                    name={name}
+                />
                 <UserAndReplyWrapper>
                     <CommentUserAndTime
-                        userName={userName}
+                        name={name}
                         timestamp={timestamp}
-                    ></CommentUserAndTime>
+                    />
                     <CommentContent
                         content={content}
-                    ></CommentContent>
+                    />
                     <LikeAndReply
-                        item={replyItem}
-                    ></LikeAndReply>
+                        likes={likes}
+                    />
                 </UserAndReplyWrapper>
-                <ReportBtn hovering={hovering}></ReportBtn>
+                <ReportBtn
+                    hovering={hovering}
+                />
             </ReplyListWrapper>
         )
     }

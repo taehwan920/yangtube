@@ -14,10 +14,15 @@ const CommentsWrapper = styled.section`
 
 export default class extends React.Component {
     render() {
+        const { contentData } = this.props;
         return (
             <CommentsWrapper>
-                <CommentHeader></CommentHeader>
-                <CommentContents></CommentContents>
+                <CommentHeader
+                    contentData={contentData}
+                />
+                <CommentContents
+                    contentData={contentData}
+                />
             </CommentsWrapper>
         )
     }

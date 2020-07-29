@@ -70,21 +70,35 @@ export const descItems = {
 
 export default class extends React.Component {
     render() {
-        const { realHeight, showMore, showMoreFunc } = this.props;
+        const {
+            parseNum,
+            realHeight,
+            showMore,
+            showMoreFunc,
+            contentData
+        } = this.props;
         const numberOfLine = descItems.description.split('\n').length;
         return (
-            <DescAndUploaderWrapper realHeight={realHeight}>
-                <Uploader></Uploader>
+            <DescAndUploaderWrapper
+                realHeight={realHeight}
+            >
+                <Uploader
+                    contentData={contentData}
+                    parseNum={parseNum}
+                />
                 <DesciptionWrapper>
                     <DescRealHeight className="real-height">
-                        {descItems.description}
+                        {contentData.description}
                     </DescRealHeight>
                     <DescTextWrapper realHeight={realHeight}>
-                        {descItems.description}
+                        {contentData.description}
                     </DescTextWrapper>
                     {numberOfLine <= 3
                         ? null
-                        : <ShowMoreBtn realHeight={realHeight} onClick={showMoreFunc}>
+                        : <ShowMoreBtn
+                            realHeight={realHeight}
+                            onClick={showMoreFunc}
+                        >
                             {showMore ? '간략히' : '더보기'}
                         </ShowMoreBtn>}
                 </DesciptionWrapper>

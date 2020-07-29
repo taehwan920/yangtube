@@ -41,13 +41,18 @@ const CommentSortText = styled.span`
 
 export default class extends React.Component {
     render() {
+        const { contentData } = this.props;
         return (
             <CommentHeaderHeader>
-                <CommentNumber>댓글 12개</CommentNumber>
+                <CommentNumber>댓글 {contentData.comments.length}개</CommentNumber>
                 <CommentSortBox>
-                    <CommentSortIcon><i class="fas fa-sort-amount-down"></i></CommentSortIcon>
-                    <CommentSortText>정렬 기준</CommentSortText>
-                    <CommentClickEffect></CommentClickEffect>
+                    <CommentSortIcon>
+                        <i class="fas fa-sort-amount-down"></i>
+                    </CommentSortIcon>
+                    <CommentSortText>
+                        정렬 기준
+                    </CommentSortText>
+                    <CommentClickEffect />
                 </CommentSortBox>
             </CommentHeaderHeader>
         )

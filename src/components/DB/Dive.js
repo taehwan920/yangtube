@@ -7,10 +7,11 @@ const dive = {
     uploader: VideoSummary[0].uploader,
     uploaderIcon: './images/sheep_profile.png',
     subscribers: 1648292,
-    views: 38375473,
+    views: 383754731,
     timestamp: VideoSummary[0].timestamp,
-    likes: 4982834,
+    likes: 12834,
     dislikes: 3904,
+    nextVideo: VideoSummary[1].videoUrl,
     description:
         `예전에 오키나와에서 살 때 같이 일하는 동료들이랑 놀러가서 찍은 영상이에요.
 세 달 정도 살면서 바닷가에 종종 놀러가곤 했는데,
@@ -66,7 +67,7 @@ const dive = {
             likes: 32388,
             replies: [
                 {
-                    name: 'Seonyoung Kim',
+                    name: '옆집 초딩',
                     iconColor: '#78909C',
                     timestamp: 1596030615541,
                     content: `저요 저요!`,
@@ -76,7 +77,7 @@ const dive = {
                     name: '川渕　美鈴',
                     iconColor: '#7E57C2',
                     timestamp: 1596031632570,
-                    content: `私も見てます！`,
+                    content: `저도 보고있어요!`,
                     likes: 828
                 },
             ]
@@ -93,45 +94,7 @@ const dive = {
 제주도도 바다 색깔 이쁘기로 유명하잖아요~~
 오키나와도 꼭 한 번 가봐야 겠어요 ㅎㅎㅎ^^~`,
             likes: 79,
-        },
-        {
-            name: '세로 연구소',
-            iconColor: '#0098A6',
-            timestamp: 1596031854681,
-            content:
-                `나
-            는
-            세
-            로
-            쓰
-            기
-            빌
-            런
-            이
-            다
-            하
-            하
-            하`,
-            likes: 328
-        },
-        {
-            name: 'Vienna Sausage',
-            iconColor: '#EC407A',
-            timestamp: 1584367854681,
-            content: `Anybody in 2019?`,
-            likes: 3938,
-            replies: [
-                {
-                    name: 'John Smith',
-                    iconColor: '#78909C',
-                    timestamp: 1596032112370,
-                    content:
-                        `dog🐕 : Bow Wow
-cat🐈 : Meow Meow
-idiot🤪 : 2019? 2019?`,
-                    likes: 698
-                },
-            ]
+            replies: []
         },
         {
             name: '大野 智',
@@ -158,7 +121,7 @@ idiot🤪 : 2019? 2019?`,
                     name: 'まつじゅん',
                     iconColor: '#800080',
                     timestamp: 1596030615541,
-                    content: `こっちも`,
+                    content: `はーい、リーダー`,
                     likes: 1
                 },
                 {
@@ -172,9 +135,51 @@ idiot🤪 : 2019? 2019?`,
                     name: 'ネギトロ',
                     iconColor: '#4F3EB0',
                     timestamp: 1596030615541,
-                    content: `てか、嵐しかいねーやんか！おいおい、マジかよこれ！！ww`,
+                    content: `てか、嵐しかいねーじゃんかww`,
                     likes: 5
                 }
+            ]
+        },
+        {
+            name: '세로 연구소',
+            iconColor: '#0098A6',
+            timestamp: 1596031854681,
+            content:
+                `            나
+            는
+            세
+            로
+            쓰
+            기
+            빌
+            런
+            이
+            다
+            하
+            하
+            하`,
+            likes: 328,
+            replies: []
+        },
+        {
+            name: 'Vienna Sausage',
+            iconColor: '#EC407A',
+            timestamp: 1584367854681,
+            content: `Anybody in 2019?`,
+            likes: 3938,
+            replies: [
+                {
+                    name: 'John Smith',
+                    iconColor: '#78909C',
+                    timestamp: 1596032112370,
+                    content:
+                        `dog🐕 : Bow Wow
+
+cat🐈 : Meow Meow
+
+idiot🤪 : 2019? 2019?`,
+                    likes: 698
+                },
             ]
         },
         {
@@ -186,13 +191,13 @@ idiot🤪 : 2019? 2019?`,
             replies: [
                 {
                     name: '엄앵란아줌마',
-                    iconColor: '#78909C',
+                    iconColor: '#EC407A',
                     timestamp: 1596030615541,
                     content: `엄`,
                     likes: 0
                 },
                 {
-                    name: '준 마츠모토',
+                    name: '준위 염경석',
                     iconColor: '#78909C',
                     timestamp: 1596030615541,
                     content: `준`,
@@ -200,14 +205,14 @@ idiot🤪 : 2019? 2019?`,
                 },
                 {
                     name: '식샤를 합시다',
-                    iconColor: '#78909C',
+                    iconColor: '#F5511E',
                     timestamp: 1596030615541,
                     content: `식`,
                     likes: 0
                 },
                 {
                     name: '뇌절=번개자르기',
-                    iconColor: '#78909C',
+                    iconColor: '#02589D',
                     timestamp: 1596032772561,
                     content: `엄`,
                     likes: 0

@@ -49,6 +49,7 @@ export default class extends React.Component {
         const {
             getCurrent,
             getDuration,
+            contentData
         } = this.props;
         return (
             <Video
@@ -56,7 +57,7 @@ export default class extends React.Component {
                 onTimeUpdate={getCurrent}
                 onEnded={this.videoEnded}
                 ref={ref => this.videoRef = ref}
-                src="./videos/dive.mp4" />
+                src={contentData.videoUrl} />
         )
     }
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { commentItems } from '../../../DB';
 import CommentArticle from './commentContents/CommentArticle';
 
 const CommentContentsListWrapper = styled.section`
@@ -10,11 +9,19 @@ const CommentContentsListWrapper = styled.section`
 
 export default class extends React.Component {
     render() {
+        const {
+            contentData
+        } = this.props;
+        const {
+            comments
+        } = contentData;
         return (
             <CommentContentsListWrapper>
-                {commentItems.map(commentItem => {
+                {comments.map(commentItem => {
                     return (
-                        <CommentArticle commentItem={commentItem}></CommentArticle>
+                        <CommentArticle
+                            commentItem={commentItem}
+                        />
                     )
                 })}
             </CommentContentsListWrapper>

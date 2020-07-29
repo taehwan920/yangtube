@@ -155,22 +155,41 @@ export const titleItems = {
 };
 
 export default class extends React.Component {
+    parseDate = (num, lang) => {
+        const date = new Date(num)
+        const year = date.getUTCFullYear();
+        const month = date.getMonth();
+        const day = date.getDay();
+        if (lang === 'kr' || lang === 'jp') {
+            return `${year}. ${month}. ${day}`
+        }
+    };
     render() {
+        const {
+            parseNum,
+            contentData
+        } = this.props;
+        const viewsItem = parseNum(contentData.views, 'kr');
+        const dateItem = this.parseDate(contentData.timestamp, 'kr');
+
         return (
             <TitleAndInfo>
                 <ViewsAndDateWrapper>
                     <ViewsSpan>
-                        조회수 16만회
+                        {`조회수 ${viewsItem[0]}${viewsItem[1]}회`}
                     </ViewsSpan>
                     <TitleInfoDot>
                         ·
                     </TitleInfoDot>
                     <DateSpan>
-                        2020. 7. 19.
+                        {dateItem}
                     </DateSpan>
                 </ViewsAndDateWrapper>
                 <TitleFunctionsWrapper>
-                    <LikeAndDislike></LikeAndDislike>
+                    <LikeAndDislike
+                        parseNum={parseNum}
+                        contentData={contentData}
+                    />
                     <TitleFunctionsItems>
                         <TitleFunctionsIcons>
                             <i class="fas fa-share"></i>

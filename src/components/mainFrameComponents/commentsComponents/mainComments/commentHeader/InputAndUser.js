@@ -21,15 +21,13 @@ const CommentInputUserIcon = styled.div`
 `;
 
 export default class extends React.Component {
-
     render() {
-
         return (
             <CommentInputAndUserWrapper>
                 <CommentInputUserIcon draggable="true">
                     G
                 </CommentInputUserIcon>
-                <InputPart></InputPart>
+                <InputPart />
             </CommentInputAndUserWrapper>
         )
     }

@@ -95,6 +95,7 @@ export default class extends React.Component {
     }
 
     shortenNum = (num, lang) => {
+        if (num === 0) { return [''] }
         if (num < 1000) { return [num] }
         const divider = shortNum[lang];
         for (let i in divider) {
@@ -106,9 +107,15 @@ export default class extends React.Component {
     };
 
     render() {
-        const { toggleReply, like } = this.props;
-        const { liked, disliked } = this.state;
-        const likedNumber = this.shortenNum(like, 'kr');
+        const {
+            likes,
+            toggleReply,
+        } = this.props;
+        const {
+            disliked,
+            liked,
+        } = this.state;
+        const likedNumber = this.shortenNum(likes, 'kr');
         return (
             <LikeAndReplyWrapper>
                 <LikeIcon

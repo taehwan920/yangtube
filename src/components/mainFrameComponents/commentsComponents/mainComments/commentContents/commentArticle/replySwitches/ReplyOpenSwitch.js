@@ -15,9 +15,15 @@ export default class extends React.Component {
         const { openReplies, replyLength } = this.props;
         return (
             <ReplySwitchToVisibleWrapper>
-                <ReplySwitchBox onClick={openReplies}>
-                    <ReplySwitchIcon><i class="fas fa-caret-down"></i></ReplySwitchIcon>
-                    <ReplySwitchText>{`답글 ${replyLength}개 보기`}</ReplySwitchText>
+                <ReplySwitchBox
+                    onClick={openReplies}
+                >
+                    <ReplySwitchIcon>
+                        <i class="fas fa-caret-down"></i>
+                    </ReplySwitchIcon>
+                    <ReplySwitchText>
+                        {`답글 ${replyLength}개 보기`}
+                    </ReplySwitchText>
                 </ReplySwitchBox>
             </ReplySwitchToVisibleWrapper>
         )

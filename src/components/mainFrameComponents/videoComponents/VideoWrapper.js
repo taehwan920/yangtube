@@ -169,7 +169,8 @@ export default class extends React.Component {
             pauseVideo,
             repeatPlay,
             videoActivated,
-            videoPaused
+            videoPaused,
+            contentData
         } = this.props;
         const {
             currentTime,
@@ -194,6 +195,7 @@ export default class extends React.Component {
                     videoPaused={videoPaused}
                     vidRef={this.vidRef}
                     volume={volume}
+                    contentData={contentData}
                 />
                 <VideoInterFace
                     currentTime={currentTime}

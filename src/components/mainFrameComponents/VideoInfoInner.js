@@ -29,16 +29,26 @@ const VideoInfoInnerWrapper = styled.div`
 
 export default class extends React.Component {
     render() {
-        const { newMargin, theaterMode } = this.props;
+        const {
+            newMargin,
+            theaterMode,
+            contentData
+        } = this.props;
         const viewWidth = window.innerWidth;
         return (
             <VideoInfoInnerWrapper
                 newMargin={newMargin}
                 viewWidth={viewWidth}
                 theaterMode={theaterMode}>
-                <MainTitleAndDesc />
-                <VideoNavNonPC />
-                <MainComments />
+                <MainTitleAndDesc
+                    contentData={contentData}
+                />
+                <MainComments
+                    contentData={contentData}
+                />
+                <VideoNavNonPC
+                    contentData={contentData}
+                />
             </VideoInfoInnerWrapper>
         )
     }

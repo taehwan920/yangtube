@@ -23,12 +23,32 @@ const Title = styled.div`
     font-size: 18px;
 `;
 
-const titleItem = '제목';
-
 export default class extends React.Component {
     state = {
         showMore: false,
         realHeight: null
+    };
+
+    parseDecimal = (num, divider) => {
+        let parsed;
+        num / divider / 10 > 100
+            ? parsed = parseInt(num / divider) / 10
+            : parsed = parseInt(num / divider);
+        return parsed;
+    };
+
+    parseNum = (num, lang) => {
+        if (lang === 'kr') {
+            if (num / 10 ** 8 > 1) {
+                return [this.parseDecimal(num, 10 ** 8), '억'];
+            } else if (num / 10 ** 4 > 1) {
+                return [this.parseDecimal(num, 10 ** 4), '만'];
+            } else if (num / 10 ** 3 > 1) {
+                return [this.parseDecimal(num, 10 ** 3), '천'];
+            } else {
+                return num
+            }
+        }
     };
 
     showMoreFunc = () => {
@@ -48,18 +68,31 @@ export default class extends React.Component {
     };
 
     render() {
-        const { showMore, realHeight } = this.state;
+        const {
+            contentData
+        } = this.props;
+        const {
+            showMore,
+            realHeight,
+        } = this.state;
         return (
             <TitleAndDesc realHeight={realHeight}>
                 <TitleWrapper>
-                    <Title>{titleItem}</Title>
-                    <TitleAndInfo></TitleAndInfo>
+                    <Title>
+                        {contentData.title}
+                    </Title>
+                    <TitleAndInfo
+                        parseNum={this.parseNum}
+                        contentData={contentData}
+                    />
                 </TitleWrapper>
                 <DescAndUploader
+                    parseNum={this.parseNum}
                     showMoreFunc={this.showMoreFunc}
                     showMore={showMore}
                     realHeight={realHeight}
-                ></DescAndUploader>
+                    contentData={contentData}
+                />
             </TitleAndDesc>
         )
     }

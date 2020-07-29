@@ -168,7 +168,8 @@ export default class extends React.Component {
             newMargin,
             theaterMode,
             toggleTheater,
-            queryStr
+            queryStr,
+            contentData
         } = this.props;
         const {
             animationTriggered,
@@ -206,6 +207,7 @@ export default class extends React.Component {
                     queryStr={queryStr}
                     videoActivated={videoActivated}
                     videoPaused={videoPaused}
+                    contentData={contentData}
                 />
                 <PlayToggleAni
                     aniEnd={this.aniEnd}

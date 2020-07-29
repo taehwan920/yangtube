@@ -12,11 +12,15 @@ const ReplyInputAndIconWrapper = styled.div`
 
 export default class extends React.Component {
     render() {
-        const { toggleReply } = this.props;
+        const {
+            toggleReply
+        } = this.props;
         return (
             <ReplyInputAndIconWrapper>
-                <ReplyUserIcon></ReplyUserIcon>
-                <ReplyInput toggleReply={toggleReply}></ReplyInput>
+                <ReplyUserIcon />
+                <ReplyInput
+                    toggleReply={toggleReply}
+                />
             </ReplyInputAndIconWrapper>
         )
     }

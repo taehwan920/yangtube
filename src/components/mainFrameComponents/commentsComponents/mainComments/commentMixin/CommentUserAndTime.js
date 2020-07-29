@@ -53,12 +53,12 @@ export default class extends React.Component {
     };
 
     render() {
-        const { userName, timestamp } = this.props;
+        const { name, timestamp } = this.props;
         const calculated = this.getTimeStamp(timestamp, 'kr');
         return (
             <CommentUserAndTimeWrapper>
                 <CommentUserName>
-                    {userName || 'Vienna Sausage'}
+                    {name}
                 </CommentUserName>
                 <CommentTimeStamp>
                     {`${calculated[0]}${calculated[1]}` || '1일 전'}

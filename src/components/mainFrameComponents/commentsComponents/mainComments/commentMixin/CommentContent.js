@@ -72,7 +72,9 @@ export default class extends React.Component {
         const numberOfLine = content.split('\n').length;
         return (
             <CommentContentWrapper>
-                <CommentContent realHeight={realHeight}>
+                <CommentContent
+                    realHeight={realHeight}
+                >
                     {content}
                 </CommentContent>
                 <CommentHiddenBox

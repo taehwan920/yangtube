@@ -64,8 +64,14 @@ export default class extends React.Component {
     };
 
     render() {
-        const { queryStr } = this.props;
-        const { newMargin, theaterMode } = this.state;
+        const {
+            queryStr,
+            contentData
+        } = this.props;
+        const {
+            newMargin,
+            theaterMode
+        } = this.state;
         return (
             <MainTerritory
                 newMargin={newMargin}
@@ -75,10 +81,13 @@ export default class extends React.Component {
                     theaterMode={theaterMode}
                     toggleTheater={this.toggleTheater}
                     queryStr={queryStr}
+                    contentData={contentData}
                 />
                 {theaterMode
                     ? null
-                    : <VideoNavPC />}
+                    : <VideoNavPC
+                        contentData={contentData}
+                    />}
             </MainTerritory>
         )
     }

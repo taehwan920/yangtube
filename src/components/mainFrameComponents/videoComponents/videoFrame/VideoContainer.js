@@ -79,7 +79,8 @@ export default class extends React.Component {
             repeatPlay,
             videoPaused,
             vidRef,
-            volume
+            volume,
+            contentData
         } = this.props;
         const viewHeight = window.innerHeight, viewWidth = window.innerWidth;
         return (
@@ -100,6 +101,7 @@ export default class extends React.Component {
                     repeatPlay={repeatPlay}
                     videoPaused={videoPaused}
                     volume={volume}
+                    contentData={contentData}
                 />
             </VideoWrapper>
         )

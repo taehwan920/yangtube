@@ -22,19 +22,18 @@ export default class extends React.Component {
         })
     }
     render() {
-        const { item } = this.props;
-        const { like } = item;
+        const { likes } = this.props;
         const { replyActive } = this.state;
         return (
             <CommentLikeAndReplyBox>
                 <LikeReplyBtns
-                    like={like}
+                    likes={likes}
                     toggleReply={this.toggleReply}
-                ></LikeReplyBtns>
+                />
                 {replyActive
                     ? <ReplyUserIconAndInput
                         toggleReply={this.toggleReply}
-                    ></ReplyUserIconAndInput>
+                    />
                     : null}
             </CommentLikeAndReplyBox>
         )

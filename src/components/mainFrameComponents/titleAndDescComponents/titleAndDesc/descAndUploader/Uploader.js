@@ -51,20 +51,30 @@ const SubscribersNum = styled.span`
 `;
 
 export default class extends React.Component {
+
     render() {
+        const {
+            parseNum,
+            contentData
+        } = this.props;
         return (
             <UploaderWrapper>
                 <UploaderImgBox>
-                    <UploaderImg alt="YangTuber" src="./images/sheep_profile.png" draggable="true" />
+                    <UploaderImg
+                        src={contentData.uploaderIcon}
+                        alt="YangTuber"
+                        draggable="true" />
                 </UploaderImgBox>
                 <InfoAndBtnContainer>
                     <UploaderInfoWrapper>
-                        <UploaderName>{descItems.name}</UploaderName>
+                        <UploaderName>
+                            {contentData.uploader}
+                        </UploaderName>
                         <SubscribersNum>
-                            {descItems.subscriber[0]}{descItems.subsNum}{descItems.subscriber[1]}
+                            구독 {parseNum(contentData.subscribers, 'kr')}명
                         </SubscribersNum>
                     </UploaderInfoWrapper>
-                    <SubsBtns></SubsBtns>
+                    <SubsBtns />
                 </InfoAndBtnContainer>
             </UploaderWrapper>
         )
