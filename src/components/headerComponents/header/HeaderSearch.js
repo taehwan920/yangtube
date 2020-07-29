@@ -21,6 +21,7 @@ const SearchBoxAndIcon = styled.div`
 `;
 
 const InputContainer = styled.div`
+    background: white;
     width: 100%;
     height: 100%;
     padding: 2px 6px;
@@ -74,7 +75,12 @@ export default class extends React.Component {
                 <SearchBoxAndIcon>
                     <InputContainer>
                         <InputBox>
-                            <SearchInput placeholder="검색" type="text" />
+                            <SearchInput
+                                id="searchInput"
+                                placeholder="검색"
+                                type="text"
+                                autoComplete="off"
+                            />
                         </InputBox>
                         <KbdIcon onClick={this.props.toggleVkbd}>
                             <i class="fas fa-keyboard"></i>

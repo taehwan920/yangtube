@@ -50,7 +50,7 @@ export default class extends React.Component {
         } else {
             return [Math.round(timeGap / sec), timestampTxt[lang].sec]
         }
-    }
+    };
 
     render() {
         const { userName, timestamp } = this.props;

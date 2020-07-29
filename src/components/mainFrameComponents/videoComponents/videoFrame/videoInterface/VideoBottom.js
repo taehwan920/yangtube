@@ -41,6 +41,7 @@ export default class extends React.Component {
         return (
             <VideoBottomWrapper
                 videoActivated={videoActivated}
+                isFullscreen={document.fullscreenElement}
                 onClick={this.clickVideoBottom}>
                 <ProgressBar
                     currentTime={currentTime}

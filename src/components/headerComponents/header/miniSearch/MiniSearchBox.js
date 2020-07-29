@@ -89,7 +89,12 @@ export default class extends React.Component {
                 <SearchBoxAndIcon>
                     <InputContainer>
                         <InputBox>
-                            <SearchInput placeholder="검색" type="text" />
+                            <SearchInput
+                                id="searchInput"
+                                placeholder="검색"
+                                type="text"
+                                autoComplete="off"
+                            />
                         </InputBox>
                         <KbdIcon onClick={toggleVkbd}>
                             <i class="fas fa-keyboard"></i>

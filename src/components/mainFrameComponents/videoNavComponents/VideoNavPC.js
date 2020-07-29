@@ -73,14 +73,26 @@ export default class extends React.Component {
                         </NextVideoText>
                         <AutoPlayBox>
                             <AutoPlayTxt>자동재생</AutoPlayTxt>
-                            <ToggleSwitch></ToggleSwitch>
+                            <ToggleSwitch />
                         </AutoPlayBox>
                     </NextVideoHeader>
-                    <VideoItem></VideoItem>
+                    <VideoItem
+                        title={'댕댕이와 행복한 시간'}
+                        uploader={'YangTuber'}
+                        views={'12만 회'}
+                        timestamp={1596020833408}
+                        videoUrl={'./videos/dog.mp4'}
+                    />
                 </NextVideoSection>
                 {arr.map(item => {
                     return (
-                        <VideoItem></VideoItem>
+                        <VideoItem
+                            title={'원숭이 쑈!'}
+                            uploader={'YangTuber'}
+                            views={'12만 회'}
+                            timestamp={1596020833408}
+                            videoUrl={'./videos/monkeyshow.mp4'}
+                        />
                     )
                 })}
             </VideoNavPCWrapper>
