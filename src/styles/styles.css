@@ -22,6 +22,7 @@ a{
     text-decoration: none;
 }
 
-.move {
-    background-color: none;
+.for-clipboard{
+    opacity: 0;
+    position: absolute;
 }

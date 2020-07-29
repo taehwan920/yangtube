@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import VideoWrapper from './VideoWrapper';
 import PlayToggleAni from './PlayToggleAni';
 import VideoCtxMenu from './videoFrame/VideoCtxMenu';
+import URLCopyAni from './URLCopyAni';
 
 
 const VideoFrame = styled.div`
@@ -56,10 +57,13 @@ export default class extends React.Component {
         frameHeight: null,
         frameWidth: null,
         repeatPlay: false,
+        urlCopied: false,
         videoActivated: false,
         videoPaused: false,
         videoCtxMenu: false,
     };
+
+    videoWrapperRef = React.createRef();
 
     componentDidMount() {
         window.addEventListener('resize', this.getHeight);
@@ -112,7 +116,8 @@ export default class extends React.Component {
 
     toggleRepeatPlay = () => {
         this.setState({ repeatPlay: !this.state.repeatPlay });
-    }
+        this.closeCtxMenu();
+    };
 
     timeout;
 
@@ -122,28 +127,38 @@ export default class extends React.Component {
         if (this.state.videoPaused) return;
         this.setState({ videoActivated: true });
         this.timeout = setTimeout(this.outVideo, 3000);
-    }
+    };
 
     mouseMoved = e => {
         !this.state.videoActivated
             ? this.onVideo()
             : this.moveOnVideo();
-    }
+    };
 
     pauseVideo = () => {
         this.setState({
             videoActivated: true,
             videoPaused: !this.state.videoPaused
-        })
-    }
+        });
+    };
 
     PauseAndEvent = () => {
         this.pauseVideo();
-        this.setState({ clicked: true })
+        this.setState({ clicked: true });
+    };
+
+    urlCopyClicked = () => {
+        this.setState({
+            urlCopied: true
+        });
     }
 
     aniEnd = () => {
-        this.setState({ clicked: false })
+        this.setState({ clicked: false });
+    };
+
+    urlAniEnd = () => {
+        this.setState({ urlCopied: false });
     }
 
     render() {
@@ -158,6 +173,7 @@ export default class extends React.Component {
             frameHeight,
             frameWidth,
             repeatPlay,
+            urlCopied,
             videoActivated,
             videoCtxMenu,
             videoPaused,
@@ -178,6 +194,7 @@ export default class extends React.Component {
                 viewHeight={viewHeight}
                 theaterMode={theaterMode}>
                 <VideoWrapper
+                    ref={this.videoWrapperRef}
                     theaterMode={theaterMode}
                     toggleFullVF={this.toggleFullVF}
                     toggleTheater={toggleTheater}
@@ -192,13 +209,21 @@ export default class extends React.Component {
                     aniEnd={this.aniEnd}
                     clicked={clicked}
                     videoPaused={videoPaused} />
+                <URLCopyAni
+                    aniEnd={this.aniEnd}
+                    clicked={clicked}
+                    urlAniEnd={this.urlAniEnd}
+                    urlCopied={urlCopied}
+                />
                 <VideoCtxMenu
                     closeCtxMenu={this.closeCtxMenu}
                     toggleRepeatPlay={this.toggleRepeatPlay}
                     repeatPlay={repeatPlay}
+                    urlCopyClicked={this.urlCopyClicked}
                     videoCtxMenu={videoCtxMenu}
+                    videoWrapperRef={this.videoWrapperRef}
                 />
             </VideoFrame>
         )
     }
-}
+};

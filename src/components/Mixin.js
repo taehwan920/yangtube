@@ -11,7 +11,7 @@ export const toggleGuide = () => {
     guide.classList.toggle('move');
 };
 
-export function debounce(func, wait = 15, immediate = true) {
+export function debounce(func, wait = 15, immediate = false) {
     let timeout;
     return function () {
         const context = this, args = arguments;

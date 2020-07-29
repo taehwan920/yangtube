@@ -24,8 +24,7 @@ const popUpItems = [
     [<i class="fas fa-cog"></i>, '설정'],
     [<i class="fas fa-user-shield"></i>, 'YangTube의 내 데이터'],
     [<i class="fas fa-question-circle"></i>, '고객센터'],
-    [<i class="fas fa-exclamation"></i>, '의견 보내기'],
-    [<i class="fas fa-keyboard"></i>, '단축키']
+    [<i class="fas fa-exclamation"></i>, '의견 보내기']
 ];
 
 const limitedMode = ['제한 모드: 사용 안함', '제한 모드: 사용 중', <i class="fas fa-chevron-right"></i>, 'limitedMode'];
