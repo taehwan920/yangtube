@@ -34,7 +34,7 @@ export default class extends React.Component {
                 <NotFoundImg alt="Not Found!" src="../images/not_found.png"></NotFoundImg>
                 <NotFoundSpan>이 페이지를 사용할 수 없습니다.</NotFoundSpan>
                 <NotFoundSpan>아래 버튼을 이용해 메인 페이지로 돌아가세요.</NotFoundSpan>
-                <NotFoundLogo to="/">
+                <NotFoundLogo to="/home">
                     <LogoOnlyImg></LogoOnlyImg>
                 </NotFoundLogo>
             </NotFoundFrame>

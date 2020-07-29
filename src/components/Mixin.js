@@ -72,7 +72,7 @@ export class Logo extends React.Component {
                     <ClickEffect></ClickEffect>
                     <i class="fas fa-bars"></i>
                 </MenuBtn >
-                <LogoLink to="/">
+                <LogoLink to="/home">
                     <LogoImg alt="YangTube" src="./images/youtubefont3.png"></LogoImg>
                 </LogoLink>
             </LogoWrapper>

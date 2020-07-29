@@ -143,8 +143,7 @@ export default class extends React.Component {
 
     setCurrentByQS = num => {
         const video = this.vidRef.current.videoRef;
-        if (num < 0 || num > video.duration) return;
-        console.log(num);
+        if (!num || num < 0 || num > video.duration) return;
         video.currentTime = num;
         this.setState({ currentTime: num });
     }
