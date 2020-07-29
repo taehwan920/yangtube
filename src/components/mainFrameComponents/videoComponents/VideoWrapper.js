@@ -167,6 +167,7 @@ export default class extends React.Component {
             toggleFullVF,
             toggleTheater,
             pauseVideo,
+            repeatPlay,
             videoActivated,
             videoPaused
         } = this.props;
@@ -189,6 +190,7 @@ export default class extends React.Component {
                     theaterMode={theaterMode}
                     pauseVideo={pauseVideo}
                     playSpeed={playSpeed}
+                    repeatPlay={repeatPlay}
                     videoPaused={videoPaused}
                     vidRef={this.vidRef}
                     volume={volume}

@@ -40,14 +40,26 @@ const VideoCtxIcon = styled.span`
 `;
 
 const VideoCtxTxtBox = styled.div`
-    width: max-content;
+    width: calc(100% - 44px);
     display: flex;
+    justify-content: space-between;
     align-items: center;
 `;
 
 const VideoCtxTxt = styled.span`
     font-size: 13px;
     color: white;
+`;
+
+const CtxCheckIcon = styled.span`
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: white;
+    opacity: ${props => props.repeatPlay ? 1 : 0};
 `;
 
 const CtxCloser = styled.div`
@@ -93,7 +105,6 @@ export default class extends React.Component {
     getCtxPos = e => {
         const posX = e.nativeEvent.offsetX;
         const posY = e.nativeEvent.offsetY;
-        console.log(posX, posY);
         if (this.props.videoCtxMenu) return;
         this.setState({
             ctxPosX: posX,
@@ -106,8 +117,15 @@ export default class extends React.Component {
     }
 
     render() {
-        const { videoCtxMenu } = this.props;
-        const { ctxPosX, ctxPosY, } = this.state;
+        const {
+            videoCtxMenu,
+            repeatPlay,
+            toggleRepeatPlay,
+        } = this.props;
+        const {
+            ctxPosX,
+            ctxPosY,
+        } = this.state;
         return (
             <React.Fragment>
                 <VideoCtxMenuWrapper
@@ -117,15 +135,23 @@ export default class extends React.Component {
                     ctxPosY={ctxPosY}
                     videoCtxMenu={videoCtxMenu}
                 >
-                    <VideoCtxItem>
+                    <VideoCtxItem
+                        onClick={toggleRepeatPlay}
+                    >
                         <VideoCtxIcon>
                             <i class="fas fa-retweet"></i>
                         </VideoCtxIcon>
                         <VideoCtxTxtBox>
                             <VideoCtxTxt>
                                 연속 재생
-                        </VideoCtxTxt>
+                            </VideoCtxTxt>
+                            <CtxCheckIcon
+                                repeatPlay={repeatPlay}
+                            >
+                                <i class="fas fa-check"></i>
+                            </CtxCheckIcon>
                         </VideoCtxTxtBox>
+
                     </VideoCtxItem>
                     <VideoCtxItem>
                         <VideoCtxIcon>

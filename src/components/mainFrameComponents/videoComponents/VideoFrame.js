@@ -55,6 +55,7 @@ export default class extends React.Component {
         clicked: false,
         frameHeight: null,
         frameWidth: null,
+        repeatPlay: false,
         videoActivated: false,
         videoPaused: false,
         videoCtxMenu: false,
@@ -109,6 +110,10 @@ export default class extends React.Component {
         }
     };
 
+    toggleRepeatPlay = () => {
+        this.setState({ repeatPlay: !this.state.repeatPlay });
+    }
+
     timeout;
 
     moveOnVideo = () => {
@@ -152,8 +157,7 @@ export default class extends React.Component {
             clicked,
             frameHeight,
             frameWidth,
-            ctxPosX,
-            ctxPosY,
+            repeatPlay,
             videoActivated,
             videoCtxMenu,
             videoPaused,
@@ -179,6 +183,7 @@ export default class extends React.Component {
                     toggleTheater={toggleTheater}
                     PauseAndEvent={this.PauseAndEvent}
                     pauseVideo={this.pauseVideo}
+                    repeatPlay={repeatPlay}
                     queryStr={queryStr}
                     videoActivated={videoActivated}
                     videoPaused={videoPaused}
@@ -189,8 +194,8 @@ export default class extends React.Component {
                     videoPaused={videoPaused} />
                 <VideoCtxMenu
                     closeCtxMenu={this.closeCtxMenu}
-                    ctxPosX={ctxPosX}
-                    ctxPosY={ctxPosY}
+                    toggleRepeatPlay={this.toggleRepeatPlay}
+                    repeatPlay={repeatPlay}
                     videoCtxMenu={videoCtxMenu}
                 />
             </VideoFrame>

@@ -7,26 +7,6 @@ const Video = styled.video`
 `;
 
 export default class extends React.Component {
-    playPause = () => {
-        this.props.videoPaused
-            ? this.videoRef['pause']()
-            : this.videoRef['play']();
-    }
-
-    changeVolume = () => {
-        this.videoRef.volume = this.props.volume;
-    }
-
-    setPlaySpeed = () => {
-        this.videoRef.playbackRate = this.props.playSpeed;
-    }
-
-    toggleMuteVideo = () => {
-        this.props.muted
-            ? this.videoRef['muted'] = true
-            : this.videoRef['muted'] = false;
-    };
-
     componentDidUpdate() {
         this.changeVolume();
         this.setPlaySpeed();
@@ -37,15 +17,44 @@ export default class extends React.Component {
 
     componentDidMount() {
         this.videoRef.currentTime = this.props.currentTime;
+    };
+
+    changeVolume = () => {
+        this.videoRef.volume = this.props.volume;
+    };
+
+    videoEnded = () => {
+        if (this.props.repeatPlay) return;
+        this.props.pauseVideo();
     }
 
+
+    playPause = () => {
+        this.props.videoPaused
+            ? this.videoRef['pause']()
+            : this.videoRef['play']();
+    };
+
+    setPlaySpeed = () => {
+        this.videoRef.playbackRate = this.props.playSpeed;
+    };
+
+    toggleMuteVideo = () => {
+        this.props.muted
+            ? this.videoRef['muted'] = true
+            : this.videoRef['muted'] = false;
+    };
+
     render() {
-        const { getCurrent, getDuration, pauseVideo } = this.props;
+        const {
+            getCurrent,
+            getDuration,
+        } = this.props;
         return (
             <Video
                 onLoadedData={getDuration}
                 onTimeUpdate={getCurrent}
-                onEnded={pauseVideo}
+                onEnded={this.videoEnded}
                 ref={ref => this.videoRef = ref}
                 src="./videos/dive.mp4" />
         )

@@ -65,7 +65,7 @@ export default class extends React.Component {
     isFullscreen;
     componentDidUpdate() {
         this.isFullscreen = document.fullscreenElement;
-    }
+    };
 
     render() {
         const {
@@ -76,6 +76,7 @@ export default class extends React.Component {
             theaterMode,
             pauseVideo,
             playSpeed,
+            repeatPlay,
             videoPaused,
             vidRef,
             volume
@@ -96,6 +97,7 @@ export default class extends React.Component {
                     muted={muted}
                     pauseVideo={pauseVideo}
                     playSpeed={playSpeed}
+                    repeatPlay={repeatPlay}
                     videoPaused={videoPaused}
                     volume={volume}
                 />
