@@ -26,27 +26,6 @@ export default class extends React.Component {
 
     contentData = data;
 
-    getSnapshotBeforeUpdate(prevProps, prevState) {
-        return prevState.guidePosY;
-    };
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (snapshot) {
-            const page = this.homeRef;
-            page.scrollTop = snapshot;
-        };
-    };
-
-    setPos = () => {
-        if (!this.state.guideIsON) {
-            this.setState({ guidePosY: window.scrollY });
-        }
-    };
-
-    componentDidMount() {
-        window.addEventListener('scroll', this.setPos);
-    };
-
     toggleGuide = () => {
         this.setState({ guideIsON: !this.state.guideIsON });
     };

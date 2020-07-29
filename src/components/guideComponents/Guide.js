@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { debounce, Logo } from '../Mixin';
+import { Logo } from '../Mixin';
 
 const OverTheSheet = css`
     z-index: 351;
@@ -14,7 +14,7 @@ const GuideWrapper = styled.aside`
     flex-direction: column;
     color: rgba(0, 0, 0, 0.7);
     transition: left 0.18s ease-out;
-    top: ${props => props.guidePosY}px;
+    top: 0;
     left: ${props => props.guideIsON ? '0px' : '-240px'};
     ${OverTheSheet}
 `;
@@ -198,14 +198,6 @@ export default class extends React.Component {
         }
     };
 
-    setPosY = () => {
-        this.guidePosY = window.scrollY;
-    };
-
-    componentDidMount(prevProps, prevState, snapshot) {
-        window.addEventListener('scroll', debounce(this.setPosY));
-    };
-
     render() {
         const { guideIsON, toggleGuide } = this.props;
         const blog = sectionItems.fifthSection[0];
@@ -213,8 +205,6 @@ export default class extends React.Component {
         const year = new Date().getFullYear();
         return (
             <GuideWrapper
-                ref={ref => this.guideRef = ref}
-                guidePosY={this.guidePosY}
                 guideIsON={guideIsON}
             >
                 <GuideBlackSheet
