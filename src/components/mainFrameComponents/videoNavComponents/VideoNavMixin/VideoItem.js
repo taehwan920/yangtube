@@ -19,6 +19,42 @@ const NextVideoThumbnailBox = styled.div`
     cursor: pointer;
 `;
 
+const VidDurationBox = styled.div`
+    background: rgba(0, 0, 0, 0.75);
+    width: max-content;
+    height: max-content;
+    padding: 2px 4px;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+`;
+
+const VidDuration = styled.span`
+    font-size: 12px;
+    font-weight: 500; 
+    letter-spacing: 0.5px;
+    color: white;
+`;
+
+const PlayIcon = styled.div`
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: calc(50% - 20px);
+    top: calc(50% - 20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: white;
+    opacity: ${props => props.hoverOnThumb ? 0.75 : 0};
+
+`;
+
 const NextVidThumbnail = styled.img`
     width: 100%;
 `;
@@ -73,6 +109,9 @@ const InfoDot = styled(InfoNumberContent)`
 const InfoTimestamp = styled(InfoNumberContent)``;
 
 export default class extends React.Component {
+    state = {
+        hoverOnThumb: false
+    }
     getTimeStamp = (num, lang) => {
         const now = new Date().getTime();
         const sec = 1000;
@@ -122,14 +161,34 @@ export default class extends React.Component {
         }
     };
 
+    parseTime = num => {
+        const min = num / 60 >= 10 ? parseInt(num / 60) : `0${parseInt(num / 60)}`;
+        const sec = num % 60 >= 10 ? num % 60 : `0${num % 60}`;
+        return `${min}:${sec}`;
+    };
+
     render() {
         const { video } = this.props;
+        const { hoverOnThumb } = this.state;
         return (
             <NextVideoItemWrapper>
-                <NextVideoThumbnailBox>
+                <NextVideoThumbnailBox
+                    onMouseOver={() => this.setState({ hoverOnThumb: true })}
+                    onMouseLeave={() => this.setState({ hoverOnThumb: false })}
+                >
                     <NextVidThumbnail
                         src={video.thumbnailUrl}
                     />
+                    <VidDurationBox>
+                        <VidDuration>
+                            {this.parseTime(video.duration)}
+                        </VidDuration>
+                    </VidDurationBox>
+                    <PlayIcon
+                        hoverOnThumb={hoverOnThumb}
+                    >
+                        <i class="fas fa-play"></i>
+                    </PlayIcon>
                 </NextVideoThumbnailBox>
                 <NextVideoInfoBox>
                     <InfoTitle>
@@ -140,7 +199,7 @@ export default class extends React.Component {
                     </InfoUploader>
                     <InfoNumberBox>
                         <InfoViewNums>
-                            {this.parseNum(video.views, 'kr')}회
+                            조회수 {this.parseNum(video.views, 'kr')}회
                         </InfoViewNums>
                         <InfoDot>
                             ·
