@@ -26,7 +26,8 @@ export default class extends React.Component {
             vidDuration,
             videoEnded,
             videoPaused,
-            volume
+            volume,
+            contentData
         } = this.props;
         return (
             <VideoControlBox>
@@ -40,6 +41,7 @@ export default class extends React.Component {
                     videoEnded={videoEnded}
                     videoPaused={videoPaused}
                     volume={volume}
+                    contentData={contentData}
                 />
                 <RightControl
                     getPlaySpeed={getPlaySpeed}

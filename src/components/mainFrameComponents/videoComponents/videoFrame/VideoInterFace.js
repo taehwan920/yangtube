@@ -50,6 +50,7 @@ export default class extends React.Component {
                     videoPaused={videoPaused}
                     volume={volume}
                     updateCurrent={updateCurrent}
+                    contentData={contentData}
                 />
             </React.Fragment>
         )

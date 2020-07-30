@@ -3,6 +3,7 @@ import VideoSummary from './VideoSummary';
 const dolphin = {
     title: VideoSummary[2].title,
     pageUrl: VideoSummary[2].pageUrl,
+    nextPage: VideoSummary[2].nextPage,
     videoUrl: VideoSummary[2].videoUrl,
     thunbnailUrl: VideoSummary[2].thumbnailUrl,
     uploader: VideoSummary[2].uploader,

@@ -70,7 +70,6 @@ export default class extends React.Component {
     componentDidMount() {
         window.addEventListener('resize', this.getHeight);
         document.addEventListener('keydown', this.toggleFullscreenByKey);
-        console.log(this.videoWrapperRef);
     };
 
     aniEnd = () => {

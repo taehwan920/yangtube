@@ -3,6 +3,7 @@ import VideoSummary from './VideoSummary';
 const sheep = {
     title: VideoSummary[5].title,
     pageUrl: VideoSummary[5].pageUrl,
+    nextPage: VideoSummary[5].nextPage,
     videoUrl: VideoSummary[5].videoUrl,
     thunbnailUrl: VideoSummary[5].thumbnailUrl,
     uploader: VideoSummary[5].uploader,

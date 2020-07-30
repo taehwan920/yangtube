@@ -3,6 +3,7 @@ import VideoSummary from './VideoSummary';
 const firecracker = {
     title: VideoSummary[3].title,
     pageUrl: VideoSummary[3].pageUrl,
+    nextPage: VideoSummary[3].nextPage,
     videoUrl: VideoSummary[3].videoUrl,
     thunbnailUrl: VideoSummary[3].thumbnailUrl,
     uploader: VideoSummary[3].uploader,

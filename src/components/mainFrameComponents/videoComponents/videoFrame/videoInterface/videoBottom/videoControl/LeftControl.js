@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PlayPause from './leftControl/PlayPause';
 import MuteBtn from './leftControl/MuteBtn';
 import TimeDisplay from './leftControl/TimeDisplay';
+import NextBtn from './leftControl/NextBtn';
 
 const LeftControlBox = styled.div`
     width: max-content;
@@ -11,31 +12,17 @@ const LeftControlBox = styled.div`
     align-items: center;
 `;
 
-const CommonBtn = styled.span`
-    width: 36px;
-    height: 36px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-`;
-
-const NextButton = styled(CommonBtn)`
-`;
-
 export default class extends React.Component {
     state = {
         hoverOnVol: false
-    }
+    };
 
     mouseOnVol = () => {
         this.setState({ hoverOnVol: true });
-    }
+    };
     mouseOutVol = () => {
         this.setState({ hoverOnVol: false });
-    }
+    };
 
     render() {
         const {
@@ -47,7 +34,8 @@ export default class extends React.Component {
             vidDuration,
             videoEnded,
             videoPaused,
-            volume
+            volume,
+            contentData
         } = this.props;
         const { hoverOnVol } = this.state;
         return (
@@ -57,7 +45,9 @@ export default class extends React.Component {
                     videoPaused={videoPaused}
                     videoEnded={videoEnded}
                 />
-                <NextButton><i class="fas fa-step-forward"></i></NextButton>
+                <NextBtn
+                    contentData={contentData}
+                />
                 <MuteBtn
                     getVol={getVol}
                     hoverOnVol={hoverOnVol}
@@ -74,4 +64,4 @@ export default class extends React.Component {
             </LeftControlBox>
         )
     }
-}
+};

@@ -37,7 +37,8 @@ export default class extends React.Component {
             videoEnded,
             videoPaused,
             volume,
-            updateCurrent
+            updateCurrent,
+            contentData
         } = this.props;
         return (
             <VideoBottomWrapper
@@ -64,6 +65,7 @@ export default class extends React.Component {
                     videoEnded={videoEnded}
                     videoPaused={videoPaused}
                     volume={volume}
+                    contentData={contentData}
                 />
             </VideoBottomWrapper>
         )
