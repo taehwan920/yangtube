@@ -67,6 +67,7 @@ export default class extends React.Component {
 
     componentDidMount() {
         window.addEventListener('resize', this.getHeight);
+        document.addEventListener('keydown', this.toggleFullscreenByKey);
     };
 
     getHeight = () => {
@@ -113,6 +114,13 @@ export default class extends React.Component {
         } else {
             this.setState({ isFullscreen: true });
             this.videoFrameRef.requestFullscreen();
+        }
+    };
+
+    toggleFullscreenByKey = e => {
+        if (e.keyCode === 70) {
+            e.preventDefault();
+            this.toggleFullVF();
         }
     };
 

@@ -51,7 +51,7 @@ const PlayIcon = styled.div`
     align-items: center;
     font-size: 30px;
     color: white;
-    opacity: ${props => props.hoverOnThumb ? 0.75 : 0};
+    opacity: ${props => props.hoverOnThumb ? 0.65 : 0};
 
 `;
 
@@ -73,13 +73,15 @@ const InfoContent = styled.span`
 `;
 
 const InfoTitle = styled(InfoContent)`
-    font-size: 14px;
+    padding-right: 20px;
     margin-bottom: 4px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     text-overflow: '';
+    font-size: 14px;
+    font-weight: 500;
 `;
 
 const InfoUploader = styled(InfoContent)`
