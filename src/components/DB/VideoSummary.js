@@ -20,7 +20,7 @@ const videoSummary = [
         duration: 7
     },
     {
-        title: '[교토] 교토 수족관 돌고래 쇼  🐬🦈🐬',
+        title: '[소리 주의] 교토 수족관 돌고래 쇼  🐬🦈🐬',
         pageUrl: '/dolphin',
         videoUrl: './videos/dolphin.mp4',
         thumbnailUrl: './images/thumbnails/dolphin_thumb.png',

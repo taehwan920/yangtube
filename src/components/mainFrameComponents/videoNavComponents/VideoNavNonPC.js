@@ -58,15 +58,23 @@ const AutoPlayTxt = styled.span`
 `;
 
 export default class extends React.Component {
-    render() {
-        const {
-            contentData
-        } = this.props;
+    getNextAndRestVideos = () => {
+        const { contentData } = this.props;
         const thisVideo = VideoSummary.filter(video => video.pageUrl === contentData.pageUrl)[0];
         const thisVidIdx = VideoSummary.indexOf(thisVideo);
-        const nextVidIdx = thisVidIdx >= VideoSummary.length ? 0 : thisVidIdx + 1;
+        console.log(thisVidIdx)
+        const nextVidIdx = thisVidIdx >= VideoSummary.length - 1 ? 0 : thisVidIdx + 1;
+        console.log(nextVidIdx);
         const nextVid = VideoSummary[nextVidIdx];
         const restOfVideos = VideoSummary.filter(video => VideoSummary.indexOf(video) !== thisVidIdx && VideoSummary.indexOf(video) !== nextVidIdx);
+        console.log(nextVid)
+        console.log(restOfVideos)
+        return [nextVid, restOfVideos];
+    };
+    render() {
+        const getVideos = this.getNextAndRestVideos();
+        const nextVideo = getVideos[0];
+        const restOfVideos = getVideos[1];
         const doubleRest = [...restOfVideos, ...restOfVideos];
         return (
             <VideoNavNonPCWrapper>
@@ -83,7 +91,7 @@ export default class extends React.Component {
                         </AutoPlayBox>
                     </NextVideoHeader>
                     <VideoItem
-                        video={nextVid}
+                        video={nextVideo}
                     />
                 </NextVideoSection>
                 {doubleRest.map(video => {

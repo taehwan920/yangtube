@@ -78,7 +78,6 @@ export default class extends React.Component {
             contentData
         } = this.props;
         const numberOfLine = contentData.description.split('\n').length;
-        console.log(numberOfLine);
         return (
             <DescAndUploaderWrapper
                 realHeight={realHeight}
