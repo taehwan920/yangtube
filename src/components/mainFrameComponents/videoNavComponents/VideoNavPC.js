@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ToggleSwitch } from '../../Mixin';
+import ToggleSwitch from '../../mixin/ToggleSwitch';
 import VideoItem from './VideoNavMixin/VideoItem';
 import VideoSummary from '../../DB/VideoSummary';
 

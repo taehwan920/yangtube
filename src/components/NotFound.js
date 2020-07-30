@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { ChangeTitle, LogoOnlyImg } from './Mixin';
+import { ChangeTitle } from './Mixin';
+import LogoOnlyImg from './mixin/LogoOnlyImg';
 
 const NotFoundFrame = styled.main`
     background-color: white;

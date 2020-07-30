@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import HeaderSearch from './HeaderSearch';
 import HeaderButtons from './HeaderButtons';
-import { Logo } from '../../Mixin';
+import Logo from '../../mixin/Logo';
 
 const HeaderLogoPlace = styled.div`
     width: 155px;

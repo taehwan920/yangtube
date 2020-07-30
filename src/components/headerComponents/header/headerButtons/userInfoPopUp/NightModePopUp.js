@@ -1,7 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { SubPopUpHeaderWrapper, SubPopUpString, PopUpSection } from '../HeaderUserInfoPopUp';
-import { UserInfoLeftArrow, ToggleSwitch } from '../../../../Mixin';
+import ToggleSwitch from '../../../../mixin/ToggleSwitch';
+import LeftArrow from '../../../../mixin/LeftArrow';
 
 const UserInfoCommonSetUp = css`
     width: 298px;
@@ -47,8 +48,13 @@ export default class extends React.Component {
         return (
             <React.Fragment>
                 <SubPopUpHeaderWrapper>
-                    <UserInfoLeftArrow toggleMode={toggleMode} stateType={stateType}></UserInfoLeftArrow>
-                    <SubPopUpString>{NightHeaderItems[0]}</SubPopUpString>
+                    <LeftArrow
+                        toggleMode={toggleMode}
+                        stateType={stateType}
+                    />
+                    <SubPopUpString>
+                        {NightHeaderItems[0]}
+                    </SubPopUpString>
                 </SubPopUpHeaderWrapper>
                 <PopUpSection>
                     {NightModeItems.map(item => this.buildItem(item))}
@@ -56,7 +62,7 @@ export default class extends React.Component {
                         <NightModeToggleText>
                             {NightModeItems[NightModeItems.length - 1]}
                         </NightModeToggleText>
-                        <ToggleSwitch></ToggleSwitch>
+                        <ToggleSwitch />
                     </NightModeToggleArticle>
                 </PopUpSection>
             </React.Fragment>

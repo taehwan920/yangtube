@@ -1,7 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { SubPopUpHeaderWrapper, SubPopUpString, PopUpSection } from '../HeaderUserInfoPopUp';
-import { UserInfoLeftArrow, ToggleSwitch } from '../../../../Mixin';
+import LeftArrow from '../../../../mixin/LeftArrow';
+import ToggleSwitch from '../../../../mixin/ToggleSwitch';
 
 const UserInfoCommonSetUp = css`
     width: 298px;
@@ -47,8 +48,13 @@ export default class extends React.Component {
         return (
             <React.Fragment>
                 <SubPopUpHeaderWrapper>
-                    <UserInfoLeftArrow toggleMode={toggleMode} stateType={stateType}></UserInfoLeftArrow>
-                    <SubPopUpString>{LimitedHeaderItem[0]}</SubPopUpString>
+                    <LeftArrow
+                        toggleMode={toggleMode}
+                        stateType={stateType}
+                    />
+                    <SubPopUpString>
+                        {LimitedHeaderItem[0]}
+                    </SubPopUpString>
                 </SubPopUpHeaderWrapper>
                 <PopUpSection>
                     {LimitedModeItem.map(item => this.buildItem(item))}
@@ -56,7 +62,7 @@ export default class extends React.Component {
                         <LimitedModeToggleText>
                             {LimitedModeItem[LimitedModeItem.length - 1]}
                         </LimitedModeToggleText>
-                        <ToggleSwitch></ToggleSwitch>
+                        <ToggleSwitch />
                     </LimitedModeToggleArticle>
                 </PopUpSection>
             </React.Fragment>

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { Logo } from '../Mixin';
+import Logo from '../mixin/Logo';
 
 const OverTheSheet = css`
     z-index: 351;

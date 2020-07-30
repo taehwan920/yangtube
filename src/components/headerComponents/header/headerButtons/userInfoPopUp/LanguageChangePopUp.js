@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { SubPopUpHeaderWrapper, SubPopUpString, PopUpSection } from '../HeaderUserInfoPopUp'
-import { UserInfoLeftArrow } from '../../../../Mixin';
+import LeftArrow from '../../../../mixin/LeftArrow';
 
 const LangChangeArticle = styled.article`
     width: 298px;
@@ -37,8 +37,13 @@ export default class extends React.Component {
         return (
             <React.Fragment>
                 <SubPopUpHeaderWrapper>
-                    <UserInfoLeftArrow toggleMode={toggleMode} stateType={stateType}></UserInfoLeftArrow>
-                    <SubPopUpString>{LanguageHeaderItems[0]}</SubPopUpString>
+                    <LeftArrow
+                        toggleMode={toggleMode}
+                        stateType={stateType}
+                    />
+                    <SubPopUpString>
+                        {LanguageHeaderItems[0]}
+                    </SubPopUpString>
                 </SubPopUpHeaderWrapper>
                 <PopUpSection>
                     {LanguageChangeItems.map(item => this.buildItem(item))}
