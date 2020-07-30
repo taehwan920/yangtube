@@ -39,15 +39,17 @@ export default class extends React.Component {
             >
                 <Header
                     toggleGuide={this.toggleGuide}
-                ></Header>
+                    contentData={this.contentData}
+                />
                 <Guide
                     guideIsON={guideIsON}
                     toggleGuide={this.toggleGuide}
-                ></Guide>
+                    contentData={this.contentData}
+                />
                 <MainTerritory
                     queryStr={queryStr}
                     contentData={this.contentData}
-                ></MainTerritory>
+                />
             </HomeDiv>
         )
     }
