@@ -13,6 +13,7 @@ const CommentHeaderWrapper = styled.header`
 export const CommentClickEffect = styled.div`
     width: 100%;
     height: 100%;
+    border-radius: 2px;
     position: absolute;
     top: 0px;
     right: 0px;

@@ -54,11 +54,13 @@ export default class extends React.Component {
     render() {
         const { changeInput, focusIn, focusOut, inputFocused, inputting, inputHeight } = this.props;
         return (
-            <CommentInputContainer inputHeight={inputHeight}>
+            <CommentInputContainer
+                inputHeight={inputHeight}>
                 <CommentPlaceHolder inputting={inputting}>
                     공개 댓글 추가...
                 </CommentPlaceHolder>
                 <CommentInput
+                    ref={ref => this.commentInputRef = ref}
                     className="comment-input"
                     inputHeight={inputHeight}
                     onFocus={focusIn}

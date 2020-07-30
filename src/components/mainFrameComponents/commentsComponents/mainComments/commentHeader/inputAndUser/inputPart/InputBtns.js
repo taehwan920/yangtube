@@ -36,23 +36,24 @@ const CommentInputSubmitBtn = styled(CommentInputBtn)`
     margin-left: 8px;
 `;
 
-const comHeaderItems = {
-    subBtn: ['취소', '댓글']
-};
-
 export default class extends React.Component {
     render() {
         const { cancelComment, inputting, submitComment } = this.props;
         return (
             <CommentInputBtnsWrapper>
                 <CommentInputBtnBox>
-                    <CommentInputBtn onClick={cancelComment}>
+                    <CommentInputBtn
+                        onClick={cancelComment}
+                    >
                         취소
-                        <CommentClickEffect></CommentClickEffect>
+                        <CommentClickEffect />
                     </CommentInputBtn>
-                    <CommentInputSubmitBtn onClick={submitComment} inputting={inputting}>
+                    <CommentInputSubmitBtn
+                        onClick={submitComment}
+                        inputting={inputting}
+                    >
                         댓글
-                        <CommentClickEffect></CommentClickEffect>
+                        <CommentClickEffect />
                     </CommentInputSubmitBtn>
                 </CommentInputBtnBox>
             </CommentInputBtnsWrapper>

@@ -16,7 +16,7 @@ export default class extends React.Component {
         inputFocused: false,
         inputting: false,
         inputHeight: 0
-    }
+    };
 
     resizeInput = str => {
         const strArr = str.split('\n');
@@ -47,27 +47,31 @@ export default class extends React.Component {
     }
 
     cancelComment = () => {
-        const inputTag = document.querySelector('.comment-input');
-        inputTag.value = '';
+        const inputt = document.querySelector('.comment-input');
+        inputt.value = '';
         this.setState({
             inputFocused: false,
             inputting: false,
             inputHeight: 0
         })
-    }
+    };
 
     submitComment = () => {
-        const inputTag = document.querySelector('.comment-input');
-        inputTag.value = '';
+        const inputt = document.querySelector('.comment-input');
+        inputt.value = '';
         this.setState({
             inputFocused: false,
             inputting: false,
             inputHeight: 0
         })
-    }
+    };
 
     render() {
-        const { inputFocused, inputting, inputHeight } = this.state;
+        const {
+            inputFocused,
+            inputting,
+            inputHeight
+        } = this.state;
         return (
             <CommentInputPartWrapper>
                 <InputContainer
@@ -76,14 +80,14 @@ export default class extends React.Component {
                     inputHeight={inputHeight}
                     changeInput={this.changeInput}
                     focusIn={() => this.setState({ inputFocused: true })}
-                    focusOut={() => this.setState({ inputFocused: false })}
-                ></InputContainer>
+                    focusOut={this.cancelComment}
+                />
                 {inputFocused
                     ? <InputBtns
                         inputting={inputting}
                         cancelComment={this.cancelComment}
                         submitComment={this.submitComment}
-                    ></InputBtns>
+                    />
                     : null}
             </CommentInputPartWrapper>
         )

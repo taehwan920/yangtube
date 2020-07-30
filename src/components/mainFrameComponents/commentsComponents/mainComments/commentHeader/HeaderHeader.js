@@ -20,6 +20,7 @@ const CommentNumber = styled.div`
 const CommentSortBox = styled.div`
     width: auto;
     height: 100%;
+    padding: 0px 4px;
     color: rgba(0, 0, 0, 0.5);
     cursor: pointer;
     position: relative;
