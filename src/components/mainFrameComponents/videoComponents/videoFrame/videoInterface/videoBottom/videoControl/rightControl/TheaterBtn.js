@@ -1,10 +1,10 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
-
-const FullscreenBtn = styled.div`
+const TheaterBtn = styled.span`
     width: 36px;
     height: 36px;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,27 +13,10 @@ const FullscreenBtn = styled.div`
     cursor: pointer;
 `;
 
-const FullAni = keyframes`
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.25);
-    }
-    100% {
-        transform: scale(1);
-    }
-`;
-
-const FullscreenIcon = styled.span`
-    width: max-content;
-    height: max-content;
-    font-size: 18px;
-    color: 18px;
-    
-    &:hover{
-        animation: ${FullAni} 0.3s ease-in;
-    }
+const TheaterRec = styled.div`
+    width: ${props => props.theaterMode ? '16px' : '20px'};
+    height: ${props => props.theaterMode ? '10px' : '14px'};
+    border: 2px solid white;
 `;
 
 const InfoPopUpBox = styled.div`
@@ -66,34 +49,30 @@ export default class extends React.Component {
         this.setState({ hovering: false })
     };
 
-    toggleFullSc = () => {
-        this.props.toggleFullVF();
-    }
-
     render() {
+        const {
+            theaterMode,
+            toggleTheater,
+        } = this.props;
         const {
             hovering
         } = this.state;
         return (
-            <FullscreenBtn
-                onClick={this.toggleFullSc}
+            <TheaterBtn
+                onClick={toggleTheater}
                 onMouseOver={this.isHovering}
                 onMouseOut={this.notHovering}
             >
-                {document.fullscreenElement
-                    ? <FullscreenIcon>
-                        <i class="fas fa-compress"></i>
-                    </FullscreenIcon>
-                    : <FullscreenIcon>
-                        <i class="fas fa-expand"></i>
-                    </FullscreenIcon>}
-                {document.fullscreenElement
+                <TheaterRec
+                    theaterMode={theaterMode}
+                />
+                {theaterMode
                     ?
                     <InfoPopUpBox
                         hovering={hovering}
                     >
                         <InfoPopUp>
-                            전체 화면 종료(f)
+                            기본 보기(t)
                         </InfoPopUp>
                     </InfoPopUpBox>
                     :
@@ -101,11 +80,11 @@ export default class extends React.Component {
                         hovering={hovering}
                     >
                         <InfoPopUp>
-                            전체 화면(f)
+                            영화관 모드(t)
                         </InfoPopUp>
                     </InfoPopUpBox>
                 }
-            </FullscreenBtn>
+            </TheaterBtn>
         )
     }
 }

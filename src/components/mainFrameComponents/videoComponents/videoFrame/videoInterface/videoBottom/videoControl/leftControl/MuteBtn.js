@@ -24,7 +24,8 @@ export default class extends React.Component {
             mouseOnVol,
             mouseOutVol,
             toggleMute,
-            volume } = this.props;
+            volume
+        } = this.props;
         return (
             <MuteButton
                 onMouseOver={mouseOnVol}
