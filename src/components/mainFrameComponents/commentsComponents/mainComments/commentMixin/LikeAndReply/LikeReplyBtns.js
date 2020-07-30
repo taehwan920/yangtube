@@ -21,9 +21,9 @@ const LikeIcon = styled.div`
     width: 32px;
     height: 32px;
     padding: 8px;
-    font-size: 16px;
-    line-height: 0px;
-    color: ${props => props.liked ? '#065FD4' : '#999999'};
+    font-size: 14px;
+    line-height: 20px;
+    color: ${props => props.liked ? '#065FD4' : 'rgba(0, 0, 0, 0.5)'};
     cursor: pointer;
     
     ${HoveringIcon}
@@ -32,7 +32,7 @@ const LikeIcon = styled.div`
 
 const DislikeIcon = styled(LikeIcon)`
     line-height: 25px;
-    color: ${props => props.disliked ? '#065FD4' : '#999999'};
+    color: ${props => props.disliked ? '#065FD4' : 'rgba(0, 0, 0, 0.5)'};
     cursor: pointer;
 
     ${HoveringIcon}
@@ -44,7 +44,8 @@ const LikeNum = styled.div`
     margin-right: 8px;
     line-height: 22px;
     font-size: 12px;
-    color: ${props => props.liked ? '#065FD4' : '#999999'};
+    font-weight: 500;
+    color: ${props => props.liked ? '#065FD4' : 'rgba(0, 0, 0, 0.6)'};
     cursor: pointer;
 
     ${HoveringIcon}
@@ -142,7 +143,7 @@ export default class extends React.Component {
                     draggable="true"
                     onClick={toggleReply}>
                     답글
-                    <ClickEffect></ClickEffect>
+                    <ClickEffect />
                 </ReplyBtn>
             </LikeAndReplyWrapper>
         )

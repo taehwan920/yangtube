@@ -23,7 +23,7 @@ const CommentInputBorderAniBox = styled.div`
 const CommentInputBorderAni = styled(CommentInputContainer)`
     width: ${props => props.inputFocused ? '100%' : '0px'};
     border-bottom: 2px solid black;
-    transition: width 0.2s linear;
+    transition: width 0.22s ease-out;
 `;
 
 const CommentPlaceHolder = styled.div`

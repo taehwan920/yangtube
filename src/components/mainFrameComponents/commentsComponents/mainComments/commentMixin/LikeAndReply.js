@@ -14,16 +14,28 @@ const CommentLikeAndReplyBox = styled.div`
 
 export default class extends React.Component {
     state = {
-        replyActive: false
+        replyActive: false,
+        replyClicked: false
+    };
+
+    clickAniEnd = () => {
+        this.setState({ replyClicked: false });
     }
+
     toggleReply = () => {
         this.setState({
-            replyActive: !this.state.replyActive
+            replyActive: !this.state.replyActive,
+            replyClicked: true,
         })
-    }
+    };
     render() {
-        const { likes } = this.props;
-        const { replyActive } = this.state;
+        const {
+            likes
+        } = this.props;
+        const {
+            replyActive,
+            replyClicked
+        } = this.state;
         return (
             <CommentLikeAndReplyBox>
                 <LikeReplyBtns
@@ -32,7 +44,9 @@ export default class extends React.Component {
                 />
                 {replyActive
                     ? <ReplyUserIconAndInput
+                        clickAniEnd={this.clickAniEnd}
                         toggleReply={this.toggleReply}
+                        replyClicked={replyClicked}
                     />
                     : null}
             </CommentLikeAndReplyBox>

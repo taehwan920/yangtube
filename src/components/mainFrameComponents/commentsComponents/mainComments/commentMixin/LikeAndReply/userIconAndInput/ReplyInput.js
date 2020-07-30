@@ -56,7 +56,7 @@ const BorderAniBox = styled.div`
 const BorderAni = styled(BorderAniBox)`
     width: ${props => props.inputFocused ? '100%' : '0px'};
     border-bottom: 2px solid black;
-    transition: all 0.22s linear;
+    transition: all 0.25s ease-out;
 `;
 
 
@@ -120,8 +120,12 @@ export default class extends React.Component {
         const { inputFocused, inputting, inputHeight } = this.state;
         return (
             <ReplyInputAndBtnWrapper>
-                <ReplyInputWrapper inputHeight={inputHeight}>
-                    <ReplyPlaceHolder inputting={inputting}>
+                <ReplyInputWrapper
+                    inputHeight={inputHeight}
+                >
+                    <ReplyPlaceHolder
+                        inputting={inputting}
+                    >
                         공개 답글 추가...
                     </ReplyPlaceHolder>
                     <ReplyInputArea
@@ -130,9 +134,13 @@ export default class extends React.Component {
                         onFocus={() => this.setState({ inputFocused: true })}
                         onBlur={() => this.setState({ inputFocused: false })}
                         onChange={this.changeInput}
-                    ></ReplyInputArea>
-                    <BorderAniBox inputHeight={inputHeight}>
-                        <BorderAni inputFocused={inputFocused}></BorderAni>
+                    />
+                    <BorderAniBox
+                        inputHeight={inputHeight}
+                    >
+                        <BorderAni
+                            inputFocused={inputFocused}
+                        />
                     </BorderAniBox>
                 </ReplyInputWrapper>
                 <SubmitBtns
@@ -140,7 +148,7 @@ export default class extends React.Component {
                     toggleReply={toggleReply}
                     cancelReply={this.cancelReply}
                     submitReply={this.submitReply}
-                ></SubmitBtns>
+                />
             </ReplyInputAndBtnWrapper>
         )
     }

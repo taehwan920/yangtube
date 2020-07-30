@@ -40,14 +40,12 @@ export default class extends React.Component {
             urlCopied
         } = this.props;
         return (
-            <React.Fragment>
-                <ToggleIcon
-                    urlCopied={urlCopied}
-                    onAnimationEnd={this.animationEnd}
-                >
-                    <i class="fas fa-link"></i>
-                </ToggleIcon>
-            </React.Fragment>
+            <ToggleIcon
+                urlCopied={urlCopied}
+                onAnimationEnd={this.animationEnd}
+            >
+                <i class="fas fa-link"></i>
+            </ToggleIcon>
         )
     }
 };
