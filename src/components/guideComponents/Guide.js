@@ -89,8 +89,23 @@ const GuideSectionArticle = styled.article`
     }
 `;
 
-const GuideSectionHomeArticle = styled(GuideSectionArticle)`
+// const GuideSectionHomeArticle = styled(GuideSectionArticle)`
+//     background-color: rgba(0, 0, 0, 0.1);
+//     &:hover {
+//         background-color: rgba(0, 0, 0, 0.2);
+//     }
+// `;
+
+const GuideSectionLink = styled.a`
     background-color: rgba(0, 0, 0, 0.1);
+    width: 240px;
+    height: 40px;
+    padding: 0px 24px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    ${OverTheSheet}
+
     &:hover {
         background-color: rgba(0, 0, 0, 0.2);
     }
@@ -135,54 +150,56 @@ const FooterSpan = styled.span`
     ${OverTheSheet}
 `;
 
-const sectionItems = {
-    firstSection: [
-        [<i class="fas fa-home"></i>, '홈', 'HOME'],
-        [<i class="fas fa-fire-alt"></i>, '인기'],
-        [<i class="fas fa-envelope-open-text"></i>, '구독']
-    ],
-    secondSection: [
-        [<i class="fas fa-archive"></i>, '보관함'],
-        [<i class="fas fa-history"></i>, '시청 기록']
-    ],
-    thirdSection: [
-        [<i class="fas fa-music"></i>, '음악'],
-        [<i class="fas fa-futbol"></i>, '스포츠'],
-        [<i class="fas fa-film"></i>, '영화'],
-        [<i class="far fa-newspaper"></i>, '뉴스'],
-        [<i class="fas fa-broadcast-tower"></i>, '실시간'],
-        [<i class="far fa-lightbulb"></i>, '학습'],
-        [<i class="fas fa-mask"></i>, '360º 동영상']
-    ],
-    fourthSection: [
-        [<i class="fas fa-plus-circle"></i>, '채널 탐색']
-    ],
-    fifthSection: [
-        [<i class="fab fa-blogger"></i>, '블로그', 'BLOG'],
-        [<i class="fab fa-github"></i>, '깃허브', 'GITHUB']
-    ],
-    sixthSection: [
-        [<i class="fas fa-cog"></i>, '설정'],
-        [<i class="fas fa-flag"></i>, '신고 기록'],
-        [<i class="fas fa-question-circle"></i>, '고객 센터'],
-        [<i class="fas fa-exclamation"></i>, '의견 보내기']
-    ]
-};
-
-
-
 export default class extends React.Component {
+    sectionItems = {
+        firstSection: [
+            [<i class="fas fa-home"></i>, '홈', '#/home'],
+            [<i class="fas fa-fire-alt"></i>, '인기'],
+            [<i class="fas fa-envelope-open-text"></i>, '구독']
+        ],
+        secondSection: [
+            [<i class="fas fa-archive"></i>, '보관함'],
+            [<i class="fas fa-history"></i>, '시청 기록']
+        ],
+        thirdSection: [
+            [<i class="fas fa-music"></i>, '음악'],
+            [<i class="fas fa-futbol"></i>, '스포츠'],
+            [<i class="fas fa-film"></i>, '영화'],
+            [<i class="far fa-newspaper"></i>, '뉴스'],
+            [<i class="fas fa-broadcast-tower"></i>, '실시간'],
+            [<i class="far fa-lightbulb"></i>, '학습'],
+            [<i class="fas fa-mask"></i>, '360º 동영상']
+        ],
+        fourthSection: [
+            [<i class="fas fa-plus-circle"></i>, '채널 탐색']
+        ],
+        fifthSection: [
+            [<i class="fab fa-blogger"></i>, '블로그', 'https://hitzi.tistory.com/'],
+            [<i class="fab fa-github"></i>, '깃허브', 'https://github.com/taehwan920/yangtube']
+        ],
+        sixthSection: [
+            [<i class="fas fa-cog"></i>, '설정'],
+            [<i class="fas fa-flag"></i>, '신고 기록'],
+            [<i class="fas fa-question-circle"></i>, '고객 센터'],
+            [<i class="fas fa-exclamation"></i>, '의견 보내기']
+        ]
+    }
+
     makeArticle(item) {
         if (item.length > 2) {
             return (
-                <GuideSectionHomeArticle>
+                <GuideSectionLink
+                    href={item[2]}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                >
                     <ArticleHomeIcon>
                         {item[0]}
                     </ArticleHomeIcon>
                     <ArticleItem>
                         {item[1]}
                     </ArticleItem>
-                </GuideSectionHomeArticle>
+                </GuideSectionLink>
             )
         } else {
             return (
@@ -199,7 +216,13 @@ export default class extends React.Component {
     };
 
     render() {
-        const { guideIsON, toggleGuide } = this.props;
+        const {
+            guideIsON,
+            toggleGuide
+        } = this.props;
+        const {
+            sectionItems
+        } = this;
         const blog = sectionItems.fifthSection[0];
         const github = sectionItems.fifthSection[1];
         const year = new Date().getFullYear();
