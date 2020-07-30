@@ -3,7 +3,7 @@ import Guide from '../guideComponents/Guide';
 import Header from '../headerComponents/Header';
 import MainTerritory from '../mainFrameComponents/MainTerritory';
 import queryString from 'query-string';
-import data from '../DB/diveDB'
+import data from '../DB/dogDB'
 
 import styled from 'styled-components';
 

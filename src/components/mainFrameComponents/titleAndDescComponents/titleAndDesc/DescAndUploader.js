@@ -77,7 +77,8 @@ export default class extends React.Component {
             showMoreFunc,
             contentData
         } = this.props;
-        const numberOfLine = descItems.description.split('\n').length;
+        const numberOfLine = contentData.description.split('\n').length;
+        console.log(numberOfLine);
         return (
             <DescAndUploaderWrapper
                 realHeight={realHeight}

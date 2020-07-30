@@ -17,13 +17,16 @@ export default class extends React.Component {
         } = contentData;
         return (
             <CommentContentsListWrapper>
-                {comments.map(commentItem => {
-                    return (
-                        <CommentArticle
-                            commentItem={commentItem}
-                        />
-                    )
-                })}
+                {comments.length > 0
+                    ? comments.map(commentItem => {
+                        return (
+                            <CommentArticle
+                                commentItem={commentItem}
+                            />
+                        )
+                    })
+                    : null
+                }
             </CommentContentsListWrapper>
         )
     }
