@@ -27,10 +27,20 @@ export const CommentClickEffect = styled.div`
 
 export default class extends React.Component {
     render() {
-        const { contentData } = this.props;
+        const {
+            byLatest,
+            byPopular,
+            selectLate,
+            selectPop,
+            contentData
+        } = this.props;
         return (
             <CommentHeaderWrapper>
                 <HeaderHeader
+                    byLatest={byLatest}
+                    byPopular={byPopular}
+                    selectLate={selectLate}
+                    selectPop={selectPop}
                     contentData={contentData}
                 />
                 <InputAndUser />

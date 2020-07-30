@@ -26,11 +26,31 @@ const CommentSortText = styled.span`
     font-size: 14px;
 `;
 
+const SortMiniPopUp = styled.div`
+    background: rgba(0, 0, 0, 0.6);
+    width: max-content;
+    height: max-content;
+    padding: 10px;
+    border-radius: 2px;
+    position: absolute;
+    top: 200%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.2s ease-out;
+    opacity: ${props => props.miniActive ? 1 : 0};
+    z-index: 30;
+`;
+
+const SortMiniPopUpTxt = styled.span`
+    font-size: 13px;
+    color: white;
+`;
+
 export default class extends React.Component {
     state = {
         popUpClicked: false,
-        popular: false,
-        latest: false
+        miniActive: false,
     };
 
     sortRef = React.createRef();
@@ -53,32 +73,40 @@ export default class extends React.Component {
         this.setState({ popUpClicked: !this.state.popUpClicked });
     };
 
-    selectPop = () => {
-        this.setState({
-            latest: false,
-            popular: true,
-            popUpClicked: false,
-        });
+    pickPopular = e => {
+        e.stopPropagation();
+        this.setState({ popUpClicked: false });
+        this.props.selectPop();
     };
 
-    selectLate = () => {
-        this.setState({
-            latest: true,
-            popular: false,
-            popUpClicked: false,
-        });
+    pickLatest = e => {
+        e.stopPropagation();
+        this.setState({ popUpClicked: false });
+        this.props.selectLate();
+    };
+
+    miniActivate = () => {
+        this.setState({ miniActive: true });
+    };
+    miniDeactivate = () => {
+        this.setState({ miniActive: false });
     };
 
     render() {
         const {
-            latest,
+            miniActive,
             popUpClicked,
-            popular,
         } = this.state;
+        const {
+            byLatest,
+            byPopular,
+        } = this.props;
         return (
             <CommentSortBox
                 ref={this.sortRef}
                 onClick={this.togglePopUp}
+                onMouseEnter={this.miniActivate}
+                onMouseLeave={this.miniDeactivate}
             >
                 <CommentSortIcon>
                     <i class="fas fa-sort-amount-down"></i>
@@ -90,14 +118,21 @@ export default class extends React.Component {
                 {popUpClicked
                     ?
                     <SortPopUp
-                        latest={latest}
-                        selectPop={this.selectPop}
-                        selectLate={this.selectLate}
+                        byLatest={byLatest}
+                        byPopular={byPopular}
+                        pickPopular={this.pickPopular}
+                        pickLatest={this.pickLatest}
                         togglePopUp={this.togglePopUp}
                         popUpClicked={popUpClicked}
-                        popular={popular}
                     />
                     : null}
+                <SortMiniPopUp
+                    miniActive={miniActive}
+                >
+                    <SortMiniPopUpTxt>
+                        댓글 정렬
+                    </SortMiniPopUpTxt>
+                </SortMiniPopUp>
             </CommentSortBox>
         )
     }

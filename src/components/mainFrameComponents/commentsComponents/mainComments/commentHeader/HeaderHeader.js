@@ -21,13 +21,24 @@ const CommentNumber = styled.div`
 
 export default class extends React.Component {
     render() {
-        const { contentData } = this.props;
+        const {
+            byLatest,
+            byPopular,
+            selectLate,
+            selectPop,
+            contentData
+        } = this.props;
         return (
             <CommentHeaderHeader>
                 <CommentNumber>
                     댓글 {contentData.comments.length}개
                 </CommentNumber>
-                <CommentSort />
+                <CommentSort
+                    byLatest={byLatest}
+                    byPopular={byPopular}
+                    selectLate={selectLate}
+                    selectPop={selectPop}
+                />
             </CommentHeaderHeader>
         )
     }

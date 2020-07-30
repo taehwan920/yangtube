@@ -14,16 +14,18 @@ const SortPopUpWrapper = styled.section`
         0 1px 5px 0 rgba(0, 0, 0, 0.12), 
         0 3px 1px -2px rgba(0, 0, 0, 0.2);
     
-    z-index: 26;
+    z-index: 45;
 `;
 
 const SortPopUpItemBox = styled.article`
+    background: ${props => props.isSelected ? 'rgba(0, 0, 0, 0.1)' : 'none'};
     width: max-content;
     height: 48px;
     padding: 0px 16px;
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 
     &:hover{
         background: rgba(0, 0, 0, 0.1);
@@ -36,34 +38,27 @@ const SortPopUpItem = styled.span`
 `;
 
 export default class extends React.Component {
-    sortPopular = () => {
-        this.props.selectPop();
-
-    };
-
-    sortLatest = () => {
-        this.props.selectLate();
-
-    };
-
     render() {
         const {
-            latest,
-            popular,
+            byLatest,
+            byPopular,
+            pickLatest,
+            pickPopular,
         } = this.props;
+        console.log(byLatest, byPopular);
         return (
             <SortPopUpWrapper>
                 <SortPopUpItemBox
-                    popular={popular}
-                    onClick={this.sortPopular}
+                    isSelected={byPopular}
+                    onClick={pickPopular}
                 >
                     <SortPopUpItem>
                         인기 댓글순
                     </SortPopUpItem>
                 </SortPopUpItemBox>
                 <SortPopUpItemBox
-                    latest={latest}
-                    onClick={this.sortLatest}
+                    isSelected={byLatest}
+                    onClick={pickLatest}
                 >
                     <SortPopUpItem>
                         최근 날짜순

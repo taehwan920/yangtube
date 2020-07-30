@@ -21,10 +21,6 @@ const CommentTimeStamp = styled.span`
 `;
 
 export default class extends React.Component {
-    shouldComponentUpdate() {
-        return false;
-    }
-
     getTimeStamp = (num, lang) => {
         const now = new Date().getTime();
         const sec = 1000;

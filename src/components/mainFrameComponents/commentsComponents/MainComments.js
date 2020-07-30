@@ -13,14 +13,45 @@ const CommentsWrapper = styled.section`
 `;
 
 export default class extends React.Component {
+    state = {
+        byPopular: null,
+        byLatest: null
+    };
+
+    selectLate = () => {
+        this.setState({
+            byPopular: null,
+            byLatest: true
+        });
+    };
+
+    selectPop = () => {
+        this.setState({
+            byPopular: true,
+            byLatest: null
+        });
+    };
+
     render() {
-        const { contentData } = this.props;
+        const {
+            contentData
+        } = this.props;
+        const {
+            byPopular,
+            byLatest
+        } = this.state;
         return (
             <CommentsWrapper>
                 <CommentHeader
+                    byLatest={byLatest}
+                    byPopular={byPopular}
+                    selectLate={this.selectLate}
+                    selectPop={this.selectPop}
                     contentData={contentData}
                 />
                 <CommentContents
+                    byLatest={byLatest}
+                    byPopular={byPopular}
                     contentData={contentData}
                 />
             </CommentsWrapper>
