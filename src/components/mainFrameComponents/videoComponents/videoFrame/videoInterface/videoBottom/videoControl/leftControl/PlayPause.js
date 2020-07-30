@@ -21,6 +21,15 @@ const ReplayButton = styled(PlayButton)``;
 export default class extends React.Component {
     judgeIcon = () => {
         const { pauseVideo, videoEnded, videoPaused } = this.props;
+        if (videoPaused && videoEnded) {
+            return (
+                <ReplayButton
+                    onClick={pauseVideo}
+                >
+                    <i class="fas fa-undo"></i>
+                </ReplayButton>
+            )
+        }
         if (videoPaused) {
             return (
                 <PlayButton
@@ -28,14 +37,6 @@ export default class extends React.Component {
                 >
                     <i class="fas fa-play"></i>
                 </PlayButton>
-            )
-        } else if (videoEnded) {
-            return (
-                <ReplayButton
-                    onClick={pauseVideo}
-                >
-                    <i class="fas fa-undo"></i>
-                </ReplayButton>
             )
         } else {
             return (
