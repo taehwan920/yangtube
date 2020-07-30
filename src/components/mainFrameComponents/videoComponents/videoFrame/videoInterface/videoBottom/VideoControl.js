@@ -24,6 +24,7 @@ export default class extends React.Component {
             toggleTheater,
             pauseVideo,
             vidDuration,
+            videoEnded,
             videoPaused,
             volume
         } = this.props;
@@ -36,6 +37,7 @@ export default class extends React.Component {
                     toggleMute={toggleMute}
                     pauseVideo={pauseVideo}
                     vidDuration={vidDuration}
+                    videoEnded={videoEnded}
                     videoPaused={videoPaused}
                     volume={volume}
                 />

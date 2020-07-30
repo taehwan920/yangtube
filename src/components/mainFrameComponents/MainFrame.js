@@ -29,6 +29,18 @@ const MainFrameContainer = styled.div`
 `;
 
 export default class extends React.Component {
+    state = {
+        videoEnded: false,
+    };
+
+    startVideo = () => {
+        this.setState({ videoEnded: false });
+    };
+
+    endVideo = () => {
+        this.setState({ videoEnded: true });
+    };
+
     render() {
         const {
             newMargin,
@@ -37,15 +49,23 @@ export default class extends React.Component {
             queryStr,
             contentData
         } = this.props;
+        const {
+            videoEnded
+        } = this.state;
         return (
             <MainFrameWrapper
-                theaterMode={theaterMode}>
+                theaterMode={theaterMode}
+            >
                 <MainFrameContainer
-                    theaterMode={theaterMode}>
+                    theaterMode={theaterMode}
+                >
                     <VideoFrame
                         newMargin={newMargin}
+                        endVideo={this.endVideo}
+                        startVideo={this.startVideo}
                         theaterMode={theaterMode}
                         toggleTheater={toggleTheater}
+                        videoEnded={videoEnded}
                         queryStr={queryStr}
                         contentData={contentData}
                     />

@@ -70,13 +70,16 @@ export default class extends React.Component {
     render() {
         const {
             currentTime,
+            endVideo,
             getCurrent,
             getDuration,
             muted,
+            startVideo,
             theaterMode,
             pauseVideo,
             playSpeed,
             repeatPlay,
+            videoEnded,
             videoPaused,
             vidRef,
             volume,
@@ -96,9 +99,11 @@ export default class extends React.Component {
                     getCurrent={getCurrent}
                     getDuration={getDuration}
                     muted={muted}
+                    endVideo={endVideo}
                     pauseVideo={pauseVideo}
                     playSpeed={playSpeed}
                     repeatPlay={repeatPlay}
+                    videoEnded={videoEnded}
                     videoPaused={videoPaused}
                     volume={volume}
                     contentData={contentData}

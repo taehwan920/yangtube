@@ -15,10 +15,17 @@ export default class extends React.Component {
         },
         playSpeed: 1.0,
         vidDuration: 1,
+
         volume: 1,
     };
 
     vidRef = React.createRef();
+
+    componentDidMount() {
+        document.addEventListener('keydown', this.updateByArrow);
+        const startPoint = parseInt(this.props.queryStr.start);
+        this.setCurrentByQS(startPoint);
+    };
 
     arrowAniEnd = () => {
         this.setState({ keyPressed: false })
@@ -155,20 +162,16 @@ export default class extends React.Component {
         this.setState({ currentTime: newCurrent });
     };
 
-    componentDidMount() {
-        document.addEventListener('keydown', this.updateByArrow);
-        const startPoint = parseInt(this.props.queryStr.start);
-        this.setCurrentByQS(startPoint);
-    }
-
     render() {
         const {
+            endVideo,
             theaterMode,
             toggleFullVF,
             toggleTheater,
             pauseVideo,
             repeatPlay,
             videoActivated,
+            videoEnded,
             videoPaused,
             contentData
         } = this.props;
@@ -185,6 +188,7 @@ export default class extends React.Component {
             <React.Fragment>
                 <VideoContainer
                     currentTime={currentTime}
+                    endVideo={endVideo}
                     getCurrent={this.getCurrent}
                     getDuration={this.getDuration}
                     muted={muted}
@@ -192,6 +196,7 @@ export default class extends React.Component {
                     pauseVideo={pauseVideo}
                     playSpeed={playSpeed}
                     repeatPlay={repeatPlay}
+                    videoEnded={videoEnded}
                     videoPaused={videoPaused}
                     vidRef={this.vidRef}
                     volume={volume}
@@ -208,9 +213,10 @@ export default class extends React.Component {
                     toggleMute={this.toggleMute}
                     toggleTheater={toggleTheater}
                     pauseVideo={pauseVideo}
+                    videoActivated={videoActivated}
+                    videoEnded={videoEnded}
                     vidDuration={vidDuration}
                     videoPaused={videoPaused}
-                    videoActivated={videoActivated}
                     volume={volume}
                     updateCurrent={this.updateCurrent}
                     contentData={contentData}

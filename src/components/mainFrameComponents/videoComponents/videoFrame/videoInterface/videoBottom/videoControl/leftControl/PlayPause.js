@@ -15,19 +15,44 @@ const PauseButton = styled(PlayButton)`
     font-size: 16px;
 `;
 
+const ReplayButton = styled(PlayButton)``;
+
+
 export default class extends React.Component {
+    judgeIcon = () => {
+        const { pauseVideo, videoEnded, videoPaused } = this.props;
+        if (videoPaused) {
+            return (
+                <PlayButton
+                    onClick={pauseVideo}
+                >
+                    <i class="fas fa-play"></i>
+                </PlayButton>
+            )
+        } else if (videoEnded) {
+            return (
+                <ReplayButton
+                    onClick={pauseVideo}
+                >
+                    <i class="fas fa-undo"></i>
+                </ReplayButton>
+            )
+        } else {
+            return (
+                <PauseButton
+                    onClick={pauseVideo}
+                >
+                    <i class="fas fa-pause"></i>
+                </PauseButton>
+            )
+        }
+    };
+
     render() {
-        const { pauseVideo, videoPaused } = this.props;
         return (
             <React.Fragment>
-                {videoPaused
-                    ? <PlayButton
-                        onClick={pauseVideo}
-                    ><i class="fas fa-play"></i></PlayButton>
-                    : <PauseButton
-                        onClick={pauseVideo}
-                    ><i class="fas fa-pause"></i></PauseButton>}
+                {this.judgeIcon()}
             </React.Fragment>
         )
     }
-}
+};

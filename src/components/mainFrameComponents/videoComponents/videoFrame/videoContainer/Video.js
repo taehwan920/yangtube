@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const Video = styled.video`
     width: 100%;
     z-index: -100;
+    opacity: ${props => props.videoEnded ? 0 : 1};
 `;
 
 export default class extends React.Component {
@@ -12,7 +13,6 @@ export default class extends React.Component {
         this.setPlaySpeed();
         this.toggleMuteVideo();
         this.playPause();
-
     };
 
     componentDidMount() {
@@ -25,9 +25,11 @@ export default class extends React.Component {
 
     videoEnded = () => {
         if (this.props.repeatPlay) return;
+        if (!this.props.videoEnded) {
+            this.props.endVideo();
+        }
         this.props.pauseVideo();
-    }
-
+    };
 
     playPause = () => {
         this.props.videoPaused
@@ -49,6 +51,7 @@ export default class extends React.Component {
         const {
             getCurrent,
             getDuration,
+            videoEnded,
             contentData
         } = this.props;
         return (
@@ -56,8 +59,10 @@ export default class extends React.Component {
                 onLoadedData={getDuration}
                 onTimeUpdate={getCurrent}
                 onEnded={this.videoEnded}
+                videoEnded={videoEnded}
                 ref={ref => this.videoRef = ref}
-                src={contentData.videoUrl} />
+                src={contentData.videoUrl}
+            />
         )
     }
 }

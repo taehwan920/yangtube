@@ -65,6 +65,10 @@ export default class extends React.Component {
         scaleUp: false,
     };
 
+    componentDidMount() {
+        document.addEventListener('mouseup', () => this.mouseDown = false);
+    }
+
     makeBig = () => {
         this.setState({ scaleUp: true });
     };
@@ -114,7 +118,6 @@ export default class extends React.Component {
                 onMouseOut={this.mouseOutInit}
                 onClick={updateCurrent(this.progressRef, vidDuration)}
                 onMouseDown={() => this.mouseDown = true}
-                onMouseUp={() => this.mouseDown = false}
                 onMouseMove={this.moveOnBar}
             >
                 <ProgressBox>

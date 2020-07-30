@@ -51,6 +51,8 @@ const VideoFrame = styled.div`
     `}
 `;
 
+
+
 export default class extends React.Component {
     state = {
         animationTriggered: false,
@@ -59,8 +61,8 @@ export default class extends React.Component {
         repeatPlay: false,
         urlCopied: false,
         videoActivated: false,
-        videoPaused: false,
         videoCtxMenu: false,
+        videoPaused: false,
     };
 
     videoWrapperRef = React.createRef();
@@ -68,6 +70,17 @@ export default class extends React.Component {
     componentDidMount() {
         window.addEventListener('resize', this.getHeight);
         document.addEventListener('keydown', this.toggleFullscreenByKey);
+        console.log(this.videoWrapperRef);
+    };
+
+    aniEnd = () => {
+        this.setState({ animationTriggered: false });
+    };
+
+    closeCtxMenu = () => {
+        this.setState({
+            videoCtxMenu: false
+        });
     };
 
     getHeight = () => {
@@ -93,18 +106,19 @@ export default class extends React.Component {
         })
     };
 
-    closeCtxMenu = () => {
-        this.setState({
-            videoCtxMenu: false
-        });
-    };
-
     openCtxMenu = e => {
         if (this.state.videoCtxMenu) return;
         e.preventDefault();
         this.setState({
             videoCtxMenu: true,
         });
+    };
+
+    toggleFullscreenByKey = e => {
+        if (e.keyCode === 70) {
+            e.preventDefault();
+            this.toggleFullVF();
+        }
     };
 
     toggleFullVF = () => {
@@ -117,20 +131,12 @@ export default class extends React.Component {
         }
     };
 
-    toggleFullscreenByKey = e => {
-        if (e.keyCode === 70) {
-            e.preventDefault();
-            this.toggleFullVF();
-        }
-    };
-
     toggleRepeatPlay = () => {
         this.setState({ repeatPlay: !this.state.repeatPlay });
         this.closeCtxMenu();
     };
 
     timeout;
-
     moveOnVideo = () => {
         clearTimeout(this.timeout);
         this.timeout = null;
@@ -145,37 +151,40 @@ export default class extends React.Component {
             : this.moveOnVideo();
     };
 
+    PauseAndEvent = () => {
+        this.pauseVideo();
+        this.setState({ animationTriggered: true });
+    };
+
     pauseVideo = () => {
+        if (this.props.videoEnded) {
+            this.videoWrapperRef.current.vidRef.current.videoRef.currentTime = 0;
+            this.props.startVideo();
+        }
         this.setState({
             videoActivated: true,
             videoPaused: !this.state.videoPaused
         });
+
     };
 
-    PauseAndEvent = () => {
-        this.pauseVideo();
-        this.setState({ animationTriggered: true });
+    urlAniEnd = () => {
+        this.setState({ urlCopied: false });
     };
 
     urlCopyClicked = () => {
         this.setState({
             urlCopied: true
         });
-    }
-
-    aniEnd = () => {
-        this.setState({ animationTriggered: false });
     };
-
-    urlAniEnd = () => {
-        this.setState({ urlCopied: false });
-    }
 
     render() {
         const {
+            endVideo,
             newMargin,
             theaterMode,
             toggleTheater,
+            videoEnded,
             queryStr,
             contentData
         } = this.props;
@@ -206,6 +215,7 @@ export default class extends React.Component {
                 theaterMode={theaterMode}>
                 <VideoWrapper
                     ref={this.videoWrapperRef}
+                    endVideo={endVideo}
                     theaterMode={theaterMode}
                     toggleFullVF={this.toggleFullVF}
                     toggleTheater={toggleTheater}
@@ -214,6 +224,7 @@ export default class extends React.Component {
                     repeatPlay={repeatPlay}
                     queryStr={queryStr}
                     videoActivated={videoActivated}
+                    videoEnded={videoEnded}
                     videoPaused={videoPaused}
                     contentData={contentData}
                 />

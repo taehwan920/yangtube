@@ -45,6 +45,7 @@ export default class extends React.Component {
             toggleMute,
             pauseVideo,
             vidDuration,
+            videoEnded,
             videoPaused,
             volume
         } = this.props;
@@ -54,6 +55,7 @@ export default class extends React.Component {
                 <PlayPause
                     pauseVideo={pauseVideo}
                     videoPaused={videoPaused}
+                    videoEnded={videoEnded}
                 />
                 <NextButton><i class="fas fa-step-forward"></i></NextButton>
                 <MuteBtn
