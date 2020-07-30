@@ -74,7 +74,6 @@ export default class extends React.Component {
             getCurrent,
             getDuration,
             muted,
-            startVideo,
             theaterMode,
             pauseVideo,
             playSpeed,

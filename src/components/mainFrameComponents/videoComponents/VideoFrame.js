@@ -1,9 +1,9 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import VideoWrapper from './VideoWrapper';
-import PlayToggleAni from './PlayToggleAni';
+import VideoWrapper from './videoFrame/VideoWrapper';
+import PlayToggleAni from './videoFrame/PlayToggleAni';
 import VideoCtxMenu from './videoFrame/VideoCtxMenu';
-import URLCopyAni from './URLCopyAni';
+import URLCopyAni from './videoFrame/URLCopyAni';
 
 
 const VideoFrame = styled.div`

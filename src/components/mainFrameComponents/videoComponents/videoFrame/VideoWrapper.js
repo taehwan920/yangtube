@@ -1,7 +1,7 @@
 import React from 'react';
-import VideoContainer from './videoFrame/VideoContainer';
-import VideoInterFace from './videoFrame/VideoInterFace';
-import KeyAni from './KeyAni';
+import VideoContainer from './videoWrapper/VideoContainer';
+import VideoInterFace from './videoWrapper/VideoInterFace';
+import KeyAni from './videoWrapper/KeyAni';
 
 export default class extends React.Component {
     state = {

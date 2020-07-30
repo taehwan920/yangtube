@@ -23,13 +23,7 @@ export default class extends React.Component {
         this.videoRef.volume = this.props.volume;
     };
 
-    videoEnded = () => {
-        if (this.props.repeatPlay) return;
-        if (!this.props.videoEnded) {
-            this.props.endVideo();
-        }
-        this.props.pauseVideo();
-    };
+
 
     playPause = () => {
         this.props.videoPaused
@@ -45,6 +39,14 @@ export default class extends React.Component {
         this.props.muted
             ? this.videoRef['muted'] = true
             : this.videoRef['muted'] = false;
+    };
+
+    videoEnded = () => {
+        if (this.props.repeatPlay) return;
+        if (!this.props.videoEnded) {
+            this.props.endVideo();
+        }
+        this.props.pauseVideo();
     };
 
     render() {
