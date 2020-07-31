@@ -35,19 +35,18 @@ const ToggleSwitchBtn = styled.div`
 `;
 
 export default class extends React.Component {
-    state = {
-        switchON: false
-    };
-
     clickSwitch = () => {
-        this.setState({ switchON: !this.state.switchON });
-        // this.props.inputFunc();
+        this.props.switchFunc();
     }
 
     render() {
-        const { switchON } = this.state;
+        const {
+            switchON,
+        } = this.props;
         return (
-            <ToggleSwitchWrapper onClick={this.clickSwitch}>
+            <ToggleSwitchWrapper
+                onClick={this.clickSwitch}
+            >
                 <ToggleSwitchBar
                     switchON={switchON}
                 />

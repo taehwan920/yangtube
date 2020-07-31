@@ -43,8 +43,10 @@ export default class extends React.Component {
 
     render() {
         const {
+            autoPlay,
             newMargin,
             theaterMode,
+            toggleAutoPlay,
             toggleTheater,
             queryStr,
             contentData
@@ -60,18 +62,22 @@ export default class extends React.Component {
                     theaterMode={theaterMode}
                 >
                     <VideoFrame
+                        autoPlay={autoPlay}
                         newMargin={newMargin}
                         endVideo={this.endVideo}
                         startVideo={this.startVideo}
                         theaterMode={theaterMode}
+                        toggleAutoPlay={toggleAutoPlay}
                         toggleTheater={toggleTheater}
                         videoEnded={videoEnded}
                         queryStr={queryStr}
                         contentData={contentData}
                     />
                     <VideoInfoOuter
+                        autoPlay={autoPlay}
                         newMargin={newMargin}
                         theaterMode={theaterMode}
+                        toggleAutoPlay={toggleAutoPlay}
                         contentData={contentData}
                     />
                 </MainFrameContainer>

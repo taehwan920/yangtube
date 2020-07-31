@@ -37,20 +37,8 @@ const MainTerritory = styled.div`
 export default class extends React.Component {
     state = {
         newMargin: null,
-        theaterMode: false
-    };
-
-    toggleTheater = () => {
-        this.setState({ theaterMode: !this.state.theaterMode });
-    }
-
-    getSize = () => {
-        const nowWidth = window.innerWidth;
-        let newWidth = nowWidth - 1755;
-        if (newWidth < 0) { newWidth = 0; }
-        this.setState({
-            newMargin: newWidth / 2
-        });
+        theaterMode: false,
+        autoPlay: false,
     };
 
     componentDidMount() {
@@ -63,12 +51,30 @@ export default class extends React.Component {
         window.addEventListener('resize', this.getSize);
     };
 
+    getSize = () => {
+        const nowWidth = window.innerWidth;
+        let newWidth = nowWidth - 1755;
+        if (newWidth < 0) { newWidth = 0; }
+        this.setState({
+            newMargin: newWidth / 2
+        });
+    };
+
+    toggleAutoPlay = () => {
+        this.setState({ autoPlay: !this.state.autoPlay });
+    };
+
+    toggleTheater = () => {
+        this.setState({ theaterMode: !this.state.theaterMode });
+    };
+
     render() {
         const {
             queryStr,
             contentData
         } = this.props;
         const {
+            autoPlay,
             newMargin,
             theaterMode
         } = this.state;
@@ -77,8 +83,10 @@ export default class extends React.Component {
                 newMargin={newMargin}
                 theaterMode={theaterMode}>
                 <MainFrame
+                    autoPlay={autoPlay}
                     newMargin={newMargin}
                     theaterMode={theaterMode}
+                    toggleAutoPlay={this.toggleAutoPlay}
                     toggleTheater={this.toggleTheater}
                     queryStr={queryStr}
                     contentData={contentData}
@@ -86,6 +94,8 @@ export default class extends React.Component {
                 {theaterMode
                     ? null
                     : <VideoNavPC
+                        autoPlay={autoPlay}
+                        toggleAutoPlay={this.toggleAutoPlay}
                         contentData={contentData}
                     />}
             </MainTerritory>

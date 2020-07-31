@@ -1,8 +1,10 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import Video from './videoContainer/Video';
+import WaitAutoPlay from './videoContainer/WaitAutoPlay';
 
-const VideoWrapper = styled.div`
+const VideoContainerBox = styled.div`
+    position: relative;
     background-color: ${props => {
         if (props.theaterMode) {
             return 'black'
@@ -47,18 +49,6 @@ const VideoWrapper = styled.div`
         min-width: 427px;
         min-height: 240px;
     `}
-
-    &:fullscreen{
-        max-width: none;
-        max-height: none;
-        width: 100%;
-    }
-
-    &:-webkit-full-screen{
-        max-width: none;
-        max-height: none;
-        width: 100%;
-    }
 `;
 
 export default class extends React.Component {
@@ -69,6 +59,7 @@ export default class extends React.Component {
 
     render() {
         const {
+            autoPlay,
             currentTime,
             endVideo,
             getCurrent,
@@ -86,7 +77,7 @@ export default class extends React.Component {
         } = this.props;
         const viewHeight = window.innerHeight, viewWidth = window.innerWidth;
         return (
-            <VideoWrapper
+            <VideoContainerBox
                 isFullscreen={this.isFullscreen}
                 theaterMode={theaterMode}
                 viewHeight={viewHeight}
@@ -107,7 +98,11 @@ export default class extends React.Component {
                     volume={volume}
                     contentData={contentData}
                 />
-            </VideoWrapper>
+                {autoPlay
+                    ?
+                    <WaitAutoPlay />
+                    : null}
+            </VideoContainerBox>
         )
     }
 }

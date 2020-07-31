@@ -103,6 +103,8 @@ export default class extends React.Component {
 
     render() {
         const {
+            autoPlay,
+            toggleAutoPlay,
             getPlaySpeed,
         } = this.props;
         const {
@@ -125,8 +127,10 @@ export default class extends React.Component {
                 </ConfigIcon>
                 {configActivated
                     ? <ConfigPopUp
-                        popUpRef={this.popUpRef}
+                        autoPlay={autoPlay}
                         getPlaySpeed={getPlaySpeed}
+                        toggleAutoPlay={toggleAutoPlay}
+                        popUpRef={this.popUpRef}
                     />
                     : null}
                 {configActivated

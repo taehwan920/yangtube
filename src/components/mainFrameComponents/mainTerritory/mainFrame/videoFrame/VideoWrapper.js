@@ -185,8 +185,10 @@ export default class extends React.Component {
 
     render() {
         const {
+            autoPlay,
             endVideo,
             theaterMode,
+            toggleAutoPlay,
             toggleFullVF,
             toggleTheater,
             pauseVideo,
@@ -209,6 +211,7 @@ export default class extends React.Component {
         return (
             <React.Fragment>
                 <VideoContainer
+                    autoPlay={autoPlay}
                     currentTime={currentTime}
                     endVideo={endVideo}
                     getCurrent={this.getCurrent}
@@ -225,12 +228,14 @@ export default class extends React.Component {
                     contentData={contentData}
                 />
                 <VideoInterFace
+                    autoPlay={autoPlay}
                     currentTime={currentTime}
                     getPlaySpeed={this.getPlaySpeed}
                     getVol={this.getVol}
                     muted={muted}
                     scrubCurrent={this.scrubCurrent}
                     theaterMode={theaterMode}
+                    toggleAutoPlay={toggleAutoPlay}
                     toggleFullVF={toggleFullVF}
                     toggleMute={this.toggleMute}
                     toggleTheater={toggleTheater}

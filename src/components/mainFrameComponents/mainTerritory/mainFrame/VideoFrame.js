@@ -183,9 +183,11 @@ export default class extends React.Component {
 
     render() {
         const {
+            autoPlay,
             endVideo,
             newMargin,
             theaterMode,
+            toggleAutoPlay,
             toggleTheater,
             videoEnded,
             queryStr,
@@ -221,8 +223,10 @@ export default class extends React.Component {
             >
                 <VideoWrapper
                     ref={this.videoWrapperRef}
+                    autoPlay={autoPlay}
                     endVideo={endVideo}
                     theaterMode={theaterMode}
+                    toggleAutoPlay={toggleAutoPlay}
                     toggleFullVF={this.toggleFullVF}
                     toggleTheater={toggleTheater}
                     PauseAndEvent={this.PauseAndEvent}

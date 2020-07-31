@@ -135,7 +135,14 @@ export default class extends React.Component {
     };
 
     render() {
-        const { playbackActive, playbackArr } = this.state;
+        const {
+            autoPlay,
+            toggleAutoPlay,
+        } = this.props;
+        const {
+            playbackActive,
+            playbackArr
+        } = this.state;
         return (
             <ConfigPopUpWrapper
                 ref={ref => this.popUp = ref}
@@ -147,7 +154,10 @@ export default class extends React.Component {
                     <ConfigItemHeadPart
                         ref={ref => this.headRef = ref}
                     >
-                        <ConfigAutoPlay />
+                        <ConfigAutoPlay
+                            autoPlay={autoPlay}
+                            toggleAutoPlay={toggleAutoPlay}
+                        />
                         <ConfigPlayBack
                             togglePlayback={this.togglePlayback}
                             playbackArr={playbackArr}

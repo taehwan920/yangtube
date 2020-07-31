@@ -4,13 +4,20 @@ import ConfigSwitch from './autoPlay/ConfigSwitch';
 
 export default class extends React.Component {
     render() {
+        const {
+            autoPlay,
+            toggleAutoPlay,
+        } = this.props;
         return (
             <ConfigItem>
                 <ItemLeftBox>
                     자동재생
                 </ItemLeftBox>
                 <ItemRightBox>
-                    <ConfigSwitch />
+                    <ConfigSwitch
+                        switchON={autoPlay}
+                        switchFunc={toggleAutoPlay}
+                    />
                 </ItemRightBox>
             </ConfigItem>
         )

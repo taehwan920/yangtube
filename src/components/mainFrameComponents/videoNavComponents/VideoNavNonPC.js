@@ -30,6 +30,10 @@ export default class extends React.Component {
         return [nextVid, restOfVideos];
     };
     render() {
+        const {
+            autoPlay,
+            toggleAutoPlay
+        } = this.props;
         const getVideos = this.getNextAndRestVideos();
         const nextVideo = getVideos[0];
         const restOfVideos = getVideos[1];
@@ -37,8 +41,10 @@ export default class extends React.Component {
         return (
             <VideoNavNonPCWrapper>
                 <NavInners
-                    nextVideo={nextVideo}
+                    autoPlay={autoPlay}
                     doubleRest={doubleRest}
+                    nextVideo={nextVideo}
+                    toggleAutoPlay={toggleAutoPlay}
                 />
             </VideoNavNonPCWrapper>
         )

@@ -14,15 +14,19 @@ const RightControlBox = styled.div`
 export default class extends React.Component {
     render() {
         const {
+            autoPlay,
             getPlaySpeed,
             theaterMode,
+            toggleAutoPlay,
             toggleFullVF,
             toggleTheater,
         } = this.props;
         return (
             <RightControlBox>
                 <ConfigBtn
+                    autoPlay={autoPlay}
                     getPlaySpeed={getPlaySpeed}
+                    toggleAutoPlay={toggleAutoPlay}
                 />
                 <TheaterBtn
                     theaterMode={theaterMode}

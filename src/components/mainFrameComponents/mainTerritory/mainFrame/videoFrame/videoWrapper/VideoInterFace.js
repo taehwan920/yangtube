@@ -6,12 +6,14 @@ import VideoTopGradient from './videoInterface/VideoTopGradient';
 export default class extends React.Component {
     render() {
         const {
+            autoPlay,
             currentTime,
             getPlaySpeed,
             getVol,
             muted,
             scrubCurrent,
             theaterMode,
+            toggleAutoPlay,
             toggleFullVF,
             toggleMute,
             toggleTheater,
@@ -34,12 +36,14 @@ export default class extends React.Component {
                     : null}
                 {videoActivated ? <VideoBottomGradient /> : null}
                 <VideoBottom
+                    autoPlay={autoPlay}
                     currentTime={currentTime}
                     getPlaySpeed={getPlaySpeed}
                     getVol={getVol}
                     muted={muted}
                     scrubCurrent={scrubCurrent}
                     theaterMode={theaterMode}
+                    toggleAutoPlay={toggleAutoPlay}
                     toggleFullVF={toggleFullVF}
                     toggleMute={toggleMute}
                     toggleTheater={toggleTheater}

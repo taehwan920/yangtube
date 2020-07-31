@@ -14,11 +14,13 @@ const VideoControlBox = styled.div`
 export default class extends React.Component {
     render() {
         const {
+            autoPlay,
             currentTime,
             getPlaySpeed,
             getVol,
             muted,
             theaterMode,
+            toggleAutoPlay,
             toggleFullVF,
             toggleMute,
             toggleTheater,
@@ -44,8 +46,10 @@ export default class extends React.Component {
                     contentData={contentData}
                 />
                 <RightControl
+                    autoPlay={autoPlay}
                     getPlaySpeed={getPlaySpeed}
                     theaterMode={theaterMode}
+                    toggleAutoPlay={toggleAutoPlay}
                     toggleFullVF={toggleFullVF}
                     toggleTheater={toggleTheater}
                 />

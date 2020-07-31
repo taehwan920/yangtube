@@ -45,8 +45,10 @@ const VideoInfoOuterWrapper = styled.div`
 export default class extends React.Component {
     render() {
         const {
+            autoPlay,
             newMargin,
             theaterMode,
+            toggleAutoPlay,
             contentData
         } = this.props;
         return (
@@ -54,13 +56,17 @@ export default class extends React.Component {
                 newMargin={newMargin}
                 theaterMode={theaterMode}>
                 <VideoInfoInner
+                    autoPlay={autoPlay}
                     newMargin={newMargin}
                     theaterMode={theaterMode}
+                    toggleAutoPlay={toggleAutoPlay}
                     contentData={contentData}
                 />
                 {theaterMode
                     ?
                     <VideoNavPC
+                        autoPlay={autoPlay}
+                        toggleAutoPlay={toggleAutoPlay}
                         contentData={contentData}
                     />
                     : null}

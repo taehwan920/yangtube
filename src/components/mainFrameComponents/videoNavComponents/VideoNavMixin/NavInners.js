@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import ToggleSwitch from '../../../mixin/ToggleSwitch';
-import VideoItem from './navInners/VideoItem';
+import MakeVideoItems from './navInners/MakeVideoItems';
+import VideoItem from './navInners/makeVideoItems/VideoItem';
 
 const NextVideoSection = styled.section`
     width: 100%;
@@ -44,8 +45,10 @@ const AutoPlayTxt = styled.span`
 export default class extends React.Component {
     render() {
         const {
+            autoPlay,
             doubleRest,
             nextVideo,
+            toggleAutoPlay,
         } = this.props;
         return (
             <React.Fragment>
@@ -55,23 +58,23 @@ export default class extends React.Component {
                             다음 동영상
                         </NextVideoText>
                         <AutoPlayBox>
-                            <AutoPlayTxt>
+                            <AutoPlayTxt
+                            >
                                 자동재생
                             </AutoPlayTxt>
-                            <ToggleSwitch />
+                            <ToggleSwitch
+                                switchON={autoPlay}
+                                switchFunc={toggleAutoPlay}
+                            />
                         </AutoPlayBox>
                     </NextVideoHeader>
                     <VideoItem
                         video={nextVideo}
                     />
                 </NextVideoSection>
-                {doubleRest.map(video => {
-                    return (
-                        <VideoItem
-                            video={video}
-                        />
-                    )
-                })}
+                <MakeVideoItems
+                    doubleRest={doubleRest}
+                />
             </React.Fragment>
         )
     }

@@ -30,8 +30,10 @@ const VideoInfoInnerWrapper = styled.div`
 export default class extends React.Component {
     render() {
         const {
+            autoPlay,
             newMargin,
             theaterMode,
+            toggleAutoPlay,
             contentData
         } = this.props;
         const viewWidth = window.innerWidth;
@@ -44,6 +46,8 @@ export default class extends React.Component {
                     contentData={contentData}
                 />
                 <VideoNavNonPC
+                    autoPlay={autoPlay}
+                    toggleAutoPlay={toggleAutoPlay}
                     contentData={contentData}
                 />
                 <MainComments

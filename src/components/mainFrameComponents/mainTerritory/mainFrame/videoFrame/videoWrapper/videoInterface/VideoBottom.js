@@ -22,12 +22,14 @@ export default class extends React.Component {
 
     render() {
         const {
+            autoPlay,
             currentTime,
             getPlaySpeed,
             getVol,
             muted,
             scrubCurrent,
             theaterMode,
+            toggleAutoPlay,
             toggleFullVF,
             toggleMute,
             toggleTheater,
@@ -52,11 +54,13 @@ export default class extends React.Component {
                     updateCurrent={updateCurrent}
                 />
                 <VideoControl
+                    autoPlay={autoPlay}
                     currentTime={currentTime}
                     getPlaySpeed={getPlaySpeed}
                     getVol={getVol}
                     muted={muted}
                     theaterMode={theaterMode}
+                    toggleAutoPlay={toggleAutoPlay}
                     toggleFullVF={toggleFullVF}
                     toggleMute={toggleMute}
                     toggleTheater={toggleTheater}

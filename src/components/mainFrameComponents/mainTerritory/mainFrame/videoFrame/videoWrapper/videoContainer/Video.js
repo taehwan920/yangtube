@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Video = styled.video`
     width: 100%;
-    z-index: -100;
+    z-index: -200;
     opacity: ${props => props.videoEnded ? 0 : 1};
 `;
 
