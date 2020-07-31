@@ -3,7 +3,7 @@ import VideoSummary from './VideoSummary';
 const dive = {
     title: VideoSummary[0].title,
     pageUrl: VideoSummary[0].pageUrl,
-    nextPage: VideoSummary[0].nextPage,
+    nextUrl: VideoSummary[0].nextUrl,
     videoUrl: VideoSummary[0].videoUrl,
     thunbnailUrl: VideoSummary[0].thumbnailUrl,
     uploader: VideoSummary[0].uploader,

@@ -3,7 +3,7 @@ import VideoSummary from './VideoSummary';
 const monkeyshow = {
     title: VideoSummary[7].title,
     pageUrl: VideoSummary[7].pageUrl,
-    nextPage: VideoSummary[7].nextPage,
+    nextUrl: VideoSummary[7].nextUrl,
     videoUrl: VideoSummary[7].videoUrl,
     thunbnailUrl: VideoSummary[7].thumbnailUrl,
     uploader: VideoSummary[7].uploader,

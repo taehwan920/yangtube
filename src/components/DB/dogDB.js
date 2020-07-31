@@ -3,7 +3,7 @@ import VideoSummary from './VideoSummary';
 const dog = {
     title: VideoSummary[1].title,
     pageUrl: VideoSummary[1].pageUrl,
-    nextPage: VideoSummary[1].nextPage,
+    nextUrl: VideoSummary[1].nextUrl,
     videoUrl: VideoSummary[1].videoUrl,
     thunbnailUrl: VideoSummary[1].thumbnailUrl,
     uploader: VideoSummary[1].uploader,

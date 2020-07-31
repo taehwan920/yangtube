@@ -15,14 +15,12 @@ export default class extends React.Component {
         },
         playSpeed: 1.0,
         vidDuration: 1,
-
         volume: 1,
     };
 
     vidRef = React.createRef();
 
     componentDidMount() {
-        // document.addEventListener('keydown', this.updateByKey);
         const startPoint = parseInt(this.props.queryStr.start);
         this.setCurrentByQS(startPoint);
     };
@@ -49,12 +47,16 @@ export default class extends React.Component {
         this.setState({ volume: e.target.value });
     };
 
+    goToNextPage = () => {
+        window.location.replace(`${window.location.origin}${this.props.contentData.nextUrl}`);
+    };
+
     toggleMute = () => {
         this.setState({ muted: !this.state.muted });
     };
 
+    shiftDown = false;
     updateByKey = e => {
-        console.log(e);
         const { currentTime, volume } = this.state;
         const leftArrow = 37;
         const upArrow = 38;
@@ -63,6 +65,8 @@ export default class extends React.Component {
         const spacebar = 32;
         const m = 77;
         const t = 84;
+        const shiftKey = 16;
+        const n = 78;
 
         let newCurrent;
         if (e.keyCode === leftArrow) {
@@ -98,9 +102,10 @@ export default class extends React.Component {
             this.props.PauseAndEvent();
         }
         let newVolume;
+        const changeAmount = 0.05
         if (e.keyCode === upArrow) {
             e.preventDefault();
-            newVolume = volume + 0.05 > 1 ? 1 : volume + 0.05;
+            newVolume = volume + changeAmount > 1 ? 1 : volume + changeAmount;
             this.setState({
                 volume: newVolume,
                 keyPressed: true,
@@ -113,7 +118,7 @@ export default class extends React.Component {
         }
         if (e.keyCode === downArrow) {
             e.preventDefault();
-            newVolume = volume - 0.05 < 0 ? 0 : volume - 0.05;
+            newVolume = volume - changeAmount < 0 ? 0 : volume - changeAmount;
             this.setState({
                 volume: newVolume,
                 keyPressed: true,
@@ -125,6 +130,7 @@ export default class extends React.Component {
             });
         }
         if (e.keyCode === m) {
+            e.preventDefault();
             this.setState({
                 muted: !this.state.muted,
                 keyPressed: true,
@@ -136,7 +142,16 @@ export default class extends React.Component {
             });
         }
         if (e.keyCode === t) {
+            e.preventDefault();
             this.props.toggleTheater();
+        }
+        if (e.keyCode === shiftKey) {
+            e.preventDefault();
+            this.shiftDown = true;
+        }
+        if (e.keyCode === n && this.shiftDown) {
+            e.preventDefault();
+            this.goToNextPage();
         }
     };
 
@@ -151,7 +166,15 @@ export default class extends React.Component {
         if (!num || num < 0 || num > video.duration) return;
         video.currentTime = num;
         this.setState({ currentTime: num });
-    }
+    };
+
+    shiftKeyUp = e => {
+        const shiftKey = 16;
+        if (e.keyCode === shiftKey) {
+            e.preventDefault();
+            this.shiftDown = false;
+        }
+    };
 
     updateCurrent = (ref, du) => e => {
         const newCurrent = (e.nativeEvent.offsetX / ref.offsetWidth) * du;
@@ -182,6 +205,7 @@ export default class extends React.Component {
             vidDuration,
             volume
         } = this.state;
+
         return (
             <React.Fragment>
                 <VideoContainer

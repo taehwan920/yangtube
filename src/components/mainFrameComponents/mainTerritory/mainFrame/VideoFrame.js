@@ -69,7 +69,6 @@ export default class extends React.Component {
 
     componentDidMount() {
         window.addEventListener('resize', this.getHeight);
-        // document.addEventListener('keydown', this.toggleFullscreenByKey);
     };
 
     aniEnd = () => {
