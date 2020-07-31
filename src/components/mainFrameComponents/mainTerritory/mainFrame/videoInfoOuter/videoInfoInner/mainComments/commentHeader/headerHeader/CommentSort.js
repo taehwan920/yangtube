@@ -123,7 +123,6 @@ export default class extends React.Component {
                         pickPopular={this.pickPopular}
                         pickLatest={this.pickLatest}
                         togglePopUp={this.togglePopUp}
-                        popUpClicked={popUpClicked}
                     />
                     : null}
                 <SortMiniPopUp

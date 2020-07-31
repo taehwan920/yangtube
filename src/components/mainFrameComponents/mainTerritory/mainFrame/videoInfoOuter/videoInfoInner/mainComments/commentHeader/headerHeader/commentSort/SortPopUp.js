@@ -45,7 +45,6 @@ export default class extends React.Component {
             pickLatest,
             pickPopular,
         } = this.props;
-        console.log(byLatest, byPopular);
         return (
             <SortPopUpWrapper>
                 <SortPopUpItemBox

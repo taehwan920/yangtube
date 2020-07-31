@@ -22,7 +22,7 @@ export default class extends React.Component {
     vidRef = React.createRef();
 
     componentDidMount() {
-        document.addEventListener('keydown', this.updateByArrow);
+        // document.addEventListener('keydown', this.updateByKey);
         const startPoint = parseInt(this.props.queryStr.start);
         this.setCurrentByQS(startPoint);
     };
@@ -42,7 +42,6 @@ export default class extends React.Component {
     };
 
     getPlaySpeed = num => {
-        console.log('getspeed!')
         this.setState({ playSpeed: num });
     };
 
@@ -54,7 +53,8 @@ export default class extends React.Component {
         this.setState({ muted: !this.state.muted });
     };
 
-    updateByArrow = e => {
+    updateByKey = e => {
+        console.log(e);
         const { currentTime, volume } = this.state;
         const leftArrow = 37;
         const upArrow = 38;
@@ -125,7 +125,6 @@ export default class extends React.Component {
             });
         }
         if (e.keyCode === m) {
-            e.preventDefault();
             this.setState({
                 muted: !this.state.muted,
                 keyPressed: true,
@@ -137,7 +136,6 @@ export default class extends React.Component {
             });
         }
         if (e.keyCode === t) {
-            e.preventDefault();
             this.props.toggleTheater();
         }
     };

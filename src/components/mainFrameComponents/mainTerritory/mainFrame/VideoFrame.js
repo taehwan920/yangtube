@@ -69,7 +69,7 @@ export default class extends React.Component {
 
     componentDidMount() {
         window.addEventListener('resize', this.getHeight);
-        document.addEventListener('keydown', this.toggleFullscreenByKey);
+        // document.addEventListener('keydown', this.toggleFullscreenByKey);
     };
 
     aniEnd = () => {
@@ -89,6 +89,11 @@ export default class extends React.Component {
             frameHeight: newHeight,
             frameWidth: newWidth
         });
+    };
+
+    keyEvent = e => {
+        this.toggleFullscreenByKey(e);
+        this.videoWrapperRef.current.updateByKey(e);
     };
 
     onVideo = () => {
@@ -114,8 +119,8 @@ export default class extends React.Component {
     };
 
     toggleFullscreenByKey = e => {
-        if (e.keyCode === 70) {
-            e.preventDefault();
+        const fKeyCode = 70;
+        if (e.keyCode === fKeyCode) {
             this.toggleFullVF();
         }
     };
@@ -203,15 +208,18 @@ export default class extends React.Component {
                 ref={ref => this.videoFrameRef = ref}
                 onClick={this.PauseAndEvent}
                 onContextMenu={this.openCtxMenu}
+                onKeyDown={this.keyEvent}
                 onMouseLeave={this.outVideo}
                 onMouseEnter={this.onVideo}
                 onMouseMove={this.mouseMoved}
-                newMargin={newMargin}
                 frameHeight={frameHeight}
                 frameWidth={frameWidth}
+                newMargin={newMargin}
+                tabIndex="0"
+                theaterMode={theaterMode}
                 viewWidth={viewWidth}
                 viewHeight={viewHeight}
-                theaterMode={theaterMode}>
+            >
                 <VideoWrapper
                     ref={this.videoWrapperRef}
                     endVideo={endVideo}
@@ -224,6 +232,7 @@ export default class extends React.Component {
                     queryStr={queryStr}
                     videoActivated={videoActivated}
                     videoEnded={videoEnded}
+                    videoFrameRef={this.videoFrameRef}
                     videoPaused={videoPaused}
                     contentData={contentData}
                 />
