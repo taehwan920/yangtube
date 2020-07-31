@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { timestampTxt } from '../../../DB';
+import { timestampTxt } from '../../../../DB';
 
 const NextVideoItemWrapper = styled.article`
     background-color: inherit;
@@ -10,7 +10,7 @@ const NextVideoItemWrapper = styled.article`
     display: flex;
 `;
 
-const NextVideoThumbnailBox = styled.div`
+const NextVideoThumbnailBox = styled.a`
     background: gray;
     width: 168px;
     height: 94px;
@@ -72,7 +72,10 @@ const InfoContent = styled.span`
     cursor: pointer;
 `;
 
-const InfoTitle = styled(InfoContent)`
+const InfoTitle = styled.a`
+    width: 100%;
+    height: max-content;
+    cursor: pointer;
     padding-right: 20px;
     margin-bottom: 4px;
     overflow: hidden;
@@ -175,6 +178,7 @@ export default class extends React.Component {
         return (
             <NextVideoItemWrapper>
                 <NextVideoThumbnailBox
+                    href={video.pageUrl}
                     onMouseOver={() => this.setState({ hoverOnThumb: true })}
                     onMouseLeave={() => this.setState({ hoverOnThumb: false })}
                 >
@@ -193,7 +197,9 @@ export default class extends React.Component {
                     </PlayIcon>
                 </NextVideoThumbnailBox>
                 <NextVideoInfoBox>
-                    <InfoTitle>
+                    <InfoTitle
+                        href={video.pageUrl}
+                    >
                         {video.title}
                     </InfoTitle>
                     <InfoUploader>

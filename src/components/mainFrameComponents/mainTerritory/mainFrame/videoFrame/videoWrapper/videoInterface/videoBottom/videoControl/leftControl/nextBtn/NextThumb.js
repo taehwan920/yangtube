@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import VideoSummary from '../../../../../../../../../DB/VideoSummary';
+import VideoSummary from '../../../../../../../../../../DB/VideoSummary';
 
 const NextVideoPopUpWrapper = styled.div`
     background: rgba(0, 0, 0, 0.75);

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import VideoNavPC from './videoNavComponents/VideoNavPC';
-import VideoInfoInner from './VideoInfoInner';
+import VideoNavPC from '../../videoNavComponents/VideoNavPC';
+import VideoInfoInner from './videoInfoOuter/VideoInfoInner';
 
 const VideoInfoOuterWrapper = styled.div`
     width: max-content;
@@ -40,10 +40,7 @@ const VideoInfoOuterWrapper = styled.div`
     @media(max-width: 500px) {
         padding-right: 0px;
     }
-
 `;
-
-
 
 export default class extends React.Component {
     render() {

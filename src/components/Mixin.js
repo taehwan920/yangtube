@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 export const ChangeTitle = (str) => {
     document.title = `${str} | YangTube`;
 };
@@ -23,6 +22,11 @@ export function debounce(func, wait = 15, immediate = false) {
         timeout = setTimeout(later, wait);
         if (callNow) func.apply(context, args);
     };
+};
+
+export const shuffle = arr => {
+    arr.sort(() => Math.random() - 0.5);
+    return arr;
 };
 
 export class NotCreated extends React.Component {

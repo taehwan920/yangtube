@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import MainTitleAndDesc from './titleAndDescComponents/MainTitleAndDesc';
-import MainComments from './commentsComponents/MainComments';
-import VideoNavNonPC from './videoNavComponents/VideoNavNonPC';
+import MainTitleAndDesc from './videoInfoInner/MainTitleAndDesc';
+import MainComments from './videoInfoInner/MainComments';
+import VideoNavNonPC from '../../../videoNavComponents/VideoNavNonPC';
 
 const VideoInfoInnerWrapper = styled.div`
     background: inherit;

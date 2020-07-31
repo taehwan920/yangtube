@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import VideoFrame from './videoComponents/VideoFrame';
-import VideoInfoOuter from './VideoInfoOuter';
+import VideoFrame from './mainFrame/VideoFrame';
+import VideoInfoOuter from './mainFrame/VideoInfoOuter';
 
 
 const MainFrameWrapper = styled.div`

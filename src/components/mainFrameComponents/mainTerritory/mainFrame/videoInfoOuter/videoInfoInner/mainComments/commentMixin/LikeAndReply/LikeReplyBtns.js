@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { shortNum } from '../../../../../DB';
+import { shortNum } from '../../../../../../../../DB';
 
 const LikeAndReplyWrapper = styled.div`
     width: 100%;

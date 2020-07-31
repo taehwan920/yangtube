@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import VideoNavPC from './videoNavComponents/VideoNavPC';
-import MainFrame from './MainFrame';
+import MainFrame from './mainTerritory/MainFrame';
 
 
 const MainTerritory = styled.div`

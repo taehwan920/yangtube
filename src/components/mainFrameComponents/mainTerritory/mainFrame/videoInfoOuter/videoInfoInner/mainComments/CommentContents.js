@@ -9,7 +9,7 @@ const CommentContentsListWrapper = styled.section`
 
 export default class extends React.Component {
     sortComments = (arr, popular, latest) => {
-        if (arr.length < 2) return;
+        if (arr.length < 2) return arr;
         const sortArr = Array.from(arr);
         if (popular) { sortArr.sort((a, b) => b.likes - a.likes); }
         if (latest) { sortArr.sort((a, b) => b.timestamp - a.timestamp); }
