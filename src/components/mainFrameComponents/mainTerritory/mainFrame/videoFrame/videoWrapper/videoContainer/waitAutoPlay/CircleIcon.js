@@ -43,6 +43,9 @@ const NextIcon = styled.span`
 
 export default class extends React.Component {
     render() {
+        const {
+            contentData
+        } = this.props;
         return (
             <NextBtnBox>
                 <CircleBox>
@@ -51,7 +54,9 @@ export default class extends React.Component {
                             <i class="fas fa-step-forward"></i>
                         </NextIcon>
                     </CenterCircle>
-                    <RotateCircle />
+                    <RotateCircle
+                        contentData={contentData}
+                    />
                 </CircleBox>
             </NextBtnBox>
         )

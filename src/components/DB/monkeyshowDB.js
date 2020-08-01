@@ -2,8 +2,9 @@ import VideoSummary from './VideoSummary';
 
 const monkeyshow = {
     title: VideoSummary[7].title,
+    nextTitle: VideoSummary[0].title,
     pageUrl: VideoSummary[7].pageUrl,
-    nextUrl: VideoSummary[7].nextUrl,
+    nextUrl: VideoSummary[0].pageUrl,
     videoUrl: VideoSummary[7].videoUrl,
     thumbnailUrl: VideoSummary[7].thumbnailUrl,
     nextThumb: VideoSummary[7].nextThumb,

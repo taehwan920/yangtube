@@ -38,7 +38,7 @@ export default class extends React.Component {
     state = {
         newMargin: null,
         theaterMode: false,
-        autoPlay: false,
+        autoPlay: true,
     };
 
     componentDidMount() {

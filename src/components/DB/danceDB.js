@@ -2,8 +2,9 @@ import VideoSummary from './VideoSummary';
 
 const dance = {
     title: VideoSummary[4].title,
+    nextTitle: VideoSummary[5].title,
     pageUrl: VideoSummary[4].pageUrl,
-    nextUrl: VideoSummary[4].nextUrl,
+    nextUrl: VideoSummary[5].pageUrl,
     videoUrl: VideoSummary[4].videoUrl,
     thumbnailUrl: VideoSummary[4].thumbnailUrl,
     nextThumb: VideoSummary[4].nextThumb,

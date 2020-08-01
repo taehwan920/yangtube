@@ -2,8 +2,9 @@ import VideoSummary from './VideoSummary';
 
 const dive = {
     title: VideoSummary[0].title,
+    nextTitle: VideoSummary[1].title,
     pageUrl: VideoSummary[0].pageUrl,
-    nextUrl: VideoSummary[0].nextUrl,
+    nextUrl: VideoSummary[1].pageUrl,
     videoUrl: VideoSummary[0].videoUrl,
     thumbnailUrl: VideoSummary[0].thumbnailUrl,
     nextThumb: VideoSummary[0].nextThumb,

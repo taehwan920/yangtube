@@ -68,9 +68,14 @@ const RotateLeftCircle = styled(RotateCircle)`
 `;
 
 export default class extends React.Component {
+    goToNextPage = () => {
+        window.location.replace(`${window.location.origin}${this.props.contentData.nextUrl}`);
+    };
     render() {
         return (
-            <RotationContainer>
+            <RotationContainer
+                onAnimationEnd={this.goToNextPage}
+            >
                 <RotateRightBox>
                     <RotateRightCircle />
                 </RotateRightBox>

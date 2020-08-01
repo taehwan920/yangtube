@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import CircleIcon from './waitAutoPlay/CircleIcon';
+import StopBox from './waitAutoPlay/StopBox';
+import Cancel from './waitAutoPlay/Cancel';
 
 const WatingWrapper = styled.div`
     background: black;
@@ -37,7 +39,7 @@ const InterfaceBox = styled.section`
 `;
 
 const NextTxt = styled.span`
-    font-size: 16px;
+    font-size: 15px;
     color: rgba(255, 255, 255, 0.7);
     margin-bottom: 8px;
 `;
@@ -53,28 +55,20 @@ const NextUploader = styled.span`
     color: white;
 `;
 
-
-
-const CancelBox = styled.div`
-    font-size: 16px;
-    color: white;
-    margin-bottom: 10px;
-`;
-
-const AutoPlayStoppedBox = styled.div`
-    font-size: 14px;
-    font-style: italic;
-    color: white;
-`;
-
 export default class extends React.Component {
+    state = {
+        waitCanceled: false
+    }
     render() {
         const {
             contentData
         } = this.props;
         const {
+            waitCanceled
+        } = this.state;
+        const {
             nextThumb,
-            title,
+            nextTitle,
             uploader,
         } = contentData;
         return (
@@ -84,18 +78,18 @@ export default class extends React.Component {
                         다음 동영상
                     </NextTxt>
                     <NextTitle>
-                        {title}
+                        {nextTitle}
                     </NextTitle>
                     <NextUploader>
                         {uploader}
                     </NextUploader>
-                    <CircleIcon />
-                    <CancelBox>
-                        취소
-                    </CancelBox>
-                    <AutoPlayStoppedBox>
-                        자동재생 일시중지됨
-                    </AutoPlayStoppedBox>
+                    <CircleIcon
+                        contentData={contentData}
+                    />
+                    <Cancel />
+                    {waitCanceled
+                        ? <StopBox />
+                        : null}
                 </InterfaceBox>
                 <NextThumbBox>
                     <ThumbImg

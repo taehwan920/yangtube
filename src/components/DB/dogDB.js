@@ -2,8 +2,9 @@ import VideoSummary from './VideoSummary';
 
 const dog = {
     title: VideoSummary[1].title,
+    nextTitle: VideoSummary[2].title,
     pageUrl: VideoSummary[1].pageUrl,
-    nextUrl: VideoSummary[1].nextUrl,
+    nextUrl: VideoSummary[2].pageUrl,
     videoUrl: VideoSummary[1].videoUrl,
     thumbnailUrl: VideoSummary[1].thumbnailUrl,
     nextThumb: VideoSummary[1].nextThumb,
