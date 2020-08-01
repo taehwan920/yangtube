@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import CircleIcon from './waitAutoPlay/CircleIcon';
 
 const WatingWrapper = styled.div`
     background: black;
@@ -10,7 +11,7 @@ const WatingWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 150;
+    z-index: 2;
 `;
 
 const NextThumbBox = styled.div`
@@ -32,12 +33,12 @@ const InterfaceBox = styled.section`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 151;
+    z-index: 3;
 `;
 
 const NextTxt = styled.span`
     font-size: 16px;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.7);
     margin-bottom: 8px;
 `;
 
@@ -52,11 +53,7 @@ const NextUploader = styled.span`
     color: white;
 `;
 
-const NextBtnBox = styled.div`
-    width: 64px;
-    height: 64px;
-    margin: 40px 0px;
-`;
+
 
 const CancelBox = styled.div`
     font-size: 16px;
@@ -92,9 +89,7 @@ export default class extends React.Component {
                     <NextUploader>
                         {uploader}
                     </NextUploader>
-                    <NextBtnBox>
-
-                    </NextBtnBox>
+                    <CircleIcon />
                     <CancelBox>
                         취소
                     </CancelBox>
