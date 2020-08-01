@@ -98,9 +98,11 @@ export default class extends React.Component {
                     volume={volume}
                     contentData={contentData}
                 />
-                {autoPlay
+                {autoPlay && videoEnded
                     ?
-                    <WaitAutoPlay />
+                    <WaitAutoPlay
+                        contentData={contentData}
+                    />
                     : null}
             </VideoContainerBox>
         )
