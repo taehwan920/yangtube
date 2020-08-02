@@ -14,7 +14,7 @@ const VideoInfoInnerWrapper = styled.div`
     justify-content: flex-start;
 
     @media(max-width: 1023px) {
-        width: calc(${props => props.viewWidth}px - 24px);
+        width: calc(${props => props.viewWidth}px - 48px);
     }
 
     @media(min-width: 1024px) and (max-width: 1754px) {

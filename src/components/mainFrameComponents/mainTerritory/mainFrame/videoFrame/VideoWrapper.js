@@ -2,6 +2,7 @@ import React from 'react';
 import VideoContainer from './videoWrapper/VideoContainer';
 import VideoInterFace from './videoWrapper/VideoInterFace';
 import KeyAni from './videoWrapper/KeyAni';
+import RecommendVideos from './videoWrapper/RecommendVideos';
 
 export default class extends React.Component {
     state = {
@@ -14,6 +15,7 @@ export default class extends React.Component {
             mute: [false, { muteOn: false }]
         },
         playSpeed: 1.0,
+        recommendVideos: false,
         vidDuration: 1,
         volume: 1,
     };
@@ -23,6 +25,10 @@ export default class extends React.Component {
     componentDidMount() {
         const startPoint = parseInt(this.props.queryStr.start);
         this.setCurrentByQS(startPoint);
+    };
+
+    activateRecommend = () => {
+        this.setState({ recommendVideos: true });
     };
 
     arrowAniEnd = () => {
@@ -205,14 +211,15 @@ export default class extends React.Component {
             keyState,
             muted,
             playSpeed,
+            recommendVideos,
             vidDuration,
             volume
         } = this.state;
-
         return (
             <React.Fragment>
                 <VideoContainer
                     autoPlay={autoPlay}
+                    activateRecommend={this.activateRecommend}
                     currentTime={currentTime}
                     endVideo={endVideo}
                     getCurrent={this.getCurrent}
@@ -221,6 +228,7 @@ export default class extends React.Component {
                     theaterMode={theaterMode}
                     pauseVideo={pauseVideo}
                     playSpeed={playSpeed}
+                    recommendVideos={recommendVideos}
                     repeatPlay={repeatPlay}
                     videoEnded={videoEnded}
                     videoPaused={videoPaused}
@@ -255,6 +263,12 @@ export default class extends React.Component {
                     keyState={keyState}
                     volume={volume}
                 />
+                {videoEnded && recommendVideos
+                    ?
+                    <RecommendVideos
+                        contentData={contentData}
+                    />
+                    : null}
             </React.Fragment>
         )
     }

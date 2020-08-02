@@ -29,9 +29,15 @@ const CancelTxt = styled.span`
 `;
 
 export default class extends React.Component {
+    clickCancel = e => {
+        e.stopPropagation();
+        this.props.activateRecommend();
+    }
     render() {
         return (
-            <CancelBox>
+            <CancelBox
+                onClick={this.clickCancel}
+            >
                 <CancelTxt>
                     취소
                 </CancelTxt>

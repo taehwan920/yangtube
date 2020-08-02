@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import VideoFrame from './mainFrame/VideoFrame';
 import VideoInfoOuter from './mainFrame/VideoInfoOuter';
 
-
+// width: max-content;
 const MainFrameWrapper = styled.div`
     width: ${props => props.theaterMode ? '100%' : 'max-content'};
-    width: max-content;
+    
     background: inherit;
     
     @media(max-width: 767px) {
@@ -25,6 +25,10 @@ const MainFrameContainer = styled.div`
     
     @media(max-width: 767px) {
         width: ${props => props.theaterMode ? 'max-content' : '100%'};
+    }
+
+    @media(max-width: 1023px) {
+        padding-right: 24px;
     }
 `;
 

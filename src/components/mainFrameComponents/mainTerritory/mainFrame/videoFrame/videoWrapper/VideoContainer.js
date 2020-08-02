@@ -61,9 +61,17 @@ export default class extends React.Component {
         this.isFullscreen = document.fullscreenElement;
     };
 
+    componentDidMount() {
+        const { autoPlay, videoEnded } = this.props;
+        if (!autoPlay && videoEnded) {
+            this.props.activateRecommend();
+        }
+    };
+
     render() {
         const {
             autoPlay,
+            activateRecommend,
             currentTime,
             endVideo,
             getCurrent,
@@ -72,6 +80,7 @@ export default class extends React.Component {
             theaterMode,
             pauseVideo,
             playSpeed,
+            recommendVideos,
             repeatPlay,
             videoEnded,
             videoPaused,
@@ -102,10 +111,10 @@ export default class extends React.Component {
                     volume={volume}
                     contentData={contentData}
                 />
-                {autoPlay && videoEnded
+                {autoPlay && videoEnded && !recommendVideos
                     ?
                     <WaitAutoPlay
-                        vidRef={vidRef}
+                        activateRecommend={activateRecommend}
                         contentData={contentData}
                     />
                     : null}

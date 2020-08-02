@@ -38,8 +38,8 @@ const VideoFrame = styled.div`
     
     ${props => !props.theaterMode && css`
         @media(max-width: 1023px) {
-            width: calc(${props => props.viewWidth}px - 24px);
-            height: calc((${props => props.viewWidth}px - 24px) / 16 * 9);
+            width: calc(${props => props.viewWidth}px - 48px);
+            height: calc((${props => props.viewWidth}px - 48px) / 16 * 9);
         }
     
         @media(min-width: 1024px) and (max-width: 1754px) {

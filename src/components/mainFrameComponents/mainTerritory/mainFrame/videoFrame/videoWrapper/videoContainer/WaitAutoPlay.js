@@ -31,7 +31,7 @@ const ThumbImg = styled.img`
 
 const InterfaceBox = styled.section`
     width: max-content;
-    height: max-content;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -80,7 +80,6 @@ export default class extends React.Component {
     };
 
     checkSlide = () => {
-        console.log('scrolling')
         const videoFrame = document.querySelector('.video-frame');
         const HeaderHeight = 56;
         const VFTopPos = videoFrame.offsetTop + HeaderHeight;
@@ -97,6 +96,7 @@ export default class extends React.Component {
 
     render() {
         const {
+            activateRecommend,
             contentData
         } = this.props;
         const {
@@ -123,7 +123,9 @@ export default class extends React.Component {
                         canceledByScroll={canceledByScroll}
                         contentData={contentData}
                     />
-                    <Cancel />
+                    <Cancel
+                        activateRecommend={activateRecommend}
+                    />
                     {canceledByScroll
                         ? <AutoPlayPaused
                             canceledByScroll={canceledByScroll}

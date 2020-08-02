@@ -12,7 +12,6 @@ const VideoInfoOuterWrapper = styled.div`
 
     @media(min-width: 1024px) {
         width: ${props => props.theaterMode ? 'min-content' : 'max-content'};
-        width: max-content;
     }
 
     @media(min-width: 1755px) {
@@ -33,7 +32,6 @@ const VideoInfoOuterWrapper = styled.div`
 
     @media(max-width: 1023px) {
         width: 100%;
-        width: max-content;
     }
 
     @media(max-width: 500px) {
