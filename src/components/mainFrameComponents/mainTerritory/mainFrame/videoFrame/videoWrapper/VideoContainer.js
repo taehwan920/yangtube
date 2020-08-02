@@ -98,6 +98,8 @@ export default class extends React.Component {
             >
                 <Video
                     ref={vidRef}
+                    activateRecommend={activateRecommend}
+                    autoPlay={autoPlay}
                     currentTime={currentTime}
                     getCurrent={getCurrent}
                     getDuration={getDuration}

@@ -23,8 +23,6 @@ export default class extends React.Component {
         this.videoRef.volume = this.props.volume;
     };
 
-
-
     playPause = () => {
         this.props.videoPaused
             ? this.videoRef['pause']()
@@ -45,6 +43,9 @@ export default class extends React.Component {
         if (this.props.repeatPlay) return;
         if (!this.props.videoEnded) {
             this.props.endVideo();
+        };
+        if (!this.props.autoPlay) {
+            this.props.activateRecommend();
         }
         this.props.pauseVideo();
     };
