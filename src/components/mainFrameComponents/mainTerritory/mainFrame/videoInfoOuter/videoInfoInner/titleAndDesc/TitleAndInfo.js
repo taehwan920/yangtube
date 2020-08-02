@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import LikeAndDislike from './titleAndInfo/LikeAndDislike';
 import More from './titleAndInfo/More';
+import ShareAndSave from './titleAndInfo/ShareAndSave';
 
 const TitleAndInfo = styled.div`
     width: 100%;
@@ -55,9 +56,9 @@ export const LikeAndDislikeBox = styled.div`
 
 export const LikeRateChartBox = styled.div`
     width: 100%;
-    height: 2px;
+    height: 20px;
     position: absolute;
-    bottom: -11px;
+    bottom: -29px;
     display: flex;
 `;
 
@@ -143,16 +144,16 @@ export const TitleInfoClickEffect = styled.div`
     }
 `;
 
-export const titleItems = {
-    title: '제목',
-    viewsAndDate: ['조회수', '168,472회', '·', '2020. 7. 19.'],
-    pictograms: {
-        like: [<i class="fas fa-thumbs-up"></i>, 4327, '천'],
-        dislike: [<i class="fas fa-thumbs-up"></i>, 1364, '천'],
-        share: ['공유'],
-        save: ['저장'],
-    }
-};
+// export const titleItems = {
+//     title: '제목',
+//     viewsAndDate: ['조회수', '168,472회', '·', '2020. 7. 19.'],
+//     pictograms: {
+//         like: [<i class="fas fa-thumbs-up"></i>, 4327, '천'],
+//         dislike: [<i class="fas fa-thumbs-up"></i>, 1364, '천'],
+//         share: ['공유'],
+//         save: ['저장'],
+//     }
+// };
 
 export default class extends React.Component {
     parseDate = (num, lang) => {
@@ -189,23 +190,8 @@ export default class extends React.Component {
                         parseNum={parseNum}
                         contentData={contentData}
                     />
-                    <TitleFunctionsItems>
-                        <TitleFunctionsIcons>
-                            <i class="fas fa-share"></i>
-                        </TitleFunctionsIcons>
-                        <TitleFunctionsTexts>
-                            {titleItems.pictograms.share[0]}
-                        </TitleFunctionsTexts>
-                    </TitleFunctionsItems>
-                    <TitleFunctionsItems>
-                        <TitleFunctionsIcons>
-                            <i class="fas fa-folder-plus"></i>
-                        </TitleFunctionsIcons>
-                        <TitleFunctionsTexts>
-                            {titleItems.pictograms.save[0]}
-                        </TitleFunctionsTexts>
-                    </TitleFunctionsItems>
-                    <More></More>
+                    <ShareAndSave />
+                    <More />
                 </TitleFunctionsWrapper>
             </TitleAndInfo>
         )

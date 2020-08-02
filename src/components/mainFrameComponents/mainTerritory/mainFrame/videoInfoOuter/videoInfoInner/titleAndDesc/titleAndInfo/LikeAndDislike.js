@@ -10,7 +10,8 @@ import {
     DislikeRate,
 } from '../TitleAndInfo';
 import styled from 'styled-components'
-import { titleItems } from '../TitleAndInfo';
+import LikePopUp from './likeDislike/LikePopUp';
+import LikeRatePopUp from './likeDislike/LikeRatePopUp';
 
 const LikeEffect = styled.div`
     background-color: rgba(0, 0, 0, 0.0);
@@ -44,7 +45,10 @@ const LikeTexts = styled.span`
 export default class extends React.Component {
     state = {
         liked: false,
-        disliked: false
+        disliked: false,
+        likeHovering: false,
+        rateHovering: false,
+        isLike: null,
     };
 
     sanitize = picked => {
@@ -60,12 +64,51 @@ export default class extends React.Component {
             [statesArr[1]]: false
         })
     };
+
+    onLikeBox = () => {
+        this.setState({
+            likeHovering: true,
+            isLike: true
+        });
+    };
+
+    onDislikeBox = () => {
+        this.setState({
+            likeHovering: true,
+            isLike: false
+        });
+    };
+
+    mouseOutOfLike = () => {
+        this.setState({
+            likeHovering: false
+        });
+    };
+
+    mouseOnRate = () => {
+        this.setState({
+            rateHovering: true,
+        });
+    };
+
+    mouseOutOfRate = () => {
+        this.setState({
+            rateHovering: false
+        });
+    };
+
     render() {
         const {
             contentData,
             parseNum
         } = this.props;
-        const { liked, disliked } = this.state;
+        const {
+            liked,
+            disliked,
+            likeHovering,
+            rateHovering,
+            isLike,
+        } = this.state;
         const likeNum = contentData.likes;
         const dislikeNum = contentData.dislikes;
         const total = likeNum + dislikeNum;
@@ -79,8 +122,11 @@ export default class extends React.Component {
                     liked={liked}
                     onClick={this.clickThumb('liked')}
                 >
-                    <LikeIcon>
-                        {titleItems.pictograms.like[0]}
+                    <LikeIcon
+                        onMouseOver={this.onLikeBox}
+                        onMouseLeave={this.mouseOutOfLike}
+                    >
+                        <i class="fas fa-thumbs-up"></i>
                         <LikeEffect />
                     </LikeIcon>
                     <LikeTexts>
@@ -91,24 +137,38 @@ export default class extends React.Component {
                     disliked={disliked}
                     onClick={this.clickThumb('disliked')}
                 >
-                    <DislikeIcon>
-                        {titleItems.pictograms.dislike[0]}
+                    <DislikeIcon
+                        onMouseOver={this.onDislikeBox}
+                        onMouseLeave={this.mouseOutOfLike}
+                    >
+                        <i class="fas fa-thumbs-up"></i>
                         <DislikeEffect />
                     </DislikeIcon>
                     <LikeTexts>
                         {dislikeItem}
                     </LikeTexts>
                 </DislikeBox>
-                <LikeRateChartBox>
+                <LikeRateChartBox
+                    onMouseOver={this.mouseOnRate}
+                    onMouseLeave={this.mouseOutOfRate}
+                >
                     <LikeRate
                         likeRate={likeRate}
                         liked={liked}
                         disliked={disliked}
-                    ></LikeRate>
+                    />
                     <DislikeRate
                         dislikeRate={dislikeRate}
                     ></DislikeRate>
                 </LikeRateChartBox>
+                <LikePopUp
+                    likeHovering={likeHovering}
+                    isLike={isLike}
+                />
+                <LikeRatePopUp
+                    rateHovering={rateHovering}
+                    contentData={contentData}
+                />
             </LikeAndDislikeBox>
         )
     }
