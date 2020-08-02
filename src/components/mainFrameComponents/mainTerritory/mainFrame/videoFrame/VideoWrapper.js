@@ -68,6 +68,8 @@ export default class extends React.Component {
         const shiftKey = 16;
         const n = 78;
 
+        this.props.moveOnVideo();
+
         let newCurrent;
         if (e.keyCode === leftArrow) {
             e.preventDefault();
@@ -178,7 +180,6 @@ export default class extends React.Component {
 
     updateCurrent = (ref, du) => e => {
         const newCurrent = (e.nativeEvent.offsetX / ref.offsetWidth) * du;
-        console.log(newCurrent);
         this.vidRef.current.videoRef.currentTime = newCurrent;
         this.setState({ currentTime: newCurrent });
     };

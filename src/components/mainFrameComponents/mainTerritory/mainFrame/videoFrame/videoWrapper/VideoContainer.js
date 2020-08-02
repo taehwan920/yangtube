@@ -30,7 +30,7 @@ const VideoContainerBox = styled.div`
             if (props.isFullscreen) {
                 return `100%`
             } else {
-                return `${props.viewHeight * 0.822 / 9 * 16}px`
+                return `${props.viewHeight * 0.8235 / 9 * 16}px`
             }
         }};
             height: 100%;
@@ -105,6 +105,7 @@ export default class extends React.Component {
                 {autoPlay && videoEnded
                     ?
                     <WaitAutoPlay
+                        vidRef={vidRef}
                         contentData={contentData}
                     />
                     : null}

@@ -10,12 +10,17 @@ const GradientPart = styled.div`
     height: 50.625%;
     padding-top: 49px;
     position: absolute;
-    bottom: 0;
+    bottom: ${props => props.theaterMode ? '0px' : '1.5px'};
 `;
 export default class extends React.Component {
     render() {
+        const {
+            theaterMode
+        } = this.props;
         return (
-            <GradientPart />
+            <GradientPart
+                theaterMode={theaterMode}
+            />
         )
     }
 };

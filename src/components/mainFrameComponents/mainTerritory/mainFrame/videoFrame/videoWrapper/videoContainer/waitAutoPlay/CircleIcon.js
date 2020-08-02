@@ -10,6 +10,10 @@ const NextBtnBox = styled.div`
     justify-content: center;
     align-items: center;
     cursor: pointer;
+
+    @media (max-width: 849px) {
+        margin: 4px 0px;
+    }
 `;
 
 const CircleBox = styled.div`
@@ -44,6 +48,7 @@ const NextIcon = styled.span`
 export default class extends React.Component {
     render() {
         const {
+            canceledByScroll,
             contentData
         } = this.props;
         return (
@@ -54,9 +59,14 @@ export default class extends React.Component {
                             <i class="fas fa-step-forward"></i>
                         </NextIcon>
                     </CenterCircle>
-                    <RotateCircle
-                        contentData={contentData}
-                    />
+                    {canceledByScroll
+                        ? null
+                        : <RotateCircle
+                            canceledByScroll={canceledByScroll}
+                            contentData={contentData}
+                        />
+                    }
+
                 </CircleBox>
             </NextBtnBox>
         )

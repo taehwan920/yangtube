@@ -38,9 +38,12 @@ export default class extends React.Component {
     }
 
     render() {
-        const { toggleGuide } = this.props;
+        const {
+            toggleGuide,
+            contentData,
+        } = this.props;
         const { VKbd, miniSearchBox } = this.state;
-        ChangeTitle('Main Page!');
+        ChangeTitle(contentData.title);
         return (
             <HeaderWrapper>
                 {miniSearchBox

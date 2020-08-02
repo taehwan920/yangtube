@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import CircleIcon from './waitAutoPlay/CircleIcon';
-import StopBox from './waitAutoPlay/StopBox';
+import AutoPlayPaused from './waitAutoPlay/AutoPlayPaused';
 import Cancel from './waitAutoPlay/Cancel';
+import { debounce } from '../../../../../../Mixin';
 
 const WatingWrapper = styled.div`
     background: black;
@@ -42,29 +43,64 @@ const NextTxt = styled.span`
     font-size: 15px;
     color: rgba(255, 255, 255, 0.7);
     margin-bottom: 8px;
+
+    @media (max-width: 849px) {
+        font-size: 12px;
+        margin-bottom: 0px;
+    }
 `;
 
 const NextTitle = styled.span`
     font-size: 24px;
     color: white;
     margin-bottom: 4px;
+
+    @media (max-width: 849px) {
+        font-size: 18px;
+    }
 `;
 
 const NextUploader = styled.span`
     font-size: 16px;
     color: white;
+
+    @media (max-width: 849px) {
+        font-size: 14px;
+    }
 `;
 
 export default class extends React.Component {
     state = {
-        waitCanceled: false
-    }
+        canceledByScroll: false,
+        waitCanceled: false,
+    };
+
+    componentDidMount() {
+        window.addEventListener('scroll', debounce(this.checkSlide));
+    };
+
+    checkSlide = () => {
+        console.log('scrolling')
+        const videoFrame = document.querySelector('.video-frame');
+        const HeaderHeight = 56;
+        const VFTopPos = videoFrame.offsetTop + HeaderHeight;
+        const VFHeight = videoFrame.clientHeight;
+        const cancelBorderLine = VFTopPos + (VFHeight * 0.25);
+
+        const isCrossingCancelLine = window.scrollY > cancelBorderLine;
+        if (isCrossingCancelLine) {
+            this.setState({ canceledByScroll: true });
+        } else {
+            this.setState({ canceledByScroll: false });
+        }
+    };
+
     render() {
         const {
             contentData
         } = this.props;
         const {
-            waitCanceled
+            canceledByScroll,
         } = this.state;
         const {
             nextThumb,
@@ -84,11 +120,14 @@ export default class extends React.Component {
                         {uploader}
                     </NextUploader>
                     <CircleIcon
+                        canceledByScroll={canceledByScroll}
                         contentData={contentData}
                     />
                     <Cancel />
-                    {waitCanceled
-                        ? <StopBox />
+                    {canceledByScroll
+                        ? <AutoPlayPaused
+                            canceledByScroll={canceledByScroll}
+                        />
                         : null}
                 </InterfaceBox>
                 <NextThumbBox>

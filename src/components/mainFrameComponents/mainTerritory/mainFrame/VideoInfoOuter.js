@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import VideoNavPC from '../../videoNavComponents/VideoNavPC';
 import VideoInfoInner from './videoInfoOuter/VideoInfoInner';
 

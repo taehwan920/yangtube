@@ -210,6 +210,7 @@ export default class extends React.Component {
         return (
             <VideoFrame
                 ref={ref => this.videoFrameRef = ref}
+                className="video-frame"
                 onClick={this.PauseAndEvent}
                 onContextMenu={this.openCtxMenu}
                 onKeyDown={this.keyEvent}
@@ -228,6 +229,7 @@ export default class extends React.Component {
                     ref={this.videoWrapperRef}
                     autoPlay={autoPlay}
                     endVideo={endVideo}
+                    moveOnVideo={this.moveOnVideo}
                     theaterMode={theaterMode}
                     toggleAutoPlay={toggleAutoPlay}
                     toggleFullVF={this.toggleFullVF}

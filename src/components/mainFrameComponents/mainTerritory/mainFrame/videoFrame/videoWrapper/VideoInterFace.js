@@ -34,7 +34,12 @@ export default class extends React.Component {
                         contentData={contentData}
                     />
                     : null}
-                {videoActivated ? <VideoBottomGradient /> : null}
+                {videoActivated
+                    ?
+                    <VideoBottomGradient
+                        theaterMode={theaterMode}
+                    />
+                    : null}
                 <VideoBottom
                     autoPlay={autoPlay}
                     currentTime={currentTime}
