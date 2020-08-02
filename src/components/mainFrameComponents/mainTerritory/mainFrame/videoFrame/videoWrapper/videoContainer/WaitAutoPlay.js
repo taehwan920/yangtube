@@ -79,6 +79,10 @@ export default class extends React.Component {
         window.addEventListener('scroll', debounce(this.checkSlide));
     };
 
+    componentWillUnmount() {
+        window.removeEventListener('scroll', debounce(this.checkSlide));
+    };
+
     checkSlide = () => {
         const videoFrame = document.querySelector('.video-frame');
         const HeaderHeight = 56;

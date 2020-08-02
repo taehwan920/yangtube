@@ -15,7 +15,7 @@ const ProgressBox = styled.div`
     position: absolute;
     width: 100%;
     height: 5px;
-    bottom: 6px;
+    bottom: 3px;
 `;
 
 const TotalProgress = styled.div`

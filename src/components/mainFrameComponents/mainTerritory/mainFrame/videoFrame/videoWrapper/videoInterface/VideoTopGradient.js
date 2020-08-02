@@ -13,8 +13,6 @@ const GradientPart = styled.div`
     top: 0;
 `;
 
-
-
 const GradientTitle = styled.div`
     width: max-content;
     height: max-content;

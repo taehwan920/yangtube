@@ -37,7 +37,7 @@ export default class extends React.Component {
         const getVideos = this.getNextAndRestVideos();
         const nextVideo = getVideos[0];
         const restOfVideos = getVideos[1];
-        const doubleRest = shuffle([...restOfVideos, ...restOfVideos]);
+        const doubleRest = [...shuffle(restOfVideos), ...shuffle(restOfVideos)];
         return (
             <VideoNavNonPCWrapper>
                 <NavInners
