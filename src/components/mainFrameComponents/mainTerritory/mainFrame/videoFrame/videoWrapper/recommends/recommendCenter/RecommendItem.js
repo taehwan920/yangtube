@@ -5,7 +5,7 @@ const RecommendItemBox = styled.a`
     width: ${props => (props.frameWidth - 100) / props.columns}px;
     height: ${props => (props.frameWidth - 100) / props.columns / 16 * 9}px;
     max-width: 381px;
-    margin: 2px;
+    max-height: ${381 / 16 * 9}px;
     position: relative;
     cursor: pointer;
 `;

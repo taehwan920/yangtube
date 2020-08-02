@@ -266,6 +266,7 @@ export default class extends React.Component {
                 {videoEnded && recommendVideos
                     ?
                     <RecommendVideos
+                        theaterMode={theaterMode}
                         contentData={contentData}
                     />
                     : null}

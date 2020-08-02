@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import VideoSummary from '../../../../../../DB/VideoSummary';
-import { shuffle } from '../../../../../../Mixin';
 import RecommendItem from './recommendCenter/RecommendItem';
 
 const RecommendsBox = styled.article`
     width: max-content;
-    height: max-content;
+    height: auto;
     display: grid;
     grid-template-rows: repeat(${props => props.rows}, 1fr);
     grid-template-columns: repeat(${props => props.columns}, 1fr);
+    gap: 4px;
     z-index: 3;
 `;
 
@@ -20,7 +20,6 @@ export default class extends React.Component {
         columns: 0,
     };
 
-    frameWidth;
     componentDidMount() {
         this.changeRecommends();
         window.addEventListener('resize', this.changeRecommends);
@@ -30,16 +29,29 @@ export default class extends React.Component {
         window.removeEventListener('resize', this.changeRecommends);
     };
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.theaterMode !== this.props.theaterMode) {
+            this.changeRecommends();
+        };
+    };
+
     changeRecommends = () => {
         const videoFrame = document.querySelector('.video-frame');
         const windowWidth = window.innerWidth;
-        console.log(videoFrame.clientWidth, window.innerWidth);
         if (windowWidth <= 520) {
-            this.setState({
-                frameWidth: videoFrame.clientWidth,
-                rows: 1,
-                columns: 2,
-            });
+            if (this.props.theaterMode) {
+                this.setState({
+                    frameWidth: videoFrame.clientWidth,
+                    rows: 3,
+                    columns: 2,
+                });
+            } else {
+                this.setState({
+                    frameWidth: videoFrame.clientWidth,
+                    rows: 1,
+                    columns: 2,
+                });
+            }
         } else if (windowWidth > 520 && windowWidth <= 687) {
             this.setState({
                 frameWidth: videoFrame.clientWidth,
@@ -83,7 +95,7 @@ export default class extends React.Component {
             columns,
         } = this.state;
         const getVideos = this.getRecommendVideos();
-        const doubled = [...shuffle(getVideos), ...shuffle(getVideos)];
+        const doubled = [...getVideos, ...getVideos];
         const slicedVideos = doubled.slice(0, rows * columns);
         return (
             <RecommendsBox
