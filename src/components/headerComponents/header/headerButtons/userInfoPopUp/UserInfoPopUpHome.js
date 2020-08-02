@@ -1,6 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PopUpArticle, PopUpSection, RightArrowIcon, UserName, UserInfoHeader, UserInfoCircleIcon, LimitedModeSpan } from '../HeaderUserInfoPopUp';
+import {
+    PopUpArticle,
+    PopUpSection,
+    RightArrowIcon,
+    UserName,
+    UserInfoHeader,
+    UserInfoCircleIcon,
+    // LimitedModeSpan 
+} from '../HeaderUserInfoPopUp';
 
 const PopUpArticleString = styled.span`
     width: 202px;
@@ -27,7 +35,7 @@ const popUpItems = [
     [<i class="fas fa-exclamation"></i>, '의견 보내기']
 ];
 
-const limitedMode = ['제한 모드: 사용 안함', '제한 모드: 사용 중', <i class="fas fa-chevron-right"></i>, 'limitedMode'];
+// const limitedMode = ['제한 모드: 사용 안함', '제한 모드: 사용 중', <i class="fas fa-chevron-right"></i>, 'limitedMode'];
 
 export default class extends React.Component {
     buildItems = (item) => {
@@ -59,12 +67,12 @@ export default class extends React.Component {
                 <PopUpSection>
                     {popUpItems.map(item => this.buildItems(item))}
                 </PopUpSection>
-                <PopUpSection>
+                {/* <PopUpSection>
                     <PopUpArticle onClick={this.props.toggleMode(limitedMode[3])}>
                         <LimitedModeSpan>{limitedMode[0]}</LimitedModeSpan>
                         <RightArrowIcon>{limitedMode[2]}</RightArrowIcon>
                     </PopUpArticle>
-                </PopUpSection>
+                </PopUpSection> */}
             </React.Fragment>
         )
     }

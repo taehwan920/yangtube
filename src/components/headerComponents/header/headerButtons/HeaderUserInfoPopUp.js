@@ -12,7 +12,7 @@ const UserInfoCommonSetUp = css`
 
 const UserInfoPopUpWrapper = styled.div`
     background: rgba(255, 255, 255, 0.97);
-    border: solid 0.4px rgba(0, 0, 0, 0.3);
+    border: solid 0.4px rgba(0, 0, 0, 0.1);
     border-top: none;
     position: absolute;
     top: 42px;

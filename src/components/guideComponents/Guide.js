@@ -187,6 +187,21 @@ export default class extends React.Component {
 
     makeArticle(item) {
         if (item.length > 2) {
+            if (item[1] === '홈') {
+                return (
+                    <GuideSectionLink
+                        href="#"
+                        rel="noreferrer noopener"
+                    >
+                        <ArticleHomeIcon>
+                            {item[0]}
+                        </ArticleHomeIcon>
+                        <ArticleItem>
+                            {item[1]}
+                        </ArticleItem>
+                    </GuideSectionLink>
+                )
+            }
             return (
                 <GuideSectionLink
                     href={item[2]}
