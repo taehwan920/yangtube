@@ -171,7 +171,6 @@ export default class extends React.Component {
         } = this.props;
         const viewsItem = parseNum(contentData.views, 'kr');
         const dateItem = this.parseDate(contentData.timestamp, 'kr');
-
         return (
             <TitleAndInfo>
                 <ViewsAndDateWrapper>

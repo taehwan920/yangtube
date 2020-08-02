@@ -45,9 +45,8 @@ export default class extends React.Component {
                 return [this.parseDecimal(num, 10 ** 4), '만'];
             } else if (num / 10 ** 3 > 1) {
                 return [this.parseDecimal(num, 10 ** 3), '천'];
-            } else {
-                return num
             }
+            return [num, '']
         }
     };
 

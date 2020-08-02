@@ -36,7 +36,7 @@ export default class extends React.Component {
             <NextButton
                 onMouseOver={this.isHovering}
                 onMouseOut={this.notHovering}
-                href={contentData.nextPage}
+                href={contentData.nextUrl}
             >
                 <i class="fas fa-step-forward"></i>
                 <NextThumb

@@ -5,6 +5,10 @@ import WaitAutoPlay from './videoContainer/WaitAutoPlay';
 
 const VideoContainerBox = styled.div`
     position: relative;
+    
+    &:focus {
+        outline: none;
+    }
     background-color: ${props => {
         if (props.theaterMode) {
             return 'black'

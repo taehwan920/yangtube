@@ -8,6 +8,7 @@ const VideoControlBox = styled.div`
     height: 36px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     z-index: auto;
 `;
 
