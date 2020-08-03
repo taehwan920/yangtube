@@ -7,7 +7,13 @@ import MiniSearch from './header/MiniSearch';
 
 
 const HeaderWrapper = styled.header`
-    background-color: rgba(255, 255, 255, 0.97);
+    background-color: ${props => {
+        if (props.theaterMode || props.nightMode) {
+            return props.themeColor.nightMode.header.BG;
+        } else {
+            return props.themeColor.dayMode.header.BG;
+        }
+    }};
     width: 100%;
     height: 56px;
     padding-left: 24px;
@@ -25,40 +31,58 @@ export default class extends React.Component {
         miniSearchBox: false
     };
 
+    componentDidMount() {
+        ChangeTitle(this.props.contentData.title);
+    };
+
     toggleVkbd = () => {
         this.setState({ VKbd: !this.state.VKbd });
-    }
+    };
 
     toggleMiniSearch = () => {
         this.setState({ miniSearchBox: !this.state.miniSearchBox });
-    }
+    };
 
     offMiniSearch = () => {
         this.setState({ miniSearchBox: false });
-    }
+    };
 
     render() {
         const {
+            nightMode,
+            theaterMode,
             toggleGuide,
-            contentData,
+            themeColor,
         } = this.props;
-        const { VKbd, miniSearchBox } = this.state;
-        ChangeTitle(contentData.title);
+        const {
+            VKbd,
+            miniSearchBox
+        } = this.state;
+
         return (
-            <HeaderWrapper>
+            <HeaderWrapper
+                nightMode={nightMode}
+                theaterMode={theaterMode}
+                themeColor={themeColor}
+            >
                 {miniSearchBox
                     ? <MiniSearch
+                        nightMode={nightMode}
                         offMiniSearch={this.offMiniSearch}
+                        theaterMode={theaterMode}
                         toggleVkbd={this.toggleVkbd}
-                    ></MiniSearch>
+                        themeColor={themeColor}
+                    />
                     : <HeaderHome
                         toggleGuide={toggleGuide}
                         toggleMiniSearch={this.toggleMiniSearch}
                         toggleVkbd={this.toggleVkbd}
-                    ></HeaderHome>}
+                        themeColor={themeColor}
+                    />}
                 {VKbd
                     ? <VirtualKeyboard
-                        onClick={() => { this.setState({ VKbd: !VKbd }) }}></VirtualKeyboard>
+                        onClick={() => { this.setState({ VKbd: !VKbd }) }}
+                    />
                     : null}
             </HeaderWrapper>
         )

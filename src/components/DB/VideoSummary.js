@@ -1,4 +1,4 @@
-const videoSummary = [
+export default [
     {
         title: '🐟 오키나와 바닷 속 풍경 [수중 카메라 촬영]',
         pageUrl: '#/home',
@@ -87,6 +87,4 @@ const videoSummary = [
         timestamp: 1543873464007,
         duration: 26
     },
-]
-
-export default videoSummary;
+];

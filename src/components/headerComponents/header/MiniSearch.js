@@ -7,6 +7,13 @@ const GoBackIcon = styled.div`
     height: 40px;
     padding: 8px;
     margin-right: 8px;
+    color: ${props => {
+        if (props.theaterMode || props.nightMode) {
+            return props.themeColor.nightMode.normalFont;
+        } else {
+            return props.themeColor.dayMode.normalFont;
+        }
+    }};
     text-align: center;
     font-size: 20px;
     cursor: pointer;
@@ -14,16 +21,30 @@ const GoBackIcon = styled.div`
 
 export default class extends React.Component {
     render() {
-        const { offMiniSearch, toggleVkbd } = this.props;
+        const {
+            nightMode,
+            offMiniSearch,
+            theaterMode,
+            toggleVkbd,
+            themeColor,
+        } = this.props;
         return (
             <React.Fragment>
-                <GoBackIcon onClick={offMiniSearch}>
+                <GoBackIcon
+                    onClick={offMiniSearch}
+                    nightMode={nightMode}
+                    theaterMode={theaterMode}
+                    themeColor={themeColor}
+                >
                     <i class="fas fa-arrow-left"></i>
                 </GoBackIcon>
                 <MiniSearchBox
                     offMiniSearch={offMiniSearch}
+                    nightMode={nightMode}
+                    theaterMode={theaterMode}
                     toggleVkbd={toggleVkbd}
-                ></MiniSearchBox>
+                    themeColor={themeColor}
+                />
             </React.Fragment>
         )
     }

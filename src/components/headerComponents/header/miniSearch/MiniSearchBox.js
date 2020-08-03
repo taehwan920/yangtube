@@ -28,19 +28,44 @@ const InputContainer = styled.div`
     border: 0.5px solid rgba(0, 0, 0, 0.15);
     border-right: 0.25px solid rgba(0, 0, 0, 0.15);
     position: relative;
+
+    ${props => {
+        if (props.theaterMode || props.nightMode) {
+            return `
+                border: 0.5px solid ${props.themeColor.nightMode.header.searchBorder};
+                border-right: 0.25px solid ${props.themeColor.nightMode.header.searchBorder};
+                background: ${props.themeColor.nightMode.header.searchBoxBG};
+            `;
+        } else {
+            return `
+                border: 0.5px solid ${props.themeColor.dayMode.header.searchBorder};
+                border-right: 0.25px solid ${props.themeColor.dayMode.header.searchBorder};
+                background: ${props.themeColor.dayMode.header.searchBoxBG};
+            `;
+        }
+    }};
 `;
 
 const InputBox = styled.div`
+    background: inherit;
     width: 100%;
     height: 100%;
     padding-right: 34px;
 `;
 
 const SearchInput = styled.input`
+    background: inherit;
     width: 100%;
     height: 24px;
     border: none;
     font-size: 16px;
+    color: ${props => {
+        if (props.theaterMode || props.nightMode) {
+            return props.themeColor.nightMode.normalFont;
+        } else {
+            return props.themeColor.dayMode.normalFont;
+        }
+    }};
     
     &:focus {
         outline: none;
@@ -49,9 +74,16 @@ const SearchInput = styled.input`
 
 const KbdIcon = styled.span`
     position: absolute;
-    right: 12px;
-    font-size: 18px;
     top: 4px;
+    right: 12px;
+    color: ${props => {
+        if (props.theaterMode || props.nightMode) {
+            return props.themeColor.nightMode.grayFont;
+        } else {
+            return props.themeColor.dayMode.grayFont;
+        }
+    }};
+    font-size: 18px;
     opacity: 0.6;
 
     &:hover {
@@ -64,8 +96,21 @@ const SearchBtn = styled.button`
     width: 65px;
     height: 30px;
     font-size: 14px;
-    color: rgba(0, 0, 0, 0.4);
-    border: 0.5px solid rgba(0, 0, 0, 0.15);
+    ${props => {
+        if (props.theaterMode || props.nightMode) {
+            return `
+                color: ${props.themeColor.nightMode.grayFont};
+                border: 0.5px solid ${props.themeColor.nightMode.header.searchBorder};
+                background: ${props.themeColor.nightMode.header.searchBtnBG};
+            `;
+        } else {
+            return `
+                color: ${props.themeColor.dayMode.grayFont};
+                border: 0.5px solid ${props.themeColor.dayMode.header.searchBorder};
+                background: ${props.themeColor.dayMode.header.searchBtnBG};
+            `;
+        }
+    }};
 `;
 
 export default class extends React.Component {
@@ -83,25 +128,50 @@ export default class extends React.Component {
     }
 
     render() {
-        const { toggleVkbd } = this.props;
+        const {
+            toggleVkbd,
+            nightMode,
+            theaterMode,
+            themeColor,
+        } = this.props;
         return (
             <SearchWrapper>
                 <SearchBoxAndIcon>
-                    <InputContainer>
-                        <InputBox>
+                    <InputContainer
+                        nightMode={nightMode}
+                        theaterMode={theaterMode}
+                        themeColor={themeColor}
+                    >
+                        <InputBox
+                            nightMode={nightMode}
+                            theaterMode={theaterMode}
+                            themeColor={themeColor}
+                        >
                             <SearchInput
+                                nightMode={nightMode}
+                                theaterMode={theaterMode}
+                                themeColor={themeColor}
                                 id="searchInput"
                                 placeholder="검색"
                                 type="text"
                                 autoComplete="off"
                             />
                         </InputBox>
-                        <KbdIcon onClick={toggleVkbd}>
+                        <KbdIcon
+                            onClick={toggleVkbd}
+                            nightMode={nightMode}
+                            theaterMode={theaterMode}
+                            themeColor={themeColor}
+                        >
                             <i class="fas fa-keyboard"></i>
                         </KbdIcon>
                     </InputContainer>
                 </SearchBoxAndIcon>
-                <SearchBtn>
+                <SearchBtn
+                    nightMode={nightMode}
+                    theaterMode={theaterMode}
+                    themeColor={themeColor}
+                >
                     <i class="fas fa-search"></i>
                 </SearchBtn>
             </SearchWrapper>

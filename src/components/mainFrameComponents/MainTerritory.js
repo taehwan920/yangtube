@@ -37,7 +37,6 @@ const MainTerritory = styled.div`
 export default class extends React.Component {
     state = {
         newMargin: null,
-        theaterMode: false,
         autoPlay: true,
     };
 
@@ -64,19 +63,16 @@ export default class extends React.Component {
         this.setState({ autoPlay: !this.state.autoPlay });
     };
 
-    toggleTheater = () => {
-        this.setState({ theaterMode: !this.state.theaterMode });
-    };
-
     render() {
         const {
+            theaterMode,
+            toggleTheater,
             queryStr,
             contentData
         } = this.props;
         const {
             autoPlay,
             newMargin,
-            theaterMode
         } = this.state;
         return (
             <MainTerritory
@@ -87,7 +83,7 @@ export default class extends React.Component {
                     newMargin={newMargin}
                     theaterMode={theaterMode}
                     toggleAutoPlay={this.toggleAutoPlay}
-                    toggleTheater={this.toggleTheater}
+                    toggleTheater={toggleTheater}
                     queryStr={queryStr}
                     contentData={contentData}
                 />

@@ -28,7 +28,7 @@ const MainFrameContainer = styled.div`
     }
 
     @media(max-width: 1023px) {
-        padding-right: 24px;
+        padding-right: ${props => props.theaterMode ? '0px' : '24px'};
     }
 `;
 
