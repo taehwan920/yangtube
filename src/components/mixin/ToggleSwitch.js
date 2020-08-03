@@ -30,7 +30,7 @@ const ToggleSwitchBtn = styled.div`
     position: absolute;
     bottom: 1.5px;
     ${ToggleTransition}
-    background-color: ${props => props.switchON ? '#3DA5FF' : '#909090'};
+    background-color: ${props => props.switchON ? '#065FD4' : '#909090'};
     right: ${props => props.switchON ? '7px' : '27px'};
 `;
 
