@@ -7,6 +7,7 @@ export default {
             searchBtnBG: '#F0F0F0',
             iconColor: '#5E5E5E',
             plusIconColor: 'white',
+            pictogramColor: '#909090',
         },
         main: {
             BG: '#F9F9F9',
@@ -24,6 +25,7 @@ export default {
             searchBtnBG: '#313131',
             iconColor: 'white',
             plusIconColor: 'black',
+            pictogramColor: '#9A9A9A',
         },
         main: {
             BG: '#181818',

@@ -23,9 +23,9 @@ const UserPopUpPictogram = styled.span`
     line-height: 22px;
     color: ${props => {
         if (props.nightMode) {
-            return props.themeColor.nightMode.grayFont;
+            return props.themeColor.nightMode.header.pictogramColor;
         } else {
-            return props.themeColor.dayMode.grayFont;
+            return props.themeColor.dayMode.header.pictogramColor;
         }
     }};
 `;
