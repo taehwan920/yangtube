@@ -51,6 +51,7 @@ export default class extends React.Component {
         const video = document.querySelector('.video');
         const directedTime = this.parseTimestamp(str);
         video.currentTime = directedTime;
+        window.scrollTo(0, 0);
     };
 
     render() {

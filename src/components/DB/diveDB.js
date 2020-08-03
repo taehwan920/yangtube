@@ -75,10 +75,10 @@ const dive = {
             likes: 2177,
             replies: [
                 {
-                    name: 'Time Traveler',
-                    iconColor: '#004C3F',
-                    timestamp: 1596420999291,
-                    content: `저요 저요!`,
+                    name: 'Time Traveler 제자',
+                    iconColor: '#3B513A',
+                    timestamp: 1596447318280,
+                    content: `00:10 썸네일`,
                     likes: 1
                 }
             ]
@@ -169,19 +169,19 @@ const dive = {
             iconColor: '#0098A6',
             timestamp: 1596031854681,
             content:
-                `            나
-            는
-            세
-            로
-            쓰
-            기
-            빌
-            런
-            이
-            다
-            하
-            하
-            하`,
+                `나
+는
+세
+로
+쓰
+기
+빌
+런
+이
+다
+하
+하
+하`,
             likes: 328,
             replies: []
         },
