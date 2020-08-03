@@ -22,7 +22,10 @@ export default class extends React.Component {
         hovering: false
     }
     render() {
-        const { commentItem } = this.props;
+        const {
+            commentItem,
+            contentData,
+        } = this.props;
         const { name, iconColor, timestamp, content, likes } = commentItem;
         const { hovering } = this.state;
         return (
@@ -40,6 +43,7 @@ export default class extends React.Component {
                         timestamp={timestamp}
                     />
                     <CommentContent
+                        contentData={contentData}
                         content={content}
                     />
                     <LikeAndReply

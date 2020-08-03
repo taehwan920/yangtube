@@ -59,6 +59,7 @@ export default class extends React.Component {
         } = this.props;
         return (
             <Video
+                className="video"
                 onLoadedData={getDuration}
                 onTimeUpdate={getCurrent}
                 onEnded={this.videoEnded}

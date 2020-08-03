@@ -52,7 +52,7 @@ const RecommendInfoBox = styled.div`
 
 const TitleTxt = styled.div`
     width: 100%;
-    padding-right: 10px;
+    padding-right: 16px;
     color: white;
     font-size: 13px;
     overflow: hidden;

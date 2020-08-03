@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import ContentMapping from './commentContent/ContentMapping';
 
 
 const CommentContentWrapper = styled.div`
@@ -7,20 +8,16 @@ const CommentContentWrapper = styled.div`
     height: auto;
     position: relative;
 `;
-
+// white-space: pre-wrap;
 const CommentContent = styled.div`
     width: 100%;
-    height: ${props => props.realHeight || 'max-content'}px;
+    height: ${props => props.showMore ? props.realHeight : props.showLessLines * 19}px;
+    display: flex;
+    flex-direction: column;
     font-size: 14px;
-    white-space: pre-wrap;
-    ${props => !props.realHeight && css`
+    ${props => !props.showMore && css`
         overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 4;
-        -webkit-box-orient: vertical;
-        text-overflow: '';
     `}
-    
 `;
 
 const CommentHiddenBox = styled.div`
@@ -67,15 +64,25 @@ export default class extends React.Component {
         }
     }
     render() {
-        const { content } = this.props;
-        const { realHeight } = this.state;
+        const {
+            content,
+        } = this.props;
+        const {
+            realHeight,
+            showMore
+        } = this.state;
         const numberOfLine = content.split('\n').length;
+        let showLessLines = numberOfLine > 4 ? 4 : numberOfLine;
         return (
             <CommentContentWrapper>
                 <CommentContent
+                    showLessLines={showLessLines}
                     realHeight={realHeight}
+                    showMore={showMore}
                 >
-                    {content}
+                    <ContentMapping
+                        content={content}
+                    />
                 </CommentContent>
                 <CommentHiddenBox
                     ref={this.contentRef}>
@@ -83,7 +90,8 @@ export default class extends React.Component {
                 </CommentHiddenBox>
                 {numberOfLine <= 4
                     ? null
-                    : <CommentShowMore
+                    :
+                    <CommentShowMore
                         onClick={this.showToggle}>
                         {realHeight ? '간략히' : '자세히 보기'}
                     </CommentShowMore>}

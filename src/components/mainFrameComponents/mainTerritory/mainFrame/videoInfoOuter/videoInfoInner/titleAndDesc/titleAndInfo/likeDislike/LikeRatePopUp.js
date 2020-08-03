@@ -20,7 +20,7 @@ const RatePopUpBox = styled.div`
 export default class extends React.Component {
     addComma = num => {
         const numToStr = String(num);
-        if (numToStr.length > 3) return num;
+        if (numToStr.length <= 3) return num;
         const reversed = numToStr.split('').reverse();
         const newArr = [];
         let cnt = 0;
@@ -35,7 +35,6 @@ export default class extends React.Component {
             }
         };
         const result = newArr.reverse();
-        console.log(result);
         return result.join('');
     };
 

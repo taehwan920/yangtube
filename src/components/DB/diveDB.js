@@ -64,6 +64,26 @@ const dive = {
             ]
         },
         {
+            name: 'Time Traveler',
+            iconColor: '#004C3F',
+            timestamp: 1596420855498,
+            content: `00:12 이걸 누르면 시간 이동이 가능하지.
+물론 00:45 로 이동할 수도 있다네!
+이번엔 여기로 이동해보는 건 어떤가? 01:10
+하지만 01:12로 이동할 수는 없을 거요.
+존재하지 않는 시간으로 이동해 보는 것은 어떻소? 02:25`,
+            likes: 2177,
+            replies: [
+                {
+                    name: 'Time Traveler',
+                    iconColor: '#004C3F',
+                    timestamp: 1596420999291,
+                    content: `저요 저요!`,
+                    likes: 1
+                }
+            ]
+        },
+        {
             name: '관심맨',
             iconColor: '#DD1828',
             timestamp: 1595687284807,

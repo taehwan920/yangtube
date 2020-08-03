@@ -10,7 +10,7 @@ const TitleAndInfo = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #909090;
+    color: rgba(0, 0, 0, 0.6);
     font-size: 14px;
 `;
 const ViewsAndDateWrapper = styled.div`
@@ -85,11 +85,11 @@ export const TitleFunctionsItems = styled.div`
 `;
 
 export const LikeBox = styled(TitleFunctionsItems)`
-    color: ${props => props.liked ? '#065FD4' : '#909090'};
+    color: ${props => props.liked ? '#065FD4' : 'color: rgba(0, 0, 0, 0.6);'};
 `;
 
 export const DislikeBox = styled(TitleFunctionsItems)`
-    color: ${props => props.disliked ? '#065FD4' : '#909090'};
+    color: ${props => props.disliked ? '#065FD4' : 'color: rgba(0, 0, 0, 0.6);'};
 `;
 
 const TitleFunctionsIcons = styled.span`

@@ -31,6 +31,7 @@ export default class extends React.Component {
                     ? comments.map(commentItem => {
                         return (
                             <CommentArticle
+                                contentData={contentData}
                                 commentItem={commentItem}
                             />
                         )

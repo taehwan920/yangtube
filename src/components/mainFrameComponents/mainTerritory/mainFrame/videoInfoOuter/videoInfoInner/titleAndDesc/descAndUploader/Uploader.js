@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { descItems } from '../DescAndUploader';
 import SubsBtns from './uploader/SubsBtns';
 
 const UploaderWrapper = styled.article`
