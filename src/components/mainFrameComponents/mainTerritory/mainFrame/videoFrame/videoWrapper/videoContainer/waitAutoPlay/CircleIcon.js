@@ -25,7 +25,7 @@ const CircleBox = styled.div`
     align-items: center;
 `;
 
-const CenterCircle = styled.div`
+const CenterCircle = styled.a`
     background: rgba(255, 255, 255, 0.3);
     width: 56px;
     height: 56px;
@@ -52,9 +52,13 @@ export default class extends React.Component {
             contentData
         } = this.props;
         return (
-            <NextBtnBox>
+            <NextBtnBox
+                onClick={e => e.stopPropagation()}
+            >
                 <CircleBox>
-                    <CenterCircle>
+                    <CenterCircle
+                        href={contentData.nextUrl}
+                    >
                         <NextIcon>
                             <i class="fas fa-step-forward"></i>
                         </NextIcon>
