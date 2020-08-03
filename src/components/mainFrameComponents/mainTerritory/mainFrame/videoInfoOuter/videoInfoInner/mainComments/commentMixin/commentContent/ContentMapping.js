@@ -14,9 +14,10 @@ const TimestampTxt = styled.span`
 `;
 
 export default class extends React.Component {
-    // shouldComponentUpdate() {
-    //     return false;
-    // }
+    shouldComponentUpdate() {
+        return false;
+    };
+
     divideByBlank = str => {
         return str.split(' ')
     };
