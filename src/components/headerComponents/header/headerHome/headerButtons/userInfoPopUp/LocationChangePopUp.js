@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { SubPopUpHeaderWrapper, SubPopUpString, PopUpSection } from '../HeaderUserInfoPopUp'
-import LeftArrow from '../../../../mixin/LeftArrow';
+import LeftArrow from '../../../../../mixin/LeftArrow';
 
 const LocationChangeArticle = styled.article`
     width: 298px;
@@ -33,19 +33,32 @@ export default class extends React.Component {
         )
     };
     render() {
-        const { toggleMode, stateType } = this.props;
+        const {
+            nightMode,
+            toggleMode,
+            stateType,
+            themeColor,
+        } = this.props;
         return (
             <React.Fragment>
                 <SubPopUpHeaderWrapper>
                     <LeftArrow
+                        nightMode={nightMode}
+                        themeColor={themeColor}
                         toggleMode={toggleMode}
                         stateType={stateType}
                     />
-                    <SubPopUpString>
+                    <SubPopUpString
+                        nightMode={nightMode}
+                        themeColor={themeColor}
+                    >
                         {LocationHeaderItems[0]}
                     </SubPopUpString>
                 </SubPopUpHeaderWrapper>
-                <PopUpSection>
+                <PopUpSection
+                    nightMode={nightMode}
+                    themeColor={themeColor}
+                >
                     {LocationChangeItems.map(item => this.buildItem(item))}
                 </PopUpSection>
             </React.Fragment>

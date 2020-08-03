@@ -22,16 +22,29 @@ export default class extends React.Component {
     };
 
     render() {
-        const { onOff } = this.props;
+        const {
+            onOff,
+            nightMode,
+            theaterMode,
+            themeColor,
+        } = this.props;
         return (
             <AddVideoBtn
                 ref={this.btnRef}
-                onClick={onOff}>
+                onClick={onOff}
+                nightMode={nightMode}
+                theaterMode={theaterMode}
+                themeColor={themeColor}
+            >
                 <i class="fas fa-video"></i>
-                <AddVideoBtnPlusIcon>
+                <AddVideoBtnPlusIcon
+                    nightMode={nightMode}
+                    theaterMode={theaterMode}
+                    themeColor={themeColor}
+                >
                     <i class="fas fa-plus"></i>
                 </AddVideoBtnPlusIcon>
-                <ClickEffectHeader></ClickEffectHeader>
+                <ClickEffectHeader />
             </AddVideoBtn>
         )
     }

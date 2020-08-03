@@ -5,6 +5,7 @@ export default {
             searchBoxBG: 'white',
             searchBorder: '#D9D9D9',
             searchBtnBG: '#F0F0F0',
+            iconColor: '#5E5E5E',
             plusIconColor: 'white',
         },
         main: {
@@ -21,6 +22,7 @@ export default {
             searchBoxBG: '#121212',
             searchBorder: '#313131',
             searchBtnBG: '#313131',
+            iconColor: 'white',
             plusIconColor: 'black',
         },
         main: {

@@ -5,7 +5,7 @@ import Header from '../headerComponents/Header';
 import MainTerritory from '../mainFrameComponents/MainTerritory';
 import queryString from 'query-string';
 import data from '../DB/diveDB';
-import theme from '../themeColor';
+import Theme from '../ThemeColor';
 
 const HomeDiv = styled.div`
     background-color: ${props => props.themeColor.main.BG};
@@ -26,12 +26,13 @@ export default class extends React.Component {
     };
 
     contentData = data;
-    themeColor = theme.dayMode;
+    themeOriginal = Theme;
+    themeColor = Theme.dayMode;
 
     componentDidMount() {
         this.state.nightMode
-            ? this.themeColor = theme.nightMode
-            : this.themeColor = theme.dayMode;
+            ? this.themeColor = Theme.nightMode
+            : this.themeColor = Theme.dayMode;
     };
 
     toggleNight = () => {
@@ -54,9 +55,11 @@ export default class extends React.Component {
         } = this.state;
         const {
             contentData,
-            themeColor
+            themeColor,
+            themeOriginal
         } = this;
         const queryStr = queryString.parse(this.props.location.search);
+        console.log(this.Theme)
         return (
             <HomeDiv
                 ref={ref => this.homeRef = ref}
@@ -69,8 +72,9 @@ export default class extends React.Component {
                     nightMode={nightMode}
                     theaterMode={theaterMode}
                     toggleGuide={this.toggleGuide}
+                    toggleNight={this.toggleNight}
                     contentData={contentData}
-                    themeColor={theme}
+                    themeColor={themeOriginal}
                 />
                 <Guide
                     guideIsON={guideIsON}

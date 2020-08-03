@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { SubPopUpHeaderWrapper, SubPopUpString, PopUpSection } from '../HeaderUserInfoPopUp';
-import ToggleSwitch from '../../../../mixin/ToggleSwitch';
-import LeftArrow from '../../../../mixin/LeftArrow';
+import ToggleSwitch from '../../../../../mixin/ToggleSwitch';
+import LeftArrow from '../../../../../mixin/LeftArrow';
 
 const UserInfoCommonSetUp = css`
     width: 298px;
@@ -22,7 +22,13 @@ const NightModeToggleArticle = styled(NightModeArticle)`
 
 const NightModeToggleText = styled.div`
     width: 204px;
-    color: rgba(0, 0, 0, 0.7);
+    color: ${props => {
+        if (props.nightMode) {
+            return props.themeColor.nightMode.grayFont;
+        } else {
+            return props.themeColor.dayMode.grayFont;
+        }
+    }};
 `;
 
 const NightHeaderItems = ['어두운 테마']
@@ -44,25 +50,45 @@ export default class extends React.Component {
         }
     }
     render() {
-        const { toggleMode, stateType } = this.props;
+        const {
+            nightMode,
+            stateType,
+            toggleMode,
+            toggleNight,
+            themeColor,
+        } = this.props;
         return (
             <React.Fragment>
                 <SubPopUpHeaderWrapper>
                     <LeftArrow
-                        toggleMode={toggleMode}
+                        nightMode={nightMode}
                         stateType={stateType}
+                        themeColor={themeColor}
+                        toggleMode={toggleMode}
                     />
-                    <SubPopUpString>
+                    <SubPopUpString
+                        nightMode={nightMode}
+                        themeColor={themeColor}
+                    >
                         {NightHeaderItems[0]}
                     </SubPopUpString>
                 </SubPopUpHeaderWrapper>
-                <PopUpSection>
+                <PopUpSection
+                    nightMode={nightMode}
+                    themeColor={themeColor}
+                >
                     {NightModeItems.map(item => this.buildItem(item))}
                     <NightModeToggleArticle>
-                        <NightModeToggleText>
+                        <NightModeToggleText
+                            nightMode={nightMode}
+                            themeColor={themeColor}
+                        >
                             {NightModeItems[NightModeItems.length - 1]}
                         </NightModeToggleText>
-                        <ToggleSwitch />
+                        <ToggleSwitch
+                            switchFunc={toggleNight}
+                            switchON={nightMode}
+                        />
                     </NightModeToggleArticle>
                 </PopUpSection>
             </React.Fragment>

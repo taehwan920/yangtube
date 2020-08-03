@@ -26,9 +26,15 @@ export const HeaderBtn = styled.button`
     height: 24px;
     margin: 0px 8px; 
     position: absolute;
+    color: ${props => {
+        if (props.theaterMode || props.nightMode) {
+            return props.themeColor.nightMode.header.iconColor;
+        } else {
+            return props.themeColor.dayMode.header.iconColor;
+        }
+    }};
     font-size: 19px;
     line-height: 1.35;
-    color: rgba(0, 0, 0, 0.63);
     border: none;
     outline: none;
     background: none;
@@ -50,10 +56,16 @@ export const AddVideoBtn = styled(HeaderBtn)`
 `;
 
 export const AddVideoBtnPlusIcon = styled(HeaderBtn)`
-    bottom: 0.1px;
+    bottom: -0.5px;
     right: -4.5px;
-    font-size: 10px;
-    color: white;
+    font-size: 11px;
+    color: ${props => {
+        if (props.theaterMode || props.nightMode) {
+            return props.themeColor.nightMode.header.plusIconColor;
+        } else {
+            return props.themeColor.dayMode.header.plusIconColor;
+        }
+    }};
 `;
 
 export const AppsBtn = styled(HeaderBtn)`
@@ -72,6 +84,13 @@ export const PopUpArticle = styled.div`
     padding: 0px 20px;
     display: flex;
     align-items: center;
+    color: ${props => {
+        if (props.theaterMode || props.nightMode) {
+            return props.themeColor.nightMode.normalFont;
+        } else {
+            return props.themeColor.dayMode.normalFont;
+        }
+    }};
 
     &:hover {
         background-color: rgba(0, 0, 0, 0.1);
@@ -88,7 +107,6 @@ export const PopUpArticleIcon = styled.span`
     line-height: 22px;
     color: red;
 `;
-
 
 const HeaderClickAni = keyframes`
     0% {
@@ -145,48 +163,78 @@ export default class extends React.Component {
     };
 
     render() {
-        const { toggleMiniSearch } = this.props;
-        const { addVideoON, appsON, userInfoON } = this.state;
+        const {
+            nightMode,
+            theaterMode,
+            toggleMiniSearch,
+            toggleNight,
+            themeColor,
+        } = this.props;
+        const {
+            addVideoON,
+            appsON,
+            userInfoON
+        } = this.state;
         return (
             <HeaderBtnSectionWrapper>
                 <HeaderBtnSection>
                     <MiniSearchBtn
-                        onClick={toggleMiniSearch}>
+                        onClick={toggleMiniSearch}
+                        nightMode={nightMode}
+                        theaterMode={theaterMode}
+                        themeColor={themeColor}
+                    >
                         <i class="fas fa-search"></i>
-                        <ClickEffectHeader></ClickEffectHeader>
+                        <ClickEffectHeader />
                     </MiniSearchBtn>
                     <AddVideoButton
                         addVideoON={addVideoON}
                         onOff={this.onOff('addVideoON')}
                         popUpOff={() => this.setState({ addVideoON: false })}
-                    ></AddVideoButton>
+                        nightMode={nightMode}
+                        theaterMode={theaterMode}
+                        themeColor={themeColor}
+                    />
                     <AppsButton
                         appsON={appsON}
                         onOff={this.onOff('appsON')}
                         popUpOff={() => this.setState({ appsON: false })}
-                    ></AppsButton>
+                        nightMode={nightMode}
+                        theaterMode={theaterMode}
+                        themeColor={themeColor}
+                    />
                     <UserInfoButton
                         onOff={this.onOff('userInfoON')}
                         popUpOff={() => this.setState({ userInfoON: false })}
                         userInfoRef={this.userInfoRef}
                         userInfoON={userInfoON}
-                    ></UserInfoButton>
+                    />
                 </HeaderBtnSection>
                 {(addVideoON)
                     ? <HeaderAddVideoPopUp
                         addVideoON={addVideoON}
-                    ></HeaderAddVideoPopUp>
+                        nightMode={nightMode}
+                        theaterMode={theaterMode}
+                        themeColor={themeColor}
+                    />
                     : null}
                 {(appsON)
                     ? <HeaderAppsPopUp
                         appsON={appsON}
-                    ></HeaderAppsPopUp>
+                        nightMode={nightMode}
+                        theaterMode={theaterMode}
+                        themeColor={themeColor}
+                    />
                     : null}
                 {(userInfoON)
                     ? <HeaderUserInfoPopUp
                         ref={this.userInfoRef}
+                        nightMode={nightMode}
+                        theaterMode={theaterMode}
+                        toggleNight={toggleNight}
                         userInfoON={userInfoON}
-                    ></HeaderUserInfoPopUp>
+                        themeColor={themeColor}
+                    />
                     : null}
             </HeaderBtnSectionWrapper>
         )

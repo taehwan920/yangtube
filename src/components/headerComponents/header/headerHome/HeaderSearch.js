@@ -3,11 +3,10 @@ import styled from 'styled-components';
 
 
 const SearchWrapper = styled.section`
-    width: calc(100% - 48px);
+    width: 40%;
     height: 30px;
-    margin-right: 24px;
     display: flex;
-    @media (min-width: 768px) {
+    @media (max-width: 767px) {
         display: none;
     }
 `;
@@ -57,13 +56,6 @@ const SearchInput = styled.input`
     height: 24px;
     border: none;
     font-size: 16px;
-    color: ${props => {
-        if (props.theaterMode || props.nightMode) {
-            return props.themeColor.nightMode.normalFont;
-        } else {
-            return props.themeColor.dayMode.normalFont;
-        }
-    }};
     
     &:focus {
         outline: none;
@@ -72,8 +64,8 @@ const SearchInput = styled.input`
 
 const KbdIcon = styled.span`
     position: absolute;
-    top: 4px;
     right: 12px;
+    top: 4px;
     color: ${props => {
         if (props.theaterMode || props.nightMode) {
             return props.themeColor.nightMode.grayFont;
@@ -113,22 +105,8 @@ const SearchBtn = styled.button`
 `;
 
 export default class extends React.Component {
-    componentDidMount() {
-        window.addEventListener('resize', this.disappearIfTooWide);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.disappearIfTooWide);
-    }
-
-    disappearIfTooWide = e => {
-        if (e.target.innerWidth < 768) { return; }
-        this.props.offMiniSearch();
-    }
-
     render() {
         const {
-            toggleVkbd,
             nightMode,
             theaterMode,
             themeColor,
@@ -141,11 +119,7 @@ export default class extends React.Component {
                         theaterMode={theaterMode}
                         themeColor={themeColor}
                     >
-                        <InputBox
-                            nightMode={nightMode}
-                            theaterMode={theaterMode}
-                            themeColor={themeColor}
-                        >
+                        <InputBox>
                             <SearchInput
                                 nightMode={nightMode}
                                 theaterMode={theaterMode}
@@ -157,7 +131,7 @@ export default class extends React.Component {
                             />
                         </InputBox>
                         <KbdIcon
-                            onClick={toggleVkbd}
+                            onClick={this.props.toggleVkbd}
                             nightMode={nightMode}
                             theaterMode={theaterMode}
                             themeColor={themeColor}

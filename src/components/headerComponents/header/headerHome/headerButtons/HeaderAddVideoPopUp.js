@@ -3,7 +3,13 @@ import styled from 'styled-components';
 import { PopUpArticle, PopUpArticleIcon } from '../HeaderButtons';
 
 const AddVideoPopUpWrapper = styled.div`
-    background: rgba(255, 255, 255, 0.97);
+    background: ${props => {
+        if (props.theaterMode || props.nightMode) {
+            return props.themeColor.nightMode.header.BG;
+        } else {
+            return props.themeColor.dayMode.header.BG;
+        }
+    }};
     border: solid 0.4px rgba(0, 0, 0, 0.3);
     border-top: none;
     width: 229px;
@@ -25,8 +31,17 @@ const popUpItems = [
 
 export default class extends React.Component {
     buildItems = (item) => {
+        const {
+            nightMode,
+            theaterMode,
+            themeColor,
+        } = this.props;
         return (
-            <PopUpArticle>
+            <PopUpArticle
+                nightMode={nightMode}
+                theaterMode={theaterMode}
+                themeColor={themeColor}
+            >
                 <PopUpArticleIcon>{item[0]}</PopUpArticleIcon>
                 <span>{item[1]}</span>
             </PopUpArticle>
@@ -34,10 +49,19 @@ export default class extends React.Component {
     }
 
     render() {
-        const { addVideoON } = this.props;
+        const {
+            addVideoON,
+            nightMode,
+            theaterMode,
+            themeColor,
+        } = this.props;
         return (
             <AddVideoPopUpWrapper
-                addVideoON={addVideoON}>
+                addVideoON={addVideoON}
+                nightMode={nightMode}
+                theaterMode={theaterMode}
+                themeColor={themeColor}
+            >
                 {popUpItems.map((item) => this.buildItems(item))}
             </AddVideoPopUpWrapper>
         )

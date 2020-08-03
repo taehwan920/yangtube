@@ -1,17 +1,22 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import UserPopUpHome from './userInfoPopUp/UserInfoPopUpHome';
-import NightModePopUp from './userInfoPopUp/NightModePopUp';
+import NightPopUp from './userInfoPopUp/NightPopUp';
 import LanguageChangePopUp from './userInfoPopUp/LanguageChangePopUp';
 import LocationChangePopUp from './userInfoPopUp/LocationChangePopUp';
-import LimitedModePopUp from './userInfoPopUp/LimitedModePopUp';
 
 const UserInfoCommonSetUp = css`
     width: 298px;
 `;
 
 const UserInfoPopUpWrapper = styled.div`
-    background: rgba(255, 255, 255, 0.97);
+    background: ${props => {
+        if (props.nightMode) {
+            return props.themeColor.nightMode.header.BG;
+        } else {
+            return props.themeColor.dayMode.header.BG;
+        }
+    }};
     border: solid 0.4px rgba(0, 0, 0, 0.1);
     border-top: none;
     position: absolute;
@@ -28,7 +33,13 @@ const UserInfoPopUpWrapper = styled.div`
 export const PopUpSection = styled.section`
     padding: 8px 0px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-    color: black;
+    color: ${props => {
+        if (props.nightMode) {
+            return props.themeColor.nightMode.normalFont;
+        } else {
+            return props.themeColor.dayMode.normalFont;
+        }
+    }};
     ${UserInfoCommonSetUp}
 `;
 
@@ -73,7 +84,13 @@ export const UserInfoCircleIcon = styled.div`
 export const UserName = styled.span`
     margin-left: 24px;
     font-size: 20px;
-    color: black;
+    color: ${props => {
+        if (props.nightMode) {
+            return props.themeColor.nightMode.normalFont;
+        } else {
+            return props.themeColor.dayMode.normalFont;
+        }
+    }};
 `;
 
 export const RightArrowIcon = styled.span`
@@ -81,12 +98,13 @@ export const RightArrowIcon = styled.span`
     height: 24px;
     font-size: 14px;
     line-height: 22px;
-    color: rgba(0, 0, 0, 0.5);
-`;
-
-export const LimitedModeSpan = styled.span`
-    width: 266px;
-    text-align: left;
+    color: ${props => {
+        if (props.nightMode) {
+            return props.themeColor.nightMode.grayFont;
+        } else {
+            return props.themeColor.dayMode.grayFont;
+        }
+    }};
 `;
 
 export const SubPopUpHeaderWrapper = styled.header`
@@ -102,15 +120,21 @@ export const SubPopUpHeaderWrapper = styled.header`
 export const SubPopUpString = styled.span`
     width: 242px;
     font-size: 16px;
+    color: ${props => {
+        if (props.nightMode) {
+            return props.themeColor.nightMode.grayFont;
+        } else {
+            return props.themeColor.dayMode.grayFont;
+        }
+    }};
 `;
 
 export default class extends React.Component {
     state = {
         userInfoHome: true,
-        nightMode: false,
+        night: false,
         langChange: false,
         locationChange: false,
-        limitedMode: false
     }
 
     toggleMode = stateType => () => {
@@ -121,25 +145,59 @@ export default class extends React.Component {
     }
 
     render() {
-        const { userInfoHome, nightMode, langChange, locationChange, limitedMode } = this.state;
+        const {
+            nightMode,
+            themeColor,
+            toggleNight,
+        } = this.props;
+        const {
+            userInfoHome,
+            night,
+            langChange,
+            locationChange,
+        } = this.state;
         return (
             <UserInfoPopUpWrapper
                 ref={ref => this.UIPopUpRef = ref}
-                userInfoON={this.props.userInfoON}>
+                nightMode={nightMode}
+                themeColor={themeColor}
+                userInfoON={this.props.userInfoON}
+            >
                 {userInfoHome
-                    ? <UserPopUpHome toggleMode={this.toggleMode}></UserPopUpHome>
+                    ?
+                    <UserPopUpHome
+                        themeColor={themeColor}
+                        toggleMode={this.toggleMode}
+                        nightMode={nightMode}
+                    />
                     : null}
-                {(!userInfoHome && nightMode)
-                    ? <NightModePopUp toggleMode={this.toggleMode} stateType={'nightMode'}></NightModePopUp>
+                {(!userInfoHome && night)
+                    ?
+                    <NightPopUp
+                        nightMode={nightMode}
+                        stateType={'night'}
+                        toggleMode={this.toggleMode}
+                        toggleNight={toggleNight}
+                        themeColor={themeColor}
+                    />
                     : null}
                 {(!userInfoHome && langChange)
-                    ? <LanguageChangePopUp toggleMode={this.toggleMode} stateType={'langChange'}></LanguageChangePopUp>
+                    ?
+                    <LanguageChangePopUp
+                        toggleMode={this.toggleMode}
+                        stateType={'langChange'}
+                        nightMode={nightMode}
+                        themeColor={themeColor}
+                    />
                     : null}
                 {(!userInfoHome && locationChange)
-                    ? <LocationChangePopUp toggleMode={this.toggleMode} stateType={'locationChange'}></LocationChangePopUp>
-                    : null}
-                {(!userInfoHome && limitedMode)
-                    ? <LimitedModePopUp toggleMode={this.toggleMode} stateType={'limitedMode'}></LimitedModePopUp>
+                    ?
+                    <LocationChangePopUp
+                        toggleMode={this.toggleMode}
+                        stateType={'locationChange'}
+                        nightMode={nightMode}
+                        themeColor={themeColor}
+                    />
                     : null}
             </UserInfoPopUpWrapper>
         )

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import HeaderSearch from './HeaderSearch';
-import HeaderButtons from './HeaderButtons';
-import Logo from '../../mixin/Logo';
+import HeaderSearch from './headerHome/HeaderSearch';
+import HeaderButtons from './headerHome/HeaderButtons';
+import HeaderLogo from './headerHome/HeaderLogo';
 
 const HeaderLogoPlace = styled.div`
     width: 155px;
@@ -11,18 +11,37 @@ const HeaderLogoPlace = styled.div`
 
 export default class extends React.Component {
     render() {
-        const { toggleGuide, toggleMiniSearch, toggleVkbd } = this.props;
+        const {
+            nightMode,
+            theaterMode,
+            toggleGuide,
+            toggleMiniSearch,
+            toggleNight,
+            toggleVkbd,
+            themeColor,
+        } = this.props;
         return (
             <React.Fragment>
-                <HeaderLogoPlace></HeaderLogoPlace>
-                <Logo
+                <HeaderLogoPlace />
+                <HeaderLogo
+                    nightMode={nightMode}
+                    theaterMode={theaterMode}
                     toggleGuide={toggleGuide}
-                ></Logo>
+                    themeColor={themeColor}
+                />
                 <HeaderSearch
-                    toggleVkbd={toggleVkbd}></HeaderSearch>
+                    nightMode={nightMode}
+                    theaterMode={theaterMode}
+                    toggleVkbd={toggleVkbd}
+                    themeColor={themeColor}
+                />
                 <HeaderButtons
+                    nightMode={nightMode}
+                    theaterMode={theaterMode}
                     toggleMiniSearch={toggleMiniSearch}
-                ></HeaderButtons>
+                    toggleNight={toggleNight}
+                    themeColor={themeColor}
+                />
             </React.Fragment>
         )
     }

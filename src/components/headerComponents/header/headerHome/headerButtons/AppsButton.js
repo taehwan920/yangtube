@@ -21,13 +21,22 @@ export default class extends React.Component {
     };
 
     render() {
-        const { onOff } = this.props;
+        const {
+            onOff,
+            nightMode,
+            theaterMode,
+            themeColor,
+        } = this.props;
         return (
             <AppsBtn
                 ref={this.btnRef}
-                onClick={onOff}>
+                onClick={onOff}
+                nightMode={nightMode}
+                theaterMode={theaterMode}
+                themeColor={themeColor}
+            >
                 <i class="fas fa-th"></i>
-                <ClickEffectHeader></ClickEffectHeader>
+                <ClickEffectHeader />
             </AppsBtn>
         )
     }

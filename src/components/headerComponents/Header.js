@@ -7,7 +7,7 @@ import MiniSearch from './header/MiniSearch';
 
 
 const HeaderWrapper = styled.header`
-    background-color: ${props => {
+    background: ${props => {
         if (props.theaterMode || props.nightMode) {
             return props.themeColor.nightMode.header.BG;
         } else {
@@ -52,6 +52,7 @@ export default class extends React.Component {
             nightMode,
             theaterMode,
             toggleGuide,
+            toggleNight,
             themeColor,
         } = this.props;
         const {
@@ -74,8 +75,11 @@ export default class extends React.Component {
                         themeColor={themeColor}
                     />
                     : <HeaderHome
+                        nightMode={nightMode}
+                        theaterMode={theaterMode}
                         toggleGuide={toggleGuide}
                         toggleMiniSearch={this.toggleMiniSearch}
+                        toggleNight={toggleNight}
                         toggleVkbd={this.toggleVkbd}
                         themeColor={themeColor}
                     />}
