@@ -34,7 +34,8 @@ export default class extends React.Component {
 
     render() {
         const {
-            contentData
+            contentData,
+            themeColor,
         } = this.props;
         const {
             byPopular,
@@ -48,11 +49,13 @@ export default class extends React.Component {
                     selectLate={this.selectLate}
                     selectPop={this.selectPop}
                     contentData={contentData}
+                    themeColor={themeColor}
                 />
                 <CommentContents
                     byLatest={byLatest}
                     byPopular={byPopular}
                     contentData={contentData}
+                    themeColor={themeColor}
                 />
             </CommentsWrapper>
         )

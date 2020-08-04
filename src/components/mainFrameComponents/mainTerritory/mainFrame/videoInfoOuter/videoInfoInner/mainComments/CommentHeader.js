@@ -32,7 +32,8 @@ export default class extends React.Component {
             byPopular,
             selectLate,
             selectPop,
-            contentData
+            contentData,
+            themeColor,
         } = this.props;
         return (
             <CommentHeaderWrapper>
@@ -42,8 +43,11 @@ export default class extends React.Component {
                     selectLate={selectLate}
                     selectPop={selectPop}
                     contentData={contentData}
+                    themeColor={themeColor}
                 />
-                <InputAndUser />
+                <InputAndUser
+                    themeColor={themeColor}
+                />
             </CommentHeaderWrapper>
         )
     }

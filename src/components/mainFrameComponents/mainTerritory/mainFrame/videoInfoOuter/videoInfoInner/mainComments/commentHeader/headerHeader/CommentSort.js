@@ -7,7 +7,7 @@ const CommentSortBox = styled.div`
     width: max-content;
     height: 100%;
     padding: 0px 4px;
-    color: rgba(0, 0, 0, 0.5);
+    color: ${props => props.themeColor.grayFont};
     cursor: pointer;
     position: relative;
     display: flex;
@@ -38,6 +38,7 @@ const SortMiniPopUp = styled.div`
     justify-content: center;
     align-items: center;
     transition: opacity 0.2s ease-out;
+    cursor: default;
     opacity: ${props => props.miniActive ? 1 : 0};
     z-index: 30;
 `;
@@ -85,7 +86,8 @@ export default class extends React.Component {
         this.props.selectLate();
     };
 
-    miniActivate = () => {
+    miniActivate = e => {
+        if (this.miniPopUp && this.miniPopUp.contains(e.target)) return;
         this.setState({ miniActive: true });
     };
     miniDeactivate = () => {
@@ -94,19 +96,21 @@ export default class extends React.Component {
 
     render() {
         const {
+            byLatest,
+            byPopular,
+            themeColor,
+        } = this.props;
+        const {
             miniActive,
             popUpClicked,
         } = this.state;
-        const {
-            byLatest,
-            byPopular,
-        } = this.props;
         return (
             <CommentSortBox
                 ref={this.sortRef}
                 onClick={this.togglePopUp}
                 onMouseEnter={this.miniActivate}
                 onMouseLeave={this.miniDeactivate}
+                themeColor={themeColor}
             >
                 <CommentSortIcon>
                     <i class="fas fa-sort-amount-down"></i>
@@ -123,9 +127,11 @@ export default class extends React.Component {
                         pickPopular={this.pickPopular}
                         pickLatest={this.pickLatest}
                         togglePopUp={this.togglePopUp}
+                        themeColor={themeColor}
                     />
                     : null}
                 <SortMiniPopUp
+                    ref={ref => this.miniPopUp = ref}
                     miniActive={miniActive}
                 >
                     <SortMiniPopUpTxt>

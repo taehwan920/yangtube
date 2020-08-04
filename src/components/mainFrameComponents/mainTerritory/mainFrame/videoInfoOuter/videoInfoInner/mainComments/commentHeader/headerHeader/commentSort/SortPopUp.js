@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const SortPopUpWrapper = styled.section`
-    background: white;
+    background: ${props => props.themeColor.main.BG};
     width: max-content;
     height: max-content;
     padding: 8px 0px;
@@ -18,7 +18,7 @@ const SortPopUpWrapper = styled.section`
 `;
 
 const SortPopUpItemBox = styled.article`
-    background: ${props => props.isSelected ? 'rgba(0, 0, 0, 0.1)' : 'none'};
+    background: ${props => props.isSelected ? props.themeColor.effectBG : 'transparent'};
     width: max-content;
     height: 48px;
     padding: 0px 16px;
@@ -28,13 +28,13 @@ const SortPopUpItemBox = styled.article`
     cursor: pointer;
 
     &:hover{
-        background: rgba(0, 0, 0, 0.1);
+        background: ${props => props.themeColor.effectBG};
     }
 `;
 
 const SortPopUpItem = styled.span`
     font-size: 14px;
-    color: black;
+    color: ${props => props.themeColor.normalFont};
 `;
 
 export default class extends React.Component {
@@ -44,22 +44,31 @@ export default class extends React.Component {
             byPopular,
             pickLatest,
             pickPopular,
+            themeColor,
         } = this.props;
         return (
-            <SortPopUpWrapper>
+            <SortPopUpWrapper
+                themeColor={themeColor}
+            >
                 <SortPopUpItemBox
                     isSelected={byPopular}
                     onClick={pickPopular}
+                    themeColor={themeColor}
                 >
-                    <SortPopUpItem>
+                    <SortPopUpItem
+                        themeColor={themeColor}
+                    >
                         인기 댓글순
                     </SortPopUpItem>
                 </SortPopUpItemBox>
                 <SortPopUpItemBox
                     isSelected={byLatest}
                     onClick={pickLatest}
+                    themeColor={themeColor}
                 >
-                    <SortPopUpItem>
+                    <SortPopUpItem
+                        themeColor={themeColor}
+                    >
                         최근 날짜순
                     </SortPopUpItem>
                 </SortPopUpItemBox>

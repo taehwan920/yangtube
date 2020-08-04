@@ -55,6 +55,7 @@ export default class extends React.Component {
                 />
                 <MainComments
                     contentData={contentData}
+                    themeColor={themeColor}
                 />
             </VideoInfoInnerWrapper>
         )

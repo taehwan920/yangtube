@@ -15,6 +15,7 @@ const CommentNumber = styled.div`
     width: auto;
     height: 100%;
     margin-right: 32px;
+    color: ${props => props.themeColor.normalFont};
     font-size: 16px;
 `;
 
@@ -26,11 +27,14 @@ export default class extends React.Component {
             byPopular,
             selectLate,
             selectPop,
-            contentData
+            contentData,
+            themeColor,
         } = this.props;
         return (
             <CommentHeaderHeader>
-                <CommentNumber>
+                <CommentNumber
+                    themeColor={themeColor}
+                >
                     댓글 {contentData.comments.length}개
                 </CommentNumber>
                 <CommentSort
@@ -38,6 +42,7 @@ export default class extends React.Component {
                     byPopular={byPopular}
                     selectLate={selectLate}
                     selectPop={selectPop}
+                    themeColor={themeColor}
                 />
             </CommentHeaderHeader>
         )
