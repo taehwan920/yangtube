@@ -46,6 +46,8 @@ export default class extends React.Component {
             nightMode,
             themeColor,
         } = this.props;
+        const isNight = nightMode ? '어두운 테마: 사용 중' : '어두운 테마: 사용 안함';
+        popUpItems[0][1] = isNight;
         if (item.length > 2) {
             return (
                 <PopUpArticle onClick={this.props.toggleMode(item[3])}>

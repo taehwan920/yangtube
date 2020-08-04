@@ -23,6 +23,7 @@ export default class extends React.Component {
         guideIsON: false,
         theaterMode: false,
         nightMode: false,
+        lang: null,
     };
 
     contentData = data;

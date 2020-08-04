@@ -66,7 +66,6 @@ export default class extends React.Component {
         } = this.props;
         const divideToLines = content.split('\n');
         const divideToWords = divideToLines.map(line => this.divideByBlank(line));
-        console.log(themeColor);
         return (
             <React.Fragment>
                 {divideToWords.map(item => {
