@@ -52,7 +52,7 @@ const AutoPlayDesc = styled.div`
     position: absolute;
     top: 150%;
     right: 0;
-    opacity: ${props => props.hovering ? 1 : 0};
+    display: ${props => props.hovering ? 'flex' : 'none'};
     font-size: 12px;
     color: white;
     transition: opacity 0.2s ease-out;

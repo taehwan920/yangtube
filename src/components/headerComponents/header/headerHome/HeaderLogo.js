@@ -60,7 +60,6 @@ const MenuBtn = styled.div`
             return props.themeColor.dayMode.normalFont;
         }
     }};
-
 `;
 
 export const ClickEffect = styled.div`

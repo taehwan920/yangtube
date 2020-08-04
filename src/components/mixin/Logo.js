@@ -15,7 +15,28 @@ const LogoWrapper = styled.div`
 const LogoImg = styled.img`
     height: 21px;
     margin-left: 30px;
-    
+    position: absolute;
+    right: 0;
+`;
+
+const DayImg = styled(LogoImg)`
+    opacity: ${props => {
+        if (props.nightMode) {
+            return 0;
+        } else {
+            return 1;
+        }
+    }};
+`;
+
+const NightImg = styled(LogoImg)`
+    opacity: ${props => {
+        if (props.nightMode) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }};
 `;
 
 const LogoLink = styled.a`
@@ -32,6 +53,7 @@ const MenuBtn = styled.div`
     cursor: pointer;
     transition: background-color 0.3s linear;
 
+    color: ${props => props.themeColor.normalFont};
 `;
 
 export const ClickEffect = styled.div`
@@ -53,9 +75,14 @@ export const ClickEffect = styled.div`
 
 export default class extends React.Component {
     render() {
+        const {
+            nightMode,
+            themeColor,
+        } = this.props;
         return (
             <LogoWrapper>
                 <MenuBtn
+                    themeColor={themeColor}
                     onClick={this.props.toggleGuide}
                 >
                     <ClickEffect />
@@ -65,9 +92,17 @@ export default class extends React.Component {
                     href="#/home"
                     rel="noreferer noopener"
                 >
-                    <LogoImg
+                    <DayImg
+                        nightMode={nightMode}
+                        themeColor={themeColor}
                         alt="YangTube"
                         src="./images/youtubefont3.png"
+                    />
+                    <NightImg
+                        nightMode={nightMode}
+                        themeColor={themeColor}
+                        alt="YangTube"
+                        src="./images/logo_alter.png"
                     />
                 </LogoLink>
             </LogoWrapper>

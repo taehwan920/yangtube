@@ -27,13 +27,6 @@ export default class extends React.Component {
 
     contentData = data;
     themeOriginal = Theme;
-    themeColor = Theme.dayMode;
-
-    componentDidMount() {
-        this.state.nightMode
-            ? this.themeColor = Theme.nightMode
-            : this.themeColor = Theme.dayMode;
-    };
 
     toggleNight = () => {
         this.setState({ nightMode: !this.state.nightMode });
@@ -55,11 +48,12 @@ export default class extends React.Component {
         } = this.state;
         const {
             contentData,
-            themeColor,
             themeOriginal
         } = this;
         const queryStr = queryString.parse(this.props.location.search);
-        console.log(this.Theme)
+        const themeColor = this.state.nightMode
+            ? Theme.nightMode
+            : Theme.dayMode;
         return (
             <HomeDiv
                 ref={ref => this.homeRef = ref}
@@ -78,14 +72,18 @@ export default class extends React.Component {
                 />
                 <Guide
                     guideIsON={guideIsON}
+                    nightMode={nightMode}
                     toggleGuide={this.toggleGuide}
                     contentData={contentData}
+                    themeColor={themeColor}
                 />
                 <MainTerritory
+                    nightMode={nightMode}
                     theaterMode={theaterMode}
                     toggleTheater={this.toggleTheater}
                     queryStr={queryStr}
                     contentData={contentData}
+                    themeColor={themeColor}
                 />
             </HomeDiv>
         )

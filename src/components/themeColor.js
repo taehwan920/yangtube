@@ -9,6 +9,11 @@ export default {
             plusIconColor: 'white',
             pictogramColor: '#909090',
         },
+        guide: {
+            BG: 'white',
+            footerFont: '#909090',
+            pictogramColor: '#909090',
+        },
         main: {
             BG: '#F9F9F9',
         },
@@ -25,6 +30,11 @@ export default {
             searchBtnBG: '#313131',
             iconColor: 'white',
             plusIconColor: 'black',
+            pictogramColor: '#9A9A9A',
+        },
+        guide: {
+            BG: '#242424',
+            footerFont: '#9A9A9A',
             pictogramColor: '#9A9A9A',
         },
         main: {

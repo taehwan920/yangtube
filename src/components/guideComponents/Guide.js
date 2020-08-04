@@ -7,7 +7,7 @@ const OverTheSheet = css`
 `;
 
 const GuideWrapper = styled.aside`
-    background-color: white;
+    background-color: ${props => props.themeColor.guide.BG};
     width: 240px;
     position: absolute;
     display: flex;
@@ -16,7 +16,6 @@ const GuideWrapper = styled.aside`
     transition: left 0.18s ease-out;
     top: 0;
     left: ${props => props.guideIsON ? '0px' : '-240px'};
-    ${OverTheSheet}
 `;
 
 const GuideBlackSheet = styled.div`
@@ -25,14 +24,14 @@ const GuideBlackSheet = styled.div`
     height: 100vh;
     position: absolute;
     overflow: hidden;
-    opacity: ${props => (props.guideIsON ? '1' : '0')};
-    z-index: ${props => (props.guideIsON ? '350' : '-350')};
-    display: ${props => (props.guideIsON ? 'flex' : 'none')};
+    opacity: ${props => props.guideIsON ? '1' : '0'};
+    z-index: ${props => props.guideIsON ? 349 : -349};
+    display: ${props => props.guideIsON ? 'flex' : 'none'};
 `;
 
 const GuideLogoWrapper = styled.header`
-    background-color: inherit;
-    width:240px;
+    background: inherit;
+    width: 240px;
     height: 57px;
     padding-right: 36px;
     padding-bottom: 1px;
@@ -45,7 +44,7 @@ const GuideLogoWrapper = styled.header`
 `;
 
 const SectionWrapper = styled.div`
-    background-color: white;
+    background: inherit;
     width: 240px;
     height: calc(100vh - 56px);
     overflow-y: scroll;
@@ -54,7 +53,7 @@ const SectionWrapper = styled.div`
     display: flex;
     flex-direction: column;
     position: relative;
-    color: rgba(0, 0, 0, 0.7);
+    color: ${props => props.themeColor.grayFont};
     ${OverTheSheet}
 `;
 
@@ -62,6 +61,7 @@ const GuideSection = styled.section`
     width: 240px;
     padding: 12px 0px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    color: inherit;
     ${OverTheSheet}
 `;
 
@@ -84,20 +84,13 @@ const GuideSectionArticle = styled.article`
     ${OverTheSheet}
 
     &:hover {
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: ${props => props.nightMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'};
         cursor: pointer;
     }
 `;
 
-// const GuideSectionHomeArticle = styled(GuideSectionArticle)`
-//     background-color: rgba(0, 0, 0, 0.1);
-//     &:hover {
-//         background-color: rgba(0, 0, 0, 0.2);
-//     }
-// `;
-
 const GuideSectionLink = styled.a`
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: ${props => props.nightMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'};
     width: 240px;
     height: 40px;
     padding: 0px 24px;
@@ -107,7 +100,7 @@ const GuideSectionLink = styled.a`
     ${OverTheSheet}
 
     &:hover {
-        background-color: rgba(0, 0, 0, 0.2);
+        background-color: ${props => props.nightMode ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)'};
     }
 `;
 
@@ -115,6 +108,7 @@ const ArticleIcon = styled.span`
     width: 24px;
     height: 24px;
     margin-right: 24px;
+    color: ${props => props.themeColor.guide.pictogramColor};
     font-size: 18px;
     text-align: center;
     line-height: 22px;
@@ -128,7 +122,7 @@ const ArticleHomeIcon = styled(ArticleIcon)`
 const ArticleItem = styled.span`
     width: 144px;
     height: 18px;
-    color: inherit;
+    color: ${props => props.themeColor.normalFont};
     font-size: 14px;
     line-height: 18px;
     ${OverTheSheet}
@@ -139,6 +133,7 @@ const GuideFooter = styled.footer`
     padding: 16px 24px;
     display: flex;
     flex-direction: column;
+    color: ${props => props.themeColor.guide.footerFont};
     font-size: 13px;
     ${OverTheSheet}
 `;
@@ -146,7 +141,6 @@ const GuideFooter = styled.footer`
 const FooterSpan = styled.span`
     width: 192px;
     height: 15px;
-    color: #909090;
     ${OverTheSheet}
 `;
 
@@ -186,17 +180,26 @@ export default class extends React.Component {
     }
 
     makeArticle(item) {
+        const {
+            nightMode,
+            themeColor
+        } = this.props;
         if (item.length > 2) {
             if (item[1] === '홈') {
                 return (
                     <GuideSectionLink
+                        nightMode={nightMode}
                         href="#"
                         rel="noreferrer noopener"
                     >
-                        <ArticleHomeIcon>
+                        <ArticleHomeIcon
+                            themeColor={themeColor}
+                        >
                             {item[0]}
                         </ArticleHomeIcon>
-                        <ArticleItem>
+                        <ArticleItem
+                            themeColor={themeColor}
+                        >
                             {item[1]}
                         </ArticleItem>
                     </GuideSectionLink>
@@ -204,25 +207,36 @@ export default class extends React.Component {
             }
             return (
                 <GuideSectionLink
+                    nightMode={nightMode}
                     href={item[2]}
                     target="_blank"
                     rel="noreferrer noopener"
                 >
-                    <ArticleHomeIcon>
+                    <ArticleHomeIcon
+                        themeColor={themeColor}
+                    >
                         {item[0]}
                     </ArticleHomeIcon>
-                    <ArticleItem>
+                    <ArticleItem
+                        themeColor={themeColor}
+                    >
                         {item[1]}
                     </ArticleItem>
                 </GuideSectionLink>
             )
         } else {
             return (
-                <GuideSectionArticle>
-                    <ArticleIcon>
+                <GuideSectionArticle
+                    nightMode={nightMode}
+                >
+                    <ArticleIcon
+                        themeColor={themeColor}
+                    >
                         {item[0]}
                     </ArticleIcon>
-                    <ArticleItem>
+                    <ArticleItem
+                        themeColor={themeColor}
+                    >
                         {item[1]}
                     </ArticleItem>
                 </GuideSectionArticle>
@@ -232,8 +246,10 @@ export default class extends React.Component {
 
     render() {
         const {
+            nightMode,
             guideIsON,
-            toggleGuide
+            toggleGuide,
+            themeColor
         } = this.props;
         const {
             sectionItems
@@ -241,42 +257,70 @@ export default class extends React.Component {
         const blog = sectionItems.fifthSection[0];
         const github = sectionItems.fifthSection[1];
         const year = new Date().getFullYear();
+        console.log(themeColor)
         return (
             <GuideWrapper
                 guideIsON={guideIsON}
+                themeColor={themeColor}
             >
                 <GuideBlackSheet
                     guideIsON={guideIsON}
                     onClick={toggleGuide}
-                ></GuideBlackSheet>
+                />
                 <GuideLogoWrapper>
                     <Logo
+                        nightMode={nightMode}
+                        themeColor={themeColor}
                         toggleGuide={toggleGuide}
-                    ></Logo>
+                    />
                 </GuideLogoWrapper>
-                <SectionWrapper>
-                    <GuideSection>
+                <SectionWrapper
+                    themeColor={themeColor}
+                >
+                    <GuideSection
+                        themeColor={themeColor}
+                    >
                         {sectionItems.firstSection.map(item => this.makeArticle(item))}
                     </GuideSection>
-                    <GuideSection>
+                    <GuideSection
+                        themeColor={themeColor}
+                    >
                         {sectionItems.secondSection.map(item => this.makeArticle(item))}
                     </GuideSection>
-                    <GuideSection>
-                        <GuideSectionHeader>인기 YANGTUBE</GuideSectionHeader>
+                    <GuideSection
+                        themeColor={themeColor}
+                    >
+                        <GuideSectionHeader
+                            themeColor={themeColor}
+                        >
+                            인기 YANGTUBE
+                            </GuideSectionHeader>
                         {sectionItems.thirdSection.map(item => this.makeArticle(item))}
                     </GuideSection>
-                    <GuideSection>
+                    <GuideSection
+                        themeColor={themeColor}
+                    >
                         {sectionItems.fourthSection.map(item => this.makeArticle(item))}
                     </GuideSection>
-                    <GuideSection>
-                        <GuideSectionHeader>YANG TAEHWAN 더보기</GuideSectionHeader>
+                    <GuideSection
+                        themeColor={themeColor}
+                    >
+                        <GuideSectionHeader
+                            themeColor={themeColor}
+                        >
+                            YANG TAEHWAN 더보기
+                            </GuideSectionHeader>
                         {this.makeArticle(blog)}
                         {this.makeArticle(github)}
                     </GuideSection>
-                    <GuideSection>
+                    <GuideSection
+                        themeColor={themeColor}
+                    >
                         {sectionItems.sixthSection.map(item => this.makeArticle(item))}
                     </GuideSection>
-                    <GuideFooter>
+                    <GuideFooter
+                        themeColor={themeColor}
+                    >
                         <FooterSpan>© {year} YangTube</FooterSpan>
                         <FooterSpan>Made by Taehwan Yang</FooterSpan>
                         <FooterSpan>taehwan920@gmail.com</FooterSpan>
