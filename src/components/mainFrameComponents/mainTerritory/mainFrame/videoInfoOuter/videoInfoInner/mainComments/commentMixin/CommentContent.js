@@ -8,7 +8,7 @@ const CommentContentWrapper = styled.div`
     height: auto;
     position: relative;
 `;
-// white-space: pre-wrap;
+
 const CommentContent = styled.div`
     width: 100%;
     height: ${props => props.showMore ? props.realHeight : props.showLessLines * 19}px;
@@ -37,7 +37,7 @@ const CommentShowMore = styled.div`
     height: 16px;
     margin-top: 4px;
     font-size: 14px;
-    color: rgba(0, 0, 0, 0.6);
+    color: ${props => props.themeColor.grayFont};
     cursor: pointer;
 `;
 
@@ -66,6 +66,7 @@ export default class extends React.Component {
     render() {
         const {
             content,
+            themeColor,
         } = this.props;
         const {
             realHeight,
@@ -82,17 +83,21 @@ export default class extends React.Component {
                 >
                     <ContentMapping
                         content={content}
+                        themeColor={themeColor}
                     />
                 </CommentContent>
                 <CommentHiddenBox
-                    ref={this.contentRef}>
+                    ref={this.contentRef}
+                >
                     {content}
                 </CommentHiddenBox>
                 {numberOfLine <= 4
                     ? null
                     :
                     <CommentShowMore
-                        onClick={this.showToggle}>
+                        onClick={this.showToggle}
+                        themeColor={themeColor}
+                    >
                         {realHeight ? '간략히' : '자세히 보기'}
                     </CommentShowMore>}
             </CommentContentWrapper>

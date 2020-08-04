@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { reportFixed } from '../../../../../../../DB';
 
 const PopUpWrapper = styled.div`
-    background-color: white;
+    background-color: ${props => props.themeColor.main.BG};
     width: max-content;
     height: 52px;
     padding: 8px 0px;
@@ -13,7 +13,6 @@ const PopUpWrapper = styled.div`
     left: 5px;
     display: flex;
     align-items: center;
-    color: rgba(0, 0, 0, 0.5);
     cursor: pointer;
     box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2), 
         0 1px 5px 0 rgba(0, 0, 0, 0.12), 
@@ -40,6 +39,7 @@ const PopUpItem = styled.div`
 const ReportIcon = styled.span`
     width: 24px;
     height: 24px;
+    color: ${props => props.themeColor.main.titleInfos};
     font-size: 20px;
     margin-right: 16px;
 `;
@@ -48,18 +48,27 @@ const ReportTxt = styled.span`
     width: max-content;
     height: 21px;
     font-size: 14px;
-    color: rgba(0, 0, 0, 0.7);
+    color: ${props => props.themeColor.grayFont};
 `;
 
 export default class extends React.Component {
     render() {
+        const {
+            themeColor
+        } = this.props;
         return (
-            <PopUpWrapper>
+            <PopUpWrapper
+                themeColor={themeColor}
+            >
                 <PopUpItem>
-                    <ReportIcon>
+                    <ReportIcon
+                        themeColor={themeColor}
+                    >
                         <i class="fas fa-flag"></i>
                     </ReportIcon>
-                    <ReportTxt>
+                    <ReportTxt
+                        themeColor={themeColor}
+                    >
                         {reportFixed.text}
                     </ReportTxt>
                 </PopUpItem>

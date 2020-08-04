@@ -14,17 +14,22 @@ export default class extends React.Component {
     render() {
         const {
             closeReplies,
-            replyItems
+            replyItems,
+            themeColor,
         } = this.props;
         return (
             <ReplySwitchToInvisibleWrapper>
                 <ReplySwitchBox
                     onClick={closeReplies}
                 >
-                    <ReplySwitchIcon>
+                    <ReplySwitchIcon
+                        themeColor={themeColor}
+                    >
                         <i class="fas fa-caret-up"></i>
                     </ReplySwitchIcon>
-                    <ReplySwitchText>
+                    <ReplySwitchText
+                        themeColor={themeColor}
+                    >
                         {`답글 숨기기`}
                     </ReplySwitchText>
                 </ReplySwitchBox>
@@ -32,6 +37,7 @@ export default class extends React.Component {
                     return (
                         <ReplyContents
                             replyItem={replyItem}
+                            themeColor={themeColor}
                         />
                     )
                 })}

@@ -68,6 +68,9 @@ export default class extends React.Component {
 
     render() {
         const {
+            themeColor
+        } = this.props;
+        const {
             inputFocused,
             inputting,
             inputHeight
@@ -81,12 +84,14 @@ export default class extends React.Component {
                     changeInput={this.changeInput}
                     focusIn={() => this.setState({ inputFocused: true })}
                     focusOut={this.cancelComment}
+                    themeColor={themeColor}
                 />
                 {inputFocused
                     ? <InputBtns
                         inputting={inputting}
                         cancelComment={this.cancelComment}
                         submitComment={this.submitComment}
+                        themeColor={themeColor}
                     />
                     : null}
             </CommentInputPartWrapper>

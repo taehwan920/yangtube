@@ -25,14 +25,15 @@ export default class extends React.Component {
     }
     render() {
         const {
-            replyItem
+            replyItem,
+            themeColor,
         } = this.props;
         const {
             content,
             iconColor,
             likes,
             name,
-            timestamp
+            timestamp,
         } = replyItem;
         const { hovering } = this.state;
         return (
@@ -48,16 +49,20 @@ export default class extends React.Component {
                     <CommentUserAndTime
                         name={name}
                         timestamp={timestamp}
+                        themeColor={themeColor}
                     />
                     <CommentContent
                         content={content}
+                        themeColor={themeColor}
                     />
                     <LikeAndReply
                         likes={likes}
+                        themeColor={themeColor}
                     />
                 </UserAndReplyWrapper>
                 <ReportBtn
                     hovering={hovering}
+                    themeColor={themeColor}
                 />
             </ReplyListWrapper>
         )

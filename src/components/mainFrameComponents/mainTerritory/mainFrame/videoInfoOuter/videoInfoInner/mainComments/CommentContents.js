@@ -19,7 +19,8 @@ export default class extends React.Component {
         const {
             byPopular,
             byLatest,
-            contentData
+            contentData,
+            themeColor,
         } = this.props;
         let {
             comments
@@ -31,8 +32,9 @@ export default class extends React.Component {
                     ? comments.map(commentItem => {
                         return (
                             <CommentArticle
-                                contentData={contentData}
                                 commentItem={commentItem}
+                                contentData={contentData}
+                                themeColor={themeColor}
                             />
                         )
                     })

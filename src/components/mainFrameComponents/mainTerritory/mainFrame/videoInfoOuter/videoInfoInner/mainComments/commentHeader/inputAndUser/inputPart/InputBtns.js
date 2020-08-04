@@ -23,27 +23,37 @@ const CommentInputBtn = styled.div`
     width: max-content;
     height: 39px;
     padding: 10px 16px;
-    text-align: center;
     border-radius: 3px;
+    color: ${props => props.themeColor.grayFont};
+    text-align: center;
     cursor: pointer;
     position: relative;
 `;
 
 const CommentInputSubmitBtn = styled(CommentInputBtn)`
-    background-color: ${props => props.inputting ? '#065FD4' : '#CCCCCC'};
+    background-color: ${props => props.inputting
+        ? props.themeColor.main.commentInputtingBtn
+        : props.themeColor.main.commentInputBtn
+    };
+    color: ${props => props.themeColor.main.commentInputBtnTxt};
     cursor: ${props => props.inputting ? 'pointer' : 'default'};
-    color: white;
     margin-left: 8px;
 `;
 
 export default class extends React.Component {
     render() {
-        const { cancelComment, inputting, submitComment } = this.props;
+        const {
+            cancelComment,
+            inputting,
+            submitComment,
+            themeColor,
+        } = this.props;
         return (
             <CommentInputBtnsWrapper>
                 <CommentInputBtnBox>
                     <CommentInputBtn
                         onClick={cancelComment}
+                        themeColor={themeColor}
                     >
                         취소
                         <CommentClickEffect />
@@ -51,6 +61,7 @@ export default class extends React.Component {
                     <CommentInputSubmitBtn
                         onClick={submitComment}
                         inputting={inputting}
+                        themeColor={themeColor}
                     >
                         댓글
                         <CommentClickEffect />

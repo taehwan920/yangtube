@@ -6,7 +6,7 @@ const CommentInputContainer = styled.div`
     min-height: 24.5px;
     height: ${props => props.inputHeight + 3.5 || '24.5'}px;
     margin-bottom: 8px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid ${props => props.themeColor.main.border};
     position: relative;
     display: flex;
 `;
@@ -29,7 +29,7 @@ const CommentInputBorderAni = styled(CommentInputContainer)`
 const CommentPlaceHolder = styled.div`
     width: 100%;
     height: 21px;
-    color: rgba(0, 0, 0, 0.6);
+    color: ${props => props.themeColor.grayFont};
     font-size: 13.5px;
     position: absolute;
     z-index: 25;
@@ -42,6 +42,7 @@ const CommentInput = styled.textarea`
     min-height: 21px;
     height: ${props => props.inputHeight || '21'}px;
     border: none;
+    color: ${props => props.themeColor.normalFont};
     resize: none;
     z-index: 26;
 
@@ -52,11 +53,24 @@ const CommentInput = styled.textarea`
 
 export default class extends React.Component {
     render() {
-        const { changeInput, focusIn, focusOut, inputFocused, inputting, inputHeight } = this.props;
+        const {
+            changeInput,
+            focusIn,
+            focusOut,
+            inputFocused,
+            inputting,
+            inputHeight,
+            themeColor,
+        } = this.props;
         return (
             <CommentInputContainer
-                inputHeight={inputHeight}>
-                <CommentPlaceHolder inputting={inputting}>
+                inputHeight={inputHeight}
+                themeColor={themeColor}
+            >
+                <CommentPlaceHolder
+                    inputting={inputting}
+                    themeColor={themeColor}
+                >
                     공개 댓글 추가...
                 </CommentPlaceHolder>
                 <CommentInput
@@ -66,9 +80,15 @@ export default class extends React.Component {
                     onFocus={focusIn}
                     onBlur={focusOut}
                     onChange={changeInput}
+                    themeColor={themeColor}
                 />
-                <CommentInputBorderAniBox inputHeight={inputHeight}>
-                    <CommentInputBorderAni inputFocused={inputFocused}></CommentInputBorderAni>
+                <CommentInputBorderAniBox
+                    inputHeight={inputHeight}
+                >
+                    <CommentInputBorderAni
+                        inputFocused={inputFocused}
+                        themeColor={themeColor}
+                    />
                 </CommentInputBorderAniBox>
             </CommentInputContainer>
         )

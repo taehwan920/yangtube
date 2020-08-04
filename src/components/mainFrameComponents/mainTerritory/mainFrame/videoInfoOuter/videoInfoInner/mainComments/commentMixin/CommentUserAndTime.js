@@ -14,10 +14,11 @@ const CommentUserName = styled.span`
     height: 18px;
     margin-right: 4px;
     margin-bottom: 2px;
+    color: ${props => props.themeColor.normalFont};
 `;
 
 const CommentTimeStamp = styled.span`
-    color: rgba(0, 0, 0, 0.6);
+    color: ${props => props.themeColor.grayFont};
 `;
 
 export default class extends React.Component {
@@ -49,14 +50,22 @@ export default class extends React.Component {
     };
 
     render() {
-        const { name, timestamp } = this.props;
+        const {
+            name,
+            timestamp,
+            themeColor,
+        } = this.props;
         const calculated = this.getTimeStamp(timestamp, 'kr');
         return (
             <CommentUserAndTimeWrapper>
-                <CommentUserName>
+                <CommentUserName
+                    themeColor={themeColor}
+                >
                     {name}
                 </CommentUserName>
-                <CommentTimeStamp>
+                <CommentTimeStamp
+                    themeColor={themeColor}
+                >
                     {`${calculated[0]}${calculated[1]}` || '1일 전'}
                 </CommentTimeStamp>
             </CommentUserAndTimeWrapper>

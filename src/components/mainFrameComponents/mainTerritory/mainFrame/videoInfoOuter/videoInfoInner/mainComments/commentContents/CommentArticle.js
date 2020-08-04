@@ -13,6 +13,7 @@ export default class extends React.Component {
         const {
             commentItem,
             contentData,
+            themeColor,
         } = this.props;
         const replyItems = commentItem.replies;
         return (
@@ -20,10 +21,13 @@ export default class extends React.Component {
                 <CommentUserAndContent
                     commentItem={commentItem}
                     contentData={contentData}
+                    themeColor={themeColor}
                 />
                 {replyItems.length > 0
-                    ? <ReplySwitches
+                    ?
+                    <ReplySwitches
                         replyItems={replyItems}
+                        themeColor={themeColor}
                     />
                     : null}
             </CommentArticleWrapper>

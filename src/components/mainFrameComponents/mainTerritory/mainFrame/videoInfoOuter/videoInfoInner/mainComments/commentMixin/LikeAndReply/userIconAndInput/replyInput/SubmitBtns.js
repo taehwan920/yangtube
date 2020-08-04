@@ -21,16 +21,21 @@ const ReplyBtns = styled.div`
     width: max-content;
     height: 39px;
     padding: 10px 16px;
-    text-align: center;
     border-radius: 3px;
+    color: ${props => props.themeColor.grayFont};
+    text-align: center;
     position: relative;
     cursor: pointer;
 `;
 
 const ReplySubmitBtn = styled(ReplyBtns)`
-    background-color: ${props => props.inputting ? '#065FD4' : '#CCCCCC'};
+    background-color: ${props =>
+        props.inputting
+            ? props.themeColor.main.commentInputtingBtn
+            : props.themeColor.main.commentInputBtn
+    };
     cursor: ${props => props.inputting ? 'pointer' : 'default'};
-    color: white;
+    color: ${props => props.themeColor.main.commentInputBtnTxt};
     margin-left: 8px;
 `;
 
@@ -40,17 +45,23 @@ const ClickEffect = styled.div`
     position: absolute;
     top: 0px;
     left: 0px;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: transparent;
     transition: background-color 0.1s linear;
     
     &:active{
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: ${props => props.themeColor.effectBG};
     }
 `;
 
 export default class extends React.Component {
     render() {
-        const { inputting, toggleReply, cancelReply, submitReply } = this.props;
+        const {
+            inputting,
+            toggleReply,
+            cancelReply,
+            submitReply,
+            themeColor,
+        } = this.props;
         return (
             <ReplyBtnsWrapper>
                 <ReplyBtnsBox>
@@ -59,9 +70,13 @@ export default class extends React.Component {
                         onClick={() => {
                             cancelReply();
                             toggleReply();
-                        }}>
+                        }}
+                        themeColor={themeColor}
+                    >
                         취소
-                        <ClickEffect></ClickEffect>
+                        <ClickEffect
+                            themeColor={themeColor}
+                        />
                     </ReplyBtns>
                     <ReplySubmitBtn
                         draggable="true"
@@ -70,9 +85,13 @@ export default class extends React.Component {
                             if (!inputting) { return; }
                             submitReply();
                             toggleReply();
-                        }}>
+                        }}
+                        themeColor={themeColor}
+                    >
                         답글
-                        <ClickEffect></ClickEffect>
+                        <ClickEffect
+                            themeColor={themeColor}
+                        />
                     </ReplySubmitBtn>
                 </ReplyBtnsBox>
             </ReplyBtnsWrapper>

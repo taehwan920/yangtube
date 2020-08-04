@@ -12,16 +12,24 @@ const ReplySwitchToVisibleWrapper = styled.div`
 
 export default class extends React.Component {
     render() {
-        const { openReplies, replyLength } = this.props;
+        const {
+            openReplies,
+            replyLength,
+            themeColor,
+        } = this.props;
         return (
             <ReplySwitchToVisibleWrapper>
                 <ReplySwitchBox
                     onClick={openReplies}
                 >
-                    <ReplySwitchIcon>
+                    <ReplySwitchIcon
+                        themeColor={themeColor}
+                    >
                         <i class="fas fa-caret-down"></i>
                     </ReplySwitchIcon>
-                    <ReplySwitchText>
+                    <ReplySwitchText
+                        themeColor={themeColor}
+                    >
                         {`답글 ${replyLength}개 보기`}
                     </ReplySwitchText>
                 </ReplySwitchBox>

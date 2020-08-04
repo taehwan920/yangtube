@@ -30,7 +30,8 @@ export default class extends React.Component {
     };
     render() {
         const {
-            likes
+            likes,
+            themeColor,
         } = this.props;
         const {
             replyActive,
@@ -41,12 +42,15 @@ export default class extends React.Component {
                 <LikeReplyBtns
                     likes={likes}
                     toggleReply={this.toggleReply}
+                    themeColor={themeColor}
                 />
                 {replyActive
-                    ? <ReplyUserIconAndInput
+                    ?
+                    <ReplyUserIconAndInput
                         clickAniEnd={this.clickAniEnd}
                         toggleReply={this.toggleReply}
                         replyClicked={replyClicked}
+                        themeColor={themeColor}
                     />
                     : null}
             </CommentLikeAndReplyBox>

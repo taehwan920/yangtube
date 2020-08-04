@@ -23,7 +23,9 @@ const LikeIcon = styled.div`
     padding: 8px;
     font-size: 14px;
     line-height: 20px;
-    color: ${props => props.liked ? '#065FD4' : 'rgba(0, 0, 0, 0.5)'};
+    color: ${props => props.liked
+        ? props.themeColor.main.pointerColor
+        : props.themeColor.main.titleInfos};
     cursor: pointer;
     
     ${HoveringIcon}
@@ -32,7 +34,9 @@ const LikeIcon = styled.div`
 
 const DislikeIcon = styled(LikeIcon)`
     line-height: 25px;
-    color: ${props => props.disliked ? '#065FD4' : 'rgba(0, 0, 0, 0.5)'};
+    color: ${props => props.disliked
+        ? props.themeColor.main.pointerColor
+        : props.themeColor.main.titleInfos};
     cursor: pointer;
 
     ${HoveringIcon}
@@ -45,7 +49,9 @@ const LikeNum = styled.div`
     line-height: 22px;
     font-size: 12px;
     font-weight: 500;
-    color: ${props => props.liked ? '#065FD4' : 'rgba(0, 0, 0, 0.6)'};
+    color: ${props => props.liked
+        ? props.themeColor.main.pointerColor
+        : props.themeColor.grayFont};
     cursor: pointer;
 
     ${HoveringIcon}
@@ -56,9 +62,10 @@ const ReplyBtn = styled.div`
     width: max-content;
     height: 33px;
     padding: 8px 16px;
+    position: relative;
+    color: ${props => props.themeColor.grayFont};
     text-align: center;
     cursor: pointer;
-    position: relative;
 `;
 
 const ClickEffect = styled.div`
@@ -111,6 +118,7 @@ export default class extends React.Component {
         const {
             likes,
             toggleReply,
+            themeColor,
         } = this.props;
         const {
             disliked,
@@ -122,12 +130,14 @@ export default class extends React.Component {
                 <LikeIcon
                     liked={liked}
                     onClick={this.toggleLike}
+                    themeColor={themeColor}
                 >
                     <i class="fas fa-thumbs-up"></i>
                 </LikeIcon>
                 <LikeNum
                     liked={liked}
                     onClick={this.toggleLike}
+                    themeColor={themeColor}
                 >
                     {likedNumber.length < 2
                         ? likedNumber[0]
@@ -136,12 +146,15 @@ export default class extends React.Component {
                 <DislikeIcon
                     disliked={disliked}
                     onClick={this.toggleDislike}
+                    themeColor={themeColor}
                 >
                     <i class="fas fa-thumbs-down"></i>
                 </DislikeIcon>
                 <ReplyBtn
                     draggable="true"
-                    onClick={toggleReply}>
+                    onClick={toggleReply}
+                    themeColor={themeColor}
+                >
                     답글
                     <ClickEffect />
                 </ReplyBtn>

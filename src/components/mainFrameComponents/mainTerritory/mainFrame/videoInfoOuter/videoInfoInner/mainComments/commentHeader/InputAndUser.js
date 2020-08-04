@@ -22,12 +22,17 @@ const CommentInputUserIcon = styled.div`
 
 export default class extends React.Component {
     render() {
+        const {
+            themeColor
+        } = this.props;
         return (
             <CommentInputAndUserWrapper>
                 <CommentInputUserIcon draggable="true">
                     G
                 </CommentInputUserIcon>
-                <InputPart />
+                <InputPart
+                    themeColor={themeColor}
+                />
             </CommentInputAndUserWrapper>
         )
     }

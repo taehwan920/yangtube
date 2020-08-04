@@ -16,7 +16,7 @@ export const ReplySwitchIcon = styled.span`
     height: 20px;
     font-size: 14px;
     text-align: center;
-    color: #065FD4;
+    color: ${props => props.themeColor.main.pointerColor};
 `;
 
 export const ReplySwitchText = styled.span`
@@ -24,7 +24,7 @@ export const ReplySwitchText = styled.span`
     height: 16px;
     margin-left: 8px;
     font-size: 14px;
-    color: #065FD4;
+    color: ${props => props.themeColor.main.pointerColor};
 `;
 
 export default class extends React.Component {
@@ -41,7 +41,8 @@ export default class extends React.Component {
     }
     render() {
         const {
-            replyItems
+            replyItems,
+            themeColor,
         } = this.props;
         const {
             replyVisible
@@ -52,11 +53,16 @@ export default class extends React.Component {
                     ? null
                     : <ReplyOpenSwitch
                         replyLength={replyItems.length}
-                        openReplies={this.openReplies} />}
+                        openReplies={this.openReplies}
+                        themeColor={themeColor}
+                    />
+                }
                 {replyVisible
                     ? <ReplyCloseSwitch
                         replyItems={replyItems}
-                        closeReplies={this.closeReplies} />
+                        closeReplies={this.closeReplies}
+                        themeColor={themeColor}
+                    />
                     : null}
             </React.Fragment>
         )

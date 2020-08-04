@@ -15,7 +15,7 @@ const ReplyInputWrapper = styled.div`
     min-height: 24.5px;
     height: ${props => props.inputHeight + 3.5 || '24.5'}px;
     margin-bottom: 8px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid ${props => props.themeColor.main.border};
     position: relative;
     display: flex;
 `;
@@ -24,8 +24,8 @@ const ReplyPlaceHolder = styled.div`
     width: 100%;
     height: 21px;
     position: absolute;
+    color: ${props => props.themeColor.grayFont};
     font-size: 14px;
-    color: rgba(0, 0, 0, 0.6);
     z-index: 25;
     display: ${props => props.inputting ? 'none' : 'inline'};
 `;
@@ -36,6 +36,7 @@ const ReplyInputArea = styled.textarea`
     min-height: 21px;
     height: ${props => props.inputHeight || '21'}px;
     border: none;
+    color: ${props => props.themeColor.normalFont};
     resize: none;
     z-index: 26;
 
@@ -47,7 +48,7 @@ const ReplyInputArea = styled.textarea`
 const BorderAniBox = styled.div`
     width: 100%;
     position: absolute;
-    top: ${props => props.inputHeight ? props.inputHeight - 10.5 : '10.5'}px;
+    top: ${props => props.inputHeight ? props.inputHeight - 9 : '12'}px;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -56,7 +57,7 @@ const BorderAniBox = styled.div`
 const BorderAni = styled(BorderAniBox)`
     width: ${props => props.inputFocused ? '100%' : '0px'};
     border-bottom: 2px solid black;
-    transition: all 0.25s ease-out;
+    transition: all 0.22s ease-out;
 `;
 
 
@@ -116,15 +117,24 @@ export default class extends React.Component {
     }
 
     render() {
-        const { toggleReply } = this.props;
-        const { inputFocused, inputting, inputHeight } = this.state;
+        const {
+            toggleReply,
+            themeColor,
+        } = this.props;
+        const {
+            inputFocused,
+            inputting,
+            inputHeight
+        } = this.state;
         return (
             <ReplyInputAndBtnWrapper>
                 <ReplyInputWrapper
                     inputHeight={inputHeight}
+                    themeColor={themeColor}
                 >
                     <ReplyPlaceHolder
                         inputting={inputting}
+                        themeColor={themeColor}
                     >
                         공개 답글 추가...
                     </ReplyPlaceHolder>
@@ -134,6 +144,7 @@ export default class extends React.Component {
                         onFocus={() => this.setState({ inputFocused: true })}
                         onBlur={() => this.setState({ inputFocused: false })}
                         onChange={this.changeInput}
+                        themeColor={themeColor}
                     />
                     <BorderAniBox
                         inputHeight={inputHeight}
@@ -148,6 +159,7 @@ export default class extends React.Component {
                     toggleReply={toggleReply}
                     cancelReply={this.cancelReply}
                     submitReply={this.submitReply}
+                    themeColor={themeColor}
                 />
             </ReplyInputAndBtnWrapper>
         )

@@ -7,7 +7,7 @@ const ReportWrapper = styled.div`
     height: 100%;
     position: relative;
     font-size: 18px;
-    color: rgba(0, 0, 0, 0.4);
+    color: ${props => props.themeColor.main.titleInfos};
     opacity: ${props => props.hovering || props.btnClicked ? '1' : '0'};
 `;
 
@@ -36,15 +36,15 @@ const ClickEffect = styled.div`
 export default class extends React.Component {
     state = {
         btnClicked: false
-    }
+    };
 
     componentDidMount() {
         document.addEventListener('mousedown', this.clickOutside);
-    }
+    };
 
     componentWillUnmount() {
         document.removeEventListener('mousedown', this.clickOutside);
-    }
+    };
 
     wrapperRef = React.createRef();
 
@@ -55,25 +55,34 @@ export default class extends React.Component {
                 this.setState({ btnClicked: false })
             }
         }
-
-    }
+    };
 
     render() {
-        const { hovering } = this.props;
-        const { btnClicked } = this.state;
+        const {
+            hovering,
+            themeColor,
+        } = this.props;
+        const {
+            btnClicked
+        } = this.state;
         return (
             <ReportWrapper
                 ref={this.wrapperRef}
                 hovering={hovering}
-                btnClicked={btnClicked}>
+                btnClicked={btnClicked}
+                themeColor={themeColor}
+            >
                 <ReportIconBox
                     onClick={() => this.setState({ btnClicked: !this.state.btnClicked })}
                 >
                     <i class="fas fa-ellipsis-v"></i>
-                    <ClickEffect></ClickEffect>
+                    <ClickEffect />
                 </ReportIconBox>
                 {btnClicked
-                    ? <ReportPopUp></ReportPopUp>
+                    ?
+                    <ReportPopUp
+                        themeColor={themeColor}
+                    />
                     : null}
             </ReportWrapper>
         )
