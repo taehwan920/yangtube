@@ -37,6 +37,14 @@ const DislikeEffect = styled(LikeEffect)`
 
 const LikeTexts = styled.span`
     height: 16px;
+    color: ${props => props.liked ? '#065FD4' : props.themeColor.grayFont};
+    font-size: 13px;
+    line-height: 16px;
+`;
+
+const DislikeTexts = styled.span`
+    height: 16px;
+    color: ${props => props.disliked ? '#065FD4' : props.themeColor.grayFont};
     font-size: 13px;
     line-height: 16px;
 `;
@@ -99,8 +107,9 @@ export default class extends React.Component {
 
     render() {
         const {
+            parseNum,
             contentData,
-            parseNum
+            themeColor,
         } = this.props;
         const {
             liked,
@@ -121,32 +130,46 @@ export default class extends React.Component {
                 <LikeBox
                     liked={liked}
                     onClick={this.clickThumb('liked')}
+                    themeColor={themeColor}
                 >
                     <LikeIcon
                         onMouseOver={this.onLikeBox}
                         onMouseLeave={this.mouseOutOfLike}
+                        liked={liked}
+                        themeColor={themeColor}
                     >
                         <i class="fas fa-thumbs-up"></i>
                         <LikeEffect />
                     </LikeIcon>
-                    <LikeTexts>
+                    <LikeTexts
+                        liked={liked}
+                        disliked={disliked}
+                        themeColor={themeColor}
+                    >
                         {likeItem}
                     </LikeTexts>
                 </LikeBox>
                 <DislikeBox
                     disliked={disliked}
                     onClick={this.clickThumb('disliked')}
+                    themeColor={themeColor}
                 >
                     <DislikeIcon
                         onMouseOver={this.onDislikeBox}
                         onMouseLeave={this.mouseOutOfLike}
+                        disliked={disliked}
+                        themeColor={themeColor}
                     >
                         <i class="fas fa-thumbs-up"></i>
                         <DislikeEffect />
                     </DislikeIcon>
-                    <LikeTexts>
+                    <DislikeTexts
+                        liked={liked}
+                        disliked={disliked}
+                        themeColor={themeColor}
+                    >
                         {dislikeItem}
-                    </LikeTexts>
+                    </DislikeTexts>
                 </DislikeBox>
                 <LikeRateChartBox
                     onMouseOver={this.mouseOnRate}
@@ -156,10 +179,12 @@ export default class extends React.Component {
                         likeRate={likeRate}
                         liked={liked}
                         disliked={disliked}
+                        themeColor={themeColor}
                     />
                     <DislikeRate
                         dislikeRate={dislikeRate}
-                    ></DislikeRate>
+                        themeColor={themeColor}
+                    />
                 </LikeRateChartBox>
                 <LikePopUp
                     likeHovering={likeHovering}

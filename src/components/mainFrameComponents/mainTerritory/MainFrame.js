@@ -5,10 +5,8 @@ import VideoInfoOuter from './mainFrame/VideoInfoOuter';
 
 // width: max-content;
 const MainFrameWrapper = styled.div`
-    width: ${props => props.theaterMode ? '100%' : 'max-content'};
-    
     background: inherit;
-    
+    width: ${props => props.theaterMode ? '100%' : 'max-content'};
     @media(max-width: 767px) {
         width: 100%;
     }

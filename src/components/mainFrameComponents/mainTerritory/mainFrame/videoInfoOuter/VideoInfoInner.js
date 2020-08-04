@@ -45,6 +45,7 @@ export default class extends React.Component {
                 theaterMode={theaterMode}>
                 <MainTitleAndDesc
                     contentData={contentData}
+                    themeColor={themeColor}
                 />
                 <VideoNavNonPC
                     autoPlay={autoPlay}

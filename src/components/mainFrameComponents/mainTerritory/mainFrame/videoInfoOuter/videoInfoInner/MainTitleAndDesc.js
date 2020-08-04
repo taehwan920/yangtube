@@ -14,12 +14,13 @@ const TitleWrapper = styled.article`
     height: 93px;
     padding-top: 20px;
     padding-bottom: 8px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid ${props => props.themeColor.main.border};
 `;
 
 const Title = styled.div`
     width: 100%;
     height: 24px;
+    color: ${props => props.themeColor.normalFont};
     font-size: 18px;
 `;
 
@@ -68,21 +69,29 @@ export default class extends React.Component {
 
     render() {
         const {
-            contentData
+            contentData,
+            themeColor,
         } = this.props;
         const {
             showMore,
             realHeight,
         } = this.state;
         return (
-            <TitleAndDesc realHeight={realHeight}>
-                <TitleWrapper>
-                    <Title>
+            <TitleAndDesc
+                realHeight={realHeight}
+            >
+                <TitleWrapper
+                    themeColor={themeColor}
+                >
+                    <Title
+                        themeColor={themeColor}
+                    >
                         {contentData.title}
                     </Title>
                     <TitleAndInfo
                         parseNum={this.parseNum}
                         contentData={contentData}
+                        themeColor={themeColor}
                     />
                 </TitleWrapper>
                 <DescAndUploader
@@ -91,6 +100,7 @@ export default class extends React.Component {
                     showMore={showMore}
                     realHeight={realHeight}
                     contentData={contentData}
+                    themeColor={themeColor}
                 />
             </TitleAndDesc>
         )

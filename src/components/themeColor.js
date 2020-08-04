@@ -16,6 +16,9 @@ export default {
         },
         main: {
             BG: '#F9F9F9',
+            titleInfos: '#909090',
+            dislikeRate: '#CCCCCC',
+            border: '#E0E0E0',
         },
         effectBG: 'rgba(0, 0, 0, 0.1)',
         grayFont: '#565656',
@@ -39,6 +42,9 @@ export default {
         },
         main: {
             BG: '#181818',
+            titleInfos: '#909090',
+            dislikeRate: '#606060',
+            border: '#525252',
         },
         effectBG: 'rgba(255, 255, 255, 0.1)',
         grayFont: '#9A9A9A',

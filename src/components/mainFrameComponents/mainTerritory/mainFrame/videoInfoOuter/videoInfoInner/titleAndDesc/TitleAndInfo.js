@@ -10,7 +10,7 @@ const TitleAndInfo = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: rgba(0, 0, 0, 0.6);
+    color: ${props => props.themeColor.grayFont};
     font-size: 14px;
 `;
 const ViewsAndDateWrapper = styled.div`
@@ -63,13 +63,19 @@ export const LikeRateChartBox = styled.div`
 `;
 
 export const LikeRate = styled.div`
-    background-color: ${props => (props.liked || props.disliked) ? '#065FD4' : '#909090'};
+    background-color: ${props => {
+        if (props.liked || props.disliked) {
+            return '#065FD4'
+        } else {
+            return props.themeColor.main.titleInfos;
+        }
+    }};
     width: ${props => props.likeRate || '100'}%;
     height: 2px;
 `;
 
 export const DislikeRate = styled.div`
-    background: rgba(0, 0, 0, 0.1);
+    background: ${props => props.themeColor.main.dislikeRate};
     width: ${props => props.dislikeRate || '0'}%;
     height: 2px;
 `;
@@ -85,18 +91,19 @@ export const TitleFunctionsItems = styled.div`
 `;
 
 export const LikeBox = styled(TitleFunctionsItems)`
-    color: ${props => props.liked ? '#065FD4' : 'color: rgba(0, 0, 0, 0.6);'};
+    color: ${props => props.liked ? '#065FD4' : props.themeColor.main.titleInfos};
 `;
 
 export const DislikeBox = styled(TitleFunctionsItems)`
-    color: ${props => props.disliked ? '#065FD4' : 'color: rgba(0, 0, 0, 0.6);'};
+    color: ${props => props.disliked ? '#065FD4' : props.themeColor.main.titleInfos};
 `;
 
-const TitleFunctionsIcons = styled.span`
+export const TitleFunctionsIcons = styled.span`
     width: 36px;
     height: 36px;
     padding: 8px;
-    font-size: 16px;
+    color: ${props => props.themeColor.main.titleInfos};
+    font-size: 18px;
     line-height: 24px;
 `;
 
@@ -104,6 +111,7 @@ export const LikeIcon = styled(TitleFunctionsIcons)`
     font-size: 18px;
     line-height: 0px;
     position: relative;
+    color: ${props => props.liked ? '#065FD4' : props.themeColor.main.titleInfos};
 `;
 
 export const DislikeIcon = styled(TitleFunctionsIcons)`
@@ -113,6 +121,7 @@ export const DislikeIcon = styled(TitleFunctionsIcons)`
     padding-bottom: 30px;
     margin-right: 4px;
     position: relative;
+    color: ${props => props.disliked ? '#065FD4' : props.themeColor.main.titleInfos};
 `;
 
 export const EllipsisIcon = styled(TitleFunctionsIcons)`
@@ -122,6 +131,7 @@ export const EllipsisIcon = styled(TitleFunctionsIcons)`
 
 export const TitleFunctionsTexts = styled.span`
     height: 16px;
+    color: ${props => props.themeColor.grayFont};
     font-size: 13px;
     line-height: 16px;
     white-space: nowrap;
@@ -168,13 +178,18 @@ export default class extends React.Component {
     render() {
         const {
             parseNum,
-            contentData
+            contentData,
+            themeColor,
         } = this.props;
         const viewsItem = parseNum(contentData.views, 'kr');
         const dateItem = this.parseDate(contentData.timestamp, 'kr');
         return (
-            <TitleAndInfo>
-                <ViewsAndDateWrapper>
+            <TitleAndInfo
+                themeColor={themeColor}
+            >
+                <ViewsAndDateWrapper
+
+                >
                     <ViewsSpan>
                         {`조회수 ${viewsItem[0]}${viewsItem[1]}회`}
                     </ViewsSpan>
@@ -189,9 +204,14 @@ export default class extends React.Component {
                     <LikeAndDislike
                         parseNum={parseNum}
                         contentData={contentData}
+                        themeColor={themeColor}
                     />
-                    <ShareAndSave />
-                    <More />
+                    <ShareAndSave
+                        themeColor={themeColor}
+                    />
+                    <More
+                        themeColor={themeColor}
+                    />
                 </TitleFunctionsWrapper>
             </TitleAndInfo>
         )

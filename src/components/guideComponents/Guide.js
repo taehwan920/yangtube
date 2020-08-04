@@ -168,7 +168,7 @@ export default class extends React.Component {
             [<i class="fas fa-plus-circle"></i>, '채널 탐색']
         ],
         fifthSection: [
-            [<i class="fab fa-blogger"></i>, '블로그', 'https://hitzi.tistory.com/'],
+            [<i class="fas fa-blog"></i>, '블로그', 'https://hitzi.tistory.com/'],
             [<i class="fab fa-github"></i>, '깃허브', 'https://github.com/taehwan920/yangtube']
         ],
         sixthSection: [

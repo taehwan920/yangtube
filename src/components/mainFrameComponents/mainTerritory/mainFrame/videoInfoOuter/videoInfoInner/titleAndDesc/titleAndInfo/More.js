@@ -25,17 +25,27 @@ export default class extends React.Component {
     };
 
     render() {
-        const { popUp } = this.state;
+        const {
+            themeColor,
+        } = this.props;
+        const {
+            popUp,
+        } = this.state;
         return (
             <TitleFunctionsItems
                 ref={this.popUpRef}
                 onClick={() => this.setState({ popUp: !this.state.popUp })}>
-                <EllipsisIcon>
+                <EllipsisIcon
+                    themeColor={themeColor}
+                >
                     <i class="fas fa-ellipsis-h"></i>
                 </EllipsisIcon>
-                <TitleInfoClickEffect></TitleInfoClickEffect>
+                <TitleInfoClickEffect />
                 {popUp
-                    ? <PopUp></PopUp>
+                    ?
+                    <PopUp
+                        themeColor={themeColor}
+                    />
                     : null}
             </TitleFunctionsItems>
         )

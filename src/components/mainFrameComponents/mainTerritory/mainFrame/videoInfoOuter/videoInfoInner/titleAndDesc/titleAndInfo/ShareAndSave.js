@@ -1,16 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
-    TitleFunctionsItems,
+    TitleFunctionsIcons,
     TitleFunctionsTexts
 } from '../TitleAndInfo';
 
-const TitleFunctionsIcons = styled.span`
-    width: 36px;
-    height: 36px;
-    padding: 8px;
-    font-size: 16px;
-    line-height: 24px;
+const LinkBox = styled.a`
+    height: 40px;
+    display: flex;
+    margin-right: 6px;
+    position: relative;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: pointer;
 `;
 
 const ShareAndSaveEffect = styled.div`
@@ -32,26 +34,43 @@ const ShareAndSaveEffect = styled.div`
 
 export default class extends React.Component {
     render() {
+        const {
+            themeColor,
+        } = this.props;
         return (
             <React.Fragment>
-                <TitleFunctionsItems>
-                    <TitleFunctionsIcons>
-                        <i class="fas fa-share"></i>
+                <LinkBox
+                    href="https://github.com/taehwan920"
+                    rel="noreferrer noopener"
+                >
+                    <TitleFunctionsIcons
+                        themeColor={themeColor}
+                    >
+                        <i class="fab fa-github"></i>
                         <ShareAndSaveEffect />
                     </TitleFunctionsIcons>
-                    <TitleFunctionsTexts>
-                        공유
+                    <TitleFunctionsTexts
+                        themeColor={themeColor}
+                    >
+                        깃허브
                         </TitleFunctionsTexts>
-                </TitleFunctionsItems>
-                <TitleFunctionsItems>
-                    <TitleFunctionsIcons>
-                        <i class="fas fa-folder-plus"></i>
+                </LinkBox>
+                <LinkBox
+                    href="https://hitzi.tistory.com/"
+                    rel="noreferrer noopener"
+                >
+                    <TitleFunctionsIcons
+                        themeColor={themeColor}
+                    >
+                        <i class="fas fa-blog"></i>
                         <ShareAndSaveEffect />
                     </TitleFunctionsIcons>
-                    <TitleFunctionsTexts>
-                        저장
+                    <TitleFunctionsTexts
+                        themeColor={themeColor}
+                    >
+                        블로그
                         </TitleFunctionsTexts>
-                </TitleFunctionsItems>
+                </LinkBox>
             </React.Fragment>
         )
     }

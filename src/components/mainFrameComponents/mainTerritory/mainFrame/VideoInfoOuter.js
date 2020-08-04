@@ -4,8 +4,8 @@ import VideoNavPC from '../../videoNavComponents/VideoNavPC';
 import VideoInfoInner from './videoInfoOuter/VideoInfoInner';
 
 const VideoInfoOuterWrapper = styled.div`
-    width: max-content;
     background: inherit;
+    width: max-content;
     padding: 0px ${props => props.theaterMode ? '24px' : '0px'};
     display: flex;
     z-index: 2;

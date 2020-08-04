@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const PopUpWrapper = styled.section`
-    background-color: white;
+    background-color: ${props => props.themeColor.main.BG};
     width: max-content;
     height: auto;
     padding: 8px 0px;
@@ -30,7 +30,7 @@ const PopUpArticle = styled.article`
     align-items: center;
     
     &:hover{
-        background: rgba(0, 0, 0, 0.1);
+        background: ${props => props.themeColor.effectBG};
     }
 `;
 
@@ -38,7 +38,7 @@ const ArticleIcon = styled.span`
     width: 24px;
     height: 24px;
     margin-right: 16px;
-    color: rgba(0, 0, 0, 0.5);
+    color: ${props => props.themeColor.main.titleInfos};
     font-size: 20px;
     text-align: center;
 `;
@@ -48,7 +48,7 @@ const ArticleTxt = styled.span`
     height: 21px;
     font-size: 14px;
     text-align: center;
-    color: rgba(0, 0, 0, 0.8);
+    color: ${props => props.themeColor.normalFont};
 `;
 
 const popUpItems = [
@@ -58,13 +58,28 @@ const popUpItems = [
 
 export default class extends React.Component {
     render() {
+        const {
+            themeColor
+        } = this.props;
         return (
-            <PopUpWrapper>
+            <PopUpWrapper
+                themeColor={themeColor}
+            >
                 {popUpItems.map(item => {
                     return (
-                        <PopUpArticle>
-                            <ArticleIcon>{item.icon}</ArticleIcon>
-                            <ArticleTxt>{item.text}</ArticleTxt>
+                        <PopUpArticle
+                            themeColor={themeColor}
+                        >
+                            <ArticleIcon
+                                themeColor={themeColor}
+                            >
+                                {item.icon}
+                            </ArticleIcon>
+                            <ArticleTxt
+                                themeColor={themeColor}
+                            >
+                                {item.text}
+                            </ArticleTxt>
                         </PopUpArticle>
                     )
                 })}
