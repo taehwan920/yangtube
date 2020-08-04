@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const PopUpWrapper = styled.section`
-    background-color: white;
+    background-color: ${props => props.themeColor.main.BG};
     width: max-content;
     height: max-content;
     padding: 8px 0px;
@@ -30,15 +30,15 @@ const PopUpArticle = styled.article`
     align-items: center;
     
     &:hover{
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: ${props => props.themeColor.effectBG};
     }
 `;
 
 const PopUpMiddleArticle = styled(PopUpArticle)`
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: ${props => props.themeColor.effectBG};
 
     &:hover{
-        background-color: rgba(0, 0, 0, 0.2);
+        background-color: ${props => props.themeColor.highlightedBG};
     }
 `;
 
@@ -46,7 +46,7 @@ const ArticleIcon = styled.span`
     width: 24px;
     height: 24px;
     margin-right: 16px;
-    color: rgba(0, 0, 0, 0.5);
+    color: ${props => props.themeColor.grayFont};
     font-size: 20px;
     text-align: center;
 `;
@@ -54,9 +54,9 @@ const ArticleIcon = styled.span`
 const ArticleTxt = styled.span`
     width: auto;
     height: 21px;
+    color: ${props => props.themeColor.grayFont};
     font-size: 14px;
     text-align: center;
-    color: rgba(0, 0, 0, 0.8);
 `;
 
 const popUpItems = [
@@ -66,24 +66,47 @@ const popUpItems = [
 ]
 
 export default class extends React.Component {
-
-
     render() {
+        const {
+            themeColor,
+        } = this.props;
         return (
-            <PopUpWrapper>
+            <PopUpWrapper
+                themeColor={themeColor}
+            >
                 {popUpItems.map(item => {
                     if (Object.keys(item).length > 2) {
                         return (
-                            <PopUpMiddleArticle>
-                                <ArticleIcon>{item.icon}</ArticleIcon>
-                                <ArticleTxt>{item.text}</ArticleTxt>
+                            <PopUpMiddleArticle
+                                themeColor={themeColor}
+                            >
+                                <ArticleIcon
+                                    themeColor={themeColor}
+                                >
+                                    {item.icon}
+                                </ArticleIcon>
+                                <ArticleTxt
+                                    themeColor={themeColor}
+                                >
+                                    {item.text}
+                                </ArticleTxt>
                             </PopUpMiddleArticle>
                         )
                     }
                     return (
-                        <PopUpArticle>
-                            <ArticleIcon>{item.icon}</ArticleIcon>
-                            <ArticleTxt>{item.text}</ArticleTxt>
+                        <PopUpArticle
+                            themeColor={themeColor}
+                        >
+                            <ArticleIcon
+                                themeColor={themeColor}
+                            >
+                                {item.icon}
+                            </ArticleIcon>
+                            <ArticleTxt
+                                themeColor={themeColor}
+                            >
+                                {item.text}
+                            </ArticleTxt>
                         </PopUpArticle>
                     )
                 })}

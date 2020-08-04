@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { descItems } from '../../DescAndUploader';
 import SubscribeNoteBtn from './subBtns/SubscribeNoteBtn';
 
 const SubsBtnWrapper = styled.div`
@@ -12,11 +11,17 @@ const SubsBtnWrapper = styled.div`
 `;
 
 const SubsBtn = styled.div`
-    background-color: ${props => props.subscribed ? '#ECECEC' : '#CC0000'};
-    width: auto;
+    background-color: ${props => {
+        if (props.subscribed) {
+            return props.themeColor.main.subscribedBtnBG;
+        } else {
+            return '#CC0000';
+        }
+    }};
+    width: max-content;
     height: 39px;
     margin: 0px 4px;
-    padding: 10px 16px;
+    padding: 10px ${props => props.subscribed ? '16px' : '20px'};
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,8 +29,13 @@ const SubsBtn = styled.div`
 `;
 
 const SubsBtnTxt = styled.span`
-    width: ${props => props.subscribed ? '3.2em' : '2.8em'};
-    color: ${props => props.subscribed ? 'black' : 'white'};
+    color: ${props => {
+        if (props.subscribed) {
+            return props.themeColor.main.subscribedBtnFont;
+        } else {
+            return 'white';
+        }
+    }};
     text-align: center;
     font-size: 14px;
 `;
@@ -42,20 +52,32 @@ export default class extends React.Component {
     };
 
     render() {
-        const { subscribed } = this.state;
+        const {
+            themeColor
+        } = this.props;
+        const {
+            subscribed
+        } = this.state;
         return (
             <SubsBtnWrapper>
                 <SubsBtn
+                    onClick={this.clickSubs}
                     subscribed={subscribed}
-                    onClick={this.clickSubs}>
-                    <SubsBtnTxt subscribed={subscribed}>
+                    themeColor={themeColor}
+                >
+                    <SubsBtnTxt
+                        subscribed={subscribed}
+                        themeColor={themeColor}
+                    >
                         {subscribed
-                            ? descItems.subBtn[1]
-                            : descItems.subBtn[0]}
+                            ? '구독중'
+                            : '구독'}
                     </SubsBtnTxt>
                 </SubsBtn>
                 {subscribed
-                    ? <SubscribeNoteBtn></SubscribeNoteBtn>
+                    ? <SubscribeNoteBtn
+                        themeColor={themeColor}
+                    />
                     : null}
             </SubsBtnWrapper>
         )

@@ -20,6 +20,7 @@ const ToggleSwitchBar = styled.div`
     margin: 4px 1px;
     ${ToggleTransition}
     background-color: ${props => props.switchON ? 'rgba(0, 0, 0, 0.4);' : 'rgba(0, 0, 0, 0.1)'};
+    background-color: #909090;
 `;
 
 const ToggleSwitchBtn = styled.div`

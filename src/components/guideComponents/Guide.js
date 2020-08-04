@@ -39,7 +39,7 @@ const GuideLogoWrapper = styled.header`
     display:flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid ${props => props.themeColor.guide.border};
     ${OverTheSheet}
 `;
 
@@ -48,6 +48,7 @@ const SectionWrapper = styled.div`
     width: 240px;
     height: calc(100vh - 56px);
     overflow-y: scroll;
+    overflow-x: hidden;
     position: relative;
     left: 0px;
     display: flex;
@@ -55,12 +56,28 @@ const SectionWrapper = styled.div`
     position: relative;
     color: ${props => props.themeColor.grayFont};
     ${OverTheSheet}
+    &::-webkit-scrollbar {
+        width: 8px;
+        display: none;
+    }
+    &:hover{
+        &::-webkit-scrollbar {
+            display: block;
+        }
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: ${props => props.themeColor.guide.pictogramColor};
+        }
+        
+    }
 `;
 
 const GuideSection = styled.section`
     width: 240px;
     padding: 12px 0px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid ${props => props.themeColor.guide.border};
     color: inherit;
     ${OverTheSheet}
 `;
@@ -266,7 +283,9 @@ export default class extends React.Component {
                     guideIsON={guideIsON}
                     onClick={toggleGuide}
                 />
-                <GuideLogoWrapper>
+                <GuideLogoWrapper
+                    themeColor={themeColor}
+                >
                     <Logo
                         nightMode={nightMode}
                         themeColor={themeColor}

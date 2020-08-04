@@ -7,7 +7,7 @@ const DescAndUploaderWrapper = styled.section`
     height: calc(${props => props.realHeight || '0'}px + 182px);
     padding-bottom: 16px;
     margin-botton: 24px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid ${props => props.themeColor.main.border};
 `;
 
 const DesciptionWrapper = styled.article`
@@ -31,6 +31,7 @@ const DescRealHeight = styled.span`
 
 const DescTextWrapper = styled.span`
     white-space: pre-line;
+    color: ${props => props.themeColor.normalFont};
 
     ${props => !props.realHeight && css`
         overflow: hidden;
@@ -45,28 +46,10 @@ const ShowMoreBtn = styled.span`
     width: max-content;
     height: 21px;
     margin-top: 8px;
-    color: rgba(0, 0, 0, 0.7);
+    color: ${props => props.themeColor.grayFont};
     font-size: 13px;
     cursor: pointer;
 `;
-
-export const descItems = {
-    name: 'YangTuber',
-    subsNum: '24만',
-    subscriber: ['구독자 ', '명'],
-    subBtn: ['구독', '구독중'],
-    description:
-        `동해물과 백두산이 마르고 닳도록
-    하느님이 보우하사 우리나라 만세
-    무궁화 삼천리 화려강산
-    대한 사람 대한으로 길이 보전하세
-    
-    남산 위에 저 소나무 철갑을 두른 듯
-    바람 서리 불변함은 우리 기상일세
-    무궁화 삼천리 화려강산
-    대한 사람 대한으로 길이 보전하세`,
-    showMore: '더 보기'
-};
 
 export default class extends React.Component {
     render() {
@@ -75,22 +58,30 @@ export default class extends React.Component {
             realHeight,
             showMore,
             showMoreFunc,
-            contentData
+            contentData,
+            themeColor,
         } = this.props;
         const numberOfLine = contentData.description.split('\n').length;
         return (
             <DescAndUploaderWrapper
                 realHeight={realHeight}
+                themeColor={themeColor}
             >
                 <Uploader
-                    contentData={contentData}
                     parseNum={parseNum}
+                    contentData={contentData}
+                    themeColor={themeColor}
                 />
                 <DesciptionWrapper>
-                    <DescRealHeight className="real-height">
+                    <DescRealHeight
+                        className="real-height"
+                    >
                         {contentData.description}
                     </DescRealHeight>
-                    <DescTextWrapper realHeight={realHeight}>
+                    <DescTextWrapper
+                        realHeight={realHeight}
+                        themeColor={themeColor}
+                    >
                         {contentData.description}
                     </DescTextWrapper>
                     {numberOfLine <= 3
@@ -98,6 +89,7 @@ export default class extends React.Component {
                         : <ShowMoreBtn
                             realHeight={realHeight}
                             onClick={showMoreFunc}
+                            themeColor={themeColor}
                         >
                             {showMore ? '간략히' : '더보기'}
                         </ShowMoreBtn>}

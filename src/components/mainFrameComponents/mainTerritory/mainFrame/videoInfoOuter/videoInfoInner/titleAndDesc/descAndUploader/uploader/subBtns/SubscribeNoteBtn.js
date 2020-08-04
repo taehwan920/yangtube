@@ -9,7 +9,7 @@ const NotificationIcon = styled.span`
     font-size: 20px;
     text-align: center;
     line-height: 24px;
-    color: rgba(0, 0, 0, 0.4);
+    color: ${props => props.themeColor.grayFont};
     cursor: pointer;
     position: relative;
 `;
@@ -54,15 +54,25 @@ export default class extends React.Component {
     };
 
     render() {
-        const { popUp } = this.state;
+        const {
+            themeColor
+        } = this.props;
+        const {
+            popUp
+        } = this.state;
         return (
             <NotificationIcon
                 ref={this.popUpRef}
-                onClick={() => this.setState({ popUp: !this.state.popUp })}>
+                onClick={() => this.setState({ popUp: !this.state.popUp })}
+                themeColor={themeColor}
+            >
                 <i class="far fa-bell"></i>
-                <SubsClickEffect></SubsClickEffect>
+                <SubsClickEffect />
                 {popUp
-                    ? <NotePopUp></NotePopUp>
+                    ?
+                    <NotePopUp
+                        themeColor={themeColor}
+                    />
                     : null}
             </NotificationIcon>
         )

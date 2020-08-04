@@ -13,16 +13,19 @@ export default {
             BG: 'white',
             footerFont: '#909090',
             pictogramColor: '#909090',
+            border: '#E0E0E0',
         },
         main: {
             BG: '#F9F9F9',
             titleInfos: '#909090',
             dislikeRate: '#CCCCCC',
             border: '#E0E0E0',
+            subscribedBtnBG: '#ECECEC',
+            subscribedBtnFont: 'black',
         },
         effectBG: 'rgba(0, 0, 0, 0.1)',
         grayFont: '#565656',
-        highlightedBG: 'rgba(0, 0, 0, 0.1)',
+        highlightedBG: 'rgba(0, 0, 0, 0.2)',
         normalFont: 'black',
     },
     nightMode: {
@@ -39,16 +42,19 @@ export default {
             BG: '#242424',
             footerFont: '#9A9A9A',
             pictogramColor: '#9A9A9A',
+            border: '#525252',
         },
         main: {
             BG: '#181818',
             titleInfos: '#909090',
             dislikeRate: '#606060',
             border: '#525252',
+            subscribedBtnBG: '#303030',
+            subscribedBtnFont: '#9A9A9A'
         },
         effectBG: 'rgba(255, 255, 255, 0.1)',
         grayFont: '#9A9A9A',
-        highlightedBG: 'rgba(255, 255, 255, 0.1)',
+        highlightedBG: 'rgba(255, 255, 255, 0.2)',
         normalFont: 'white',
     }
 }

@@ -42,6 +42,7 @@ export default class extends React.Component {
                 <LinkBox
                     href="https://github.com/taehwan920"
                     rel="noreferrer noopener"
+                    target="_blank"
                 >
                     <TitleFunctionsIcons
                         themeColor={themeColor}
@@ -58,6 +59,7 @@ export default class extends React.Component {
                 <LinkBox
                     href="https://hitzi.tistory.com/"
                     rel="noreferrer noopener"
+                    target="_blank"
                 >
                     <TitleFunctionsIcons
                         themeColor={themeColor}

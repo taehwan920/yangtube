@@ -40,12 +40,12 @@ const UploaderInfoWrapper = styled.div`
 `;
 
 const UploaderName = styled.span`
-    color: rgba(0, 0, 0, 0.8);
+    color: ${props => props.themeColor.normalFont};
     cursor: pointer;
 `;
 
 const SubscribersNum = styled.span`
-    color: rgba(0, 0, 0, 0.7);
+    color: ${props => props.themeColor.grayFont};
     font-size: 13px;
 `;
 
@@ -54,7 +54,8 @@ export default class extends React.Component {
     render() {
         const {
             parseNum,
-            contentData
+            contentData,
+            themeColor,
         } = this.props;
         return (
             <UploaderWrapper>
@@ -66,14 +67,20 @@ export default class extends React.Component {
                 </UploaderImgBox>
                 <InfoAndBtnContainer>
                     <UploaderInfoWrapper>
-                        <UploaderName>
+                        <UploaderName
+                            themeColor={themeColor}
+                        >
                             {contentData.uploader}
                         </UploaderName>
-                        <SubscribersNum>
+                        <SubscribersNum
+                            themeColor={themeColor}
+                        >
                             구독 {parseNum(contentData.subscribers, 'kr')}명
                         </SubscribersNum>
                     </UploaderInfoWrapper>
-                    <SubsBtns />
+                    <SubsBtns
+                        themeColor={themeColor}
+                    />
                 </InfoAndBtnContainer>
             </UploaderWrapper>
         )
