@@ -257,7 +257,6 @@ export default class extends React.Component {
         const blog = sectionItems.fifthSection[0];
         const github = sectionItems.fifthSection[1];
         const year = new Date().getFullYear();
-        console.log(themeColor)
         return (
             <GuideWrapper
                 guideIsON={guideIsON}

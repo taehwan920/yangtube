@@ -25,6 +25,7 @@ const NextVideoHeader = styled.header`
 const NextVideoText = styled.div`
     width: max-content;
     height: 20px;
+    color: ${props => props.themeColor.normalFont};
     font-size: 16px;
 `;
 
@@ -40,6 +41,7 @@ const AutoPlayTxt = styled.span`
     width: max-content;
     height: 17px;
     margin-right: 8px;
+    color: ${props => props.themeColor.normalFont};
     font-size: 13px;
 `;
 
@@ -83,6 +85,7 @@ export default class extends React.Component {
             doubleRest,
             nextVideo,
             toggleAutoPlay,
+            themeColor,
         } = this.props;
         const {
             hovering
@@ -91,7 +94,9 @@ export default class extends React.Component {
             <React.Fragment>
                 <NextVideoSection>
                     <NextVideoHeader>
-                        <NextVideoText>
+                        <NextVideoText
+                            themeColor={themeColor}
+                        >
                             다음 동영상
                         </NextVideoText>
                         <AutoPlayBox
@@ -99,6 +104,7 @@ export default class extends React.Component {
                             onMouseLeave={this.outOfAutoPlay}
                         >
                             <AutoPlayTxt
+                                themeColor={themeColor}
                             >
                                 자동재생
                             </AutoPlayTxt>
@@ -115,10 +121,12 @@ export default class extends React.Component {
                     </NextVideoHeader>
                     <VideoItem
                         video={nextVideo}
+                        themeColor={themeColor}
                     />
                 </NextVideoSection>
                 <MakeVideoItems
                     doubleRest={doubleRest}
+                    themeColor={themeColor}
                 />
             </React.Fragment>
         )

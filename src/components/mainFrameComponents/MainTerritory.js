@@ -7,7 +7,7 @@ import MainFrame from './mainTerritory/MainFrame';
 const MainTerritory = styled.div`
     background-color: inherit;
     width: max-content;
-    height: 100vh;
+    height: 100%;
     position: relative;
     display: flex;
     z-index: 1;
@@ -68,7 +68,8 @@ export default class extends React.Component {
             theaterMode,
             toggleTheater,
             queryStr,
-            contentData
+            contentData,
+            themeColor,
         } = this.props;
         const {
             autoPlay,
@@ -86,6 +87,7 @@ export default class extends React.Component {
                     toggleTheater={toggleTheater}
                     queryStr={queryStr}
                     contentData={contentData}
+                    themeColor={themeColor}
                 />
                 {theaterMode
                     ? null
@@ -93,6 +95,7 @@ export default class extends React.Component {
                         autoPlay={autoPlay}
                         toggleAutoPlay={this.toggleAutoPlay}
                         contentData={contentData}
+                        themeColor={themeColor}
                     />}
             </MainTerritory>
         )

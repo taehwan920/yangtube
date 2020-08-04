@@ -9,8 +9,8 @@ import Theme from '../ThemeColor';
 
 const HomeDiv = styled.div`
     background-color: ${props => props.themeColor.main.BG};
-    width: 100vw;
-    height: 100vh;
+    width: max-content;
+    height: max-content;
     display: flex;
     position: relative;
     z-index: 1;

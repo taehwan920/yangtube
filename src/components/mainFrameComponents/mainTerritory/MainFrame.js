@@ -53,7 +53,8 @@ export default class extends React.Component {
             toggleAutoPlay,
             toggleTheater,
             queryStr,
-            contentData
+            contentData,
+            themeColor,
         } = this.props;
         const {
             videoEnded
@@ -83,6 +84,7 @@ export default class extends React.Component {
                         theaterMode={theaterMode}
                         toggleAutoPlay={toggleAutoPlay}
                         contentData={contentData}
+                        themeColor={themeColor}
                     />
                 </MainFrameContainer>
             </MainFrameWrapper>

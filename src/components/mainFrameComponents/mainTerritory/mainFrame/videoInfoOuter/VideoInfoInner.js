@@ -34,7 +34,8 @@ export default class extends React.Component {
             newMargin,
             theaterMode,
             toggleAutoPlay,
-            contentData
+            contentData,
+            themeColor,
         } = this.props;
         const viewWidth = window.innerWidth;
         return (
@@ -49,6 +50,7 @@ export default class extends React.Component {
                     autoPlay={autoPlay}
                     toggleAutoPlay={toggleAutoPlay}
                     contentData={contentData}
+                    themeColor={themeColor}
                 />
                 <MainComments
                     contentData={contentData}

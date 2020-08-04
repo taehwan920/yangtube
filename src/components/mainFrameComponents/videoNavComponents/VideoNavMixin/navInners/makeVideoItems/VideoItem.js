@@ -83,6 +83,7 @@ const InfoTitle = styled.a`
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     text-overflow: '';
+    color: ${props => props.themeColor.normalFont};
     font-size: 14px;
     font-weight: 500;
 `;
@@ -90,19 +91,20 @@ const InfoTitle = styled.a`
 const InfoUploader = styled(InfoContent)`
     font-size: 13px;
     margin-bottom: 3px;
-    color: rgba(0, 0, 0, 0.7);
+    color: ${props => props.themeColor.grayFont};
 `;
 
 const InfoNumberBox = styled(InfoContent)`
     display: flex;
     align-items: center;
+    color: ${props => props.themeColor.grayFont};
 `;
 
 const InfoNumberContent = styled.span`
     width: max-content;
     height: 18px;
     font-size: 13px;
-    color: rgba(0, 0, 0, 0.7);
+    color: inherit;
 `;
 
 const InfoViewNums = styled(InfoNumberContent)``;
@@ -173,8 +175,13 @@ export default class extends React.Component {
     };
 
     render() {
-        const { video } = this.props;
-        const { hoverOnThumb } = this.state;
+        const {
+            video,
+            themeColor
+        } = this.props;
+        const {
+            hoverOnThumb
+        } = this.state;
         return (
             <NextVideoItemWrapper>
                 <NextVideoThumbnailBox
@@ -199,13 +206,18 @@ export default class extends React.Component {
                 <NextVideoInfoBox>
                     <InfoTitle
                         href={video.pageUrl}
+                        themeColor={themeColor}
                     >
                         {video.title}
                     </InfoTitle>
-                    <InfoUploader>
+                    <InfoUploader
+                        themeColor={themeColor}
+                    >
                         {video.uploader}
                     </InfoUploader>
-                    <InfoNumberBox>
+                    <InfoNumberBox
+                        themeColor={themeColor}
+                    >
                         <InfoViewNums>
                             조회수 {this.parseNum(video.views, 'kr')}회
                         </InfoViewNums>

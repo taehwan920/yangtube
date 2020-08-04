@@ -46,7 +46,8 @@ export default class extends React.Component {
             newMargin,
             theaterMode,
             toggleAutoPlay,
-            contentData
+            contentData,
+            themeColor,
         } = this.props;
         return (
             <VideoInfoOuterWrapper
@@ -58,6 +59,7 @@ export default class extends React.Component {
                     theaterMode={theaterMode}
                     toggleAutoPlay={toggleAutoPlay}
                     contentData={contentData}
+                    themeColor={themeColor}
                 />
                 {theaterMode
                     ?
@@ -65,6 +67,7 @@ export default class extends React.Component {
                         autoPlay={autoPlay}
                         toggleAutoPlay={toggleAutoPlay}
                         contentData={contentData}
+                        themeColor={themeColor}
                     />
                     : null}
             </VideoInfoOuterWrapper>
