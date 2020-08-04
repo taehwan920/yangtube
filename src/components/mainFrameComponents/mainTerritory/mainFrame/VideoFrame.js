@@ -43,13 +43,13 @@ const VideoFrame = styled.div`
         }
     
         @media(min-width: 1024px) and (max-width: 1754px) {
-            width: calc(${props => props.viewWidth}px - 24px - 450px);
-            height: calc((${props => props.viewWidth}px - 24px - 450px) / 16 * 9);
+            width: calc(${props => props.viewWidth}px - 26px - 450px);
+            height: calc((${props => props.viewWidth}px - 26px - 450px) / 16 * 9);
         }
     
         @media(min-width: 1755px) {
-            width: calc(${props => props.viewWidth - props.newMargin * 2}px - 24px - 450px);
-            height: calc((${props => props.viewWidth - props.newMargin * 2}px - 24px - 450px) / 16 * 9);
+            width: calc(${props => props.viewWidth - props.newMargin * 2}px - 26px - 450px);
+            height: calc((${props => props.viewWidth - props.newMargin * 2}px - 26px - 450px) / 16 * 9);
         }
     `}
 `;
