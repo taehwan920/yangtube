@@ -51,12 +51,14 @@ const ArticleTxt = styled.span`
     color: ${props => props.themeColor.normalFont};
 `;
 
-const popUpItems = [
-    { icon: <i class="fas fa-flag"></i>, text: '신고' },
-    { icon: <i class="fas fa-globe"></i>, text: '번역 추가' }
-]
+
 
 export default class extends React.Component {
+    popUpItems = [
+        [<i class="fas fa-flag"></i>, this.props.lang.title.report],
+        [<i class="fas fa-globe"></i>, this.props.lang.title.translate]
+    ];
+
     render() {
         const {
             themeColor
@@ -65,7 +67,7 @@ export default class extends React.Component {
             <PopUpWrapper
                 themeColor={themeColor}
             >
-                {popUpItems.map(item => {
+                {this.popUpItems.map(item => {
                     return (
                         <PopUpArticle
                             themeColor={themeColor}
@@ -73,12 +75,12 @@ export default class extends React.Component {
                             <ArticleIcon
                                 themeColor={themeColor}
                             >
-                                {item.icon}
+                                {item[0]}
                             </ArticleIcon>
                             <ArticleTxt
                                 themeColor={themeColor}
                             >
-                                {item.text}
+                                {item[1]}
                             </ArticleTxt>
                         </PopUpArticle>
                     )

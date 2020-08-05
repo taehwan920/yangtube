@@ -26,6 +26,7 @@ export default class extends React.Component {
 
     render() {
         const {
+            lang,
             themeColor,
         } = this.props;
         const {
@@ -34,7 +35,8 @@ export default class extends React.Component {
         return (
             <TitleFunctionsItems
                 ref={this.popUpRef}
-                onClick={() => this.setState({ popUp: !this.state.popUp })}>
+                onClick={() => this.setState({ popUp: !this.state.popUp })}
+            >
                 <EllipsisIcon
                     themeColor={themeColor}
                 >
@@ -44,6 +46,7 @@ export default class extends React.Component {
                 {popUp
                     ?
                     <PopUp
+                        lang={lang}
                         themeColor={themeColor}
                     />
                     : null}

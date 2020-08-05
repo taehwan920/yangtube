@@ -88,7 +88,6 @@ export default class extends React.Component {
             nightMode,
             themeColor,
         } = this.props;
-        console.log(themeColor);
         return (
             <LogoWrapper>
                 <MenuBtn

@@ -55,6 +55,7 @@ export default class extends React.Component {
 
     render() {
         const {
+            lang,
             themeColor
         } = this.props;
         const {
@@ -71,6 +72,7 @@ export default class extends React.Component {
                 {popUp
                     ?
                     <NotePopUp
+                        lang={lang}
                         themeColor={themeColor}
                     />
                     : null}

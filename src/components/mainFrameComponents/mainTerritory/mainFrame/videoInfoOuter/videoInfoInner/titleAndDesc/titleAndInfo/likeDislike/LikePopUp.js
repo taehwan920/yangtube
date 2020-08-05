@@ -20,6 +20,7 @@ const LikePopUpBox = styled.div`
 export default class extends React.Component {
     render() {
         const {
+            lang,
             likeHovering,
             isLike
         } = this.props;
@@ -28,8 +29,9 @@ export default class extends React.Component {
                 likeHovering={likeHovering}
             >
                 {isLike
-                    ? `이 동영상이 마음에 듭니다.`
-                    : `이 동영상이 마음에 들지 않습니다.`}
+                    ? `${lang.title.like}`
+                    : `${lang.title.dislike}`
+                }
             </LikePopUpBox>
         )
     }

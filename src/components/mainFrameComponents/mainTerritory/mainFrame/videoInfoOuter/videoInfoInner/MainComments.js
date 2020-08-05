@@ -35,6 +35,8 @@ export default class extends React.Component {
     render() {
         const {
             contentData,
+            lang,
+            langState,
             themeColor,
         } = this.props;
         const {
@@ -46,6 +48,7 @@ export default class extends React.Component {
                 <CommentHeader
                     byLatest={byLatest}
                     byPopular={byPopular}
+                    lang={lang}
                     selectLate={this.selectLate}
                     selectPop={this.selectPop}
                     contentData={contentData}
@@ -55,6 +58,8 @@ export default class extends React.Component {
                     byLatest={byLatest}
                     byPopular={byPopular}
                     contentData={contentData}
+                    lang={lang}
+                    langState={langState}
                     themeColor={themeColor}
                 />
             </CommentsWrapper>

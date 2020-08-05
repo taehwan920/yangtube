@@ -112,8 +112,29 @@ export default {
                 }
             },
         },
-        title: {},
-        desc: {},
+        title: {
+            views: '조회수 ',
+            viewMeasure: '회',
+            like: '이 동영상이 마음에 듭니다.',
+            dislike: '이 동영상이 마음에 들지 않습니다.',
+            github: '깃허브',
+            blog: '블로그',
+            report: '신고',
+            translate: '번역 추가',
+        },
+        desc: {
+            showMore: '간략히',
+            showLess: '더보기',
+            subscribe: '구독 ',
+            subsMeasure: '명',
+            subscribing: '구독중',
+            notSubscribing: '구독',
+            notePopUp: {
+                all: '전체',
+                personalized: '맞춤 설정',
+                none: '없음',
+            }
+        },
         comment: {},
         videoNav: {
             nextVideo: '다음 동영상',

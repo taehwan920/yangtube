@@ -54,11 +54,12 @@ const ShowMoreBtn = styled.span`
 export default class extends React.Component {
     render() {
         const {
-            parseNum,
+            contentData,
+            lang,
+            langState,
             realHeight,
             showMore,
             showMoreFunc,
-            contentData,
             themeColor,
         } = this.props;
         const numberOfLine = contentData.description.split('\n').length;
@@ -68,8 +69,9 @@ export default class extends React.Component {
                 themeColor={themeColor}
             >
                 <Uploader
-                    parseNum={parseNum}
                     contentData={contentData}
+                    lang={lang}
+                    langState={langState}
                     themeColor={themeColor}
                 />
                 <DesciptionWrapper>
@@ -91,7 +93,10 @@ export default class extends React.Component {
                             onClick={showMoreFunc}
                             themeColor={themeColor}
                         >
-                            {showMore ? '간략히' : '더보기'}
+                            {showMore
+                                ? lang.desc.showMore
+                                : lang.desc.showLess
+                            }
                         </ShowMoreBtn>}
                 </DesciptionWrapper>
             </DescAndUploaderWrapper >

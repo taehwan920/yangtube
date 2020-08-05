@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { addComma } from '../../../../../../../../Mixin';
 
 const RatePopUpBox = styled.div`
     background: rgba(0, 0, 0, 0.6);
@@ -18,33 +19,13 @@ const RatePopUpBox = styled.div`
 `;
 
 export default class extends React.Component {
-    addComma = num => {
-        const numToStr = String(num);
-        if (numToStr.length <= 3) return num;
-        const reversed = numToStr.split('').reverse();
-        const newArr = [];
-        let cnt = 0;
-        for (let i = 0; i < numToStr.length; i++) {
-            if (cnt === 2 && i !== numToStr.length - 1) {
-                cnt = 0;
-                newArr.push(reversed[i]);
-                newArr.push(',');
-            } else {
-                newArr.push(reversed[i]);
-                cnt++
-            }
-        };
-        const result = newArr.reverse();
-        return result.join('');
-    };
-
     render() {
         const {
             rateHovering,
             contentData
         } = this.props;
-        const likes = this.addComma(contentData.likes);
-        const dislikes = this.addComma(contentData.dislikes);
+        const likes = addComma(contentData.likes);
+        const dislikes = addComma(contentData.dislikes);
         return (
             <RatePopUpBox
                 rateHovering={rateHovering}

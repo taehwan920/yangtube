@@ -59,13 +59,13 @@ const ArticleTxt = styled.span`
     text-align: center;
 `;
 
-const popUpItems = [
-    { icon: <i class="fas fa-bullhorn"></i>, text: '전체' },
-    { icon: <i class="far fa-bell"></i>, text: '맞춤 설정', middle: true },
-    { icon: <i class="far fa-bell-slash"></i>, text: '없음' }
-]
-
 export default class extends React.Component {
+    popUpItems = [
+        [<i class="fas fa-bullhorn"></i>, this.props.lang.desc.notePopUp.all],
+        [<i class="far fa-bell"></i>, this.props.lang.desc.notePopUp.personalized, true],
+        [<i class="far fa-bell-slash"></i>, this.props.lang.desc.notePopUp.none]
+    ];
+
     render() {
         const {
             themeColor,
@@ -74,7 +74,7 @@ export default class extends React.Component {
             <PopUpWrapper
                 themeColor={themeColor}
             >
-                {popUpItems.map(item => {
+                {this.popUpItems.map(item => {
                     if (Object.keys(item).length > 2) {
                         return (
                             <PopUpMiddleArticle
@@ -83,12 +83,12 @@ export default class extends React.Component {
                                 <ArticleIcon
                                     themeColor={themeColor}
                                 >
-                                    {item.icon}
+                                    {item[0]}
                                 </ArticleIcon>
                                 <ArticleTxt
                                     themeColor={themeColor}
                                 >
-                                    {item.text}
+                                    {item[1]}
                                 </ArticleTxt>
                             </PopUpMiddleArticle>
                         )
@@ -100,12 +100,12 @@ export default class extends React.Component {
                             <ArticleIcon
                                 themeColor={themeColor}
                             >
-                                {item.icon}
+                                {item[0]}
                             </ArticleIcon>
                             <ArticleTxt
                                 themeColor={themeColor}
                             >
-                                {item.text}
+                                {item[1]}
                             </ArticleTxt>
                         </PopUpArticle>
                     )

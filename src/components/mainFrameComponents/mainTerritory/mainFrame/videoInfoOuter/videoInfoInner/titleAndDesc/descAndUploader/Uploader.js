@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import SubsBtns from './uploader/SubsBtns';
+import { parseNum } from '../../../../../../../Mixin';
 
 const UploaderWrapper = styled.article`
     width: 100%;
@@ -53,17 +54,20 @@ export default class extends React.Component {
 
     render() {
         const {
-            parseNum,
+            lang,
+            langState,
             contentData,
             themeColor,
         } = this.props;
+        const subsNum = parseNum(contentData.subscribers, langState);
         return (
             <UploaderWrapper>
                 <UploaderImgBox>
                     <UploaderImg
                         src={contentData.uploaderIcon}
                         alt="YangTuber"
-                        draggable="true" />
+                        draggable="true"
+                    />
                 </UploaderImgBox>
                 <InfoAndBtnContainer>
                     <UploaderInfoWrapper>
@@ -75,11 +79,12 @@ export default class extends React.Component {
                         <SubscribersNum
                             themeColor={themeColor}
                         >
-                            구독 {parseNum(contentData.subscribers, 'kr')}명
+                            {lang.desc.subscribe}{subsNum}{lang.desc.subsMeasure}
                         </SubscribersNum>
                     </UploaderInfoWrapper>
                     <SubsBtns
                         themeColor={themeColor}
+                        lang={lang}
                     />
                 </InfoAndBtnContainer>
             </UploaderWrapper>

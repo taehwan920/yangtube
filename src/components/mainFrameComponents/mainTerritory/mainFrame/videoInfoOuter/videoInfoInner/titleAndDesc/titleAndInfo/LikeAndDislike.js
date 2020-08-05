@@ -12,6 +12,7 @@ import {
 import styled from 'styled-components'
 import LikePopUp from './likeDislike/LikePopUp';
 import LikeRatePopUp from './likeDislike/LikeRatePopUp';
+import { parseNum } from '../../../../../../../Mixin';
 
 const LikeEffect = styled.div`
     background-color: rgba(0, 0, 0, 0.0);
@@ -107,8 +108,9 @@ export default class extends React.Component {
 
     render() {
         const {
-            parseNum,
             contentData,
+            lang,
+            langState,
             themeColor,
         } = this.props;
         const {
@@ -123,8 +125,8 @@ export default class extends React.Component {
         const total = likeNum + dislikeNum;
         const likeRate = parseInt(likeNum / total * 100).toString();
         const dislikeRate = parseInt(dislikeNum / total * 100).toString();
-        const likeItem = parseNum(contentData.likes, 'kr');
-        const dislikeItem = parseNum(contentData.dislikes, 'kr');
+        const likeItem = parseNum(contentData.likes, langState);
+        const dislikeItem = parseNum(contentData.dislikes, langState);
         return (
             <LikeAndDislikeBox>
                 <LikeBox
@@ -187,6 +189,7 @@ export default class extends React.Component {
                     />
                 </LikeRateChartBox>
                 <LikePopUp
+                    lang={lang}
                     likeHovering={likeHovering}
                     isLike={isLike}
                 />

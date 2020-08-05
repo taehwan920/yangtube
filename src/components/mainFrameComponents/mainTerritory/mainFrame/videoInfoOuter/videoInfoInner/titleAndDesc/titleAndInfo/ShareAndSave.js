@@ -35,6 +35,7 @@ const ShareAndSaveEffect = styled.div`
 export default class extends React.Component {
     render() {
         const {
+            lang,
             themeColor,
         } = this.props;
         return (
@@ -53,8 +54,8 @@ export default class extends React.Component {
                     <TitleFunctionsTexts
                         themeColor={themeColor}
                     >
-                        깃허브
-                        </TitleFunctionsTexts>
+                        {lang.title.github}
+                    </TitleFunctionsTexts>
                 </LinkBox>
                 <LinkBox
                     href="https://hitzi.tistory.com/"
@@ -70,8 +71,8 @@ export default class extends React.Component {
                     <TitleFunctionsTexts
                         themeColor={themeColor}
                     >
-                        블로그
-                        </TitleFunctionsTexts>
+                        {lang.title.blog}
+                    </TitleFunctionsTexts>
                 </LinkBox>
             </React.Fragment>
         )

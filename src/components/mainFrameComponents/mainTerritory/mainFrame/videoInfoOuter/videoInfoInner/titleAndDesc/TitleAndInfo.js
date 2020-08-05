@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import LikeAndDislike from './titleAndInfo/LikeAndDislike';
 import More from './titleAndInfo/More';
 import ShareAndSave from './titleAndInfo/ShareAndSave';
+import { addComma, debounce, parseNum } from '../../../../../../Mixin';
 
 const TitleAndInfo = styled.div`
     width: 100%;
@@ -154,44 +155,59 @@ export const TitleInfoClickEffect = styled.div`
     }
 `;
 
-// export const titleItems = {
-//     title: '제목',
-//     viewsAndDate: ['조회수', '168,472회', '·', '2020. 7. 19.'],
-//     pictograms: {
-//         like: [<i class="fas fa-thumbs-up"></i>, 4327, '천'],
-//         dislike: [<i class="fas fa-thumbs-up"></i>, 1364, '천'],
-//         share: ['공유'],
-//         save: ['저장'],
-//     }
-// };
-
 export default class extends React.Component {
+    state = {
+        winWidth: null,
+    };
+
+    componentDidMount() {
+        this.getWinWidth();
+        window.addEventListener('resize', debounce(this.getWinWidth));
+    };
+
+    getWinWidth = () => {
+        const winWidth = window.innerWidth;
+        this.setState({ winWidth });
+    };
+
     parseDate = (num, lang) => {
-        const date = new Date(num)
-        const year = date.getUTCFullYear();
+        const date = new Date(num);
+        const year = date.getFullYear();
         const month = date.getMonth();
-        const day = date.getDay();
-        if (lang === 'kr' || lang === 'jp') {
-            return `${year}. ${month}. ${day}`
+        const day = date.getDate();
+        if (lang === 'KR' || lang === 'JP') {
+            return `${year}. ${month + 1}. ${day}`;
+        } else if (lang === 'EN') {
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            return `${months[month]} ${day}, ${year}`;
         }
     };
     render() {
         const {
-            parseNum,
             contentData,
+            lang,
+            langState,
             themeColor,
         } = this.props;
-        const viewsItem = parseNum(contentData.views, 'kr');
-        const dateItem = this.parseDate(contentData.timestamp, 'kr');
+        const {
+            winWidth
+        } = this.state;
+        const {
+            views,
+            viewMeasure,
+        } = lang.title;
+        const viewsItem = parseNum(contentData.views, langState);
+        const dateItem = this.parseDate(contentData.timestamp, langState);
         return (
             <TitleAndInfo
                 themeColor={themeColor}
             >
-                <ViewsAndDateWrapper
-
-                >
+                <ViewsAndDateWrapper>
                     <ViewsSpan>
-                        {`조회수 ${viewsItem[0]}${viewsItem[1]}회`}
+                        {winWidth && winWidth >= 1080
+                            ? `${views}${addComma(contentData.views)}${viewMeasure}`
+                            : `${views}${viewsItem[0]}${viewsItem[1]}${viewMeasure}`
+                        }
                     </ViewsSpan>
                     <TitleInfoDot>
                         ·
@@ -202,14 +218,19 @@ export default class extends React.Component {
                 </ViewsAndDateWrapper>
                 <TitleFunctionsWrapper>
                     <LikeAndDislike
-                        parseNum={parseNum}
                         contentData={contentData}
+                        lang={lang}
+                        langState={langState}
                         themeColor={themeColor}
                     />
                     <ShareAndSave
+                        lang={lang}
+                        langState={langState}
                         themeColor={themeColor}
                     />
                     <More
+                        lang={lang}
+                        langState={langState}
                         themeColor={themeColor}
                     />
                 </TitleFunctionsWrapper>

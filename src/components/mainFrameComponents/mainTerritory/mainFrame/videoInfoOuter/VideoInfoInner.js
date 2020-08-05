@@ -48,6 +48,7 @@ export default class extends React.Component {
                 <MainTitleAndDesc
                     contentData={contentData}
                     lang={lang}
+                    langState={langState}
                     themeColor={themeColor}
                 />
                 <VideoNavNonPC
@@ -61,6 +62,7 @@ export default class extends React.Component {
                 <MainComments
                     contentData={contentData}
                     lang={lang}
+                    langState={langState}
                     themeColor={themeColor}
                 />
             </VideoInfoInnerWrapper>

@@ -53,10 +53,11 @@ export default class extends React.Component {
 
     render() {
         const {
+            lang,
             themeColor
         } = this.props;
         const {
-            subscribed
+            subscribed,
         } = this.state;
         return (
             <SubsBtnWrapper>
@@ -70,12 +71,14 @@ export default class extends React.Component {
                         themeColor={themeColor}
                     >
                         {subscribed
-                            ? '구독중'
-                            : '구독'}
+                            ? `${lang.desc.subscribing}`
+                            : `${lang.desc.notSubscribing}`
+                        }
                     </SubsBtnTxt>
                 </SubsBtn>
                 {subscribed
                     ? <SubscribeNoteBtn
+                        lang={lang}
                         themeColor={themeColor}
                     />
                     : null}

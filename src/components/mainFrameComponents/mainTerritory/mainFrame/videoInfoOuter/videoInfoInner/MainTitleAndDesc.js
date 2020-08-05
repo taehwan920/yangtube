@@ -70,6 +70,8 @@ export default class extends React.Component {
     render() {
         const {
             contentData,
+            lang,
+            langState,
             themeColor,
         } = this.props;
         const {
@@ -89,17 +91,19 @@ export default class extends React.Component {
                         {contentData.title}
                     </Title>
                     <TitleAndInfo
-                        parseNum={this.parseNum}
                         contentData={contentData}
+                        lang={lang}
+                        langState={langState}
                         themeColor={themeColor}
                     />
                 </TitleWrapper>
                 <DescAndUploader
-                    parseNum={this.parseNum}
+                    contentData={contentData}
+                    lang={lang}
+                    langState={langState}
+                    realHeight={realHeight}
                     showMoreFunc={this.showMoreFunc}
                     showMore={showMore}
-                    realHeight={realHeight}
-                    contentData={contentData}
                     themeColor={themeColor}
                 />
             </TitleAndDesc>

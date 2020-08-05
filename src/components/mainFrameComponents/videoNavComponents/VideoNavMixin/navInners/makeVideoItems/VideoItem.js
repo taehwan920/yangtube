@@ -1,5 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import {
+    getTimestamp,
+    parseNum,
+    parseTime
+} from '../../../../../Mixin';
 
 const NextVideoItemWrapper = styled.article`
     background-color: inherit;
@@ -117,64 +122,9 @@ const InfoTimestamp = styled(InfoNumberContent)``;
 export default class extends React.Component {
     state = {
         hoverOnThumb: false
-    }
-    getTimeStamp = (num, lang) => {
-        const now = new Date().getTime();
-        const sec = 1000;
-        const min = sec * 60;
-        const hour = min * 60;
-        const day = hour * 24;
-        const week = day * 7;
-        const month = week * 4;
-        const year = month * 12;
-        const timeGap = now - num;
-        if (lang === 'KR') {
-            if (Math.round(timeGap / year) > 0) {
-                return [Math.round(timeGap / year), '년 전'];
-            } else if (Math.round(timeGap / month) > 0) {
-                return [Math.round(timeGap / month), '개월 전'];
-            } else if (Math.round(timeGap / week) > 0) {
-                return [Math.round(timeGap / week), '주 전'];
-            } else if (Math.round(timeGap / day) > 0) {
-                return [Math.round(timeGap / day), '일 전'];
-            } else if (Math.round(timeGap / hour) > 0) {
-                return [Math.round(timeGap / hour), '시간 전'];
-            } else if (Math.round(timeGap / min) > 0) {
-                return [Math.round(timeGap / min), '분 전'];
-            } else {
-                return [Math.round(timeGap / sec), '초 전']
-            }
-        }
-
     };
 
-    parseDecimal = (num, divider) => {
-        let parsed;
-        num / divider / 10 > 100
-            ? parsed = parseInt(num / divider) / 10
-            : parsed = parseInt(num / divider);
-        return parsed;
-    };
 
-    parseNum = (num, lang) => {
-        if (lang === 'KR') {
-            if (num / 10 ** 8 > 1) {
-                return [this.parseDecimal(num, 10 ** 8), '억'];
-            } else if (num / 10 ** 4 > 1) {
-                return [this.parseDecimal(num, 10 ** 4), '만'];
-            } else if (num / 10 ** 3 > 1) {
-                return [this.parseDecimal(num, 10 ** 3), '천'];
-            } else {
-                return num
-            }
-        }
-    };
-
-    parseTime = num => {
-        const min = num / 60 >= 10 ? parseInt(num / 60) : `0${parseInt(num / 60)}`;
-        const sec = num % 60 >= 10 ? num % 60 : `0${num % 60}`;
-        return `${min}:${sec}`;
-    };
 
     render() {
         const {
@@ -198,7 +148,7 @@ export default class extends React.Component {
                     />
                     <VidDurationBox>
                         <VidDuration>
-                            {this.parseTime(video.duration)}
+                            {parseTime(video.duration)}
                         </VidDuration>
                     </VidDurationBox>
                     <PlayIcon
@@ -223,13 +173,13 @@ export default class extends React.Component {
                         themeColor={themeColor}
                     >
                         <InfoViewNums>
-                            {lang.videoNav.views}{this.parseNum(video.views, langState)}{lang.videoNav.viewMeasure}
+                            {lang.videoNav.views}{parseNum(video.views, langState)}{lang.videoNav.viewMeasure}
                         </InfoViewNums>
                         <InfoDot>
                             ·
                         </InfoDot>
                         <InfoTimestamp>
-                            {this.getTimeStamp(video.timestamp, langState)}
+                            {getTimestamp(video.timestamp, langState)}
                         </InfoTimestamp>
                     </InfoNumberBox>
                 </NextVideoInfoBox>
