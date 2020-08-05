@@ -84,19 +84,19 @@ export const getTimestamp = (num, lang) => {
         }
     } else if (lang === 'EN') {
         if (Math.round(timeGap / year) > 0) {
-            return [Math.round(timeGap / year), Math.round(timeGap / year) > 1 ? 'years ago' : 'year ago'];
+            return [Math.round(timeGap / year), Math.round(timeGap / year) > 1 ? ' years ago' : ' year ago'];
         } else if (Math.round(timeGap / month) > 0) {
-            return [Math.round(timeGap / month), Math.round(timeGap / month) > 1 ? 'months ago' : 'month ago'];
+            return [Math.round(timeGap / month), Math.round(timeGap / month) > 1 ? ' months ago' : ' month ago'];
         } else if (Math.round(timeGap / week) > 0) {
-            return [Math.round(timeGap / week), Math.round(timeGap / week) > 1 ? 'weeks ago' : 'week ago'];
+            return [Math.round(timeGap / week), Math.round(timeGap / week) > 1 ? ' weeks ago' : ' week ago'];
         } else if (Math.round(timeGap / day) > 0) {
-            return [Math.round(timeGap / day), Math.round(timeGap / day) > 1 ? 'days ago' : 'day ago'];
+            return [Math.round(timeGap / day), Math.round(timeGap / day) > 1 ? ' days ago' : ' day ago'];
         } else if (Math.round(timeGap / hour) > 0) {
-            return [Math.round(timeGap / hour), Math.round(timeGap / hour) > 1 ? 'hours ago' : 'hour ago'];
+            return [Math.round(timeGap / hour), Math.round(timeGap / hour) > 1 ? ' hours ago' : ' hour ago'];
         } else if (Math.round(timeGap / min) > 0) {
-            return [Math.round(timeGap / min), Math.round(timeGap / min) > 1 ? 'minutes ago' : 'minute ago'];
+            return [Math.round(timeGap / min), Math.round(timeGap / min) > 1 ? ' minutes ago' : ' minute ago'];
         } else {
-            return [Math.round(timeGap / sec), Math.round(timeGap / min) > 1 ? 'seconds ago' : 'second ago'];
+            return [Math.round(timeGap / sec), Math.round(timeGap / min) > 1 ? ' seconds ago' : ' second ago'];
         }
     }
 
@@ -107,6 +107,14 @@ const parseDecimal = (num, divider) => {
     num / divider / 10 > 100
         ? parsed = parseInt(num / divider) / 10
         : parsed = parseInt(num / divider);
+    return parsed;
+};
+
+const parseDecimalUS = (num, divider) => {
+    let parsed;
+    num / divider > 10
+        ? parsed = parseInt(num / divider)
+        : parsed = parseInt(num / divider * 100) / 100;
     return parsed;
 };
 
@@ -133,11 +141,11 @@ export const parseNum = (num, lang) => {
         }
     } else if (lang === 'EN') {
         if (num / 10 ** 9 > 1) {
-            return [parseDecimal(num, 10 ** 9), 'B'];
+            return [parseDecimalUS(num, 10 ** 9), 'B'];
         } else if (num / 10 ** 6 > 1) {
-            return [parseDecimal(num, 10 ** 6), 'M'];
+            return [parseDecimalUS(num, 10 ** 6), 'M'];
         } else if (num / 10 ** 3 > 1) {
-            return [parseDecimal(num, 10 ** 3), 'K'];
+            return [parseDecimalUS(num, 10 ** 3), 'K'];
         } else {
             return [num, ''];
         }
