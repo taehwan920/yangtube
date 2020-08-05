@@ -44,6 +44,14 @@ const LogoLink = styled.a`
     margin-bottom: 1px;
 `;
 
+const LanguageMark = styled.div`
+    position: absolute;
+    top: 8px;
+    left: 103%;
+    color: ${props => props.themeColor.grayFont};
+    font-size: 10px;
+`;
+
 const MenuBtn = styled.div`
     background-color: rgba(0, 0, 0, 0.0);
     width: 24px;
@@ -82,6 +90,7 @@ export const ClickEffect = styled.div`
 export default class extends React.Component {
     render() {
         const {
+            langState,
             nightMode,
             theaterMode,
             themeColor,
@@ -115,6 +124,11 @@ export default class extends React.Component {
                         alt="YangTube"
                         src="./images/youtubefont3.png"
                     />
+                    <LanguageMark
+                        themeColor={themeColor}
+                    >
+                        {langState}
+                    </LanguageMark>
                 </LogoLink>
             </LogoWrapper>
         )

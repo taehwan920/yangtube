@@ -27,6 +27,8 @@ export default class extends React.Component {
             <React.Fragment>
                 <HeaderLogoPlace />
                 <HeaderLogo
+                    lang={lang}
+                    langState={langState}
                     nightMode={nightMode}
                     theaterMode={theaterMode}
                     toggleGuide={toggleGuide}
