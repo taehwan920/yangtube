@@ -19,6 +19,7 @@ export default class extends React.Component {
             currentTime,
             getPlaySpeed,
             getVol,
+            lang,
             muted,
             theaterMode,
             toggleAutoPlay,
@@ -35,8 +36,10 @@ export default class extends React.Component {
         return (
             <VideoControlBox>
                 <LeftControl
+                    contentData={contentData}
                     currentTime={currentTime}
                     getVol={getVol}
+                    lang={lang}
                     muted={muted}
                     toggleMute={toggleMute}
                     pauseVideo={pauseVideo}
@@ -44,11 +47,11 @@ export default class extends React.Component {
                     videoEnded={videoEnded}
                     videoPaused={videoPaused}
                     volume={volume}
-                    contentData={contentData}
                 />
                 <RightControl
                     autoPlay={autoPlay}
                     getPlaySpeed={getPlaySpeed}
+                    lang={lang}
                     theaterMode={theaterMode}
                     toggleAutoPlay={toggleAutoPlay}
                     toggleFullVF={toggleFullVF}

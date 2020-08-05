@@ -40,6 +40,12 @@ export default class extends React.Component {
     };
 
     render() {
+        const {
+            lang
+        } = this.props;
+        const {
+            ctxMenu
+        } = lang.videoFrame;
         return (
             <React.Fragment>
                 <VideoCtxItem
@@ -50,7 +56,7 @@ export default class extends React.Component {
                     </VideoCtxIcon>
                     <VideoCtxTxtBox>
                         <VideoCtxTxt>
-                            동영상 URL 복사
+                            {ctxMenu.copyUrl}
                         </VideoCtxTxt>
                     </VideoCtxTxtBox>
                 </VideoCtxItem>
@@ -62,7 +68,7 @@ export default class extends React.Component {
                     </VideoCtxIcon>
                     <VideoCtxTxtBox>
                         <VideoCtxTxt>
-                            현재 시간에 동영상 URL 복사
+                            {ctxMenu.copyUrlFromNow}
                         </VideoCtxTxt>
                     </VideoCtxTxtBox>
                 </VideoCtxItem>

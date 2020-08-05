@@ -51,12 +51,16 @@ export default class extends React.Component {
 
     render() {
         const {
+            lang,
             theaterMode,
             toggleTheater,
         } = this.props;
         const {
             hovering
         } = this.state;
+        const {
+            theater
+        } = lang.videoFrame.rightControl;
         return (
             <TheaterBtn
                 onClick={toggleTheater}
@@ -72,7 +76,7 @@ export default class extends React.Component {
                         hovering={hovering}
                     >
                         <InfoPopUp>
-                            기본 보기(t)
+                            {`${theater.default}(t)`}
                         </InfoPopUp>
                     </InfoPopUpBox>
                     :
@@ -80,7 +84,7 @@ export default class extends React.Component {
                         hovering={hovering}
                     >
                         <InfoPopUp>
-                            영화관 모드(t)
+                            {`${theater.theater}(t)`}
                         </InfoPopUp>
                     </InfoPopUpBox>
                 }

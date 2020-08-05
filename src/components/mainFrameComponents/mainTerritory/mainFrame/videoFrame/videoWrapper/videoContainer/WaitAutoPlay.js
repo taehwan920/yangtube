@@ -101,7 +101,8 @@ export default class extends React.Component {
     render() {
         const {
             activateRecommend,
-            contentData
+            contentData,
+            lang,
         } = this.props;
         const {
             canceledByScroll,
@@ -115,7 +116,7 @@ export default class extends React.Component {
             <WatingWrapper>
                 <InterfaceBox>
                     <NextTxt>
-                        다음 동영상
+                        {lang.videoFrame.waitAutoPlay.nextVideo}
                     </NextTxt>
                     <NextTitle>
                         {nextTitle}
@@ -129,10 +130,12 @@ export default class extends React.Component {
                     />
                     <Cancel
                         activateRecommend={activateRecommend}
+                        lang={lang}
                     />
                     {canceledByScroll
                         ? <AutoPlayPaused
                             canceledByScroll={canceledByScroll}
+                            lang={lang}
                         />
                         : null}
                 </InterfaceBox>

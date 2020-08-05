@@ -72,8 +72,14 @@ export default class extends React.Component {
 
     render() {
         const {
+            lang,
+        } = this.props;
+        const {
             hovering
         } = this.state;
+        const {
+            fullScreen
+        } = lang.videoFrame.rightControl;
         return (
             <FullscreenBtn
                 onClick={this.toggleFullSc}
@@ -93,7 +99,7 @@ export default class extends React.Component {
                         hovering={hovering}
                     >
                         <InfoPopUp>
-                            전체 화면 종료(f)
+                            {`${fullScreen.exit}(f)`}
                         </InfoPopUp>
                     </InfoPopUpBox>
                     :
@@ -101,7 +107,7 @@ export default class extends React.Component {
                         hovering={hovering}
                     >
                         <InfoPopUp>
-                            전체 화면(f)
+                            {`${fullScreen.fullScreen}(f)`}
                         </InfoPopUp>
                     </InfoPopUpBox>
                 }

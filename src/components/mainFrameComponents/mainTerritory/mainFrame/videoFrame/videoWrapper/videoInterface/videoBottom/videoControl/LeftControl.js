@@ -28,6 +28,7 @@ export default class extends React.Component {
         const {
             currentTime,
             getVol,
+            lang,
             muted,
             toggleMute,
             pauseVideo,
@@ -41,15 +42,18 @@ export default class extends React.Component {
         return (
             <LeftControlBox>
                 <PlayPause
+                    lang={lang}
                     pauseVideo={pauseVideo}
                     videoPaused={videoPaused}
                     videoEnded={videoEnded}
                 />
                 <NextBtn
+                    lang={lang}
                     contentData={contentData}
                 />
                 <MuteBtn
                     getVol={getVol}
+                    lang={lang}
                     hoverOnVol={hoverOnVol}
                     muted={muted}
                     mouseOnVol={this.mouseOnVol}

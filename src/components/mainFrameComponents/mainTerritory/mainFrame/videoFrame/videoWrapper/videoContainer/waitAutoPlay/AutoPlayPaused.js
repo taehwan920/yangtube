@@ -17,13 +17,14 @@ const AutoPlayStoppedBox = styled.div`
 export default class extends React.Component {
     render() {
         const {
-            canceledByScroll
+            canceledByScroll,
+            lang,
         } = this.props;
         return (
             <AutoPlayStoppedBox
                 canceledByScroll={canceledByScroll}
             >
-                자동재생 일시중지됨
+                {lang.videoFrame.waitAutoPlay.autoPlayPaused}
             </AutoPlayStoppedBox>
         )
     }

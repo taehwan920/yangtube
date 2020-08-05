@@ -8,17 +8,25 @@ export default class extends React.Component {
     }
 
     render() {
-        const { togglePlayback, playbackArr, playbackList } = this.props;
+        const {
+            lang,
+            togglePlayback,
+            playbackArr,
+            playbackList
+        } = this.props;
+        const {
+            config
+        } = lang.videoFrame.rightControl;
         return (
             <ConfigItem
                 onClick={togglePlayback}
             >
                 <ItemLeftBox>
-                    재생 속도
+                    {config.playback}
                 </ItemLeftBox>
                 <ItemRightBox>
                     <ConfigText>
-                        {this.getSpeedtxt(playbackArr, playbackList) || '보통'}
+                        {this.getSpeedtxt(playbackArr, playbackList) || config.normalSpeed}
                     </ConfigText>
                     <ConfigItemIcon>
                         <i class="fas fa-chevron-right"></i>

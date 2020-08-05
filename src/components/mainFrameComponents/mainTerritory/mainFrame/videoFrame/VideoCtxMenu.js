@@ -109,6 +109,7 @@ export default class extends React.Component {
     render() {
         const {
             closeCtxMenu,
+            lang,
             repeatPlay,
             toggleRepeatPlay,
             urlCopyClicked,
@@ -130,11 +131,13 @@ export default class extends React.Component {
                     videoCtxMenu={videoCtxMenu}
                 >
                     <RepeatPlay
+                        lang={lang}
                         repeatPlay={repeatPlay}
                         toggleRepeatPlay={toggleRepeatPlay}
                     />
                     <CopyURL
                         closeCtxMenu={closeCtxMenu}
+                        lang={lang}
                         urlCopyClicked={urlCopyClicked}
                         videoWrapperRef={videoWrapperRef}
                     />

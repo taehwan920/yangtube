@@ -7,9 +7,11 @@ export default class extends React.Component {
     render() {
         const {
             autoPlay,
+            contentData,
             currentTime,
             getPlaySpeed,
             getVol,
+            lang,
             muted,
             scrubCurrent,
             theaterMode,
@@ -24,7 +26,6 @@ export default class extends React.Component {
             videoPaused,
             volume,
             updateCurrent,
-            contentData
         } = this.props;
         return (
             <React.Fragment>
@@ -42,9 +43,11 @@ export default class extends React.Component {
                     : null}
                 <VideoBottom
                     autoPlay={autoPlay}
+                    contentData={contentData}
                     currentTime={currentTime}
                     getPlaySpeed={getPlaySpeed}
                     getVol={getVol}
+                    lang={lang}
                     muted={muted}
                     scrubCurrent={scrubCurrent}
                     theaterMode={theaterMode}
@@ -59,7 +62,6 @@ export default class extends React.Component {
                     videoPaused={videoPaused}
                     volume={volume}
                     updateCurrent={updateCurrent}
-                    contentData={contentData}
                 />
             </React.Fragment>
         )

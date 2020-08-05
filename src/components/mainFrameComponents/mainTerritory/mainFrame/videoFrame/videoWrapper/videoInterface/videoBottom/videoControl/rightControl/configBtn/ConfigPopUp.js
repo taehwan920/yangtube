@@ -4,7 +4,7 @@ import ConfigAutoPlay from './configPopUp/ConfigAutoPlay';
 import ConfigPlayBack from './configPopUp/ConfigPlayBack';
 
 const ConfigPopUpWrapper = styled.section`
-    background: #252525;
+    background: rgba(37, 37, 37, 0.85);
     width: 251px;
     height: ${props => props.playbackActive ? '400px' : '96px'};
     border-radius: 2px;
@@ -117,7 +117,11 @@ export default class extends React.Component {
         playbackArr: [false, false, false, true, false, false, false, false]
     };
 
-    playbackList = [0.25, 0.5, 0.75, '보통', 1.25, 1.5, 1.75, 2.0];
+    playbackList = [0.25, 0.5, 0.75, '', 1.25, 1.5, 1.75, 2.0];
+
+    componentDidMount() {
+        this.playbackList[3] = this.props.lang.videoFrame.rightControl.config.normalSpeed;
+    };
 
     togglePlayback = () => {
         this.setState({ playbackActive: !this.state.playbackActive });
@@ -137,6 +141,7 @@ export default class extends React.Component {
     render() {
         const {
             autoPlay,
+            lang,
             toggleAutoPlay,
         } = this.props;
         const {
@@ -156,9 +161,11 @@ export default class extends React.Component {
                     >
                         <ConfigAutoPlay
                             autoPlay={autoPlay}
+                            lang={lang}
                             toggleAutoPlay={toggleAutoPlay}
                         />
                         <ConfigPlayBack
+                            lang={lang}
                             togglePlayback={this.togglePlayback}
                             playbackArr={playbackArr}
                             playbackList={this.playbackList}
@@ -173,7 +180,9 @@ export default class extends React.Component {
                             <ConfigItemIcon>
                                 <i class="fas fa-chevron-left"></i>
                             </ConfigItemIcon>
-                            <ConfigText>재생 속도</ConfigText>
+                            <ConfigText>
+                                {lang.videoFrame.rightControl.config.playback}
+                            </ConfigText>
                         </ConfigTailHeader>
                         {this.playbackList.map(item => {
                             const itemIdx = this.playbackList.indexOf(item);

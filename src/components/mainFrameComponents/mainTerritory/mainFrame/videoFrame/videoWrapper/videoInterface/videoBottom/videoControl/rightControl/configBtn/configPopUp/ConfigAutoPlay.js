@@ -6,12 +6,13 @@ export default class extends React.Component {
     render() {
         const {
             autoPlay,
+            lang,
             toggleAutoPlay,
         } = this.props;
         return (
             <ConfigItem>
                 <ItemLeftBox>
-                    자동재생
+                    {lang.videoFrame.rightControl.config.autoPlay}
                 </ItemLeftBox>
                 <ItemRightBox>
                     <ConfigSwitch

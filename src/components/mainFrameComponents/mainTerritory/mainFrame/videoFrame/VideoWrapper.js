@@ -193,7 +193,9 @@ export default class extends React.Component {
     render() {
         const {
             autoPlay,
+            contentData,
             endVideo,
+            lang,
             theaterMode,
             toggleAutoPlay,
             toggleFullVF,
@@ -203,7 +205,6 @@ export default class extends React.Component {
             videoActivated,
             videoEnded,
             videoPaused,
-            contentData
         } = this.props;
         const {
             currentTime,
@@ -220,10 +221,12 @@ export default class extends React.Component {
                 <VideoContainer
                     autoPlay={autoPlay}
                     activateRecommend={this.activateRecommend}
+                    contentData={contentData}
                     currentTime={currentTime}
                     endVideo={endVideo}
                     getCurrent={this.getCurrent}
                     getDuration={this.getDuration}
+                    lang={lang}
                     muted={muted}
                     theaterMode={theaterMode}
                     pauseVideo={pauseVideo}
@@ -234,13 +237,14 @@ export default class extends React.Component {
                     videoPaused={videoPaused}
                     vidRef={this.vidRef}
                     volume={volume}
-                    contentData={contentData}
                 />
                 <VideoInterFace
                     autoPlay={autoPlay}
+                    contentData={contentData}
                     currentTime={currentTime}
                     getPlaySpeed={this.getPlaySpeed}
                     getVol={this.getVol}
+                    lang={lang}
                     muted={muted}
                     scrubCurrent={this.scrubCurrent}
                     theaterMode={theaterMode}
@@ -255,7 +259,6 @@ export default class extends React.Component {
                     videoPaused={videoPaused}
                     volume={volume}
                     updateCurrent={this.updateCurrent}
-                    contentData={contentData}
                 />
                 <KeyAni
                     arrowAniEnd={this.arrowAniEnd}

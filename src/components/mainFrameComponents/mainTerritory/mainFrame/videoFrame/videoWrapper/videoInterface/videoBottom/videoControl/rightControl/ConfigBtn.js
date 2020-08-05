@@ -104,6 +104,7 @@ export default class extends React.Component {
     render() {
         const {
             autoPlay,
+            lang,
             toggleAutoPlay,
             getPlaySpeed,
         } = this.props;
@@ -126,8 +127,10 @@ export default class extends React.Component {
                     <i class="fas fa-cog"></i>
                 </ConfigIcon>
                 {configActivated
-                    ? <ConfigPopUp
+                    ?
+                    <ConfigPopUp
                         autoPlay={autoPlay}
+                        lang={lang}
                         getPlaySpeed={getPlaySpeed}
                         toggleAutoPlay={toggleAutoPlay}
                         popUpRef={this.popUpRef}
@@ -140,7 +143,7 @@ export default class extends React.Component {
                         hovering={hovering}
                     >
                         <InfoPopUp>
-                            설정
+                            {lang.videoFrame.rightControl.config.config}
                         </InfoPopUp>
                     </InfoPopUpBox>
                 }

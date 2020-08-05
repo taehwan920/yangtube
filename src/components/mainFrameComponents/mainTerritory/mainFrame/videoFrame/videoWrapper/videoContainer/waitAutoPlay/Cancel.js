@@ -34,12 +34,15 @@ export default class extends React.Component {
         this.props.activateRecommend();
     }
     render() {
+        const {
+            lang,
+        } = this.props;
         return (
             <CancelBox
                 onClick={this.clickCancel}
             >
                 <CancelTxt>
-                    취소
+                    {lang.videoFrame.waitAutoPlay.waitCancel}
                 </CancelTxt>
             </CancelBox>
         )

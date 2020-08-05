@@ -20,6 +20,7 @@ export default class extends React.Component {
         const {
             getVol,
             hoverOnVol,
+            lang,
             muted,
             mouseOnVol,
             mouseOutVol,
@@ -32,6 +33,7 @@ export default class extends React.Component {
                 onMouseLeave={mouseOutVol}
             >
                 <MuteIcon
+                    lang={lang}
                     muted={muted}
                     toggleMute={toggleMute}
                     volume={volume}

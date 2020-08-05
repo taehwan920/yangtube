@@ -72,7 +72,46 @@ export default {
             help: '고객 센터',
             feedback: '의견 보내기',
         },
-        video: {},
+        videoFrame: {
+            ctxMenu: {
+                repeatPlay: '연속 재생',
+                copyUrl: '동영상 URL 복사',
+                copyUrlFromNow: '현재 시간에 동영상 URL 복사',
+            },
+            waitAutoPlay: {
+                nextVideo: '다음 동영상',
+                autoPlayPaused: '자동재생 일시중지됨',
+                waitCancel: '취소',
+            },
+            leftControl: {
+                playPause: {
+                    replay: '다시보기',
+                    play: '재생',
+                    pause: '일시정지'
+                },
+                next: '다음',
+                mute: {
+                    mute: '음소거',
+                    unmute: '음소거 해제',
+                },
+            },
+            rightControl: {
+                theater: {
+                    default: '기본 보기',
+                    theater: '영화관 모드'
+                },
+                fullScreen: {
+                    exit: '전체 화면 종료',
+                    fullScreen: '전체 화면',
+                },
+                config: {
+                    config: '설정',
+                    playback: '재생 속도',
+                    normalSpeed: '보통',
+                    autoPlay: '자동재생'
+                }
+            },
+        },
         title: {},
         desc: {},
         comment: {},

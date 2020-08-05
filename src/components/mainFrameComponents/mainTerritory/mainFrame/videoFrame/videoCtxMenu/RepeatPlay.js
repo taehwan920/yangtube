@@ -21,6 +21,7 @@ const CtxCheckIcon = styled.span`
 export default class extends React.Component {
     render() {
         const {
+            lang,
             repeatPlay,
             toggleRepeatPlay,
         } = this.props;
@@ -33,8 +34,8 @@ export default class extends React.Component {
                 </VideoCtxIcon>
                 <VideoCtxTxtBox>
                     <VideoCtxTxt>
-                        연속 재생
-                            </VideoCtxTxt>
+                        {lang.videoFrame.ctxMenu.repeatPlay}
+                    </VideoCtxTxt>
                     <CtxCheckIcon
                         repeatPlay={repeatPlay}
                     >

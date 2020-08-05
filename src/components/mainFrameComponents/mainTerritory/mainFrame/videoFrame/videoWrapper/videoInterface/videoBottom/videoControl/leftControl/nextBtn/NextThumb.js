@@ -89,6 +89,7 @@ export default class extends React.Component {
     render() {
         const {
             hovering,
+            lang,
         } = this.props;
         const nextVideo = this.getNextVideos();
         const {
@@ -112,7 +113,7 @@ export default class extends React.Component {
                 </NextVideoThumbnailBox>
                 <InfoPopUpBox>
                     <InfoPopUp>
-                        다음(SHIFT+N)
+                        {`${lang.videoFrame.leftControl.next}(SHIFT+N)`}
                     </InfoPopUp>
                     <NextVideoTitle>
                         {title}

@@ -72,10 +72,12 @@ export default class extends React.Component {
         const {
             autoPlay,
             activateRecommend,
+            contentData,
             currentTime,
             endVideo,
             getCurrent,
             getDuration,
+            lang,
             muted,
             theaterMode,
             pauseVideo,
@@ -86,7 +88,6 @@ export default class extends React.Component {
             videoPaused,
             vidRef,
             volume,
-            contentData
         } = this.props;
         const viewHeight = window.innerHeight, viewWidth = window.innerWidth;
         return (
@@ -100,6 +101,7 @@ export default class extends React.Component {
                     ref={vidRef}
                     activateRecommend={activateRecommend}
                     autoPlay={autoPlay}
+                    contentData={contentData}
                     currentTime={currentTime}
                     getCurrent={getCurrent}
                     getDuration={getDuration}
@@ -111,13 +113,13 @@ export default class extends React.Component {
                     videoEnded={videoEnded}
                     videoPaused={videoPaused}
                     volume={volume}
-                    contentData={contentData}
                 />
                 {autoPlay && videoEnded && !recommendVideos
                     ?
                     <WaitAutoPlay
                         activateRecommend={activateRecommend}
                         contentData={contentData}
+                        lang={lang}
                     />
                     : null}
             </VideoContainerBox>

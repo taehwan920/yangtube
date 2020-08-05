@@ -48,6 +48,7 @@ export default class extends React.Component {
             autoPlay,
             contentData,
             lang,
+            langState,
             newMargin,
             theaterMode,
             themeColor,
@@ -82,6 +83,7 @@ export default class extends React.Component {
                         autoPlay={autoPlay}
                         contentData={contentData}
                         lang={lang}
+                        langState={langState}
                         newMargin={newMargin}
                         theaterMode={theaterMode}
                         themeColor={themeColor}

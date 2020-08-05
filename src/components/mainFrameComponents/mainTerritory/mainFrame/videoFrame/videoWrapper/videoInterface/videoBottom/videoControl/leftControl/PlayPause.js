@@ -49,9 +49,22 @@ export default class extends React.Component {
     };
 
     judgeIcon = () => {
-        const { pauseVideo, videoEnded, videoPaused } = this.props;
-        const { hovering } = this.state;
-        const { isHovering, notHovering } = this;
+        const {
+            lang,
+            pauseVideo,
+            videoEnded,
+            videoPaused
+        } = this.props;
+        const {
+            hovering
+        } = this.state;
+        const {
+            isHovering,
+            notHovering
+        } = this;
+        const {
+            playPause
+        } = lang.videoFrame.leftControl;
         if (videoPaused && videoEnded) {
             return (
                 <ReplayButton
@@ -64,7 +77,7 @@ export default class extends React.Component {
                         hovering={hovering}
                     >
                         <InfoPopUp>
-                            다시보기
+                            {playPause.replay}
                         </InfoPopUp>
                     </InfoPopUpBox>
                 </ReplayButton>
@@ -82,7 +95,7 @@ export default class extends React.Component {
                         hovering={hovering}
                     >
                         <InfoPopUp>
-                            재생(space)
+                            {`${playPause.play}(space)`}
                         </InfoPopUp>
                     </InfoPopUpBox>
                 </PlayButton>
@@ -99,7 +112,7 @@ export default class extends React.Component {
                     hovering={hovering}
                 >
                     <InfoPopUp>
-                        일시정지(space)
+                        {`${playPause.pause}(space)`}
                     </InfoPopUp>
                 </InfoPopUpBox>
             </PauseButton>

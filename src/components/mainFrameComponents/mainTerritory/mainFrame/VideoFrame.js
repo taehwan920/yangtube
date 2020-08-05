@@ -187,14 +187,15 @@ export default class extends React.Component {
     render() {
         const {
             autoPlay,
+            contentData,
             endVideo,
+            lang,
             newMargin,
             theaterMode,
             toggleAutoPlay,
             toggleTheater,
             videoEnded,
             queryStr,
-            contentData
         } = this.props;
         const {
             animationTriggered,
@@ -228,7 +229,9 @@ export default class extends React.Component {
                 <VideoWrapper
                     ref={this.videoWrapperRef}
                     autoPlay={autoPlay}
+                    contentData={contentData}
                     endVideo={endVideo}
+                    lang={lang}
                     moveOnVideo={this.moveOnVideo}
                     theaterMode={theaterMode}
                     toggleAutoPlay={toggleAutoPlay}
@@ -242,7 +245,6 @@ export default class extends React.Component {
                     videoEnded={videoEnded}
                     videoFrameRef={this.videoFrameRef}
                     videoPaused={videoPaused}
-                    contentData={contentData}
                 />
                 <PlayToggleAni
                     aniEnd={this.aniEnd}
@@ -255,6 +257,7 @@ export default class extends React.Component {
                 />
                 <VideoCtxMenu
                     closeCtxMenu={this.closeCtxMenu}
+                    lang={lang}
                     toggleRepeatPlay={this.toggleRepeatPlay}
                     repeatPlay={repeatPlay}
                     urlCopyClicked={this.urlCopyClicked}

@@ -27,7 +27,8 @@ export default class extends React.Component {
 
     render() {
         const {
-            contentData
+            contentData,
+            lang,
         } = this.props;
         const {
             hovering
@@ -40,8 +41,9 @@ export default class extends React.Component {
             >
                 <i class="fas fa-step-forward"></i>
                 <NextThumb
-                    hovering={hovering}
                     contentData={contentData}
+                    hovering={hovering}
+                    lang={lang}
                 />
             </NextButton>
         )

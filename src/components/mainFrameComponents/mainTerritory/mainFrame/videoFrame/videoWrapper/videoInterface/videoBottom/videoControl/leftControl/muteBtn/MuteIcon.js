@@ -68,6 +68,7 @@ export default class extends React.Component {
 
     render() {
         const {
+            lang,
             muted,
             toggleMute,
             volume
@@ -75,6 +76,9 @@ export default class extends React.Component {
         const {
             hovering
         } = this.state;
+        const {
+            mute
+        } = lang.videoFrame.leftControl;
         return (
             <IconBox
                 onClick={toggleMute}
@@ -100,15 +104,15 @@ export default class extends React.Component {
                         hovering={hovering}
                     >
                         <InfoPopUp>
-                            음소거 해제(m)
-                    </InfoPopUp>
+                            {`${mute.unmute}(m)`}
+                        </InfoPopUp>
                     </InfoPopUpBox>
                     :
                     <InfoPopUpBox
                         hovering={hovering}
                     >
                         <InfoPopUp>
-                            음소거(m)
+                            {`${mute.mute}(m)`}
                         </InfoPopUp>
                     </InfoPopUpBox>
                 }

@@ -16,6 +16,7 @@ export default class extends React.Component {
         const {
             autoPlay,
             getPlaySpeed,
+            lang,
             theaterMode,
             toggleAutoPlay,
             toggleFullVF,
@@ -26,13 +27,16 @@ export default class extends React.Component {
                 <ConfigBtn
                     autoPlay={autoPlay}
                     getPlaySpeed={getPlaySpeed}
+                    lang={lang}
                     toggleAutoPlay={toggleAutoPlay}
                 />
                 <TheaterBtn
+                    lang={lang}
                     theaterMode={theaterMode}
                     toggleTheater={toggleTheater}
                 />
                 <FullScreenBtn
+                    lang={lang}
                     toggleFullVF={toggleFullVF}
                     toggleTheater={toggleTheater}
                 />
