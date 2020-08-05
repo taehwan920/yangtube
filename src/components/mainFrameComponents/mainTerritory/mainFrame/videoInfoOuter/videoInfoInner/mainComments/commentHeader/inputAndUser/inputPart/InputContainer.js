@@ -60,6 +60,7 @@ export default class extends React.Component {
             inputFocused,
             inputting,
             inputHeight,
+            lang,
             themeColor,
         } = this.props;
         return (
@@ -71,7 +72,7 @@ export default class extends React.Component {
                     inputting={inputting}
                     themeColor={themeColor}
                 >
-                    공개 댓글 추가...
+                    {lang.comment.placeholder}
                 </CommentPlaceHolder>
                 <CommentInput
                     ref={ref => this.commentInputRef = ref}

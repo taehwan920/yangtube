@@ -25,6 +25,8 @@ export default class extends React.Component {
     }
     render() {
         const {
+            lang,
+            langState,
             replyItem,
             themeColor,
         } = this.props;
@@ -47,21 +49,27 @@ export default class extends React.Component {
                 />
                 <UserAndReplyWrapper>
                     <CommentUserAndTime
+                        lang={lang}
+                        langState={langState}
                         name={name}
                         timestamp={timestamp}
                         themeColor={themeColor}
                     />
                     <CommentContent
                         content={content}
+                        lang={lang}
                         themeColor={themeColor}
                     />
                     <LikeAndReply
+                        lang={lang}
+                        langState={langState}
                         likes={likes}
                         themeColor={themeColor}
                     />
                 </UserAndReplyWrapper>
                 <ReportBtn
                     hovering={hovering}
+                    lang={lang}
                     themeColor={themeColor}
                 />
             </ReplyListWrapper>

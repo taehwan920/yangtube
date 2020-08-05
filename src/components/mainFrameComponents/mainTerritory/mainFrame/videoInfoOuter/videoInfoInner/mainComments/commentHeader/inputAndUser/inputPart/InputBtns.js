@@ -45,6 +45,7 @@ export default class extends React.Component {
         const {
             cancelComment,
             inputting,
+            lang,
             submitComment,
             themeColor,
         } = this.props;
@@ -55,7 +56,7 @@ export default class extends React.Component {
                         onClick={cancelComment}
                         themeColor={themeColor}
                     >
-                        취소
+                        {lang.comment.cancel}
                         <CommentClickEffect />
                     </CommentInputBtn>
                     <CommentInputSubmitBtn
@@ -63,7 +64,7 @@ export default class extends React.Component {
                         inputting={inputting}
                         themeColor={themeColor}
                     >
-                        댓글
+                        {lang.comment.submit}
                         <CommentClickEffect />
                     </CommentInputSubmitBtn>
                 </CommentInputBtnBox>

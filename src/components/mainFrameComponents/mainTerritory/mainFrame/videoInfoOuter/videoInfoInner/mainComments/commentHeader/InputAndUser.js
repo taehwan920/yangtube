@@ -23,6 +23,7 @@ const CommentInputUserIcon = styled.div`
 export default class extends React.Component {
     render() {
         const {
+            lang,
             themeColor
         } = this.props;
         return (
@@ -31,6 +32,7 @@ export default class extends React.Component {
                     G
                 </CommentInputUserIcon>
                 <InputPart
+                    lang={lang}
                     themeColor={themeColor}
                 />
             </CommentInputAndUserWrapper>

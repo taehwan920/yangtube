@@ -13,6 +13,7 @@ const ReplySwitchToVisibleWrapper = styled.div`
 export default class extends React.Component {
     render() {
         const {
+            lang,
             openReplies,
             replyLength,
             themeColor,
@@ -30,7 +31,7 @@ export default class extends React.Component {
                     <ReplySwitchText
                         themeColor={themeColor}
                     >
-                        {`답글 ${replyLength}개 보기`}
+                        {lang.comment.replyNum}{replyLength}{lang.comment.replyMeasure}
                     </ReplySwitchText>
                 </ReplySwitchBox>
             </ReplySwitchToVisibleWrapper>

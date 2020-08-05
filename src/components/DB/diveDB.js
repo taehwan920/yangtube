@@ -113,7 +113,7 @@ const dive = {
             content:
                 `어머~~~~ 
 물고기들이 파란 게 너무 이쁘네요,,, ^^~~
-우리 아이들이랑 남편이랑 꼭 같이 가봐야 겠어요~
+우리 아이랑 남편이랑 꼭 같이 가봐야 겠어요~
 저는 작년에 제주도를 가봤는데
 제주도도 바다 색깔 이쁘기로 유명하잖아요~~
 오키나와도 꼭 한 번 가봐야 겠어요 ㅎㅎㅎ^^~`,
@@ -198,9 +198,9 @@ const dive = {
                     timestamp: 1596032112370,
                     content:
                         `dog🐕 : Bow Wow
-
+cow🐄 : Moo Moo
 cat🐈 : Meow Meow
-
+pig🐖 : Oink Oink
 idiot🤪 : 2019? 2019?`,
                     likes: 698
                 },

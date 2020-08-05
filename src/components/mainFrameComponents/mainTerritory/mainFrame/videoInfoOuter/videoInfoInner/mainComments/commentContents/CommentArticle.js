@@ -13,6 +13,8 @@ export default class extends React.Component {
         const {
             commentItem,
             contentData,
+            lang,
+            langState,
             themeColor,
         } = this.props;
         const replyItems = commentItem.replies;
@@ -21,11 +23,15 @@ export default class extends React.Component {
                 <CommentUserAndContent
                     commentItem={commentItem}
                     contentData={contentData}
+                    lang={lang}
+                    langState={langState}
                     themeColor={themeColor}
                 />
                 {replyItems.length > 0
                     ?
                     <ReplySwitches
+                        lang={lang}
+                        langState={langState}
                         replyItems={replyItems}
                         themeColor={themeColor}
                     />

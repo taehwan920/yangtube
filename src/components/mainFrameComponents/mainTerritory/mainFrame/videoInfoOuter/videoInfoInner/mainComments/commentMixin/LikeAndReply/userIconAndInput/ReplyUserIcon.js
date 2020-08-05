@@ -27,7 +27,8 @@ export default class extends React.Component {
             <ReplyUserIconBox>
                 <ReplyUserIcon
                     draggable="true"
-                    iconColor={player.iconColor}>
+                    iconColor={player.iconColor}
+                >
                     {myInitial}
                 </ReplyUserIcon>
             </ReplyUserIconBox>

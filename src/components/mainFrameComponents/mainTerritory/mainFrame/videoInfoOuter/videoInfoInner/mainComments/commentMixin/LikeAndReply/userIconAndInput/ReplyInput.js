@@ -118,6 +118,7 @@ export default class extends React.Component {
 
     render() {
         const {
+            lang,
             toggleReply,
             themeColor,
         } = this.props;
@@ -136,7 +137,7 @@ export default class extends React.Component {
                         inputting={inputting}
                         themeColor={themeColor}
                     >
-                        공개 답글 추가...
+                        {lang.comment.placeholder}
                     </ReplyPlaceHolder>
                     <ReplyInputArea
                         ref={this.inputRef}
@@ -156,6 +157,7 @@ export default class extends React.Component {
                 </ReplyInputWrapper>
                 <SubmitBtns
                     inputting={inputting}
+                    lang={lang}
                     toggleReply={toggleReply}
                     cancelReply={this.cancelReply}
                     submitReply={this.submitReply}

@@ -98,6 +98,7 @@ export default class extends React.Component {
         const {
             byLatest,
             byPopular,
+            lang,
             themeColor,
         } = this.props;
         const {
@@ -116,14 +117,15 @@ export default class extends React.Component {
                     <i class="fas fa-sort-amount-down"></i>
                 </CommentSortIcon>
                 <CommentSortText>
-                    정렬 기준
-                <CommentClickEffect />
+                    {lang.comment.criteria}
+                    <CommentClickEffect />
                 </CommentSortText>
                 {popUpClicked
                     ?
                     <SortPopUp
                         byLatest={byLatest}
                         byPopular={byPopular}
+                        lang={lang}
                         pickPopular={this.pickPopular}
                         pickLatest={this.pickLatest}
                         togglePopUp={this.togglePopUp}
@@ -132,10 +134,11 @@ export default class extends React.Component {
                     : null}
                 <SortMiniPopUp
                     ref={ref => this.miniPopUp = ref}
+                    lang={lang}
                     miniActive={miniActive}
                 >
                     <SortMiniPopUpTxt>
-                        댓글 정렬
+                        {lang.comment.miniPopUp}
                     </SortMiniPopUpTxt>
                 </SortMiniPopUp>
             </CommentSortBox>

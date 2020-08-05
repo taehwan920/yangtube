@@ -25,6 +25,7 @@ export default class extends React.Component {
         const {
             byLatest,
             byPopular,
+            lang,
             selectLate,
             selectPop,
             contentData,
@@ -35,11 +36,12 @@ export default class extends React.Component {
                 <CommentNumber
                     themeColor={themeColor}
                 >
-                    댓글 {contentData.comments.length}개
+                    {lang.comment.comments}{contentData.comments.length}{lang.comment.commentMeasure}
                 </CommentNumber>
                 <CommentSort
                     byLatest={byLatest}
                     byPopular={byPopular}
+                    lang={lang}
                     selectLate={selectLate}
                     selectPop={selectPop}
                     themeColor={themeColor}

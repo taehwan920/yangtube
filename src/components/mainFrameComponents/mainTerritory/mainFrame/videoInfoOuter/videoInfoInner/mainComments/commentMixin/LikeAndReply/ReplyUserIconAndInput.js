@@ -13,6 +13,7 @@ const ReplyInputAndIconWrapper = styled.div`
 export default class extends React.Component {
     render() {
         const {
+            lang,
             toggleReply,
             themeColor,
         } = this.props;
@@ -20,6 +21,7 @@ export default class extends React.Component {
             <ReplyInputAndIconWrapper>
                 <ReplyUserIcon />
                 <ReplyInput
+                    lang={lang}
                     toggleReply={toggleReply}
                     themeColor={themeColor}
                 />

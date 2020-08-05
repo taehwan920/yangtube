@@ -36,7 +36,7 @@ export default class extends React.Component {
                     <CommentUserIcon
                         draggable="true"
                         iconColor={iconColor}>
-                        {this.getInitial(name) || 'V'}
+                        {this.getInitial(name)}
                     </CommentUserIcon>
                 </CommentUserIconBox>
             </CommentUserIconWrapper>

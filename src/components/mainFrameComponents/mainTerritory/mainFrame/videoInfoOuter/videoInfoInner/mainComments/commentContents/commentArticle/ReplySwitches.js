@@ -41,6 +41,8 @@ export default class extends React.Component {
     }
     render() {
         const {
+            lang,
+            langState,
             replyItems,
             themeColor,
         } = this.props;
@@ -52,15 +54,18 @@ export default class extends React.Component {
                 {replyVisible
                     ? null
                     : <ReplyOpenSwitch
-                        replyLength={replyItems.length}
+                        lang={lang}
                         openReplies={this.openReplies}
+                        replyLength={replyItems.length}
                         themeColor={themeColor}
                     />
                 }
                 {replyVisible
                     ? <ReplyCloseSwitch
-                        replyItems={replyItems}
                         closeReplies={this.closeReplies}
+                        lang={lang}
+                        langState={langState}
+                        replyItems={replyItems}
                         themeColor={themeColor}
                     />
                     : null}

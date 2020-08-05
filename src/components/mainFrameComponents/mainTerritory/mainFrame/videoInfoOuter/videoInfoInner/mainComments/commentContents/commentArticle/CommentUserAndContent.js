@@ -25,6 +25,8 @@ export default class extends React.Component {
         const {
             commentItem,
             contentData,
+            lang,
+            langState,
             themeColor,
         } = this.props;
         const { name, iconColor, timestamp, content, likes } = commentItem;
@@ -40,6 +42,8 @@ export default class extends React.Component {
                 />
                 <UserAndContentWrapper>
                     <CommentUserAndTime
+                        lang={lang}
+                        langState={langState}
                         name={name}
                         timestamp={timestamp}
                         themeColor={themeColor}
@@ -47,16 +51,20 @@ export default class extends React.Component {
                     <CommentContent
                         content={content}
                         contentData={contentData}
+                        lang={lang}
                         themeColor={themeColor}
                     />
                     <LikeAndReply
                         item={commentItem.main}
+                        lang={lang}
+                        langState={langState}
                         likes={likes}
                         themeColor={themeColor}
                     />
                 </UserAndContentWrapper>
                 <ReportBtn
                     hovering={hovering}
+                    lang={lang}
                     themeColor={themeColor}
                 />
             </CommentUserAndContentWrapper>

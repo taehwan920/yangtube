@@ -20,6 +20,8 @@ export default class extends React.Component {
             byPopular,
             byLatest,
             contentData,
+            lang,
+            langState,
             themeColor,
         } = this.props;
         let {
@@ -34,6 +36,8 @@ export default class extends React.Component {
                             <CommentArticle
                                 commentItem={commentItem}
                                 contentData={contentData}
+                                lang={lang}
+                                langState={langState}
                                 themeColor={themeColor}
                             />
                         )

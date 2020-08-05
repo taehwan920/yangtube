@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { reportFixed } from '../../../../../../../DB';
 
 const PopUpWrapper = styled.div`
     background-color: ${props => props.themeColor.main.BG};
@@ -54,6 +53,7 @@ const ReportTxt = styled.span`
 export default class extends React.Component {
     render() {
         const {
+            lang,
             themeColor
         } = this.props;
         return (
@@ -69,7 +69,7 @@ export default class extends React.Component {
                     <ReportTxt
                         themeColor={themeColor}
                     >
-                        {reportFixed.text}
+                        {lang.comment.report}
                     </ReportTxt>
                 </PopUpItem>
             </PopUpWrapper>

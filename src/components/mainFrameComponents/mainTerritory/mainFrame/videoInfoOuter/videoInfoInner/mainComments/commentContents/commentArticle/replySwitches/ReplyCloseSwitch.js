@@ -14,6 +14,8 @@ export default class extends React.Component {
     render() {
         const {
             closeReplies,
+            lang,
+            langState,
             replyItems,
             themeColor,
         } = this.props;
@@ -30,12 +32,14 @@ export default class extends React.Component {
                     <ReplySwitchText
                         themeColor={themeColor}
                     >
-                        {`답글 숨기기`}
+                        {lang.comment.hideReplies}
                     </ReplySwitchText>
                 </ReplySwitchBox>
                 {replyItems.map(replyItem => {
                     return (
                         <ReplyContents
+                            lang={lang}
+                            langState={langState}
                             replyItem={replyItem}
                             themeColor={themeColor}
                         />

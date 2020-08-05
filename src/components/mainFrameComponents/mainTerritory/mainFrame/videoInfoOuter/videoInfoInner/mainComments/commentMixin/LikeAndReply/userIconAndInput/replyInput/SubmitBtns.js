@@ -57,6 +57,7 @@ export default class extends React.Component {
     render() {
         const {
             inputting,
+            lang,
             toggleReply,
             cancelReply,
             submitReply,
@@ -73,7 +74,7 @@ export default class extends React.Component {
                         }}
                         themeColor={themeColor}
                     >
-                        취소
+                        {lang.replies.cancel}
                         <ClickEffect
                             themeColor={themeColor}
                         />
@@ -88,7 +89,7 @@ export default class extends React.Component {
                         }}
                         themeColor={themeColor}
                     >
-                        답글
+                        {lang.replies.submit}
                         <ClickEffect
                             themeColor={themeColor}
                         />

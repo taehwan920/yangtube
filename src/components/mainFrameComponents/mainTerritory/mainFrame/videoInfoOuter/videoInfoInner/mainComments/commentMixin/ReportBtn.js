@@ -60,6 +60,7 @@ export default class extends React.Component {
     render() {
         const {
             hovering,
+            lang,
             themeColor,
         } = this.props;
         const {
@@ -81,6 +82,7 @@ export default class extends React.Component {
                 {btnClicked
                     ?
                     <ReportPopUp
+                        lang={lang}
                         themeColor={themeColor}
                     />
                     : null}

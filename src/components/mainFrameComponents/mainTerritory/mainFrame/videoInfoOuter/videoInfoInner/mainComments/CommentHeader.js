@@ -30,6 +30,7 @@ export default class extends React.Component {
         const {
             byLatest,
             byPopular,
+            lang,
             selectLate,
             selectPop,
             contentData,
@@ -40,12 +41,14 @@ export default class extends React.Component {
                 <HeaderHeader
                     byLatest={byLatest}
                     byPopular={byPopular}
+                    lang={lang}
                     selectLate={selectLate}
                     selectPop={selectPop}
                     contentData={contentData}
                     themeColor={themeColor}
                 />
                 <InputAndUser
+                    lang={lang}
                     themeColor={themeColor}
                 />
             </CommentHeaderWrapper>

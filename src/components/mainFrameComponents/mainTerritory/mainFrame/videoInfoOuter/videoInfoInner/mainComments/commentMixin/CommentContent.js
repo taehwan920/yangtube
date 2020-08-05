@@ -66,6 +66,7 @@ export default class extends React.Component {
     render() {
         const {
             content,
+            lang,
             themeColor,
         } = this.props;
         const {
@@ -98,7 +99,10 @@ export default class extends React.Component {
                         onClick={this.showToggle}
                         themeColor={themeColor}
                     >
-                        {realHeight ? '간략히' : '자세히 보기'}
+                        {realHeight
+                            ? `${lang.comment.showLess}`
+                            : `${lang.comment.showMore}`
+                        }
                     </CommentShowMore>}
             </CommentContentWrapper>
         )

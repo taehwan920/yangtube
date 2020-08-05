@@ -42,6 +42,7 @@ export default class extends React.Component {
         const {
             byLatest,
             byPopular,
+            lang,
             pickLatest,
             pickPopular,
             themeColor,
@@ -58,7 +59,7 @@ export default class extends React.Component {
                     <SortPopUpItem
                         themeColor={themeColor}
                     >
-                        인기 댓글순
+                        {lang.comment.popular}
                     </SortPopUpItem>
                 </SortPopUpItemBox>
                 <SortPopUpItemBox
@@ -69,7 +70,7 @@ export default class extends React.Component {
                     <SortPopUpItem
                         themeColor={themeColor}
                     >
-                        최근 날짜순
+                        {lang.comment.latest}
                     </SortPopUpItem>
                 </SortPopUpItemBox>
             </SortPopUpWrapper>

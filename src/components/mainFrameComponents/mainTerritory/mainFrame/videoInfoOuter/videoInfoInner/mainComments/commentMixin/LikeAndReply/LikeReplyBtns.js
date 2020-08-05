@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { shortNum } from '../../../../../../../../DB';
+import { parseNum } from '../../../../../../../../Mixin';
 
 const LikeAndReplyWrapper = styled.div`
     width: 100%;
@@ -103,19 +103,15 @@ export default class extends React.Component {
     }
 
     shortenNum = (num, lang) => {
-        if (num === 0) { return [''] }
-        if (num < 1000) { return [num] }
-        const divider = shortNum[lang];
-        for (let i in divider) {
-            if (num / divider[i][0] >= 1) {
-                let temp = parseInt(num / divider[i][0] * 10) / 10;
-                return [temp, divider[i][1]];
-            }
-        };
+        if (num === 0) { return '' }
+        if (num < 1000) { return num }
+        return parseNum(num, lang);
     };
 
     render() {
         const {
+            lang,
+            langState,
             likes,
             toggleReply,
             themeColor,
@@ -124,7 +120,7 @@ export default class extends React.Component {
             disliked,
             liked,
         } = this.state;
-        const likedNumber = this.shortenNum(likes, 'kr');
+        const likedNumber = this.shortenNum(likes, langState);
         return (
             <LikeAndReplyWrapper>
                 <LikeIcon
@@ -139,9 +135,7 @@ export default class extends React.Component {
                     onClick={this.toggleLike}
                     themeColor={themeColor}
                 >
-                    {likedNumber.length < 2
-                        ? likedNumber[0]
-                        : `${likedNumber[0]}${likedNumber[1]}`}
+                    {likedNumber}
                 </LikeNum>
                 <DislikeIcon
                     disliked={disliked}
@@ -155,7 +149,7 @@ export default class extends React.Component {
                     onClick={toggleReply}
                     themeColor={themeColor}
                 >
-                    답글
+                    {lang.comment.replyBtn}
                     <ClickEffect />
                 </ReplyBtn>
             </LikeAndReplyWrapper>
