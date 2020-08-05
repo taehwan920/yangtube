@@ -164,6 +164,9 @@ export default class extends React.Component {
 
     render() {
         const {
+            changeLang,
+            lang,
+            langState,
             nightMode,
             theaterMode,
             toggleMiniSearch,
@@ -213,6 +216,7 @@ export default class extends React.Component {
                 {(addVideoON)
                     ? <HeaderAddVideoPopUp
                         addVideoON={addVideoON}
+                        lang={lang}
                         nightMode={nightMode}
                         theaterMode={theaterMode}
                         themeColor={themeColor}
@@ -221,6 +225,7 @@ export default class extends React.Component {
                 {(appsON)
                     ? <HeaderAppsPopUp
                         appsON={appsON}
+                        lang={lang}
                         nightMode={nightMode}
                         theaterMode={theaterMode}
                         themeColor={themeColor}
@@ -229,6 +234,9 @@ export default class extends React.Component {
                 {(userInfoON)
                     ? <HeaderUserInfoPopUp
                         ref={this.userInfoRef}
+                        changeLang={changeLang}
+                        lang={lang}
+                        langState={langState}
                         nightMode={nightMode}
                         theaterMode={theaterMode}
                         toggleNight={toggleNight}

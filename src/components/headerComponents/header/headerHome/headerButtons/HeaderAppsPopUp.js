@@ -23,14 +23,6 @@ const AppsPopUpWrapper = styled.div`
     line-height: 36px;
 `;
 
-const popUpItems = [
-    [<i class="fas fa-tv"></i>, 'YangTube TV'],
-    [<i class="fas fa-music"></i>, 'YangTube Music'],
-    [<i class="fas fa-child"></i>, 'YangTube Kids'],
-    [<i class="fab fa-youtube"></i>, '크리에이터 아카데미'],
-    [<i class="fab fa-youtube"></i>, 'YangTube for Artists']
-]
-
 export default class extends React.Component {
     buildItems = (item) => {
         const {
@@ -53,10 +45,18 @@ export default class extends React.Component {
     render() {
         const {
             appsON,
+            lang,
             nightMode,
             theaterMode,
             themeColor,
         } = this.props;
+        const popUpItems = [
+            [<i class="fas fa-tv"></i>, lang.header.appsPopUp.TV],
+            [<i class="fas fa-music"></i>, lang.header.appsPopUp.music],
+            [<i class="fas fa-child"></i>, lang.header.appsPopUp.kids],
+            [<i class="fab fa-youtube"></i>, lang.header.appsPopUp.academy],
+            [<i class="fab fa-youtube"></i>, lang.header.appsPopUp.artists]
+        ];
         return (
             <AppsPopUpWrapper
                 appsON={appsON}

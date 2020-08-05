@@ -12,6 +12,9 @@ const HeaderLogoPlace = styled.div`
 export default class extends React.Component {
     render() {
         const {
+            changeLang,
+            lang,
+            langState,
             nightMode,
             theaterMode,
             toggleGuide,
@@ -30,12 +33,16 @@ export default class extends React.Component {
                     themeColor={themeColor}
                 />
                 <HeaderSearch
+                    lang={lang}
                     nightMode={nightMode}
                     theaterMode={theaterMode}
                     toggleVkbd={toggleVkbd}
                     themeColor={themeColor}
                 />
                 <HeaderButtons
+                    changeLang={changeLang}
+                    lang={lang}
+                    langState={langState}
                     nightMode={nightMode}
                     theaterMode={theaterMode}
                     toggleMiniSearch={toggleMiniSearch}

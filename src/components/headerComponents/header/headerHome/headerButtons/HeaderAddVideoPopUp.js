@@ -24,10 +24,7 @@ const AddVideoPopUpWrapper = styled.div`
     line-height: 36px;
 `;
 
-const popUpItems = [
-    [<i class="far fa-play-circle"></i>, '동영상 업로드'],
-    [<i class="fas fa-broadcast-tower"></i>, '실시간 스트리밍 시작']
-]
+
 
 export default class extends React.Component {
     buildItems = (item) => {
@@ -48,13 +45,20 @@ export default class extends React.Component {
         )
     }
 
+
+
     render() {
         const {
             addVideoON,
+            lang,
             nightMode,
             theaterMode,
             themeColor,
         } = this.props;
+        const popUpItems = [
+            [<i class="far fa-play-circle"></i>, lang.header.addVideoPopUp.videoUpload],
+            [<i class="fas fa-broadcast-tower"></i>, lang.header.addVideoPopUp.goLive]
+        ];
         return (
             <AddVideoPopUpWrapper
                 addVideoON={addVideoON}

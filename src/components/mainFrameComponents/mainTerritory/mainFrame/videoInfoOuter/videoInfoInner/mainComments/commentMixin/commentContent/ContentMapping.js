@@ -37,13 +37,13 @@ export default class extends React.Component {
     isTimestamp = str => {
         if (!str.includes(':')) return false;
         const dividedByColon = str.split(':');
-        let result = false;
+        let result = [];
         dividedByColon.forEach(item => {
-            if (this.isNumber(item) && item.length <= 2 && item.length > 0) {
-                result = true;
-            };
+            if (item.length > 2 || item.length === 0 || !this.isNumber(item)) {
+                result.push(false);
+            }
         });
-        return result;
+        return result.length === 0;
     };
 
     parseTimestamp = str => {

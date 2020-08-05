@@ -22,6 +22,7 @@ const GoBackIcon = styled.div`
 export default class extends React.Component {
     render() {
         const {
+            lang,
             nightMode,
             offMiniSearch,
             theaterMode,
@@ -39,6 +40,7 @@ export default class extends React.Component {
                     <i class="fas fa-arrow-left"></i>
                 </GoBackIcon>
                 <MiniSearchBox
+                    lang={lang}
                     offMiniSearch={offMiniSearch}
                     nightMode={nightMode}
                     theaterMode={theaterMode}

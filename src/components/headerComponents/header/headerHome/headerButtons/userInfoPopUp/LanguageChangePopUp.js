@@ -6,6 +6,7 @@ import LeftArrow from '../../../../../mixin/LeftArrow';
 const LangChangeArticle = styled.article`
     width: 298px;
     height: 40px;
+    display: flex;
     &:hover {
         background-color: rgba(0, 0, 0, 0.1);
         cursor: pointer;
@@ -15,30 +16,64 @@ const LangChangeArticle = styled.article`
 const LangChangeText = styled.span`
     width: 226px;
     height: 40px;
-    margin: 0px 16px 0px 56px;
+    margin-right: 16px;
     line-height: 39px;
 `;
 
-const LanguageHeaderItems = ['언어 선택'];
-const LanguageChangeItems = ['한국어', 'English', '日本語'];
+const LangCheckBox = styled.div`
+    width: 40px;
+    height: 40px;
+    margin: 0px 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: ${props => props.themeColor.normalFont};
+    opacity: ${props => props.checkOrNot ? 1 : 0};
+`;
 
 export default class extends React.Component {
-    buildItem = item => {
-        return (
-            <LangChangeArticle>
-                <LangChangeText>
-                    {item}
-                </LangChangeText>
-            </LangChangeArticle>
-        )
+    state = {
+        langList: [false, false, false]
     };
+
+    componentDidMount() {
+        const sampleArr = [false, false, false];
+        const { langState } = this.props;
+        const langArr = this.props.lang.header.userInfoPopUp.language.langCode;
+        const langIdx = langArr.indexOf(langState);
+        sampleArr[langIdx] = true;
+        this.setState({ langList: sampleArr });
+    };
+
+    selectLang = idx => () => {
+        const langArr = this.props.lang.header.userInfoPopUp.language.langCode;
+        const sampleArr = [false, false, false];
+        const newLang = langArr[idx];
+        sampleArr[idx] = true;
+        this.setState({
+            langList: sampleArr,
+        });
+        this.props.changeLang(newLang);
+    };
+
     render() {
         const {
+            lang,
             nightMode,
             toggleMode,
             stateType,
             themeColor,
         } = this.props;
+        const {
+            language,
+        } = lang.header.userInfoPopUp;
+        const {
+            items
+        } = language;
+        const {
+            langList
+        } = this.state;
         return (
             <React.Fragment>
                 <SubPopUpHeaderWrapper>
@@ -52,14 +87,31 @@ export default class extends React.Component {
                         nightMode={nightMode}
                         themeColor={themeColor}
                     >
-                        {LanguageHeaderItems[0]}
+                        {language.header}
                     </SubPopUpString>
                 </SubPopUpHeaderWrapper>
                 <PopUpSection
                     nightMode={nightMode}
                     themeColor={themeColor}
                 >
-                    {LanguageChangeItems.map(item => this.buildItem(item))}
+                    {items.map(item => {
+                        const itemIdx = items.indexOf(item);
+                        return (
+                            <LangChangeArticle
+                                onClick={this.selectLang(itemIdx)}
+                            >
+                                <LangCheckBox
+                                    checkOrNot={langList[itemIdx]}
+                                    themeColor={themeColor}
+                                >
+                                    <i class="fas fa-check"></i>
+                                </LangCheckBox>
+                                <LangChangeText>
+                                    {item}
+                                </LangChangeText>
+                            </LangChangeArticle>
+                        )
+                    })}
                 </PopUpSection>
             </React.Fragment>
         )

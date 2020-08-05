@@ -49,6 +49,9 @@ export default class extends React.Component {
 
     render() {
         const {
+            changeLang,
+            lang,
+            langState,
             nightMode,
             theaterMode,
             toggleGuide,
@@ -59,7 +62,6 @@ export default class extends React.Component {
             VKbd,
             miniSearchBox
         } = this.state;
-
         return (
             <HeaderWrapper
                 nightMode={nightMode}
@@ -68,6 +70,7 @@ export default class extends React.Component {
             >
                 {miniSearchBox
                     ? <MiniSearch
+                        lang={lang}
                         nightMode={nightMode}
                         offMiniSearch={this.offMiniSearch}
                         theaterMode={theaterMode}
@@ -75,6 +78,9 @@ export default class extends React.Component {
                         themeColor={themeColor}
                     />
                     : <HeaderHome
+                        changeLang={changeLang}
+                        lang={lang}
+                        langState={langState}
                         nightMode={nightMode}
                         theaterMode={theaterMode}
                         toggleGuide={toggleGuide}

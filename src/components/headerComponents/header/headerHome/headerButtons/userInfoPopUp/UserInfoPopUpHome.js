@@ -30,15 +30,7 @@ const UserPopUpPictogram = styled.span`
     }};
 `;
 
-const popUpItems = [
-    [<i class="fas fa-moon"></i>, '어두운 테마: 사용 안함', <i class="fas fa-chevron-right"></i>, 'night'],
-    [<i class="fas fa-globe"></i>, '언어: 한국어', <i class="fas fa-chevron-right"></i>, 'langChange'],
-    [<i class="fas fa-map-marker-alt"></i>, '위치: 한국', <i class="fas fa-chevron-right"></i>, 'locationChange'],
-    [<i class="fas fa-cog"></i>, '설정'],
-    [<i class="fas fa-user-shield"></i>, 'YangTube의 내 데이터'],
-    [<i class="fas fa-question-circle"></i>, '고객센터'],
-    [<i class="fas fa-exclamation"></i>, '의견 보내기']
-];
+
 
 export default class extends React.Component {
     buildItems = (item) => {
@@ -46,8 +38,6 @@ export default class extends React.Component {
             nightMode,
             themeColor,
         } = this.props;
-        const isNight = nightMode ? '어두운 테마: 사용 중' : '어두운 테마: 사용 안함';
-        popUpItems[0][1] = isNight;
         if (item.length > 2) {
             return (
                 <PopUpArticle onClick={this.props.toggleMode(item[3])}>
@@ -85,9 +75,30 @@ export default class extends React.Component {
 
     render() {
         const {
+            lang,
+            langState,
+            loca,
             nightMode,
             themeColor,
         } = this.props;
+        const {
+            userInfoPopUp
+        } = lang.header;
+        const popUpItems = [
+            [<i class="fas fa-moon"></i>, ' ', <i class="fas fa-chevron-right"></i>, 'night'],
+            [<i class="fas fa-globe"></i>, ' ', <i class="fas fa-chevron-right"></i>, 'langChange'],
+            [<i class="fas fa-map-marker-alt"></i>, ' ', <i class="fas fa-chevron-right"></i>, 'locationChange'],
+            [<i class="fas fa-cog"></i>, userInfoPopUp.config],
+            [<i class="fas fa-user-shield"></i>, userInfoPopUp.yourData],
+            [<i class="fas fa-question-circle"></i>, userInfoPopUp.help],
+            [<i class="fas fa-exclamation"></i>, userInfoPopUp.feedback]
+        ];
+        const nightUsed = nightMode ? userInfoPopUp.night.using : userInfoPopUp.night.notUsing;
+        const languageSet = userInfoPopUp.language[langState];
+        const locationSet = userInfoPopUp.location[loca];
+        popUpItems[0][1] = userInfoPopUp.night.mode + nightUsed;
+        popUpItems[1][1] = userInfoPopUp.language.mode + languageSet;
+        popUpItems[2][1] = userInfoPopUp.location.mode + locationSet;
         return (
             <React.Fragment>
                 <UserInfoHeader>

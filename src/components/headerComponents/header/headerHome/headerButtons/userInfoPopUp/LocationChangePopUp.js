@@ -6,6 +6,7 @@ import LeftArrow from '../../../../../mixin/LeftArrow';
 const LocationChangeArticle = styled.article`
     width: 298px;
     height: 40px;
+    display: flex;
     &:hover {
         background-color: rgba(0, 0, 0, 0.1);
         cursor: pointer;
@@ -15,30 +16,64 @@ const LocationChangeArticle = styled.article`
 const LocationChangeText = styled.span`
     width: 226px;
     height: 40px;
-    margin: 0px 16px 0px 56px;
+    margin-right: 16px;
     line-height: 39px;
 `;
 
-const LocationHeaderItems = ['위치 선택'];
-const LocationChangeItems = ['한국', '미국', '일본'];
+const LangCheckBox = styled.div`
+    width: 40px;
+    height: 40px;
+    margin: 0px 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: ${props => props.themeColor.normalFont};
+    opacity: ${props => props.checkOrNot ? 1 : 0};
+`;
 
 export default class extends React.Component {
-    buildItem = item => {
-        return (
-            <LocationChangeArticle>
-                <LocationChangeText>
-                    {item}
-                </LocationChangeText>
-            </LocationChangeArticle>
-        )
+    state = {
+        locaList: [false, false, false]
     };
+
+    componentDidMount() {
+        const sampleArr = [false, false, false];
+        const { loca } = this.props;
+        const locaArr = this.props.lang.header.userInfoPopUp.location.locaCode;
+        const locaIdx = locaArr.indexOf(loca);
+        sampleArr[locaIdx] = true;
+        this.setState({ locaList: sampleArr });
+    };
+
+    selectLoca = idx => () => {
+        const locaArr = this.props.lang.header.userInfoPopUp.location.locaCode;
+        const sampleArr = [false, false, false];
+        const newLoca = locaArr[idx];
+        sampleArr[idx] = true;
+        this.setState({
+            locaList: sampleArr,
+        });
+        this.props.changeLoca(newLoca);
+    };
+
     render() {
         const {
+            lang,
             nightMode,
             toggleMode,
             stateType,
             themeColor,
         } = this.props;
+        const {
+            location,
+        } = lang.header.userInfoPopUp;
+        const {
+            items,
+        } = location;
+        const {
+            locaList,
+        } = this.state;
         return (
             <React.Fragment>
                 <SubPopUpHeaderWrapper>
@@ -52,14 +87,31 @@ export default class extends React.Component {
                         nightMode={nightMode}
                         themeColor={themeColor}
                     >
-                        {LocationHeaderItems[0]}
+                        {location.header}
                     </SubPopUpString>
                 </SubPopUpHeaderWrapper>
                 <PopUpSection
                     nightMode={nightMode}
                     themeColor={themeColor}
                 >
-                    {LocationChangeItems.map(item => this.buildItem(item))}
+                    {items.map(item => {
+                        const itemIdx = items.indexOf(item);
+                        return (
+                            <LocationChangeArticle
+                                onClick={this.selectLoca(itemIdx)}
+                            >
+                                <LangCheckBox
+                                    checkOrNot={locaList[itemIdx]}
+                                    themeColor={themeColor}
+                                >
+                                    <i class="fas fa-check"></i>
+                                </LangCheckBox>
+                                <LocationChangeText>
+                                    {item}
+                                </LocationChangeText>
+                            </LocationChangeArticle>
+                        )
+                    })}
                 </PopUpSection>
             </React.Fragment>
         )

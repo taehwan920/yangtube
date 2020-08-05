@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import UserPopUpHome from './userInfoPopUp/UserInfoPopUpHome';
+import UserInfoPopUpHome from './userInfoPopUp/UserInfoPopUpHome';
 import NightPopUp from './userInfoPopUp/NightPopUp';
 import LanguageChangePopUp from './userInfoPopUp/LanguageChangePopUp';
 import LocationChangePopUp from './userInfoPopUp/LocationChangePopUp';
@@ -135,26 +135,39 @@ export default class extends React.Component {
         night: false,
         langChange: false,
         locationChange: false,
-    }
+        loca: null,
+    };
+
+    componentDidMount() {
+        this.changeLoca(this.props.langState);
+    };
+
+    changeLoca = loca => {
+        this.setState({ loca: loca });
+    };
 
     toggleMode = stateType => () => {
         this.setState({
             [stateType]: !this.state[stateType],
             userInfoHome: !this.state.userInfoHome
         })
-    }
+    };
 
     render() {
         const {
+            changeLang,
+            lang,
+            langState,
             nightMode,
             themeColor,
             toggleNight,
         } = this.props;
         const {
-            userInfoHome,
-            night,
             langChange,
+            loca,
             locationChange,
+            night,
+            userInfoHome,
         } = this.state;
         return (
             <UserInfoPopUpWrapper
@@ -165,7 +178,10 @@ export default class extends React.Component {
             >
                 {userInfoHome
                     ?
-                    <UserPopUpHome
+                    <UserInfoPopUpHome
+                        lang={lang}
+                        langState={langState}
+                        loca={loca}
                         themeColor={themeColor}
                         toggleMode={this.toggleMode}
                         nightMode={nightMode}
@@ -174,6 +190,7 @@ export default class extends React.Component {
                 {(!userInfoHome && night)
                     ?
                     <NightPopUp
+                        lang={lang}
                         nightMode={nightMode}
                         stateType={'night'}
                         toggleMode={this.toggleMode}
@@ -184,6 +201,9 @@ export default class extends React.Component {
                 {(!userInfoHome && langChange)
                     ?
                     <LanguageChangePopUp
+                        changeLang={changeLang}
+                        lang={lang}
+                        langState={langState}
                         toggleMode={this.toggleMode}
                         stateType={'langChange'}
                         nightMode={nightMode}
@@ -193,6 +213,9 @@ export default class extends React.Component {
                 {(!userInfoHome && locationChange)
                     ?
                     <LocationChangePopUp
+                        changeLoca={this.changeLoca}
+                        lang={lang}
+                        loca={loca}
                         toggleMode={this.toggleMode}
                         stateType={'locationChange'}
                         nightMode={nightMode}

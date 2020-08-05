@@ -107,6 +107,7 @@ const SearchBtn = styled.button`
 export default class extends React.Component {
     render() {
         const {
+            lang,
             nightMode,
             theaterMode,
             themeColor,
@@ -125,7 +126,7 @@ export default class extends React.Component {
                                 theaterMode={theaterMode}
                                 themeColor={themeColor}
                                 id="searchInput"
-                                placeholder="검색"
+                                placeholder={lang.header.searchPlaceHolder}
                                 type="text"
                                 autoComplete="off"
                             />
