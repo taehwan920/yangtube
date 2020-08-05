@@ -66,6 +66,7 @@ export default class extends React.Component {
                         lang={lang}
                         langState={langState}
                         replyItems={replyItems}
+                        replyLength={replyItems.length}
                         themeColor={themeColor}
                     />
                     : null}

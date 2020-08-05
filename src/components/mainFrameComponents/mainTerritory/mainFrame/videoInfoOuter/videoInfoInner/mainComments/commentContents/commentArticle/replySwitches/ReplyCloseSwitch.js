@@ -17,6 +17,7 @@ export default class extends React.Component {
             lang,
             langState,
             replyItems,
+            replyLength,
             themeColor,
         } = this.props;
         return (
@@ -32,7 +33,7 @@ export default class extends React.Component {
                     <ReplySwitchText
                         themeColor={themeColor}
                     >
-                        {lang.comment.hideReplies}
+                        {lang.comment.hideNum}{replyLength}{lang.comment.hideMeasure}
                     </ReplySwitchText>
                 </ReplySwitchBox>
                 {replyItems.map(replyItem => {

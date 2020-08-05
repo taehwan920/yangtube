@@ -94,8 +94,8 @@ export default class extends React.Component {
                             themeColor={themeColor}
                         >
                             {showMore
-                                ? lang.desc.showMore
-                                : lang.desc.showLess
+                                ? lang.desc.showLess
+                                : lang.desc.showMore
                             }
                         </ShowMoreBtn>}
                 </DesciptionWrapper>

@@ -174,9 +174,12 @@ export default class extends React.Component {
         const date = new Date(num);
         const year = date.getFullYear();
         const month = date.getMonth();
+        const JPmonth = month + 1 > 10 ? month + 1 : `0${month + 1}`;
         const day = date.getDate();
-        if (lang === 'KR' || lang === 'JP') {
+        if (lang === 'KR') {
             return `${year}. ${month + 1}. ${day}`;
+        } else if (lang === 'JP') {
+            return `${year}/${JPmonth}/${day}`;
         } else if (lang === 'EN') {
             const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
             return `${months[month]} ${day}, ${year}`;
