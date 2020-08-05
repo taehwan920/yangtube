@@ -120,6 +120,7 @@ export default class extends React.Component {
                             toggleGuide={this.toggleGuide}
                             contentData={contentData}
                             lang={lang}
+                            langState={langState}
                             themeColor={themeColor}
                         />
                         <MainTerritory

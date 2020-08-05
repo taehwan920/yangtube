@@ -48,7 +48,13 @@ const LanguageMark = styled.div`
     position: absolute;
     top: 8px;
     left: 103%;
-    color: ${props => props.themeColor.grayFont};
+    color: ${props => {
+        if (props.theaterMode || props.nightMode) {
+            return props.themeColor.nightMode.grayFont;
+        } else {
+            return props.themeColor.dayMode.grayFont;
+        }
+    }};
     font-size: 10px;
 `;
 
@@ -125,6 +131,7 @@ export default class extends React.Component {
                         src="./images/youtubefont3.png"
                     />
                     <LanguageMark
+                        nightMode={nightMode}
                         themeColor={themeColor}
                     >
                         {langState}

@@ -162,37 +162,38 @@ const FooterSpan = styled.span`
 `;
 
 export default class extends React.Component {
+    guideItems = this.props.lang.guide;
     sectionItems = {
         firstSection: [
-            [<i class="fas fa-home"></i>, '홈', '#/home'],
-            [<i class="fas fa-fire-alt"></i>, '인기'],
-            [<i class="fas fa-envelope-open-text"></i>, '구독']
+            [<i class="fas fa-home"></i>, this.guideItems.home, '#/home'],
+            [<i class="fas fa-fire-alt"></i>, this.guideItems.trending],
+            [<i class="fas fa-envelope-open-text"></i>, this.guideItems.subscription]
         ],
         secondSection: [
-            [<i class="fas fa-archive"></i>, '보관함'],
-            [<i class="fas fa-history"></i>, '시청 기록']
+            [<i class="fas fa-archive"></i>, this.guideItems.library],
+            [<i class="fas fa-history"></i>, this.guideItems.history]
         ],
         thirdSection: [
-            [<i class="fas fa-music"></i>, '음악'],
-            [<i class="fas fa-futbol"></i>, '스포츠'],
-            [<i class="fas fa-film"></i>, '영화'],
-            [<i class="far fa-newspaper"></i>, '뉴스'],
-            [<i class="fas fa-broadcast-tower"></i>, '실시간'],
-            [<i class="far fa-lightbulb"></i>, '학습'],
-            [<i class="fas fa-mask"></i>, '360º 동영상']
+            [<i class="fas fa-music"></i>, this.guideItems.music],
+            [<i class="fas fa-futbol"></i>, this.guideItems.sports],
+            [<i class="fas fa-film"></i>, this.guideItems.movies],
+            [<i class="far fa-newspaper"></i>, this.guideItems.news],
+            [<i class="fas fa-broadcast-tower"></i>, this.guideItems.learning],
+            [<i class="far fa-lightbulb"></i>, this.guideItems.learning],
+            [<i class="fas fa-mask"></i>, this.guideItems.video360]
         ],
         fourthSection: [
-            [<i class="fas fa-plus-circle"></i>, '채널 탐색']
+            [<i class="fas fa-plus-circle"></i>, this.guideItems.browseCH]
         ],
         fifthSection: [
-            [<i class="fas fa-blog"></i>, '블로그', 'https://hitzi.tistory.com/'],
-            [<i class="fab fa-github"></i>, '깃허브', 'https://github.com/taehwan920/yangtube']
+            [<i class="fas fa-blog"></i>, this.guideItems.blog, 'https://hitzi.tistory.com/'],
+            [<i class="fab fa-github"></i>, this.guideItems.github, 'https://github.com/taehwan920/yangtube']
         ],
         sixthSection: [
-            [<i class="fas fa-cog"></i>, '설정'],
-            [<i class="fas fa-flag"></i>, '신고 기록'],
-            [<i class="fas fa-question-circle"></i>, '고객 센터'],
-            [<i class="fas fa-exclamation"></i>, '의견 보내기']
+            [<i class="fas fa-cog"></i>, this.guideItems.settings],
+            [<i class="fas fa-flag"></i>, this.guideItems.report],
+            [<i class="fas fa-question-circle"></i>, this.guideItems.help],
+            [<i class="fas fa-exclamation"></i>, this.guideItems.feedback]
         ]
     }
 
@@ -202,7 +203,7 @@ export default class extends React.Component {
             themeColor
         } = this.props;
         if (item.length > 2) {
-            if (item[1] === '홈') {
+            if (item[2] === '#/home') {
                 return (
                     <GuideSectionLink
                         nightMode={nightMode}
@@ -263,6 +264,8 @@ export default class extends React.Component {
 
     render() {
         const {
+            lang,
+            langState,
             nightMode,
             guideIsON,
             toggleGuide,
@@ -287,6 +290,7 @@ export default class extends React.Component {
                     themeColor={themeColor}
                 >
                     <Logo
+                        langState={langState}
                         nightMode={nightMode}
                         themeColor={themeColor}
                         toggleGuide={toggleGuide}
@@ -311,8 +315,8 @@ export default class extends React.Component {
                         <GuideSectionHeader
                             themeColor={themeColor}
                         >
-                            인기 YANGTUBE
-                            </GuideSectionHeader>
+                            {lang.guide.best}
+                        </GuideSectionHeader>
                         {sectionItems.thirdSection.map(item => this.makeArticle(item))}
                     </GuideSection>
                     <GuideSection
