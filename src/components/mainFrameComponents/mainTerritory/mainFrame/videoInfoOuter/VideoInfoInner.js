@@ -31,11 +31,13 @@ export default class extends React.Component {
     render() {
         const {
             autoPlay,
+            contentData,
+            lang,
+            langState,
             newMargin,
             theaterMode,
-            toggleAutoPlay,
-            contentData,
             themeColor,
+            toggleAutoPlay,
         } = this.props;
         const viewWidth = window.innerWidth;
         return (
@@ -45,16 +47,20 @@ export default class extends React.Component {
                 theaterMode={theaterMode}>
                 <MainTitleAndDesc
                     contentData={contentData}
+                    lang={lang}
                     themeColor={themeColor}
                 />
                 <VideoNavNonPC
                     autoPlay={autoPlay}
-                    toggleAutoPlay={toggleAutoPlay}
                     contentData={contentData}
+                    lang={lang}
+                    langState={langState}
                     themeColor={themeColor}
+                    toggleAutoPlay={toggleAutoPlay}
                 />
                 <MainComments
                     contentData={contentData}
+                    lang={lang}
                     themeColor={themeColor}
                 />
             </VideoInfoInnerWrapper>

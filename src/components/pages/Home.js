@@ -104,33 +104,34 @@ export default class extends React.Component {
                         themeColor={themeColor}
                     >
                         <Header
+                            changeLang={this.changeLang}
+                            contentData={contentData}
+                            lang={lang}
+                            langState={langState}
                             nightMode={nightMode}
                             theaterMode={theaterMode}
+                            themeColor={themeOriginal}
                             toggleGuide={this.toggleGuide}
                             toggleNight={this.toggleNight}
-                            contentData={contentData}
-                            changeLang={this.changeLang}
-                            lang={lang}
-                            langState={langState}
-                            themeColor={themeOriginal}
                         />
                         <Guide
+                            contentData={contentData}
                             guideIsON={guideIsON}
+                            lang={lang}
+                            langState={langState}
                             nightMode={nightMode}
+                            themeColor={themeColor}
                             toggleGuide={this.toggleGuide}
+                        />
+                        <MainTerritory
                             contentData={contentData}
                             lang={lang}
                             langState={langState}
-                            themeColor={themeColor}
-                        />
-                        <MainTerritory
                             nightMode={nightMode}
                             theaterMode={theaterMode}
+                            themeColor={themeColor}
                             toggleTheater={this.toggleTheater}
                             queryStr={queryStr}
-                            contentData={contentData}
-                            lang={lang}
-                            themeColor={themeColor}
                         />
                     </HomeDiv>
                     : null}

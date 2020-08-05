@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { timestampTxt } from '../../../../../DB';
 
 const NextVideoItemWrapper = styled.article`
     background-color: inherit;
@@ -129,21 +128,24 @@ export default class extends React.Component {
         const month = week * 4;
         const year = month * 12;
         const timeGap = now - num;
-        if (Math.round(timeGap / year) > 0) {
-            return [Math.round(timeGap / year), timestampTxt[lang].year];
-        } else if (Math.round(timeGap / month) > 0) {
-            return [Math.round(timeGap / month), timestampTxt[lang].month];
-        } else if (Math.round(timeGap / week) > 0) {
-            return [Math.round(timeGap / week), timestampTxt[lang].week];
-        } else if (Math.round(timeGap / day) > 0) {
-            return [Math.round(timeGap / day), timestampTxt[lang].day];
-        } else if (Math.round(timeGap / hour) > 0) {
-            return [Math.round(timeGap / hour), timestampTxt[lang].hour];
-        } else if (Math.round(timeGap / min) > 0) {
-            return [Math.round(timeGap / min), timestampTxt[lang].min];
-        } else {
-            return [Math.round(timeGap / sec), timestampTxt[lang].sec]
+        if (lang === 'KR') {
+            if (Math.round(timeGap / year) > 0) {
+                return [Math.round(timeGap / year), '년 전'];
+            } else if (Math.round(timeGap / month) > 0) {
+                return [Math.round(timeGap / month), '개월 전'];
+            } else if (Math.round(timeGap / week) > 0) {
+                return [Math.round(timeGap / week), '주 전'];
+            } else if (Math.round(timeGap / day) > 0) {
+                return [Math.round(timeGap / day), '일 전'];
+            } else if (Math.round(timeGap / hour) > 0) {
+                return [Math.round(timeGap / hour), '시간 전'];
+            } else if (Math.round(timeGap / min) > 0) {
+                return [Math.round(timeGap / min), '분 전'];
+            } else {
+                return [Math.round(timeGap / sec), '초 전']
+            }
         }
+
     };
 
     parseDecimal = (num, divider) => {
@@ -155,7 +157,7 @@ export default class extends React.Component {
     };
 
     parseNum = (num, lang) => {
-        if (lang === 'kr') {
+        if (lang === 'KR') {
             if (num / 10 ** 8 > 1) {
                 return [this.parseDecimal(num, 10 ** 8), '억'];
             } else if (num / 10 ** 4 > 1) {
@@ -176,8 +178,10 @@ export default class extends React.Component {
 
     render() {
         const {
+            lang,
+            langState,
+            themeColor,
             video,
-            themeColor
         } = this.props;
         const {
             hoverOnThumb
@@ -219,13 +223,13 @@ export default class extends React.Component {
                         themeColor={themeColor}
                     >
                         <InfoViewNums>
-                            조회수 {this.parseNum(video.views, 'kr')}회
+                            {lang.videoNav.views}{this.parseNum(video.views, langState)}{lang.videoNav.viewMeasure}
                         </InfoViewNums>
                         <InfoDot>
                             ·
                         </InfoDot>
                         <InfoTimestamp>
-                            {this.getTimeStamp(video.timestamp, 'kr')}
+                            {this.getTimeStamp(video.timestamp, langState)}
                         </InfoTimestamp>
                     </InfoNumberBox>
                 </NextVideoInfoBox>

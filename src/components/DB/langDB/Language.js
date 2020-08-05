@@ -76,7 +76,13 @@ export default {
         title: {},
         desc: {},
         comment: {},
-        videoNav: {},
+        videoNav: {
+            nextVideo: '다음 동영상',
+            autoPlay: '자동재생',
+            autoPlayPopUp: '자동재생을 사용하도록 설정하면 추천 동영상이 자동으로 이어서 재생됩니다.',
+            views: '조회수 ',
+            viewMeasure: '회',
+        },
     },
     JP: {},
     EN: {}

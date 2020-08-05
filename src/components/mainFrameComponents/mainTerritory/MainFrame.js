@@ -46,13 +46,14 @@ export default class extends React.Component {
     render() {
         const {
             autoPlay,
+            contentData,
+            lang,
             newMargin,
             theaterMode,
+            themeColor,
             toggleAutoPlay,
             toggleTheater,
             queryStr,
-            contentData,
-            themeColor,
         } = this.props;
         const {
             videoEnded
@@ -66,23 +67,25 @@ export default class extends React.Component {
                 >
                     <VideoFrame
                         autoPlay={autoPlay}
-                        newMargin={newMargin}
+                        contentData={contentData}
                         endVideo={this.endVideo}
+                        lang={lang}
+                        newMargin={newMargin}
                         startVideo={this.startVideo}
                         theaterMode={theaterMode}
                         toggleAutoPlay={toggleAutoPlay}
                         toggleTheater={toggleTheater}
                         videoEnded={videoEnded}
                         queryStr={queryStr}
-                        contentData={contentData}
                     />
                     <VideoInfoOuter
                         autoPlay={autoPlay}
+                        contentData={contentData}
+                        lang={lang}
                         newMargin={newMargin}
                         theaterMode={theaterMode}
-                        toggleAutoPlay={toggleAutoPlay}
-                        contentData={contentData}
                         themeColor={themeColor}
+                        toggleAutoPlay={toggleAutoPlay}
                     />
                 </MainFrameContainer>
             </MainFrameWrapper>

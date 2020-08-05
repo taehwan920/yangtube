@@ -5,6 +5,8 @@ export default class extends React.Component {
     render() {
         const {
             doubleRest,
+            lang,
+            langState,
             themeColor
         } = this.props;
         return (
@@ -12,8 +14,10 @@ export default class extends React.Component {
                 {doubleRest.map(video => {
                     return (
                         <VideoItem
-                            video={video}
+                            lang={lang}
+                            langState={langState}
                             themeColor={themeColor}
+                            video={video}
                         />
                     )
                 })}

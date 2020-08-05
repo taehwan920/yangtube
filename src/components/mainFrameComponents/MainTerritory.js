@@ -65,6 +65,8 @@ export default class extends React.Component {
 
     render() {
         const {
+            lang,
+            langState,
             theaterMode,
             toggleTheater,
             queryStr,
@@ -78,23 +80,27 @@ export default class extends React.Component {
         return (
             <MainTerritory
                 newMargin={newMargin}
-                theaterMode={theaterMode}>
+                theaterMode={theaterMode}
+            >
                 <MainFrame
                     autoPlay={autoPlay}
+                    contentData={contentData}
+                    lang={lang}
                     newMargin={newMargin}
                     theaterMode={theaterMode}
+                    themeColor={themeColor}
                     toggleAutoPlay={this.toggleAutoPlay}
                     toggleTheater={toggleTheater}
                     queryStr={queryStr}
-                    contentData={contentData}
-                    themeColor={themeColor}
                 />
                 {theaterMode
                     ? null
                     : <VideoNavPC
                         autoPlay={autoPlay}
-                        toggleAutoPlay={this.toggleAutoPlay}
                         contentData={contentData}
+                        lang={lang}
+                        langState={langState}
+                        toggleAutoPlay={this.toggleAutoPlay}
                         themeColor={themeColor}
                     />}
             </MainTerritory>

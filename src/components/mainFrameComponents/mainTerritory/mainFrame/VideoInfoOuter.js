@@ -43,31 +43,38 @@ export default class extends React.Component {
     render() {
         const {
             autoPlay,
+            contentData,
+            lang,
+            langState,
             newMargin,
             theaterMode,
-            toggleAutoPlay,
-            contentData,
             themeColor,
+            toggleAutoPlay,
         } = this.props;
         return (
             <VideoInfoOuterWrapper
                 newMargin={newMargin}
-                theaterMode={theaterMode}>
+                theaterMode={theaterMode}
+            >
                 <VideoInfoInner
                     autoPlay={autoPlay}
+                    contentData={contentData}
+                    lang={lang}
+                    langState={langState}
                     newMargin={newMargin}
                     theaterMode={theaterMode}
-                    toggleAutoPlay={toggleAutoPlay}
-                    contentData={contentData}
                     themeColor={themeColor}
+                    toggleAutoPlay={toggleAutoPlay}
                 />
                 {theaterMode
                     ?
                     <VideoNavPC
                         autoPlay={autoPlay}
-                        toggleAutoPlay={toggleAutoPlay}
                         contentData={contentData}
+                        lang={lang}
+                        langState={langState}
                         themeColor={themeColor}
+                        toggleAutoPlay={toggleAutoPlay}
                     />
                     : null}
             </VideoInfoOuterWrapper>

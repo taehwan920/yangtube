@@ -37,6 +37,8 @@ export default class extends React.Component {
     render() {
         const {
             autoPlay,
+            lang,
+            langState,
             toggleAutoPlay,
             themeColor,
         } = this.props;
@@ -59,9 +61,11 @@ export default class extends React.Component {
                 <NavInners
                     autoPlay={autoPlay}
                     doubleRest={doubleRest}
+                    lang={lang}
+                    langState={langState}
                     nextVideo={nextVideo}
-                    toggleAutoPlay={toggleAutoPlay}
                     themeColor={themeColor}
+                    toggleAutoPlay={toggleAutoPlay}
                 />
             </VideoNavPCWrapper>
         )

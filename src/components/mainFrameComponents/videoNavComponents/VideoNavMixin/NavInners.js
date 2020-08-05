@@ -83,9 +83,11 @@ export default class extends React.Component {
         const {
             autoPlay,
             doubleRest,
+            lang,
+            langState,
             nextVideo,
-            toggleAutoPlay,
             themeColor,
+            toggleAutoPlay,
         } = this.props;
         const {
             hovering
@@ -97,7 +99,7 @@ export default class extends React.Component {
                         <NextVideoText
                             themeColor={themeColor}
                         >
-                            다음 동영상
+                            {lang.videoNav.nextVideo}
                         </NextVideoText>
                         <AutoPlayBox
                             onMouseOver={this.mouseOnAutoPlay}
@@ -106,7 +108,7 @@ export default class extends React.Component {
                             <AutoPlayTxt
                                 themeColor={themeColor}
                             >
-                                자동재생
+                                {lang.videoNav.autoPlay}
                             </AutoPlayTxt>
                             <ToggleSwitch
                                 switchON={autoPlay}
@@ -115,18 +117,22 @@ export default class extends React.Component {
                             <AutoPlayDesc
                                 hovering={hovering}
                             >
-                                자동재생을 사용하도록 설정하면 추천 동영상이 자동으로 이어서 재생됩니다.
+                                {lang.videoNav.autoPlayPopUp}
                             </AutoPlayDesc>
                         </AutoPlayBox>
                     </NextVideoHeader>
                     <VideoItem
                         video={nextVideo}
                         themeColor={themeColor}
+                        lang={lang}
+                        langState={langState}
                     />
                 </NextVideoSection>
                 <MakeVideoItems
                     doubleRest={doubleRest}
                     themeColor={themeColor}
+                    lang={lang}
+                    langState={langState}
                 />
             </React.Fragment>
         )
