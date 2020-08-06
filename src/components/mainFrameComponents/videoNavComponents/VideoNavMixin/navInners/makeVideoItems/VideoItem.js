@@ -5,7 +5,6 @@ import {
     parseNum,
     parseTime
 } from '../../../../../Mixin';
-import ThumbLoading from './videoItem/ThumbLoading';
 
 const NextVideoItemWrapper = styled.article`
     background-color: inherit;
@@ -123,11 +122,6 @@ const InfoTimestamp = styled(InfoNumberContent)``;
 export default class extends React.Component {
     state = {
         hoverOnThumb: false,
-        loaded: false
-    };
-
-    loadingIsOver = () => {
-        this.setState({ loaded: true });
     };
 
     render() {
@@ -139,7 +133,6 @@ export default class extends React.Component {
         } = this.props;
         const {
             hoverOnThumb,
-            loaded,
         } = this.state;
         return (
             <NextVideoItemWrapper>
@@ -150,7 +143,6 @@ export default class extends React.Component {
                 >
                     <NextVidThumbnail
                         src={video.thumbnailUrl}
-                        onLoad={this.loadingIsOver}
                     />
                     <VidDurationBox>
                         <VidDuration>
@@ -162,7 +154,6 @@ export default class extends React.Component {
                     >
                         <i class="fas fa-play"></i>
                     </PlayIcon>
-                    {loaded ? null : <ThumbLoading />}
                 </NextVideoThumbnailBox>
                 <NextVideoInfoBox>
                     <InfoTitle
