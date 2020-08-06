@@ -13,6 +13,7 @@ import styled from 'styled-components'
 import LikePopUp from './likeDislike/LikePopUp';
 import LikeRatePopUp from './likeDislike/LikeRatePopUp';
 import { parseNum } from '../../../../../../../Mixin';
+import DislikePopUp from './likeDislike/DislikePopUp';
 
 const LikeEffect = styled.div`
     background-color: rgba(0, 0, 0, 0.0);
@@ -135,7 +136,7 @@ export default class extends React.Component {
                     themeColor={themeColor}
                 >
                     <LikeIcon
-                        onMouseOver={this.onLikeBox}
+                        onMouseEnter={this.onLikeBox}
                         onMouseLeave={this.mouseOutOfLike}
                         liked={liked}
                         themeColor={themeColor}
@@ -150,6 +151,11 @@ export default class extends React.Component {
                     >
                         {likeItem}
                     </LikeTexts>
+                    <LikePopUp
+                        lang={lang}
+                        likeHovering={likeHovering}
+                        isLike={isLike}
+                    />
                 </LikeBox>
                 <DislikeBox
                     disliked={disliked}
@@ -157,7 +163,7 @@ export default class extends React.Component {
                     themeColor={themeColor}
                 >
                     <DislikeIcon
-                        onMouseOver={this.onDislikeBox}
+                        onMouseEnter={this.onDislikeBox}
                         onMouseLeave={this.mouseOutOfLike}
                         disliked={disliked}
                         themeColor={themeColor}
@@ -172,6 +178,11 @@ export default class extends React.Component {
                     >
                         {dislikeItem}
                     </DislikeTexts>
+                    <DislikePopUp
+                        lang={lang}
+                        likeHovering={likeHovering}
+                        isLike={isLike}
+                    />
                 </DislikeBox>
                 <LikeRateChartBox
                     onMouseOver={this.mouseOnRate}
@@ -188,11 +199,6 @@ export default class extends React.Component {
                         themeColor={themeColor}
                     />
                 </LikeRateChartBox>
-                <LikePopUp
-                    lang={lang}
-                    likeHovering={likeHovering}
-                    isLike={isLike}
-                />
                 <LikeRatePopUp
                     rateHovering={rateHovering}
                     contentData={contentData}

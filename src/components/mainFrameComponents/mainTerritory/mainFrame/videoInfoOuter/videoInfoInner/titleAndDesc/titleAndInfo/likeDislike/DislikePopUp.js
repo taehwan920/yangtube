@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const LikePopUpBox = styled.div`
+
+const DislikePopUpBox = styled.div`
     background: rgba(0, 0, 0, 0.6);
     width: max-content;
     height: max-content;
@@ -25,14 +26,14 @@ export default class extends React.Component {
         } = this.props;
         return (
             <React.Fragment>
-                {likeHovering && isLike
+                {likeHovering && !isLike
                     ?
-                    <LikePopUpBox
+                    <DislikePopUpBox
                         isLike={isLike}
                         likeHovering={likeHovering}
                     >
-                        {lang.title.like}
-                    </LikePopUpBox>
+                        {lang.title.dislike}
+                    </DislikePopUpBox>
                     : null}
             </React.Fragment>
         )
