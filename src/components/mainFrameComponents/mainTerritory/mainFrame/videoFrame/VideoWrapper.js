@@ -196,6 +196,7 @@ export default class extends React.Component {
             contentData,
             endVideo,
             lang,
+            langState,
             theaterMode,
             toggleAutoPlay,
             toggleFullVF,
@@ -269,8 +270,10 @@ export default class extends React.Component {
                 {videoEnded && recommendVideos
                     ?
                     <RecommendVideos
-                        theaterMode={theaterMode}
                         contentData={contentData}
+                        theaterMode={theaterMode}
+                        lang={lang}
+                        langState={langState}
                     />
                     : null}
             </React.Fragment>

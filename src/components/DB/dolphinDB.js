@@ -1,6 +1,6 @@
 import VideoSummary from './VideoSummary';
 
-const dolphin = {
+export default {
     title: VideoSummary[2].title,
     nextTitle: VideoSummary[3].title,
     pageUrl: VideoSummary[2].pageUrl,
@@ -27,9 +27,20 @@ const dolphin = {
                 `楽しかったー`,
             likes: 828,
             replies: []
+        },
+        {
+            name: '돌고래 덕후',
+            iconColor: '#FFBED2',
+            timestamp: 1596699719899,
+            content:
+                `돌고래는 고래목 이빨고래아목에 속하는 종류로 고래목에서는 가장 인간과 친숙하게 잘 알려진 동물이다. 
+고래류 중에서 주둥이가 튀어나온 특징이 있다. 
+인간이 보기에 마치 웃는 모습을 하고 있어서 돌고래가 항상 즐거울 것이라는 잘못된 오해를 하는 사람들이 많다. 그러나 그들은 외관상 주둥이의 모양이 그렇게 생겨 있을 따름이다.`,
+            likes: 828,
+            replies: []
         }
     ]
 };
 
-export default dolphin;
+
 

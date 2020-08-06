@@ -1,6 +1,6 @@
 export default [
     {
-        title: '🐟 오키나와 바닷 속 풍경 [수중 카메라 촬영]',
+        title: '🐟 오키나와 바닷 속 구경 [수중 카메라 촬영]',
         pageUrl: '#/home',
         videoUrl: './videos/dive.mp4',
         thumbnailUrl: './images/thumbnails/dive_thumb.png',
@@ -11,7 +11,7 @@ export default [
         duration: 111
     },
     {
-        title: '그저 강아지와 노는 영상 🐕🐕',
+        title: '물어와! 🐕🐕',
         pageUrl: '#/dog',
         videoUrl: './videos/dog.mp4',
         thumbnailUrl: './images/thumbnails/dog_thumb.png',
@@ -33,7 +33,7 @@ export default [
         duration: 38
     },
     {
-        title: '도쿄 여름 불꽃놀이 축제',
+        title: '도쿄 여름 불꽃놀이 축제 🎉',
         pageUrl: '#/firecracker',
         videoUrl: './videos/firecracker.mp4',
         thumbnailUrl: './images/thumbnails/firecracker_thumb.png',
@@ -44,7 +44,7 @@ export default [
         duration: 27
     },
     {
-        title: '[오사카] 유니버설 스튜디오 재팬 해리포터 댄스 공연 직캠',
+        title: '[오사카] 유니버설 스튜디오 재팬 해리포터 어트랙션 댄스 공연 직캠',
         pageUrl: '#/dance',
         videoUrl: './videos/dance.mp4',
         thumbnailUrl: './images/thumbnails/dance_thumb.png',
@@ -77,7 +77,7 @@ export default [
         duration: 28
     },
     {
-        title: '🙉 원숭이의 물구나무 점프 😮😲',
+        title: '🙉 원숭이의 물구나무 점프 😲',
         pageUrl: '#/monkeyshow',
         videoUrl: './videos/monkeyshow.mp4',
         thumbnailUrl: './images/thumbnails/monkeyshow_thumb.png',

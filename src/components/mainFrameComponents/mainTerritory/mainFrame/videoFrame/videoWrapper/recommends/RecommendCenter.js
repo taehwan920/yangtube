@@ -90,6 +90,10 @@ export default class extends React.Component {
 
     render() {
         const {
+            lang,
+            langState,
+        } = this.props;
+        const {
             frameWidth,
             rows,
             columns,
@@ -106,9 +110,11 @@ export default class extends React.Component {
                 {slicedVideos.map(video => {
                     return (
                         <RecommendItem
-                            frameWidth={frameWidth}
-                            rows={rows}
                             columns={columns}
+                            frameWidth={frameWidth}
+                            lang={lang}
+                            langState={langState}
+                            rows={rows}
                             video={video}
                         />
                     )

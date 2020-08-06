@@ -190,6 +190,7 @@ export default class extends React.Component {
             contentData,
             endVideo,
             lang,
+            langState,
             newMargin,
             theaterMode,
             toggleAutoPlay,
@@ -232,6 +233,7 @@ export default class extends React.Component {
                     contentData={contentData}
                     endVideo={endVideo}
                     lang={lang}
+                    langState={langState}
                     moveOnVideo={this.moveOnVideo}
                     theaterMode={theaterMode}
                     toggleAutoPlay={toggleAutoPlay}

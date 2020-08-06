@@ -1,6 +1,6 @@
 import VideoSummary from './VideoSummary';
 
-const monkeyshow = {
+export default {
     title: VideoSummary[7].title,
     nextTitle: VideoSummary[0].title,
     pageUrl: VideoSummary[7].pageUrl,
@@ -17,9 +17,7 @@ const monkeyshow = {
     dislikes: 24,
     nextVideo: VideoSummary[7].videoUrl,
     description:
-        ``,
+        `어머니랑 같이 효고현 아리마 온천으로 여행갔을 때 봤던 원숭이 공연이에요
+저렇게 물구나무 서서 점프도 하고 사뿐사뿐 걸어 다닐 정도면 대체 얼마나 근력이 강한 걸까요?`,
     comments: []
 };
-
-export default monkeyshow;
-

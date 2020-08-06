@@ -56,8 +56,8 @@ export const AddVideoBtn = styled(HeaderBtn)`
 `;
 
 export const AddVideoBtnPlusIcon = styled(HeaderBtn)`
-    bottom: -0.5px;
-    right: -4.5px;
+    top: 5.5px;
+    left: -5.5px;
     font-size: 11px;
     color: ${props => {
         if (props.theaterMode || props.nightMode) {

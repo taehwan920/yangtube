@@ -18,14 +18,18 @@ const RecommendsWrapper = styled.section`
 export default class extends React.Component {
     render() {
         const {
+            contentData,
+            lang,
+            langState,
             theaterMode,
-            contentData
         } = this.props;
         return (
             <RecommendsWrapper>
                 <RecommendCenter
-                    theaterMode={theaterMode}
                     contentData={contentData}
+                    lang={lang}
+                    langState={langState}
+                    theaterMode={theaterMode}
                 />
             </RecommendsWrapper>
         )

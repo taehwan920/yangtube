@@ -1,6 +1,6 @@
 import VideoSummary from './VideoSummary';
 
-const dive = {
+export default {
     title: VideoSummary[0].title,
     nextTitle: VideoSummary[1].title,
     pageUrl: VideoSummary[0].pageUrl,
@@ -17,11 +17,11 @@ const dive = {
     dislikes: 3904,
     nextVideo: VideoSummary[1].videoUrl,
     description:
-        `예전에 오키나와에서 살 때 같이 일하는 동료들이랑 놀러가서 찍은 영상이에요.
-세 달 정도 살면서 바닷가에 종종 놀러가곤 했는데,
-갈 때마다 물 색깔도 풍경도 굉장히 아름다워서 눈이 호강을 많이 했어요.
+        `예전에 오키나와에서 살 때 같이 일하는 동료들이랑 놀러가서 찍은 영상입니다
+삼 개월 간 살면서 바닷가에 놀러가곤 했는데,
+여태까지 본 적 없는 물 색깔 덕분에 눈호강 많이 했습니다.
 
-특히 제가 있던 섬은 모래알이 ⭐ 모양인 곳으로 유명한 곳이라 특이한 경험을 할 수 있어 좋았어요.
+특히 제가 있던 섬은 모래알이 ⭐ 모양인 곳이라 바다 가는 게 최고였습니다.
 
 일본에 놀러가게 되면 오키나와는 꼭 한 번 가보셨으면 좋겠어요!
 주의할 점은 늦여름에 가시면 태풍 구경만 하다 올 수도 있다는 점?`,
@@ -71,12 +71,12 @@ const dive = {
 물론 00:45 로 이동할 수도 있다네!
 이번엔 여기로 이동해보는 건 어떤가? 01:10
 하지만 01:12로 이동할 수는 없을 거요.
-존재하지 않는 시간으로 이동해 보는 것은 어떻소? 02:25`,
+존재하지 않는 시간으로 한 번 이동해 보는 것은 어떻소? 02:25`,
             likes: 2177,
             replies: [
                 {
                     name: 'Time Traveler 제자',
-                    iconColor: '#3B513A',
+                    iconColor: '#C1390A',
                     timestamp: 1596447318280,
                     content: `00:10 썸네일`,
                     likes: 1
@@ -108,7 +108,7 @@ const dive = {
         },
         {
             name: '승우 엄마',
-            iconColor: '#5D4038',
+            iconColor: '#FB5D5C',
             timestamp: 1595687284807,
             content:
                 `어머~~~~ 
@@ -159,7 +159,7 @@ const dive = {
                     name: 'ネギトロ',
                     iconColor: '#4F3EB0',
                     timestamp: 1596030615541,
-                    content: `てか、嵐しかいねーじゃんかww`,
+                    content: `てか、嵐しかいねーじゃんww`,
                     likes: 5
                 }
             ]
@@ -207,38 +207,38 @@ idiot🤪 : 2019? 2019?`,
             ]
         },
         {
-            name: '엄마가 준비한 식사',
+            name: '사람 이름이어떻게',
             iconColor: '#0288D1',
             timestamp: 1595687284807,
             content: `와.. 물 깨끗한 거 봐 수질 무쳤다 진짜`,
             likes: 28,
             replies: [
                 {
-                    name: '엄앵란아줌마',
+                    name: '엄브렐라 주식회사',
                     iconColor: '#33691E',
                     timestamp: 1596030615541,
-                    content: `엄`,
+                    content: `제주도나 가야 볼 수 있는 수질..`,
                     likes: 0
                 },
                 {
                     name: '준위 염경석',
                     iconColor: '#78909C',
                     timestamp: 1596030615541,
-                    content: `준`,
+                    content: `제주도도 이 정도는 안 되지 않나?`,
                     likes: 0
                 },
                 {
-                    name: '식샤를 합시다',
+                    name: '식후경도 금강산',
                     iconColor: '#F5511E',
                     timestamp: 1596030615541,
-                    content: `식`,
+                    content: `밥먹고 보면 뭐든 다 이뻐보인다`,
                     likes: 0
                 },
                 {
-                    name: '뇌절=번개자르기',
+                    name: '뇌절 =번개자르기',
                     iconColor: '#02589D',
                     timestamp: 1596032772561,
-                    content: `엄`,
+                    content: `Um...?`,
                     likes: 0
                 },
             ]
@@ -246,4 +246,3 @@ idiot🤪 : 2019? 2019?`,
     ],
 }
 
-export default dive;

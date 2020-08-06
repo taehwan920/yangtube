@@ -85,6 +85,7 @@ export default class extends React.Component {
 
     checkSlide = () => {
         const videoFrame = document.querySelector('.video-frame');
+        if (!videoFrame) return;
         const HeaderHeight = 56;
         const VFTopPos = videoFrame.offsetTop + HeaderHeight;
         const VFHeight = videoFrame.clientHeight;

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import VideoFrame from './mainFrame/VideoFrame';
 import VideoInfoOuter from './mainFrame/VideoInfoOuter';
 
-// width: max-content;
 const MainFrameWrapper = styled.div`
     background: inherit;
     width: ${props => props.theaterMode ? '100%' : 'max-content'};
@@ -71,6 +70,7 @@ export default class extends React.Component {
                         contentData={contentData}
                         endVideo={this.endVideo}
                         lang={lang}
+                        langState={langState}
                         newMargin={newMargin}
                         startVideo={this.startVideo}
                         theaterMode={theaterMode}
