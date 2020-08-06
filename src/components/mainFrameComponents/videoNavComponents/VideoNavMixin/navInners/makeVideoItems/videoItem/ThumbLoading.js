@@ -21,13 +21,13 @@ const spin = keyframes`
 `;
 
 const Loader = styled.div`
-    border: 4px solid transparent;
-    border-top: 4px solid #909090;
-    border-right: 4px solid #909090;
-    border-bottom: 4px solid #909090;
+    border: 2px solid transparent;
+    border-top: 2px solid #909090;
+    border-right: 2px solid #909090;
+    border-bottom: 2px solid #909090;
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    width: 25px;
+    height: 25px;
     animation: ${spin} 1s linear infinite;
 `;
 
