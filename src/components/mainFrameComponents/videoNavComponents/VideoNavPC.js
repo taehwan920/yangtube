@@ -21,9 +21,7 @@ const VideoNavPCWrapper = styled.nav`
 `;
 
 export default class extends React.Component {
-    state = {
-        shuffled: null,
-    };
+    shuffled;
 
     getNextAndRestVideos = () => {
         const { contentData } = this.props;
@@ -43,8 +41,8 @@ export default class extends React.Component {
             themeColor,
         } = this.props;
         const {
-            shuffled,
-        } = this.state;
+            shuffled
+        } = this;
         const getVideos = this.getNextAndRestVideos();
         const nextVideo = getVideos[0];
         const restOfVideos = getVideos[1];
@@ -54,8 +52,8 @@ export default class extends React.Component {
         } else {
             const shuffleVideos = [...shuffle(restOfVideos), ...shuffle(restOfVideos)];
             doubleRest = shuffleVideos;
-            this.setState({ shuffled: shuffleVideos });
-        }
+            this.shuffled = shuffleVideos;
+        };
         return (
             <VideoNavPCWrapper>
                 <NavInners

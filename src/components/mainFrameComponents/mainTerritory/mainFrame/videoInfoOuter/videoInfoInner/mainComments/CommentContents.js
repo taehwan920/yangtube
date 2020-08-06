@@ -8,6 +8,7 @@ const CommentContentsListWrapper = styled.section`
 `;
 
 export default class extends React.Component {
+    key = 0;
     sortComments = (arr, popular, latest) => {
         if (arr.length < 2) return arr;
         const sortArr = Array.from(arr);
@@ -32,6 +33,7 @@ export default class extends React.Component {
             <CommentContentsListWrapper>
                 {comments.length > 0
                     ? comments.map(commentItem => {
+                        this.key++
                         return (
                             <CommentArticle
                                 commentItem={commentItem}
@@ -39,6 +41,7 @@ export default class extends React.Component {
                                 lang={lang}
                                 langState={langState}
                                 themeColor={themeColor}
+                                key={this.key}
                             />
                         )
                     })

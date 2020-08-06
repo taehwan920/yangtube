@@ -16,6 +16,9 @@ const TimestampTxt = styled.span`
 `;
 
 export default class extends React.Component {
+    outerKey = 0;
+    innerKey = 0;
+
     shouldComponentUpdate(prevProps) {
         if (prevProps.themeColor.normalFont === this.props.themeColor.normalFont) {
             return false;
@@ -69,14 +72,19 @@ export default class extends React.Component {
         return (
             <React.Fragment>
                 {divideToWords.map(item => {
+                    this.outerKey++
                     return (
-                        <OneLineWrapper>
+                        <OneLineWrapper
+                            key={`outerKey-${this.outerKey}`}
+                        >
                             {item.map(word => {
+                                this.innerKey++
                                 if (this.isTimestamp(word)) {
                                     return (
                                         <TimestampTxt
                                             onClick={this.goToThatTime(word)}
                                             themeColor={themeColor}
+                                            key={`innerKey-${this.innerKey}`}
                                         >
                                             {`${word} `}
                                         </TimestampTxt>
@@ -85,6 +93,7 @@ export default class extends React.Component {
                                     return (
                                         <NormalTxt
                                             themeColor={themeColor}
+                                            key={`innerKey-${this.innerKey}`}
                                         >
                                             {`${word} `}
                                         </NormalTxt>

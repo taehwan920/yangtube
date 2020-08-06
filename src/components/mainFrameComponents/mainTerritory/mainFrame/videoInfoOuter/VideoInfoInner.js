@@ -44,7 +44,8 @@ export default class extends React.Component {
             <VideoInfoInnerWrapper
                 newMargin={newMargin}
                 viewWidth={viewWidth}
-                theaterMode={theaterMode}>
+                theaterMode={theaterMode}
+            >
                 <MainTitleAndDesc
                     contentData={contentData}
                     lang={lang}

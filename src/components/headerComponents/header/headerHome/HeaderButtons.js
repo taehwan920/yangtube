@@ -21,7 +21,7 @@ const HeaderBtnSection = styled.section`
     align-items: center;
 `;
 
-export const HeaderBtn = styled.button`
+export const HeaderBtn = styled.div`
     width: 24px;
     height: 24px;
     margin: 0px 8px; 

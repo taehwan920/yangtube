@@ -197,11 +197,14 @@ export default class extends React.Component {
         ]
     }
 
+    key = 0;
+
     makeArticle(item) {
         const {
             nightMode,
             themeColor
         } = this.props;
+        this.key++
         if (item.length > 2) {
             if (item[2] === '#/home') {
                 return (
@@ -209,6 +212,7 @@ export default class extends React.Component {
                         nightMode={nightMode}
                         href="#"
                         rel="noreferrer noopener"
+                        key={this.key}
                     >
                         <ArticleHomeIcon
                             themeColor={themeColor}
@@ -229,6 +233,7 @@ export default class extends React.Component {
                     href={item[2]}
                     target="_blank"
                     rel="noreferrer noopener"
+                    key={this.key}
                 >
                     <ArticleHomeIcon
                         themeColor={themeColor}
@@ -246,6 +251,7 @@ export default class extends React.Component {
             return (
                 <GuideSectionArticle
                     nightMode={nightMode}
+                    key={this.key}
                 >
                     <ArticleIcon
                         themeColor={themeColor}
