@@ -72,7 +72,7 @@ export const getTimestamp = (num, lang) => {
         } else if (Math.round(timeGap / month) > 0) {
             return [Math.round(timeGap / month), 'か月前'];
         } else if (Math.round(timeGap / week) > 0) {
-            return [Math.round(timeGap / week), '週前'];
+            return [Math.round(timeGap / week), '週間前'];
         } else if (Math.round(timeGap / day) > 0) {
             return [Math.round(timeGap / day), '日前'];
         } else if (Math.round(timeGap / hour) > 0) {
