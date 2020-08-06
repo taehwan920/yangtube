@@ -111,8 +111,7 @@ export default {
             iconColor: '#FB5D5C',
             timestamp: 1595687284807,
             content:
-                `어머~~~~ 
-물고기들이 파란 게 너무 이쁘네요,,, ^^~~
+                `물고기들이 파란 게 너무 이쁘네요,,, ^^~~
 우리 아이랑 남편이랑 꼭 같이 가봐야 겠어요~
 저는 작년에 제주도를 가봤는데
 제주도도 바다 색깔 이쁘기로 유명하잖아요~~
@@ -212,36 +211,7 @@ idiot🤪 : 2019? 2019?`,
             timestamp: 1595687284807,
             content: `와.. 물 깨끗한 거 봐 수질 무쳤다 진짜`,
             likes: 28,
-            replies: [
-                {
-                    name: '엄브렐라 주식회사',
-                    iconColor: '#33691E',
-                    timestamp: 1596030615541,
-                    content: `제주도나 가야 볼 수 있는 수질..`,
-                    likes: 0
-                },
-                {
-                    name: '준위 염경석',
-                    iconColor: '#78909C',
-                    timestamp: 1596030615541,
-                    content: `제주도도 이 정도는 안 되지 않나?`,
-                    likes: 0
-                },
-                {
-                    name: '식후경도 금강산',
-                    iconColor: '#F5511E',
-                    timestamp: 1596030615541,
-                    content: `밥먹고 보면 뭐든 다 이뻐보인다`,
-                    likes: 0
-                },
-                {
-                    name: '뇌절 =번개자르기',
-                    iconColor: '#02589D',
-                    timestamp: 1596032772561,
-                    content: `Um...?`,
-                    likes: 0
-                },
-            ]
+            replies: []
         },
     ],
 }

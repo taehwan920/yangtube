@@ -4,6 +4,7 @@ import VideoWrapper from './videoFrame/VideoWrapper';
 import PlayToggleAni from './videoFrame/PlayToggleAni';
 import VideoCtxMenu from './videoFrame/VideoCtxMenu';
 import URLCopyAni from './videoFrame/URLCopyAni';
+import { isMobile } from 'react-device-detect';
 
 
 const VideoFrame = styled.div`
@@ -85,6 +86,7 @@ export default class extends React.Component {
     };
 
     getHeight = () => {
+        if (isMobile) return;
         const newHeight = window.innerHeight;
         const newWidth = window.innerWidth;
         this.setState({
