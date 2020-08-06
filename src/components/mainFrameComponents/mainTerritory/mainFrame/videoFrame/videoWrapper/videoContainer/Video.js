@@ -1,13 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
+import Loading from './video/Loading';
 
 const Video = styled.video`
     width: 100%;
     z-index: -200;
-    opacity: ${props => props.videoEnded ? 0 : 1};
+    opacity: ${props => props.videoEnded || !props.loaded ? 0 : 1};
 `;
 
 export default class extends React.Component {
+    state = {
+        loaded: false
+    };
+
     componentDidUpdate() {
         this.changeVolume();
         this.setPlaySpeed();
@@ -21,6 +26,11 @@ export default class extends React.Component {
 
     changeVolume = () => {
         this.videoRef.volume = this.props.volume;
+    };
+
+    loadingIsOver = e => {
+        this.setState({ loaded: true });
+        this.props.getDuration(e);
     };
 
     playPause = () => {
@@ -53,20 +63,28 @@ export default class extends React.Component {
     render() {
         const {
             getCurrent,
-            getDuration,
             videoEnded,
             contentData
         } = this.props;
+        const {
+            loaded
+        } = this.state;
         return (
-            <Video
-                className="video"
-                onLoadedData={getDuration}
-                onTimeUpdate={getCurrent}
-                onEnded={this.videoEnded}
-                videoEnded={videoEnded}
-                ref={ref => this.videoRef = ref}
-                src={contentData.videoUrl}
-            />
+            <React.Fragment>
+                <Video
+                    className="video"
+                    ref={ref => this.videoRef = ref}
+                    onLoadedData={this.loadingIsOver}
+                    onTimeUpdate={getCurrent}
+                    onEnded={this.videoEnded}
+                    loaded={loaded}
+                    videoEnded={videoEnded}
+                    src={contentData.videoUrl}
+                />
+                {loaded
+                    ? null
+                    : <Loading />}
+            </React.Fragment>
         )
     }
 }

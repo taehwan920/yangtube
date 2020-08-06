@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { player } from '../../../../../../../../../DB';
 
 const ReplyUserIconBox = styled.div`
     width: 24px;
@@ -22,12 +21,12 @@ const ReplyUserIcon = styled.div`
 export default class extends React.Component {
     getInitial = str => str.slice(0, 1);
     render() {
-        const myInitial = this.getInitial(player.name);
+        const myInitial = this.getInitial('GUEST');
         return (
             <ReplyUserIconBox>
                 <ReplyUserIcon
                     draggable="true"
-                    iconColor={player.iconColor}
+                    iconColor="#AA47BC"
                 >
                     {myInitial}
                 </ReplyUserIcon>
