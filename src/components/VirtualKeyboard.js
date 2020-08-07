@@ -43,7 +43,8 @@ const KbdWrapper = styled.div`
     position: absolute;
     right: 10px;
     top: 70px;
-    cursor: move;    
+    cursor: move;
+    z-index: 340;
 `;
 
 const KbdRowsWrapper = styled.div`
@@ -146,30 +147,26 @@ export default class extends React.Component {
     state = {
         langIsKR: true,
         shift: false,
-        capsLock: false
-    }
+        capsLock: false,
+    };
 
     isCompositeVowel = (lastStr, newStr) => {
-        console.log(lastStr, newStr)
         if (lastStr === 'ㅗ') {
             const canCombine = ['ㅏ', 'ㅣ', 'ㅐ'];
-            console.log(canCombine.includes(newStr))
             if (canCombine.includes(newStr)) { return true; }
         } else if (lastStr === 'ㅜ') {
             const canCombine = ['ㅓ', 'ㅣ', 'ㅔ'];
-            console.log(canCombine.includes(newStr))
             if (canCombine.includes(newStr)) { return true; }
         } else if (lastStr === 'ㅡ') {
             const canCombine = 'ㅣ';
-            console.log(canCombine === newStr)
             if (canCombine === newStr) { return true; }
         }
         return false;
-    }
+    };
 
     combineString = (already, lastChr, newInput) => {
         return already.slice(0, -1) + Hangul.a([...Hangul.d(lastChr), newInput])
-    }
+    };
 
     assembleKR = (already, newInput) => {
         let result;
@@ -229,10 +226,12 @@ export default class extends React.Component {
         searchInput.value = newResult;
     };
 
-    // 드래그 가능한 함수 만들 것
-
     render() {
-        const { langIsKR, shift, capsLock } = this.state;
+        const {
+            langIsKR,
+            shift,
+            capsLock
+        } = this.state;
         let keySet;
         if (langIsKR) {
             shift
@@ -244,7 +243,9 @@ export default class extends React.Component {
                 : keySet = keyRows.EN_small
         }
         return (
-            <KbdWrapper draggable="true">
+            <KbdWrapper
+                draggable="true"
+            >
                 <KbdRowsWrapper>
                     <KbdRow>
                         <KbdHeaderBtn >{langIsKR ? '한국어' : 'ENG'}</KbdHeaderBtn>
