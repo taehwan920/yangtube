@@ -5,6 +5,7 @@ import {
     parseNum,
     parseTime
 } from '../../../../../Mixin';
+import NextThumb from './videoItem/NextThumb';
 
 const NextVideoItemWrapper = styled.article`
     background-color: inherit;
@@ -12,15 +13,6 @@ const NextVideoItemWrapper = styled.article`
     height: 94px;
     margin-bottom: 8px;
     display: flex;
-`;
-
-const NextVideoThumbnailBox = styled.a`
-    background: gray;
-    width: 168px;
-    height: 94px;
-    position: relative;
-    margin-right: 8px;
-    cursor: pointer;
 `;
 
 const VidDurationBox = styled.div`
@@ -59,8 +51,13 @@ const PlayIcon = styled.div`
 
 `;
 
-const NextVidThumbnail = styled.img`
-    width: 100%;
+const NextVideoThumbnailBox = styled.a`
+    background: gray;
+    width: 168px;
+    height: 94px;
+    position: relative;
+    margin-right: 8px;
+    cursor: pointer;
 `;
 
 const NextVideoInfoBox = styled.div`
@@ -141,8 +138,8 @@ export default class extends React.Component {
                     onMouseOver={() => this.setState({ hoverOnThumb: true })}
                     onMouseLeave={() => this.setState({ hoverOnThumb: false })}
                 >
-                    <NextVidThumbnail
-                        src={video.thumbnailUrl}
+                    <NextThumb
+                        video={video}
                     />
                     <VidDurationBox>
                         <VidDuration>

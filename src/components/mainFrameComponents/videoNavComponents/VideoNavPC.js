@@ -23,6 +23,12 @@ const VideoNavPCWrapper = styled.nav`
 export default class extends React.Component {
     shuffled;
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if (nextProps.langState !== this.props.langState) return true;
+        if (this.shuffled) return false;
+        return true;
+    }
+
     getNextAndRestVideos = () => {
         const { contentData } = this.props;
         const thisVideo = VideoSummary.filter(video => video.pageUrl === contentData.pageUrl)[0];
