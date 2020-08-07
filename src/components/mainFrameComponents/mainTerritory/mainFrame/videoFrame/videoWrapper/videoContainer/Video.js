@@ -72,6 +72,7 @@ export default class extends React.Component {
         return (
             <React.Fragment>
                 <Video
+                    autoplay
                     className="video"
                     ref={ref => this.videoRef = ref}
                     onLoadedData={this.loadingIsOver}
