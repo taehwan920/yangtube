@@ -1,8 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import MainTitleAndDesc from './videoInfoInner/MainTitleAndDesc';
 import MainComments from './videoInfoInner/MainComments';
 import VideoNavNonPC from '../../../videoNavComponents/VideoNavNonPC';
+import { isMobile } from 'react-device-detect';
 
 const VideoInfoInnerWrapper = styled.div`
     background: inherit;
@@ -24,6 +25,10 @@ const VideoInfoInnerWrapper = styled.div`
     @media(min-width: 1755px) {
         width: calc(${props => props.viewWidth - props.newMargin * 2}px - 24px - 450px)
     }
+
+    ${props => props.isMobile && css`
+        max-width: 450px;
+    `}
 }
 `;
 
@@ -42,9 +47,10 @@ export default class extends React.Component {
         const viewWidth = window.innerWidth;
         return (
             <VideoInfoInnerWrapper
+                isMobile={isMobile}
                 newMargin={newMargin}
-                viewWidth={viewWidth}
                 theaterMode={theaterMode}
+                viewWidth={viewWidth}
             >
                 <MainTitleAndDesc
                     contentData={contentData}

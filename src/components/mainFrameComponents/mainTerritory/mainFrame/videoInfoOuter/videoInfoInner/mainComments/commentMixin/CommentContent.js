@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import ContentMapping from './commentContent/ContentMapping';
-
+import { isMobile } from 'react-device-detect';
 
 const CommentContentWrapper = styled.div`
     width: 100%;
@@ -18,6 +18,19 @@ const CommentContent = styled.div`
     ${props => !props.showMore && css`
         overflow: hidden;
     `}
+    ${props => {
+        if (props.isMobile) {
+            if (props.showMore) {
+                css`
+                    height: ${props.realHeight}px;
+                `;
+            } else {
+                css`
+                    height: ${props.numberOfLine > 4 ? props.showLessLines * 19 - 10 : props.showLessLines * 19}px;
+                `;
+            }
+        }
+    }}
 `;
 
 const CommentHiddenBox = styled.div`
@@ -78,6 +91,8 @@ export default class extends React.Component {
         return (
             <CommentContentWrapper>
                 <CommentContent
+                    isMobile={isMobile}
+                    numberOfLine={numberOfLine}
                     showLessLines={showLessLines}
                     realHeight={realHeight}
                     showMore={showMore}

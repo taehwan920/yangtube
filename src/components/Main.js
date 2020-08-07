@@ -1,10 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Guide from './guideComponents/Guide';
 import Header from './headerComponents/Header';
 import MainTerritory from './mainFrameComponents/MainTerritory';
 import Theme from './ThemeColor';
 import Language from './DB/langDB/Language';
+import { isMobile } from 'react-device-detect';
 
 const HomeDiv = styled.div`
     background-color: ${props => props.themeColor.main.BG};
@@ -15,6 +16,9 @@ const HomeDiv = styled.div`
     z-index: 1;
     height: ${props => (props.guideIsON ? '100vh' : 'max-content')};
     overflow: ${props => (props.guideIsON ? 'hidden' : 'none')};
+    ${props => props.isMobile && css`
+        max-width: 498px;
+    `}
 `;
 
 export default class extends React.Component {
@@ -97,6 +101,7 @@ export default class extends React.Component {
                     <HomeDiv
                         ref={ref => this.homeRef = ref}
                         guideIsON={guideIsON}
+                        isMobile={isMobile}
                         nightMode={nightMode}
                         theaterMode={theaterMode}
                         themeColor={themeColor}

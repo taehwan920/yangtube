@@ -17,6 +17,9 @@ const VideoFrame = styled.div`
     &:focus {
         outline: none;
     }
+    ${props => props.isMobile && css`
+        max-width: 450px;
+    `};
 
     ${props => props.theaterMode && css`
         width: 100vw;
@@ -223,6 +226,7 @@ export default class extends React.Component {
                 onMouseMove={this.mouseMoved}
                 frameHeight={frameHeight}
                 frameWidth={frameWidth}
+                isMobile={isMobile}
                 newMargin={newMargin}
                 tabIndex="0"
                 theaterMode={theaterMode}
