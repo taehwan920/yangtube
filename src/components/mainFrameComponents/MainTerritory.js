@@ -36,8 +36,8 @@ const MainTerritory = styled.div`
 
 export default class extends React.Component {
     state = {
-        newMargin: null,
         autoPlay: true,
+        newMargin: null,
     };
 
     componentDidMount() {
@@ -65,13 +65,13 @@ export default class extends React.Component {
 
     render() {
         const {
+            contentData,
             lang,
             langState,
             theaterMode,
+            themeColor,
             toggleTheater,
             queryStr,
-            contentData,
-            themeColor,
         } = this.props;
         const {
             autoPlay,

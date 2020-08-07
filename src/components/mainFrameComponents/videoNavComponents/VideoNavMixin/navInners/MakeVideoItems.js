@@ -8,7 +8,7 @@ export default class extends React.Component {
             doubleRest,
             lang,
             langState,
-            themeColor
+            themeColor,
         } = this.props;
         return (
             <React.Fragment>

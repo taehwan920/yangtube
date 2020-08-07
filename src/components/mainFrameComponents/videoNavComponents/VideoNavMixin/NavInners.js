@@ -122,17 +122,19 @@ export default class extends React.Component {
                         </AutoPlayBox>
                     </NextVideoHeader>
                     <VideoItem
-                        video={nextVideo}
-                        themeColor={themeColor}
+                        hovering={hovering}
                         lang={lang}
                         langState={langState}
+                        themeColor={themeColor}
+                        video={nextVideo}
                     />
                 </NextVideoSection>
                 <MakeVideoItems
                     doubleRest={doubleRest}
-                    themeColor={themeColor}
+                    hovering={hovering}
                     lang={lang}
                     langState={langState}
+                    themeColor={themeColor}
                 />
             </React.Fragment>
         )

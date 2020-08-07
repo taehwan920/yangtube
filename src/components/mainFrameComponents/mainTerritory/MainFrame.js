@@ -49,6 +49,7 @@ export default class extends React.Component {
             lang,
             langState,
             newMargin,
+            nightMode,
             theaterMode,
             themeColor,
             toggleAutoPlay,
@@ -85,6 +86,7 @@ export default class extends React.Component {
                         lang={lang}
                         langState={langState}
                         newMargin={newMargin}
+                        nightMode={nightMode}
                         theaterMode={theaterMode}
                         themeColor={themeColor}
                         toggleAutoPlay={toggleAutoPlay}
