@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const addComma = num => {
     const numToStr = String(num);
     if (numToStr.length <= 3) return num;
@@ -166,15 +164,4 @@ export const shuffle = arr => {
 export const toggleGuide = () => {
     const guide = document.querySelector('.guide-wrapper');
     guide.classList.toggle('move');
-};
-
-export class NotCreated extends React.Component {
-    render() {
-        return (
-            <div>
-                <span>해당 기능은 구현하지 않았습니다.</span>
-                <span>사유: 서버 부재</span>
-            </div>
-        )
-    }
 };
