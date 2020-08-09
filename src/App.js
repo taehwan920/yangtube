@@ -1,22 +1,21 @@
 import React from 'react';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
-import Home from './components/pages/Home';
+import Dive from './components/pages/Dive';
 import Dog from './components/pages/Dog';
 import Dolphin from './components/pages/Dolphin';
-
-import NotFound from './components/NotFound';
 import Dance from './components/pages/Dance';
 import Sheep from './components/pages/Sheep';
 import Firecracker from './components/pages/Firecracker';
 import MonkeyShow from './components/pages/MonkeyShow';
 import PlayWithDog from './components/pages/PlayWithDog';
+import NotFound from './components/NotFound';
 
 export default () => (
   <Router>
     <Switch>
-      <Route exact path='/home/:query' component={Home} />
-      <Route exact path='/home' component={Home} />
+      <Route exact path='/dive/:query' component={Dive} />
+      <Route exact path='/dive' component={Dive} />
       <Route exact path='/dog/:query' component={Dog} />
       <Route exact path='/dog' component={Dog} />
       <Route exact path='/dolphin/:query' component={Dolphin} />
@@ -32,7 +31,7 @@ export default () => (
       <Route exact path='/monkeyshow/:query' component={MonkeyShow} />
       <Route exact path='/monkeyshow' component={MonkeyShow} />
 
-      <Redirect exact path="/" to="/home" />
+      <Redirect exact path="/" to="/dive" />
       <Route component={NotFound} />
     </Switch>
   </Router>

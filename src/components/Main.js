@@ -117,15 +117,19 @@ export default class extends React.Component {
                             toggleGuide={this.toggleGuide}
                             toggleNight={this.toggleNight}
                         />
-                        <Guide
-                            contentData={contentData}
-                            guideIsON={guideIsON}
-                            lang={lang}
-                            langState={langState}
-                            nightMode={nightMode}
-                            themeColor={themeColor}
-                            toggleGuide={this.toggleGuide}
-                        />
+                        {isMobile
+                            ? null
+                            :
+                            <Guide
+                                contentData={contentData}
+                                guideIsON={guideIsON}
+                                lang={lang}
+                                langState={langState}
+                                nightMode={nightMode}
+                                themeColor={themeColor}
+                                toggleGuide={this.toggleGuide}
+                            />
+                        }
                         <MainTerritory
                             contentData={contentData}
                             lang={lang}
