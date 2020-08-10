@@ -8,7 +8,7 @@
 
     
 ## YangTube 구조도    
-![YangTube_structure](https://user-images.githubusercontent.com/56597998/89761906-5cc8e300-db2a-11ea-9b24-eda55bafcdf9.png)
+![YangTube_structure](https://user-images.githubusercontent.com/56597998/89763162-ed082780-db2c-11ea-9766-4085676b9fdd.png)<br/><br/><br/>
 
 ## 기술 스택
 * ### React.js    
