@@ -1,12 +1,10 @@
 # YangTube     
 
-<<<<<<< HEAD
 #### 유튜브 동영상 플레이어 페이지 클론 코딩 개인프로젝트 YangTube입니다.<br/><br/><br/>
     
 =======
 #### 유튜브 동영상 플레이어 페이지 클론 코딩 프로젝트 YangTube입니다.
 [YangTube 링크](https://5f3019f17ce85c5ac99632ab--boring-ardinghelli-8b5e2f.netlify.app/)<br/><br/><br/>
->>>>>>> 17993ddb04506ef74712973217df79e383487718
 
 ## 프로젝트 목표    
 REST API 서버에서 데이터들을 받아왔다는 전제하에 유튜브 동영상 플레이 페이지의 view를 구현하는 것이 목표입니다.<br/><br/><br/>
@@ -32,14 +30,12 @@ REST API 서버에서 데이터들을 받아왔다는 전제하에 유튜브 동
     
 ### 1. 반응형 웹    
 * pc (1024px ~)
-<<<<<<< HEAD
 * 타블렛 (767 ~ 1023px)
 * 모바일 (~ 766px)<br/><br/><br/>    
 
 =======
 * 타블렛 / 모바일 (~ 1023px)
 * 브라우저 창의 width값에 따라 동영상 크기 및 추천영상란의 배치가 달라집니다.<br/><br/><br/>
->>>>>>> 17993ddb04506ef74712973217df79e383487718
     
 
 ### 2. 헤더     
@@ -108,14 +104,12 @@ REST API 서버에서 데이터들을 받아왔다는 전제하에 유튜브 동
 ![autoplaySwitch](https://user-images.githubusercontent.com/56597998/89791977-eeeade80-db5e-11ea-8cc7-a23b78b26dd1.gif)</br>
 &nbsp;&nbsp;&nbsp;&nbsp; - 재생 속도 변경 기능. 0.5 ~ 2배 사이로 조정할 수 있습니다.    
     
-<<<<<<< HEAD
 #### * 동영상 컨텍스트 메뉴 (마우스 오른쪽 클릭 시 표시), 5-2 내부 기능 설명 참조    
     
  - 5-2. 컨텍스트 메뉴 내부 기능
 =======
  - 5-2. 컨텍스트 메뉴 내부 기능</br>
  ![urlcopy](https://user-images.githubusercontent.com/56597998/89792838-09718780-db60-11ea-83be-6202a07633e8.gif)</br>
->>>>>>> 17993ddb04506ef74712973217df79e383487718
 &nbsp;&nbsp;&nbsp;&nbsp; - 연속 재생 기능. 디폴트는 off 상태이며 on으로 바꿀 시 영상이 끝나도 멈추지 않고 계속해서 반복 재생됩니다.    
 &nbsp;&nbsp;&nbsp;&nbsp; - 동영상 URL 복사 기능. 클립보드에 현재 보고있는 영상의 URL이 복사됩니다.    
 &nbsp;&nbsp;&nbsp;&nbsp; - 현재 시간 동영상 URL 복사 기능. 이 기능으로 복사할 시 현재 시청 중인 시간대부터 영상이 재생 가능한 URL이 복사됩니다.<br/><br/><br/><br/>
