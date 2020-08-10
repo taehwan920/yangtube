@@ -221,7 +221,7 @@ export default class extends React.Component {
             const deleteLastStr = Hangul.d(lastStr).slice(0, -1)
             newResult = alreadyInputStr.slice(0, -1) + Hangul.a(deleteLastStr)
         } else {
-            newResult = newResult.slice(0, -1);
+            newResult = alreadyInputStr.slice(0, -1);
         }
         searchInput.value = newResult;
     };
