@@ -1,8 +1,13 @@
 # YangTube     
 
 #### 유튜브 동영상 플레이어 페이지 클론 코딩프로젝트 YangTube입니다.<br/><br/><br/>
-    
+[YangTube](https://5f3019f17ce85c5ac99632ab--boring-ardinghelli-8b5e2f.netlify.app/)
+![20200810_165828](https://user-images.githubusercontent.com/56597998/89762125-c21cd400-db2a-11ea-95f4-404509c87484.png)
+접속 시 화면
 
+    
+## YangTube 구조도    
+![YangTube_structure](https://user-images.githubusercontent.com/56597998/89761906-5cc8e300-db2a-11ea-9b24-eda55bafcdf9.png)
 
 ## 기술 스택
 * ### React.js    
