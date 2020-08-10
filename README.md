@@ -1,9 +1,9 @@
 # YangTube     
 
 #### 유튜브 동영상 플레이어 페이지 클론 코딩프로젝트 YangTube입니다.<br/><br/><br/>
-[YangTube](https://5f3019f17ce85c5ac99632ab--boring-ardinghelli-8b5e2f.netlify.app/)
-![20200810_165828](https://user-images.githubusercontent.com/56597998/89762125-c21cd400-db2a-11ea-95f4-404509c87484.png)
-접속 시 화면
+![20200810_165828](https://user-images.githubusercontent.com/56597998/89762817-2a1fea00-db2c-11ea-821b-3c44ff15940e.png)
+[YangTube](https://5f3019f17ce85c5ac99632ab--boring-ardinghelli-8b5e2f.netlify.app/)<br/><br/><br/>
+
 
     
 ## YangTube 구조도    
@@ -18,9 +18,10 @@
 각 영상별 페이지 개별 관리, 쿼리스트링을 통한 동영상 시작 시점 지정, 잘못된 입력을 받을 Not Found 페이지 구현을 위해 사용하였습니다.
 
 * ### Hangul.js    
-가상 키보드 파트에 한글 조합 및 분리 기능을 구현하기 위해 사용한 라이브러리입니다.<br/><br/><br/>
+가상 키보드 파트에 한글 조합 및 분리 기능을 구현하기 위해 사용한 라이브러리입니다.
     
-
+* ### netlify    
+서버 없이 view 기능만 구현한 프로젝트이므로 netlify를 이용하여 배포하였습니다.  다소 로딩에 시간이 걸릴 수 있습니다.<br/><br/><br/>
 
 
 ## 구현 기능    
