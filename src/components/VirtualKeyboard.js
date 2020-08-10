@@ -217,10 +217,12 @@ export default class extends React.Component {
         let newResult;
         if (alreadyInputStr.length < 1) { return; }
         if (langIsKR) {
+            //한글일 경우 이쪽으로
             const lastStr = alreadyInputStr.slice(-1)
             const deleteLastStr = Hangul.d(lastStr).slice(0, -1)
             newResult = alreadyInputStr.slice(0, -1) + Hangul.a(deleteLastStr)
         } else {
+            // 알파벳일 경우 이쪽으로
             newResult = alreadyInputStr.slice(0, -1);
         }
         searchInput.value = newResult;
