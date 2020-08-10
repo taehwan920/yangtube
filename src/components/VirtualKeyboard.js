@@ -210,19 +210,26 @@ export default class extends React.Component {
         }
     };
 
+    isHangul = str => {
+        const c = str.charCodeAt(0);
+        if (0x1100 <= c && c <= 0x11FF) return true;
+        if (0x3130 <= c && c <= 0x318F) return true;
+        if (0xAC00 <= c && c <= 0xD7A3) return true;
+        return false;
+    };
+
     deleteStr = e => {
-        const { langIsKR } = this.state;
         const searchInput = document.querySelector('#searchInput');
         const alreadyInputStr = searchInput.value || '';
         let newResult;
         if (alreadyInputStr.length < 1) { return; }
-        if (langIsKR) {
+        const lastStr = alreadyInputStr.slice(-1);
+        if (this.isHangul(lastStr)) {
             //한글일 경우 이쪽으로
-            const lastStr = alreadyInputStr.slice(-1)
             const deleteLastStr = Hangul.d(lastStr).slice(0, -1)
             newResult = alreadyInputStr.slice(0, -1) + Hangul.a(deleteLastStr)
         } else {
-            // 알파벳일 경우 이쪽으로
+            // 아닐 경우 이쪽으로
             newResult = alreadyInputStr.slice(0, -1);
         }
         searchInput.value = newResult;
