@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import LikeAndDislike from './titleAndInfo/LikeAndDislike';
 import More from './titleAndInfo/More';
-import ShareAndSave from './titleAndInfo/ShareAndSave';
+import GithubAndBlog from './titleAndInfo/GithubAndBlog';
 import { addComma, debounce, parseNum } from '../../../../../../Mixin';
 
 const TitleAndInfo = styled.div`
@@ -226,7 +226,7 @@ export default class extends React.Component {
                         langState={langState}
                         themeColor={themeColor}
                     />
-                    <ShareAndSave
+                    <GithubAndBlog
                         lang={lang}
                         langState={langState}
                         themeColor={themeColor}

@@ -41,7 +41,7 @@ export default class extends React.Component {
         return (
             <React.Fragment>
                 <LinkBox
-                    href="https://github.com/taehwan920"
+                    href="https://github.com/taehwan920/yangtube"
                     rel="noreferrer noopener"
                     target="_blank"
                 >
