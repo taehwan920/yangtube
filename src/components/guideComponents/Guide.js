@@ -165,7 +165,7 @@ export default class extends React.Component {
     guideItems = this.props.lang.guide;
     sectionItems = {
         firstSection: [
-            [<i class="fas fa-home"></i>, this.guideItems.home, '#/home'],
+            [<i class="fas fa-home"></i>, this.guideItems.home, '#/'],
             [<i class="fas fa-fire-alt"></i>, this.guideItems.trending],
             [<i class="fas fa-envelope-open-text"></i>, this.guideItems.subscription]
         ],
@@ -206,11 +206,11 @@ export default class extends React.Component {
         } = this.props;
         this.key++
         if (item.length > 2) {
-            if (item[2] === '#/home') {
+            if (item[2] === '#/') {
                 return (
                     <GuideSectionLink
                         nightMode={nightMode}
-                        href="#"
+                        href="#/"
                         rel="noreferrer noopener"
                         key={this.key}
                     >

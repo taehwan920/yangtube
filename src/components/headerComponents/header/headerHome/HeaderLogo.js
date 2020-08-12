@@ -113,7 +113,7 @@ export default class extends React.Component {
                     <i class="fas fa-bars"></i>
                 </MenuBtn >
                 <LogoLink
-                    href="#/home"
+                    href="#/"
                     rel="noreferer noopener"
                 >
                     <NightImg
