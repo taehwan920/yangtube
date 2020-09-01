@@ -4,7 +4,13 @@
 [YangTube 링크](https://5f33fbde2a723578f21bb406--boring-ardinghelli-8b5e2f.netlify.app)<br/><br/><br/>
 
 ## 프로젝트 목표    
-REST API 서버에서 데이터들을 받아왔다는 전제하에 유튜브 동영상 플레이 페이지의 view를 구현하는 것이 목표입니다.<br/><br/><br/>
+1. REST API 서버에서 데이터들을 받아왔다는 전제하에 유튜브 동영상 플레이 페이지의 view를 구현하는 것.    
+2. Html, CSS, JavaScript, React JS 사용법에 좀 더 익숙해지는 것(특히 JavaScript)    
+3. 웹페이지 디자인 설계에 맞추어 view를 제작할 수 있음.<br/><br/><br/>
+
+## 이 프로젝트를 통해 얻은 것    
+1. JavaScript 관련 지식 중에서도 특히 이벤트 관련 개념들에 익숙해졌습니다.    
+2. 원래 목표는 자바스크립트 성장에 초점이 맞춰져있었으나 CSS 레이아웃 및 프로퍼티 활용 면에서 더 큰 성장이 있었습니다.<br/><br/><br/>
     
 ## YangTube 구조도    
 ![YangTube_structure](https://user-images.githubusercontent.com/56597998/89787678-d7105c00-db58-11ea-95b7-236890f1f764.png)<br/><br/><br/>
