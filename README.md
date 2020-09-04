@@ -1,7 +1,7 @@
 # YangTube     
 
 #### 유튜브 동영상 플레이어 페이지 클론 코딩 개인프로젝트 YangTube입니다.<br/><br/><br/>
-[YangTube 링크](https://5f33fbde2a723578f21bb406--boring-ardinghelli-8b5e2f.netlify.app)<br/><br/><br/>
+[YangTube 링크](https://5f522b54fae12e0090d0cb41--boring-ardinghelli-8b5e2f.netlify.app/)<br/><br/><br/>
 
 ## 프로젝트 목표    
 1. REST API 서버에서 데이터들을 받아왔다는 전제하에 유튜브 동영상 플레이 페이지의 view를 구현하는 것.    
