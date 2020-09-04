@@ -36,7 +36,7 @@
 ## 구현 기능    
     
 ### 1. 반응형 웹    
-* pc (1024px ~)<br/>
+* pc (1024px ~)<br/>    
 ![pc_yang](https://user-images.githubusercontent.com/56597998/92238007-4e84a180-eef3-11ea-801c-ecaeba415a22.png)<br/><br/>    
 * 타블렛 (767 ~ 1023px)<br/>    
 ![tablet](https://user-images.githubusercontent.com/56597998/92238009-4fb5ce80-eef3-11ea-82d7-f6a623b7e98b.png)<br/><br/>    
