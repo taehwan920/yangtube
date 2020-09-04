@@ -37,12 +37,13 @@
     
 ### 1. 반응형 웹    
 * pc (1024px ~)
-![pc_yang](https://user-images.githubusercontent.com/56597998/92236929-65c28f80-eef1-11ea-9ebd-62b6b328280c.png)
-* 타블렛 (767 ~ 1023px)
-![mobile](https://user-images.githubusercontent.com/56597998/92236923-63603580-eef1-11ea-9182-2e4fa0f8e641.png)
+![pc_yang](https://user-images.githubusercontent.com/56597998/92237669-ba1a3f00-eef2-11ea-93a7-ad387891913a.png)    
+* 타블렛 (767 ~ 1023px)    
+![tablet](https://user-images.githubusercontent.com/56597998/92237671-bb4b6c00-eef2-11ea-862b-c8e746d4b206.png)    
 * 모바일 (~ 766px)    
-![theater](https://user-images.githubusercontent.com/56597998/92236927-6529f900-eef1-11ea-93d4-3100b2f93039.png)
-* 극장 모드<br/><br/><br/>    
+![mobile](https://user-images.githubusercontent.com/56597998/92237673-bbe40280-eef2-11ea-982b-7a7bb6bd0b05.png)    
+* 극장 모드    
+![theater](https://user-images.githubusercontent.com/56597998/92236927-6529f900-eef1-11ea-93d4-3100b2f93039.png)<br/><br/><br/>    
 
 ### 2. 헤더     
 #### * 메뉴 버튼 및 로고
