@@ -1,7 +1,7 @@
 export default [
     {
         title: '🐟 오키나와 바닷 속 구경 [수중 카메라 촬영]',
-        pageUrl: '#/home',
+        pageUrl: '#/dive',
         videoUrl: './videos/dive.mp4',
         thumbnailUrl: './images/thumbnails/dive_thumb.png',
         nextThumb: './images/thumbnails/dog_thumb.png',

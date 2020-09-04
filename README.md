@@ -37,8 +37,12 @@
     
 ### 1. 반응형 웹    
 * pc (1024px ~)
+![pc_yang](https://user-images.githubusercontent.com/56597998/92236929-65c28f80-eef1-11ea-9ebd-62b6b328280c.png)
 * 타블렛 (767 ~ 1023px)
-* 모바일 (~ 766px)<br/><br/><br/>    
+![mobile](https://user-images.githubusercontent.com/56597998/92236923-63603580-eef1-11ea-9182-2e4fa0f8e641.png)
+* 모바일 (~ 766px)    
+![theater](https://user-images.githubusercontent.com/56597998/92236927-6529f900-eef1-11ea-93d4-3100b2f93039.png)
+* 극장 모드<br/><br/><br/>    
 
 ### 2. 헤더     
 #### * 메뉴 버튼 및 로고
