@@ -36,14 +36,14 @@
 ## 구현 기능    
     
 ### 1. 반응형 웹    
-* pc (1024px ~)
-![pc_yang](https://user-images.githubusercontent.com/56597998/92237669-ba1a3f00-eef2-11ea-93a7-ad387891913a.png)    
-* 타블렛 (767 ~ 1023px)    
-![tablet](https://user-images.githubusercontent.com/56597998/92237671-bb4b6c00-eef2-11ea-862b-c8e746d4b206.png)    
-* 모바일 (~ 766px)    
-![mobile](https://user-images.githubusercontent.com/56597998/92237673-bbe40280-eef2-11ea-982b-7a7bb6bd0b05.png)    
-* 극장 모드    
-![theater](https://user-images.githubusercontent.com/56597998/92236927-6529f900-eef1-11ea-93d4-3100b2f93039.png)<br/><br/><br/>    
+* pc (1024px ~)<br/>
+![pc_yang](https://user-images.githubusercontent.com/56597998/92238007-4e84a180-eef3-11ea-801c-ecaeba415a22.png)<br/><br/>    
+* 타블렛 (767 ~ 1023px)<br/>    
+![tablet](https://user-images.githubusercontent.com/56597998/92238009-4fb5ce80-eef3-11ea-82d7-f6a623b7e98b.png)<br/><br/>    
+* 모바일 (~ 766px)<br/>    
+![mobile](https://user-images.githubusercontent.com/56597998/92237673-bbe40280-eef2-11ea-982b-7a7bb6bd0b05.png)<br/><br/>    
+* 극장 모드<br/>    
+![theater](https://user-images.githubusercontent.com/56597998/92236927-6529f900-eef1-11ea-93d4-3100b2f93039.png)<br/><br/><br/><br/>    
 
 ### 2. 헤더     
 #### * 메뉴 버튼 및 로고
